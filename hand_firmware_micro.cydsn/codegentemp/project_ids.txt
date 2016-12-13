@@ -1,0 +1,6 @@
+C:\Users\MattiaCP\Dropbox\MyoElectric Master FW - Case 2\hand_firmware_micro-v6.1.0\hand_firmware_micro.cydsn\hand_firmware_micro.cyprj|0d533d40-91ed-46f9-99fc-7529c50704c1
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|1c39f0d8-fa7a-4316-8298-0e3273350cda
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|ad3c85ba-86a8-45e7-a74a-70bde45b43b1
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|5aac9426-5754-415d-954f-2ec3dc7b8f44
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|6c0e8abf-571e-424f-8067-993119125f4a
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|c3ba451f-258c-4ecb-b043-7fcf24740a9b

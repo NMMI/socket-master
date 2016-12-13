@@ -1,0 +1,4 @@
+--------------- Build Started: 10/17/2016 10:34:23 Project: hand_firmware_micro, Configuration: DP8051 Keil 9.51 Debug ---------------
+cydsfit.exe -.appdatapath "C:\Users\MattiaCP\AppData\Local\Cypress Semiconductor\PSoC Creator\3.3" -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -p "C:\Users\MattiaCP\Dropbox\MyoElectric Master FW - Case 2\hand_firmware_micro-v6.1.0\hand_firmware_micro.cydsn\hand_firmware_micro.cyprj" -d CY8C3246PVI-147 -s "C:\Users\MattiaCP\Dropbox\MyoElectric Master FW - Case 2\hand_firmware_micro-v6.1.0\hand_firmware_micro.cydsn\Generated_Source\PSoC3" -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=BE
+Elaborating Design...
+--------------- Build Canceled: 10/17/2016 10:34:26 ---------------
