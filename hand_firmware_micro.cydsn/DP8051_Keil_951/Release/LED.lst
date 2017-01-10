@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   LED                                                                   10/17/2016 10:37:12 PAGE 1   
+C51 COMPILER V9.51   LED                                                                   01/10/2017 17:11:26 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE LED
@@ -62,7 +62,7 @@ line level    source
   50          *  mode:  Change the pins to one of the following drive modes.
   51          *
   52          *  LED_DM_STRONG     Strong Drive 
-C51 COMPILER V9.51   LED                                                                   10/17/2016 10:37:12 PAGE 2   
+C51 COMPILER V9.51   LED                                                                   01/10/2017 17:11:26 PAGE 2   
 
   53          *  LED_DM_OD_HI      Open Drain, Drives High 
   54          *  LED_DM_OD_LO      Open Drain, Drives Low 
@@ -126,7 +126,7 @@ line level    source
  112   1      }
  113          
  114          
-C51 COMPILER V9.51   LED                                                                   10/17/2016 10:37:12 PAGE 3   
+C51 COMPILER V9.51   LED                                                                   01/10/2017 17:11:26 PAGE 3   
 
  115          /* If Interrupts Are Enabled for this Pins component */ 
  116          #if defined(LED_INTSTAT) 
@@ -155,7 +155,7 @@ line level    source
  139          
  140          
  141          /* [] END OF FILE */
-C51 COMPILER V9.51   LED                                                                   10/17/2016 10:37:12 PAGE 4   
+C51 COMPILER V9.51   LED                                                                   01/10/2017 17:11:26 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -219,7 +219,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION LED_ReadDataReg (BEGIN)
                                            ; SOURCE LINE # 109
                                            ; SOURCE LINE # 110
-C51 COMPILER V9.51   LED                                                                   10/17/2016 10:37:12 PAGE 5   
+C51 COMPILER V9.51   LED                                                                   01/10/2017 17:11:26 PAGE 5   
 
                                            ; SOURCE LINE # 111
 0000 9051F0            MOV     DPTR,#051F0H

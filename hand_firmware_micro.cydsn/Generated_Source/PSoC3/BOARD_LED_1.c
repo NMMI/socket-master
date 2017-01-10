@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: LED.c  
+* File Name: BOARD_LED_1.c  
 * Version 2.10
 *
 * Description:
@@ -15,11 +15,11 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "LED.h"
+#include "BOARD_LED_1.h"
 
 
 /*******************************************************************************
-* Function Name: LED_Write
+* Function Name: BOARD_LED_1_Write
 ********************************************************************************
 *
 * Summary:
@@ -32,15 +32,15 @@
 *  None 
 *  
 *******************************************************************************/
-void LED_Write(uint8 value) 
+void BOARD_LED_1_Write(uint8 value) 
 {
-    uint8 staticBits = (LED_DR & (uint8)(~LED_MASK));
-    LED_DR = staticBits | ((uint8)(value << LED_SHIFT) & LED_MASK);
+    uint8 staticBits = (BOARD_LED_1_DR & (uint8)(~BOARD_LED_1_MASK));
+    BOARD_LED_1_DR = staticBits | ((uint8)(value << BOARD_LED_1_SHIFT) & BOARD_LED_1_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: LED_SetDriveMode
+* Function Name: BOARD_LED_1_SetDriveMode
 ********************************************************************************
 *
 * Summary:
@@ -49,27 +49,27 @@ void LED_Write(uint8 value)
 * Parameters:  
 *  mode:  Change the pins to one of the following drive modes.
 *
-*  LED_DM_STRONG     Strong Drive 
-*  LED_DM_OD_HI      Open Drain, Drives High 
-*  LED_DM_OD_LO      Open Drain, Drives Low 
-*  LED_DM_RES_UP     Resistive Pull Up 
-*  LED_DM_RES_DWN    Resistive Pull Down 
-*  LED_DM_RES_UPDWN  Resistive Pull Up/Down 
-*  LED_DM_DIG_HIZ    High Impedance Digital 
-*  LED_DM_ALG_HIZ    High Impedance Analog 
+*  BOARD_LED_1_DM_STRONG     Strong Drive 
+*  BOARD_LED_1_DM_OD_HI      Open Drain, Drives High 
+*  BOARD_LED_1_DM_OD_LO      Open Drain, Drives Low 
+*  BOARD_LED_1_DM_RES_UP     Resistive Pull Up 
+*  BOARD_LED_1_DM_RES_DWN    Resistive Pull Down 
+*  BOARD_LED_1_DM_RES_UPDWN  Resistive Pull Up/Down 
+*  BOARD_LED_1_DM_DIG_HIZ    High Impedance Digital 
+*  BOARD_LED_1_DM_ALG_HIZ    High Impedance Analog 
 *
 * Return: 
 *  None
 *
 *******************************************************************************/
-void LED_SetDriveMode(uint8 mode) 
+void BOARD_LED_1_SetDriveMode(uint8 mode) 
 {
-	CyPins_SetPinDriveMode(LED_0, mode);
+	CyPins_SetPinDriveMode(BOARD_LED_1_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: LED_Read
+* Function Name: BOARD_LED_1_Read
 ********************************************************************************
 *
 * Summary:
@@ -83,17 +83,17 @@ void LED_SetDriveMode(uint8 mode)
 *  Returns the current value of the Digital Port as a right justified number
 *  
 * Note:
-*  Macro LED_ReadPS calls this function. 
+*  Macro BOARD_LED_1_ReadPS calls this function. 
 *  
 *******************************************************************************/
-uint8 LED_Read(void) 
+uint8 BOARD_LED_1_Read(void) 
 {
-    return (LED_PS & LED_MASK) >> LED_SHIFT;
+    return (BOARD_LED_1_PS & BOARD_LED_1_MASK) >> BOARD_LED_1_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: LED_ReadDataReg
+* Function Name: BOARD_LED_1_ReadDataReg
 ********************************************************************************
 *
 * Summary:
@@ -106,17 +106,17 @@ uint8 LED_Read(void)
 *  Returns the current value assigned to the Digital Port's data output register
 *  
 *******************************************************************************/
-uint8 LED_ReadDataReg(void) 
+uint8 BOARD_LED_1_ReadDataReg(void) 
 {
-    return (LED_DR & LED_MASK) >> LED_SHIFT;
+    return (BOARD_LED_1_DR & BOARD_LED_1_MASK) >> BOARD_LED_1_SHIFT;
 }
 
 
 /* If Interrupts Are Enabled for this Pins component */ 
-#if defined(LED_INTSTAT) 
+#if defined(BOARD_LED_1_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: LED_ClearInterrupt
+    * Function Name: BOARD_LED_1_ClearInterrupt
     ********************************************************************************
     *
     * Summary:
@@ -130,9 +130,9 @@ uint8 LED_ReadDataReg(void)
     *  Returns the value of the interrupt status register
     *  
     *******************************************************************************/
-    uint8 LED_ClearInterrupt(void) 
+    uint8 BOARD_LED_1_ClearInterrupt(void) 
     {
-        return (LED_INTSTAT & LED_MASK) >> LED_SHIFT;
+        return (BOARD_LED_1_INTSTAT & BOARD_LED_1_MASK) >> BOARD_LED_1_SHIFT;
     }
 
 #endif /* If Interrupts Are Enabled for this Pins component */ 

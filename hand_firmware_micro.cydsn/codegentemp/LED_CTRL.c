@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: LED_REG.c  
+* File Name: LED_CTRL.c  
 * Version 1.80
 *
 * Description:
@@ -14,14 +14,14 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include "LED_REG.h"
+#include "LED_CTRL.h"
 
 /* Check for removal by optimization */
-#if !defined(LED_REG_Sync_ctrl_reg__REMOVED)
+#if !defined(LED_CTRL_Sync_ctrl_reg__REMOVED)
 
     
 /*******************************************************************************
-* Function Name: LED_REG_Write
+* Function Name: LED_CTRL_Write
 ********************************************************************************
 *
 * Summary:
@@ -34,14 +34,14 @@
 *  None.
 *
 *******************************************************************************/
-void LED_REG_Write(uint8 control) 
+void LED_CTRL_Write(uint8 control) 
 {
-    LED_REG_Control = control;
+    LED_CTRL_Control = control;
 }
 
 
 /*******************************************************************************
-* Function Name: LED_REG_Read
+* Function Name: LED_CTRL_Read
 ********************************************************************************
 *
 * Summary:
@@ -54,9 +54,9 @@ void LED_REG_Write(uint8 control)
 *  Returns the current value in the Control Register.
 *
 *******************************************************************************/
-uint8 LED_REG_Read(void) 
+uint8 LED_CTRL_Read(void) 
 {
-    return LED_REG_Control;
+    return LED_CTRL_Control;
 }
 
 #endif /* End check for removal by optimization */

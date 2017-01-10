@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 1   
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE COMMAND_PROCESSING
@@ -62,7 +62,7 @@ line level    source
   50   1      
   51   1          switch(rx_cmd) {
   52   2      
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 2   
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 2   
 
   53   2      //=============================================================     CMD_ACTIVATE
   54   2              case CMD_ACTIVATE:
@@ -126,7 +126,7 @@ line level    source
  112   2      
  113   2      //============================================================     CMD_SET_PARAM
  114   2      
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 3   
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 3   
 
  115   2              case CMD_SET_ZEROS:
  116   2                  setZeros();
@@ -190,7 +190,7 @@ line level    source
  174   2      
  175   2      //============================================================     CMD_CALIBRATE
  176   2      
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 4   
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 4   
 
  177   2              case CMD_HAND_CALIBRATE:
  178   2                  calib.speed = *((int16 *) &g_rx.buffer[1]);
@@ -254,7 +254,7 @@ line level    source
  236          //==============================================================================
  237          //                                                                GET PARAM LIST
  238          //==============================================================================
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 5   
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 5   
 
  239          
  240          void get_param_list(uint16 index) {
@@ -318,7 +318,7 @@ line level    source
  297   1          uint8 CYDATA curr_lookup_str_len = strlen(curr_lookup_str);
  298   1          uint8 CYDATA input_mode_menu_len = strlen(input_mode_menu);
  299   1          uint8 CYDATA control_mode_menu_len = strlen(control_mode_menu);
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 6   
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 6   
 
  300   1          uint8 CYDATA yes_no_menu_len = strlen(yes_no_menu);
  301   1      
@@ -382,7 +382,7 @@ line level    source
  359   3                  }
  360   2                  else {
  361   3                      strcat(startup_str, " NO\0");
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 7   
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 7   
 
  362   3                      string_lenght = 27;
  363   3                  }
@@ -446,7 +446,7 @@ line level    source
  421   3                          string_lenght = 26;
  422   3                      break;
  423   3                      case CURR_AND_POS_CONTROL:
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 8   
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 8   
 
  424   3                          strcat(contr_str, " Position and Current\0");
  425   3                          string_lenght = 39;
@@ -510,7 +510,7 @@ line level    source
  483   3                      *((int32 *)( packet_data + 504 + (i * 2 * 4) )) = (c_mem.pos_lim_inf[i] >> c_mem.res[i]);
  484   3                      *((int32 *)( packet_data + 504 + (i * 2 * 4) + 4)) = (c_mem.pos_lim_sup[i] >> c_mem.res[i]
              -);
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 9   
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 9   
 
  485   3                  }
  486   2                  for(i = pos_lim_str_len; i != 0; i--)
@@ -574,7 +574,7 @@ line level    source
  544   2                  packet_data[802] = TYPE_UINT8;
  545   2                  packet_data[803] = 1;
  546   2                  packet_data[804] = c_mem.emg_speed;
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 10  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 10  
 
  547   2                  for(i = emg_max_speed_str_len; i != 0; i--)
  548   2                      packet_data[805 + emg_max_speed_str_len - i] = emg_max_speed_str[emg_max_speed_str_len - i
@@ -638,7 +638,7 @@ line level    source
  605   2                  for(i = input_mode_menu_len; i != 0; i--)
  606   2                      packet_data[1052 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
  607   2      
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 11  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 11  
 
  608   2                  for(i = control_mode_menu_len; i != 0; i--)
  609   2                      packet_data[1202 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - 
@@ -702,7 +702,7 @@ line level    source
  666   2              case 6:         //Control mode - uint8
  667   2                  g_mem.control_mode = *((uint8*) &g_rx.buffer[3]);
  668   2              break;
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 12  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 12  
 
  669   2              
  670   2      //===========================================================     set_resolution
@@ -766,7 +766,7 @@ line level    source
  728   2              case 14:        //Emg calibration flag - int8
  729   2                  g_mem.emg_calibration_flag = *((uint8*) &g_rx.buffer[3]);
  730   2              break;
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 13  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 13  
 
  731   2              
  732   2      //========================================================     set_emg_threshold
@@ -830,7 +830,7 @@ line level    source
  790   1          reset_last_value_flag = 1;
  791   1      
  792   1          sendAcknowledgment(ACK_OK);
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 14  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 14  
 
  793   1      }
  794          
@@ -894,7 +894,7 @@ line level    source
  852   2              strcat(info_string, "\r\n");
  853   2      
  854   2              sprintf(str, "Motor enabled: ");
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 15  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 15  
 
  855   2              if (g_ref.onoff & 0x03) {
  856   3                  strcat(str, "YES\r\n");
@@ -958,7 +958,7 @@ line level    source
  914   3                  sprintf(str, "D -> %f\r\n", ((double) c_mem.k_d_c_dl / 65536));
  915   3                  strcat(info_string, str);
  916   3              }
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 16  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 16  
 
  917   2      
  918   2              strcat(info_string, "\r\n");
@@ -1022,7 +1022,7 @@ line level    source
  976   2              strcat(info_string, "Sensor resolution:\r\n");
  977   2              for (i = 0; i < NUM_OF_SENSORS; ++i) {
  978   3                  sprintf(str, "%d -> %d", (int) (i + 1), (int) c_mem.res[i]);
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 17  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 17  
 
  979   3                  strcat(info_string, str);
  980   3                  strcat(info_string, "\r\n");
@@ -1086,7 +1086,7 @@ line level    source
 1035   2      
 1036   2              if (g_mem.emg_calibration_flag) {
 1037   3                  strcat(info_string, "Calibration enabled: YES\r\n");
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 18  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 18  
 
 1038   3              } else {
 1039   3                  strcat(info_string, "Calibration enabled: NO\r\n");
@@ -1150,7 +1150,7 @@ line level    source
 1097   2              UART_RS485_PutChar(packet_data[index]);
 1098   2          }
 1099   1      
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 19  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 19  
 
 1100   1          index = 0;
 1101   1      
@@ -1214,7 +1214,7 @@ line level    source
 1159   1          packet_data[0] = value;
 1160   1          packet_data[1] = value;
 1161   1      
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 20  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 20  
 
 1162   1          commWrite(packet_data, packet_lenght);
 1163   1      }
@@ -1278,7 +1278,7 @@ line level    source
 1221   1          //check for initialization
 1222   1          if (g_mem.flag == FALSE) {
 1223   2              memRestore();
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 21  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 21  
 
 1224   2          } else {
 1225   2              memcpy( &c_mem, &g_mem, sizeof(g_mem) );
@@ -1342,7 +1342,7 @@ line level    source
 1283   1          g_mem.res[0] = 3;
 1284   1          g_mem.res[1] = 3;
 1285   1          g_mem.res[2] = 3;
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 22  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 22  
 
 1286   1      
 1287   1          for (i = 0; i < NUM_OF_MOTORS; i++) {
@@ -1406,7 +1406,7 @@ line level    source
 1345   1          // Calculate Checksum and send message to UART 
 1346   1      
 1347   1          packet_data[7] = LCRChecksum (packet_data, 7);
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 23  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 23  
 
 1348   1      
 1349   1          commWrite(packet_data, 8);
@@ -1470,7 +1470,7 @@ line level    source
 1407          
 1408          void cmd_get_activate(){
 1409   1          
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 24  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 24  
 
 1410   1          uint8 packet_data[3];
 1411   1      
@@ -1534,7 +1534,7 @@ line level    source
 1467   1          packet_data[5] = LCRChecksum (packet_data, 5);
 1468   1      
 1469   1          commWrite(packet_data, 6);
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 25  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 25  
 
 1470   1      }
 1471          
@@ -1598,7 +1598,7 @@ line level    source
 1529   1          packet_data[0] = CMD_GET_INPUTS;
 1530   1          
 1531   1          *((int16 *) &packet_data[1]) = (int16) (g_refOld.pos[0]  >> g_mem.res[0]);
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 26  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 26  
 
 1532   1          *((int16 *) &packet_data[3]) = (int16) (g_refOld.pos[1]  >> g_mem.res[1]);
 1533   1          
@@ -1662,7 +1662,7 @@ line level    source
 1591   3                  commWrite_old_id(packet_data, packet_lenght, old_id);
 1592   3              }
 1593   2          }    
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 27  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 27  
 
 1594   1          else {
 1595   2              if(memStore(0))
@@ -1689,7 +1689,7 @@ line level    source
 1616   1      }
 1617          
 1618          /* [] END OF FILE */
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 28  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 28  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -1753,7 +1753,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004D 06                DB      06H
 004E 0000        R     DW      ?C0029
 0050 09                DB      09H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 29  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 29  
 
 0051 0000        R     DW      ?C0026
 0053 0A                DB      0AH
@@ -1817,7 +1817,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 008D 120000      R     LCALL   cmd_set_watchdog
                                            ; SOURCE LINE # 87
 0090 22                RET     
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 30  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 30  
 
                                            ; SOURCE LINE # 91
 0091         ?C0012:
@@ -1881,7 +1881,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00C0 22                RET     
                                            ; SOURCE LINE # 139
 00C1         ?C0020:
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 31  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 31  
 
                                            ; SOURCE LINE # 140
 00C1 7F08              MOV     R7,#08H
@@ -1945,7 +1945,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0103 7E03              MOV     R6,#03H
 0105 FD                MOV     R5,A
 0106 FC                MOV     R4,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 32  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 32  
 
 0107 120000      E     LCALL   _?CyDelay
                                            ; SOURCE LINE # 170
@@ -2009,7 +2009,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0151 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 184
 0152 8014              SJMP    ?C0032
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 33  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 33  
 
 0154         ?C0031:
 0154 D3                SETB    C
@@ -2073,7 +2073,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 019A FC                MOV     R4,A
 019B 900000      E     MOV     DPTR,#g_refNew
 019E 120000      E     LCALL   ?C?LSTXDATA
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 34  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 34  
 
                                            ; SOURCE LINE # 194
 01A1 900000      E     MOV     DPTR,#calib
@@ -2137,7 +2137,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 227
 0028 7B01              MOV     R3,#01H
 002A 7A00        R     MOV     R2,#HIGH packet_string
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 35  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 35  
 
 002C 7900        R     MOV     R1,#LOW packet_string
 002E 120000      R     LCALL   _infoPrepare
@@ -2201,7 +2201,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0045 7F1C              MOV     R7,#01CH
 0047 120000      E     LCALL   ?C?COPYAMD
                                            ; SOURCE LINE # 254
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 36  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 36  
 
 004A 7800        R     MOV     R0,#LOW curr_pid_str
 004C 7C00        R     MOV     R4,#HIGH curr_pid_str
@@ -2265,7 +2265,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 260
 00BC 7800        R     MOV     R0,#LOW mult_str
 00BE 7C00        R     MOV     R4,#HIGH mult_str
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 37  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 37  
 
 00C0 7D01              MOV     R5,#01H
 00C2 7BFF              MOV     R3,#0FFH
@@ -2329,7 +2329,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0130 7C00        R     MOV     R4,#HIGH emg_thr_str
 0132 7D01              MOV     R5,#01H
 0134 7BFF              MOV     R3,#0FFH
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 38  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 38  
 
 0136 7A00        R     MOV     R2,#HIGH _?ix1016
 0138 7900        R     MOV     R1,#LOW _?ix1016
@@ -2393,7 +2393,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01A6 7BFF              MOV     R3,#0FFH
 01A8 7A00        R     MOV     R2,#HIGH _?ix1022
 01AA 7900        R     MOV     R1,#LOW _?ix1022
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 39  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 39  
 
 01AC 7E00              MOV     R6,#00H
 01AE 7F15              MOV     R7,#015H
@@ -2457,7 +2457,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 021A 7A00        R     MOV     R2,#HIGH m_off_str
 021C 7900        R     MOV     R1,#LOW m_off_str
 021E 120000      E     LCALL   _strlen
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 40  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 40  
 
 0221 8F00        R     MOV     m_off_str_len,R7
                                            ; SOURCE LINE # 286
@@ -2521,7 +2521,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 028C 120000      E     LCALL   _strlen
 028F 8F00        R     MOV     input_mode_menu_len,R7
                                            ; SOURCE LINE # 299
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 41  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 41  
 
 0291 7B01              MOV     R3,#01H
 0293 7A00        R     MOV     R2,#HIGH control_mode_menu
@@ -2585,7 +2585,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0308 020000      R     LJMP    ?C0198
 030B 020000      R     LJMP    ?C0199
 030E 020000      R     LJMP    ?C0200
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 42  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 42  
 
                                            ; SOURCE LINE # 306
 0311         ?C0044:
@@ -2649,7 +2649,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 035E 7407              MOV     A,#07H
 0360 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 318
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 43  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 43  
 
 0361 A3                INC     DPTR
 0362 7403              MOV     A,#03H
@@ -2713,7 +2713,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 03B7 E0                MOVX    A,@DPTR
 03B8 FD                MOV     R5,A
 03B9 A3                INC     DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 44  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 44  
 
 03BA E0                MOVX    A,@DPTR
 03BB FE                MOV     R6,A
@@ -2777,7 +2777,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 040B FA                MOV     R2,A
 040C 7980              MOV     R1,#080H
 040E 7847              MOV     R0,#047H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 45  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 45  
 
 0410 120000      E     LCALL   ?C?FPDIV
 0413 900000      R     MOV     DPTR,#packet_data+03AH
@@ -2841,7 +2841,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0464 7400        R     MOV     A,#LOW packet_data+042H
 0466 2D                ADD     A,R5
 0467 F582              MOV     DPL,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 46  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 46  
 
 0469 7400        R     MOV     A,#HIGH packet_data+042H
 046B 3C                ADDC    A,R4
@@ -2905,7 +2905,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 04BA E4                CLR     A
 04BB FB                MOV     R3,A
 04BC FA                MOV     R2,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 47  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 47  
 
 04BD 7980              MOV     R1,#080H
 04BF 7847              MOV     R0,#047H
@@ -2969,7 +2969,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0515 A3                INC     DPTR
 0516 E0                MOVX    A,@DPTR
 0517 FD                MOV     R5,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 48  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 48  
 
 0518 A3                INC     DPTR
 0519 E0                MOVX    A,@DPTR
@@ -3033,7 +3033,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 056C 3E                ADDC    A,R6
 056D F583              MOV     DPH,A
 056F E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 49  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 49  
 
 0570 FF                MOV     R7,A
 0571 E500        R     MOV     A,i
@@ -3097,7 +3097,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 05C1 74FF              MOV     A,#0FFH
 05C3 F0                MOVX    @DPTR,A
 05C4 A3                INC     DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 50  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 50  
 
 05C5 7400        R     MOV     A,#HIGH ?SC_6
 05C7 F0                MOVX    @DPTR,A
@@ -3161,7 +3161,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0617 E4                CLR     A
 0618 3400        R     ADDC    A,#HIGH packet_data+09BH
 061A F583              MOV     DPH,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 51  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 51  
 
 061C 7403              MOV     A,#03H
 061E F0                MOVX    @DPTR,A
@@ -3225,7 +3225,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0671 F0                MOVX    @DPTR,A
 0672 A3                INC     DPTR
 0673 7400        R     MOV     A,#LOW ?SC_17
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 52  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 52  
 
 0675 F0                MOVX    @DPTR,A
 0676 7B01              MOV     R3,#01H
@@ -3289,7 +3289,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 06C7 7400        R     MOV     A,#LOW ?SC_60
 06C9 F0                MOVX    @DPTR,A
 06CA 7B01              MOV     R3,#01H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 53  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 53  
 
 06CC 7A00        R     MOV     R2,#HIGH input_str
 06CE 7900        R     MOV     R1,#LOW input_str
@@ -3353,7 +3353,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 071B 7400        R     MOV     A,#LOW packet_data+0CDH
 071D 2D                ADD     A,R5
 071E F582              MOV     DPL,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 54  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 54  
 
 0720 7400        R     MOV     A,#HIGH packet_data+0CDH
 0722 3C                ADDC    A,R4
@@ -3417,7 +3417,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0773 8052              SJMP    ?C0073
                                            ; SOURCE LINE # 415
 0775         ?C0075:
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 55  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 55  
 
                                            ; SOURCE LINE # 416
 0775 900000      E     MOV     DPTR,#?_strcat?BYTE+03H
@@ -3481,7 +3481,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 428
 07C7 850000      R     MOV     i,string_lenght
 07CA         ?C0078:
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 56  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 56  
 
 07CA E500        R     MOV     A,i
 07CC 6032              JZ      ?C0079
@@ -3545,7 +3545,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0818 E500        R     MOV     A,i
 081A C3                CLR     C
 081B 9403              SUBB    A,#03H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 57  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 57  
 
 081D 501E              JNC     ?C0082
                                            ; SOURCE LINE # 438
@@ -3609,7 +3609,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0871 F0                MOVX    @DPTR,A
 0872 1500        R     DEC     i
 0874 80CA              SJMP    ?C0084
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 58  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 58  
 
 0876         ?C0085:
                                            ; SOURCE LINE # 444
@@ -3673,7 +3673,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 08C8 0500        R     INC     i
 08CA 80B5              SJMP    ?C0087
 08CC         ?C0088:
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 59  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 59  
 
                                            ; SOURCE LINE # 448
 08CC 850000      R     MOV     i,m_off_str_len
@@ -3737,7 +3737,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0919 E500        R     MOV     A,i
 091B 25E0              ADD     A,ACC
 091D 25E0              ADD     A,ACC
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 60  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 60  
 
 091F 2400        E     ADD     A,#LOW c_mem+044H
 0921 F582              MOV     DPL,A
@@ -3801,7 +3801,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0973 7400        R     MOV     A,#LOW packet_data+01A0H
 0975 2D                ADD     A,R5
 0976 F582              MOV     DPL,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 61  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 61  
 
 0978 7400        R     MOV     A,#HIGH packet_data+01A0H
 097A 3C                ADDC    A,R4
@@ -3865,7 +3865,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 09CB 75001B      R     MOV     string_lenght,#01BH
                                            ; SOURCE LINE # 472
 09CE         ?C0100:
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 62  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 62  
 
                                            ; SOURCE LINE # 473
 09CE 850000      R     MOV     i,string_lenght
@@ -3929,7 +3929,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 482
 0A1F E4                CLR     A
 0A20 F500        R     MOV     i,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 63  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 63  
 
 0A22         ?C0104:
 0A22 E500        R     MOV     A,i
@@ -3993,7 +3993,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0A7E A3                INC     DPTR
 0A7F E0                MOVX    A,@DPTR
 0A80 FE                MOV     R6,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 64  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 64  
 
 0A81 A3                INC     DPTR
 0A82 E0                MOVX    A,@DPTR
@@ -4057,7 +4057,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0AD9 F582              MOV     DPL,A
 0ADB 7400        R     MOV     A,#HIGH packet_data+0200H
 0ADD 3C                ADDC    A,R4
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 65  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 65  
 
 0ADE F583              MOV     DPH,A
 0AE0 EF                MOV     A,R7
@@ -4121,7 +4121,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0B2B 2F                ADD     A,R7
 0B2C F582              MOV     DPL,A
 0B2E 7400        R     MOV     A,#HIGH max_step_str
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 66  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 66  
 
 0B30 3E                ADDC    A,R6
 0B31 F583              MOV     DPH,A
@@ -4185,7 +4185,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0B7D 2F                ADD     A,R7
 0B7E F582              MOV     DPL,A
 0B80 7400        R     MOV     A,#HIGH curr_limit_str
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 67  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 67  
 
 0B82 3E                ADDC    A,R6
 0B83 F583              MOV     DPH,A
@@ -4249,7 +4249,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 515
                                            ; SOURCE LINE # 516
 0BD4 900000      E     MOV     DPTR,#?_strcat?BYTE+03H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 68  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 68  
 
 0BD7 74FF              MOV     A,#0FFH
 0BD9 F0                MOVX    @DPTR,A
@@ -4313,7 +4313,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0C27 7400        R     MOV     A,#LOW packet_data+028FH
 0C29 2500        R     ADD     A,string_lenght
 0C2B F582              MOV     DPL,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 69  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 69  
 
 0C2D E4                CLR     A
 0C2E 3400        R     ADDC    A,#HIGH packet_data+028FH
@@ -4377,7 +4377,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0C79 E500        R     MOV     A,i
 0C7B FD                MOV     R5,A
 0C7C E500        R     MOV     A,emg_thr_str_len
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 70  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 70  
 
 0C7E C3                CLR     C
 0C7F 9D                SUBB    A,R5
@@ -4441,7 +4441,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0CCC 6032              JZ      ?C0125
                                            ; SOURCE LINE # 540
 0CCE FF                MOV     R7,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 71  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 71  
 
 0CCF C3                CLR     C
 0CD0 E500        R     MOV     A,emg_max_val_str_len
@@ -4505,7 +4505,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0D1E E4                CLR     A
 0D1F 9400              SUBB    A,#00H
 0D21 FE                MOV     R6,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 72  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 72  
 
 0D22 7400        R     MOV     A,#LOW emg_max_speed_str
 0D24 2F                ADD     A,R7
@@ -4569,7 +4569,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0D76 750024      R     MOV     string_lenght,#024H
                                            ; SOURCE LINE # 558
 0D79 801A              SJMP    ?C0131
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 73  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 73  
 
 0D7B         ?C0130:
                                            ; SOURCE LINE # 559
@@ -4633,7 +4633,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0DCA 1500        R     DEC     i
 0DCC 80CA              SJMP    ?C0132
 0DCE         ?C0133:
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 74  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 74  
 
                                            ; SOURCE LINE # 566
 0DCE 7400        R     MOV     A,#LOW packet_data+0357H
@@ -4697,7 +4697,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0E20 F0                MOVX    @DPTR,A
 0E21 1500        R     DEC     i
 0E23 80CA              SJMP    ?C0135
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 75  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 75  
 
 0E25         ?C0136:
                                            ; SOURCE LINE # 578
@@ -4761,7 +4761,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0E75 6032              JZ      ?C0141
                                            ; SOURCE LINE # 590
 0E77 FF                MOV     R7,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 76  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 76  
 
 0E78 C3                CLR     C
 0E79 E500        R     MOV     A,string_lenght
@@ -4825,7 +4825,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0EC8 5031              JNC     ?C0144
                                            ; SOURCE LINE # 599
 0ECA E500        R     MOV     A,i
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 77  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 77  
 
 0ECC 25E0              ADD     A,ACC
 0ECE 25E0              ADD     A,ACC
@@ -4889,7 +4889,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0F21 9400              SUBB    A,#00H
 0F23 FC                MOV     R4,A
 0F24 7400        R     MOV     A,#LOW packet_data+0404H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 78  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 78  
 
 0F26 2D                ADD     A,R5
 0F27 F582              MOV     DPL,A
@@ -4953,7 +4953,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0F75 C3                CLR     C
 0F76 E500        R     MOV     A,control_mode_menu_len
 0F78 9F                SUBB    A,R7
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 79  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 79  
 
 0F79 FF                MOV     R7,A
 0F7A E4                CLR     A
@@ -5017,7 +5017,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0FCA FD                MOV     R5,A
 0FCB E4                CLR     A
 0FCC 9400              SUBB    A,#00H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 80  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 80  
 
 0FCE FC                MOV     R4,A
 0FCF 7400        R     MOV     A,#LOW packet_data+0548H
@@ -5081,7 +5081,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 626
 101E E4                CLR     A
 101F FF                MOV     R7,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 81  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 81  
 
 1020 FE                MOV     R6,A
 1021 7D80              MOV     R5,#080H
@@ -5145,7 +5145,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 1075 120000      E     LCALL   ?C?FPMUL
 1078 120000      E     LCALL   ?C?CASTF
 107B 900000      E     MOV     DPTR,#g_mem+0AH
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 82  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 82  
 
 107E 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 629
@@ -5209,7 +5209,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 10D1 E0                MOVX    A,@DPTR
 10D2 F9                MOV     R1,A
 10D3 A3                INC     DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 83  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 83  
 
 10D4 E0                MOVX    A,@DPTR
 10D5 FA                MOV     R2,A
@@ -5273,7 +5273,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 1124 120000      E     LCALL   ?C?FPMUL
 1127 120000      E     LCALL   ?C?CASTF
 112A 900000      E     MOV     DPTR,#g_mem+012H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 84  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 84  
 
 112D 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 642
@@ -5337,7 +5337,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 1180 E0                MOVX    A,@DPTR
 1181 F9                MOV     R1,A
 1182 A3                INC     DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 85  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 85  
 
 1183 E0                MOVX    A,@DPTR
 1184 FA                MOV     R2,A
@@ -5401,7 +5401,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 663
 11D1 22                RET     
                                            ; SOURCE LINE # 666
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 86  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 86  
 
 11D2         ?C0169:
                                            ; SOURCE LINE # 667
@@ -5465,7 +5465,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 121E FE                MOV     R6,A
 121F A3                INC     DPTR
 1220 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 87  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 87  
 
 1221 FF                MOV     R7,A
 1222 EE                MOV     A,R6
@@ -5529,7 +5529,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 684
 127D 0500        R     INC     i
 127F 8088              SJMP    ?C0175
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 88  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 88  
 
 1281         ?C0176:
                                            ; SOURCE LINE # 685
@@ -5593,7 +5593,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 701
 12CA E4                CLR     A
 12CB F500        R     MOV     i,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 89  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 89  
 
 12CD         ?C0184:
 12CD E500        R     MOV     A,i
@@ -5657,7 +5657,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 1325 F582              MOV     DPL,A
 1327 E4                CLR     A
 1328 3400        E     ADDC    A,#HIGH g_mem+059H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 90  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 90  
 
 132A F583              MOV     DPH,A
 132C 120000      E     LCALL   ?C?LSTXDATA
@@ -5721,7 +5721,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 1383 7400        E     MOV     A,#LOW g_mem+035H
 1385 2500        R     ADD     A,i
 1387 F582              MOV     DPL,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 91  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 91  
 
 1389 E4                CLR     A
 138A 3400        E     ADDC    A,#HIGH g_mem+035H
@@ -5785,7 +5785,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 13D5 A3                INC     DPTR
 13D6 E0                MOVX    A,@DPTR
 13D7 FE                MOV     R6,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 92  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 92  
 
 13D8 A3                INC     DPTR
 13D9 E0                MOVX    A,@DPTR
@@ -5849,7 +5849,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 1425 22                RET     
                                            ; SOURCE LINE # 723
 1426         ?C0190:
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 93  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 93  
 
                                            ; SOURCE LINE # 724
 1426 900000      E     MOV     DPTR,#g_rx+03H
@@ -5913,7 +5913,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 1465 FD                MOV     R5,A
 1466 A3                INC     DPTR
 1467 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 94  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 94  
 
 1468 FE                MOV     R6,A
 1469 A3                INC     DPTR
@@ -5977,7 +5977,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 14A7 E0                MOVX    A,@DPTR
 14A8 900000      E     MOV     DPTR,#g_mem+07AH
 14AB F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 95  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 95  
 
                                            ; SOURCE LINE # 762
 14AC 22                RET     
@@ -6041,7 +6041,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION setZeros (BEGIN)
                                            ; SOURCE LINE # 780
                                            ; SOURCE LINE # 781
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 96  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 96  
 
                                            ; SOURCE LINE # 784
 0000 E4                CLR     A
@@ -6105,7 +6105,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0056 F582              MOV     DPL,A
 0058 E4                CLR     A
 0059 3400        E     ADDC    A,#HIGH g_mem+035H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 97  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 97  
 
 005B F583              MOV     DPH,A
 005D E0                MOVX    A,@DPTR
@@ -6169,7 +6169,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0023 AD03              MOV     R5,AR3
 0025 7BFF              MOV     R3,#0FFH
 0027 7A00        R     MOV     R2,#HIGH ?SC_141
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 98  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 98  
 
 0029 7900        R     MOV     R1,#LOW ?SC_141
 002B 120000      E     LCALL   ?C?STRCPYAMD
@@ -6233,7 +6233,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 007D E0                MOVX    A,@DPTR
 007E F9                MOV     R1,A
 007F 120000      E     LCALL   _strcat
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 99  
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 99  
 
                                            ; SOURCE LINE # 808
 0082 900000      E     MOV     DPTR,#?_strcat?BYTE+03H
@@ -6297,7 +6297,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00D5 7B01              MOV     R3,#01H
 00D7 7A00        R     MOV     R2,#HIGH str
 00D9 7900        R     MOV     R1,#LOW str
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 100 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 100 
 
 00DB 120000      E     LCALL   _sprintf
                                            ; SOURCE LINE # 812
@@ -6361,7 +6361,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0131 E0                MOVX    A,@DPTR
 0132 FA                MOV     R2,A
 0133 A3                INC     DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 101 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 101 
 
 0134 E0                MOVX    A,@DPTR
 0135 F9                MOV     R1,A
@@ -6425,7 +6425,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0189 900000      R     MOV     DPTR,#info_string
 018C E0                MOVX    A,@DPTR
 018D FB                MOV     R3,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 102 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 102 
 
 018E A3                INC     DPTR
 018F E0                MOVX    A,@DPTR
@@ -6489,7 +6489,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01E1 FB                MOV     R3,A
 01E2 A3                INC     DPTR
 01E3 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 103 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 103 
 
 01E4 FA                MOV     R2,A
 01E5 A3                INC     DPTR
@@ -6553,7 +6553,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0235 900000      E     MOV     DPTR,#?_strcat?BYTE+03H
 0238 74FF              MOV     A,#0FFH
 023A F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 104 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 104 
 
 023B A3                INC     DPTR
 023C 7400        R     MOV     A,#HIGH ?SC_320
@@ -6617,7 +6617,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 028D CE                XCH     A,R6
 028E 33                RLC     A
 028F CE                XCH     A,R6
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 105 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 105 
 
 0290 D8F9              DJNZ    R0,?C0361
 0292 2400        E     ADD     A,#LOW g_ref+08H
@@ -6681,7 +6681,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02E4 F0                MOVX    @DPTR,A
 02E5 A3                INC     DPTR
 02E6 7400        R     MOV     A,#LOW ?SC_334
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 106 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 106 
 
 02E8 F0                MOVX    @DPTR,A
 02E9 900000      R     MOV     DPTR,#i
@@ -6745,7 +6745,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0339         ?C0221:
                                            ; SOURCE LINE # 845
                                            ; SOURCE LINE # 846
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 107 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 107 
 
 0339 900000      E     MOV     DPTR,#?_sprintf?BYTE+03H
 033C 74FF              MOV     A,#0FFH
@@ -6809,7 +6809,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 038C 120000      E     LCALL   _sprintf
                                            ; SOURCE LINE # 847
 038F 900000      E     MOV     DPTR,#?_strcat?BYTE+03H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 108 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 108 
 
 0392 7401              MOV     A,#01H
 0394 F0                MOVX    @DPTR,A
@@ -6873,7 +6873,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 03DF 7400        R     MOV     A,#HIGH ?SC_142
 03E1 F0                MOVX    @DPTR,A
 03E2 A3                INC     DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 109 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 109 
 
 03E3 7400        R     MOV     A,#LOW ?SC_142
 03E5 F0                MOVX    @DPTR,A
@@ -6937,7 +6937,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 043C 7A00        R     MOV     R2,#HIGH str
 043E 7900        R     MOV     R1,#LOW str
 0440 120000      E     LCALL   _strcat
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 110 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 110 
 
                                            ; SOURCE LINE # 859
 0443         ?C0224:
@@ -7001,7 +7001,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0492 E0                MOVX    A,@DPTR
 0493 F9                MOV     R1,A
 0494 120000      E     LCALL   _strcat
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 111 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 111 
 
                                            ; SOURCE LINE # 864
 0497 E4                CLR     A
@@ -7065,7 +7065,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 04EB A3                INC     DPTR
 04EC E0                MOVX    A,@DPTR
 04ED FD                MOV     R5,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 112 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 112 
 
 04EE A3                INC     DPTR
 04EF E0                MOVX    A,@DPTR
@@ -7129,7 +7129,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0544 F0                MOVX    @DPTR,A
 0545 900000      R     MOV     DPTR,#info_string
 0548 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 113 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 113 
 
 0549 FB                MOV     R3,A
 054A A3                INC     DPTR
@@ -7193,7 +7193,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 059D 900000      R     MOV     DPTR,#info_string
 05A0 E0                MOVX    A,@DPTR
 05A1 FB                MOV     R3,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 114 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 114 
 
 05A2 A3                INC     DPTR
 05A3 E0                MOVX    A,@DPTR
@@ -7257,7 +7257,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 05F8 A3                INC     DPTR
 05F9 7400        R     MOV     A,#HIGH str
 05FB F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 115 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 115 
 
 05FC A3                INC     DPTR
 05FD 7400        R     MOV     A,#LOW str
@@ -7321,7 +7321,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 064F F0                MOVX    @DPTR,A
 0650 A3                INC     DPTR
 0651 7400        R     MOV     A,#LOW ?SC_470
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 116 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 116 
 
 0653 F0                MOVX    @DPTR,A
 0654 900000      R     MOV     DPTR,#info_string
@@ -7385,7 +7385,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 06AF F0                MOVX    @DPTR,A
 06B0 A3                INC     DPTR
 06B1 7400        R     MOV     A,#LOW str
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 117 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 117 
 
 06B3 F0                MOVX    @DPTR,A
 06B4 900000      R     MOV     DPTR,#info_string
@@ -7449,7 +7449,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 070D FB                MOV     R3,A
 070E A3                INC     DPTR
 070F E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 118 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 118 
 
 0710 FA                MOV     R2,A
 0711 A3                INC     DPTR
@@ -7513,7 +7513,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0768 F9                MOV     R1,A
 0769 120000      E     LCALL   _strcat
                                            ; SOURCE LINE # 890
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 119 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 119 
 
 076C 020000      R     LJMP    ?C0229
 076F         ?C0228:
@@ -7577,7 +7577,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 894
 07C4 900000      E     MOV     DPTR,#?_sprintf?BYTE+03H
 07C7 74FF              MOV     A,#0FFH
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 120 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 120 
 
 07C9 F0                MOVX    @DPTR,A
 07CA A3                INC     DPTR
@@ -7641,7 +7641,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0822 F0                MOVX    @DPTR,A
 0823 A3                INC     DPTR
 0824 7400        R     MOV     A,#LOW ?SC_508
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 121 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 121 
 
 0826 F0                MOVX    @DPTR,A
 0827 900000      E     MOV     DPTR,#c_mem+022H
@@ -7705,7 +7705,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 087C 900000      R     MOV     DPTR,#info_string
 087F E0                MOVX    A,@DPTR
 0880 FB                MOV     R3,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 122 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 122 
 
 0881 A3                INC     DPTR
 0882 E0                MOVX    A,@DPTR
@@ -7769,7 +7769,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 08DC 900000      R     MOV     DPTR,#info_string
 08DF E0                MOVX    A,@DPTR
 08E0 FB                MOV     R3,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 123 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 123 
 
 08E1 A3                INC     DPTR
 08E2 E0                MOVX    A,@DPTR
@@ -7833,7 +7833,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0939 A3                INC     DPTR
 093A E0                MOVX    A,@DPTR
 093B F9                MOV     R1,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 124 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 124 
 
 093C 120000      E     LCALL   _strcat
                                            ; SOURCE LINE # 906
@@ -7897,7 +7897,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0997         ?C0230:
                                            ; SOURCE LINE # 909
                                            ; SOURCE LINE # 910
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 125 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 125 
 
 0997 900000      E     MOV     DPTR,#?_sprintf?BYTE+03H
 099A 74FF              MOV     A,#0FFH
@@ -7961,7 +7961,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 09F2 A3                INC     DPTR
 09F3 7400        R     MOV     A,#HIGH ?SC_498
 09F5 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 126 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 126 
 
 09F6 A3                INC     DPTR
 09F7 7400        R     MOV     A,#LOW ?SC_498
@@ -8025,7 +8025,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0A4F 900000      E     MOV     DPTR,#c_mem+02EH
 0A52 E0                MOVX    A,@DPTR
 0A53 FC                MOV     R4,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 127 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 127 
 
 0A54 A3                INC     DPTR
 0A55 E0                MOVX    A,@DPTR
@@ -8089,7 +8089,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0AAA E0                MOVX    A,@DPTR
 0AAB FA                MOV     R2,A
 0AAC A3                INC     DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 128 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 128 
 
 0AAD E0                MOVX    A,@DPTR
 0AAE F9                MOV     R1,A
@@ -8153,7 +8153,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0AFD 14                DEC     A
 0AFE 606E              JZ      ?C0238
 0B00 14                DEC     A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 129 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 129 
 
 0B01 7003              JNZ     $ + 5H
 0B03 020000      R     LJMP    ?C0239
@@ -8217,7 +8217,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0B50 900000      E     MOV     DPTR,#?_strcat?BYTE+03H
 0B53 74FF              MOV     A,#0FFH
 0B55 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 130 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 130 
 
 0B56 A3                INC     DPTR
 0B57 7400        R     MOV     A,#HIGH ?SC_634
@@ -8281,7 +8281,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0BA1 FA                MOV     R2,A
 0BA2 A3                INC     DPTR
 0BA3 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 131 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 131 
 
 0BA4 F9                MOV     R1,A
 0BA5 120000      E     LCALL   _strcat
@@ -8345,7 +8345,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0BEE E0                MOVX    A,@DPTR
 0BEF F9                MOV     R1,A
 0BF0 120000      E     LCALL   _strcat
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 132 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 132 
 
                                            ; SOURCE LINE # 951
 0BF3 8058              SJMP    ?C0241
@@ -8409,7 +8409,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0C3B A3                INC     DPTR
 0C3C 7400        R     MOV     A,#LOW ?SC_811
 0C3E F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 133 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 133 
 
 0C3F 900000      R     MOV     DPTR,#info_string
 0C42 E0                MOVX    A,@DPTR
@@ -8473,7 +8473,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0C88 E0                MOVX    A,@DPTR
 0C89 F9                MOV     R1,A
 0C8A 120000      E     LCALL   _strcat
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 134 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 134 
 
                                            ; SOURCE LINE # 969
 0C8D         ?C0248:
@@ -8537,7 +8537,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0CE2 A3                INC     DPTR
 0CE3 E0                MOVX    A,@DPTR
 0CE4 FA                MOV     R2,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 135 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 135 
 
 0CE5 A3                INC     DPTR
 0CE6 E0                MOVX    A,@DPTR
@@ -8601,7 +8601,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0D3B F0                MOVX    @DPTR,A
 0D3C 7B01              MOV     R3,#01H
 0D3E 7A00        R     MOV     R2,#HIGH str
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 136 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 136 
 
 0D40 7900        R     MOV     R1,#LOW str
 0D42 120000      E     LCALL   _sprintf
@@ -8665,7 +8665,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0D94 A3                INC     DPTR
 0D95 7400        R     MOV     A,#HIGH ?SC_959
 0D97 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 137 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 137 
 
 0D98 A3                INC     DPTR
 0D99 7400        R     MOV     A,#LOW ?SC_959
@@ -8729,7 +8729,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0DEC C3                CLR     C
 0DED 33                RLC     A
 0DEE CE                XCH     A,R6
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 138 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 138 
 
 0DEF 33                RLC     A
 0DF0 CE                XCH     A,R6
@@ -8793,7 +8793,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 988
 0E48 900000      E     MOV     DPTR,#?_strcat?BYTE+03H
 0E4B 74FF              MOV     A,#0FFH
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 139 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 139 
 
 0E4D F0                MOVX    @DPTR,A
 0E4E A3                INC     DPTR
@@ -8857,7 +8857,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0E9C E0                MOVX    A,@DPTR
 0E9D 9403              SUBB    A,#03H
 0E9F 900000      R     MOV     DPTR,#i
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 140 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 140 
 
 0EA2 E0                MOVX    A,@DPTR
 0EA3 6480              XRL     A,#080H
@@ -8921,7 +8921,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0EF6 7A00        R     MOV     R2,#HIGH str
 0EF8 7900        R     MOV     R1,#LOW str
 0EFA 120000      E     LCALL   _sprintf
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 141 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 141 
 
                                            ; SOURCE LINE # 994
 0EFD 900000      E     MOV     DPTR,#?_strcat?BYTE+03H
@@ -8985,7 +8985,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0F4F F0                MOVX    @DPTR,A
 0F50 A3                INC     DPTR
 0F51 7400        R     MOV     A,#LOW ?SC_1026
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 142 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 142 
 
 0F53 F0                MOVX    @DPTR,A
 0F54 900000      R     MOV     DPTR,#info_string
@@ -9049,7 +9049,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0FA4 E0                MOVX    A,@DPTR
 0FA5 FF                MOV     R7,A
 0FA6 900000      E     MOV     DPTR,#?_sprintf?BYTE+0EH
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 143 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 143 
 
 0FA9 120000      E     LCALL   ?C?LSTXDATA
 0FAC 7B01              MOV     R3,#01H
@@ -9113,7 +9113,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0FFF E0                MOVX    A,@DPTR
 1000 FF                MOV     R7,A
 1001 900000      E     MOV     DPTR,#?_sprintf?BYTE+0AH
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 144 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 144 
 
 1004 120000      E     LCALL   ?C?LSTXDATA
 1007 900000      E     MOV     DPTR,#c_mem+090H
@@ -9177,7 +9177,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1006
 105C 900000      E     MOV     DPTR,#?_sprintf?BYTE+03H
 105F 74FF              MOV     A,#0FFH
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 145 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 145 
 
 1061 F0                MOVX    @DPTR,A
 1062 A3                INC     DPTR
@@ -9241,7 +9241,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 10B5 120000      E     LCALL   _strcat
                                            ; SOURCE LINE # 1010
 10B8 E4                CLR     A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 146 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 146 
 
 10B9 900000      R     MOV     DPTR,#i
 10BC F0                MOVX    @DPTR,A
@@ -9305,7 +9305,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 110E FD                MOV     R5,A
 110F A3                INC     DPTR
 1110 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 147 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 147 
 
 1111 FE                MOV     R6,A
 1112 A3                INC     DPTR
@@ -9369,7 +9369,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 116B FB                MOV     R3,A
 116C AE02              MOV     R6,AR2
 116E 7802              MOV     R0,#02H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 148 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 148 
 
 1170         ?C0373:
 1170 C3                CLR     C
@@ -9433,7 +9433,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1018
 11C6 900000      R     MOV     DPTR,#i+01H
 11C9 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 149 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 149 
 
 11CA 04                INC     A
 11CB F0                MOVX    @DPTR,A
@@ -9497,7 +9497,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 121B 7400        R     MOV     A,#HIGH str
 121D F0                MOVX    @DPTR,A
 121E A3                INC     DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 150 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 150 
 
 121F 7400        R     MOV     A,#LOW str
 1221 F0                MOVX    @DPTR,A
@@ -9561,7 +9561,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 1275 7401              MOV     A,#01H
 1277 F0                MOVX    @DPTR,A
 1278 A3                INC     DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 151 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 151 
 
 1279 7400        R     MOV     A,#HIGH str
 127B F0                MOVX    @DPTR,A
@@ -9625,7 +9625,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 12CC A3                INC     DPTR
 12CD E0                MOVX    A,@DPTR
 12CE 900000      E     MOV     DPTR,#?_sprintf?BYTE+08H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 152 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 152 
 
 12D1 CF                XCH     A,R7
 12D2 F0                MOVX    @DPTR,A
@@ -9689,7 +9689,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 1325 900000      E     MOV     DPTR,#g_mem+070H
 1328 E0                MOVX    A,@DPTR
 1329 FC                MOV     R4,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 153 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 153 
 
 132A A3                INC     DPTR
 132B E0                MOVX    A,@DPTR
@@ -9753,7 +9753,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 1380 900000      R     MOV     DPTR,#info_string
 1383 E0                MOVX    A,@DPTR
 1384 FB                MOV     R3,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 154 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 154 
 
 1385 A3                INC     DPTR
 1386 E0                MOVX    A,@DPTR
@@ -9817,7 +9817,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 13D3 F0                MOVX    @DPTR,A
 13D4 A3                INC     DPTR
 13D5 7400        R     MOV     A,#HIGH ?SC_1346
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 155 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 155 
 
 13D7 F0                MOVX    @DPTR,A
 13D8 A3                INC     DPTR
@@ -9881,7 +9881,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 142D 74FF              MOV     A,#0FFH
 142F F0                MOVX    @DPTR,A
 1430 A3                INC     DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 156 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 156 
 
 1431 7400        R     MOV     A,#HIGH ?SC_1364
 1433 F0                MOVX    @DPTR,A
@@ -9945,7 +9945,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 1481 A3                INC     DPTR
 1482 E0                MOVX    A,@DPTR
 1483 FA                MOV     R2,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 157 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 157 
 
 1484 A3                INC     DPTR
 1485 E0                MOVX    A,@DPTR
@@ -10009,7 +10009,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1070
 0023 900000      R     MOV     DPTR,#packet_lenght
 0026 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 158 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 158 
 
 0027 A3                INC     DPTR
 0028 E0                MOVX    A,@DPTR
@@ -10073,7 +10073,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 007B 94E8              SUBB    A,#0E8H
 007D EE                MOV     A,R6
 007E 9403              SUBB    A,#03H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 159 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 159 
 
 0080 40E6              JC      ?C0267
 0082         ?C0268:
@@ -10137,7 +10137,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003C E0                MOVX    A,@DPTR
 003D 9500        R     SUBB    A,index
 003F 4022              JC      ?C0271
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 160 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 160 
 
                                            ; SOURCE LINE # 1097
 0041 900000      R     MOV     DPTR,#packet_data
@@ -10201,7 +10201,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1112
 0000 900000      R     MOV     DPTR,#packet_data
 0003 EB                MOV     A,R3
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 161 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 161 
 
 0004 F0                MOVX    @DPTR,A
 0005 A3                INC     DPTR
@@ -10265,7 +10265,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0052 FA                MOV     R2,A
 0053 120000      E     LCALL   ?C?CLDPTR
 0056 FF                MOV     R7,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 162 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 162 
 
 0057 120000      E     LCALL   _UART_RS485_PutChar
                                            ; SOURCE LINE # 1126
@@ -10329,7 +10329,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0016 900000      R     MOV     DPTR,#data_array
 0019 E0                MOVX    A,@DPTR
 001A FB                MOV     R3,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 163 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 163 
 
 001B A3                INC     DPTR
 001C E0                MOVX    A,@DPTR
@@ -10393,7 +10393,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E 120000      E     LCALL   ISR_RS485_RX_Disable
                                            ; SOURCE LINE # 1181
 0011 E4                CLR     A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 164 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 164 
 
 0012 FF                MOV     R7,A
 0013 120000      E     LCALL   _PWM_MOTORS_WriteCompare1
@@ -10457,7 +10457,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0063 68                XRL     A,R0
 0064 FF                MOV     R7,A
 0065 EC                MOV     A,R4
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 165 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 165 
 
 0066 C4                SWAP    A
 0067 54F0              ANL     A,#0F0H
@@ -10521,7 +10521,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00B5 E0                MOVX    A,@DPTR
 00B6 FF                MOV     R7,A
                                            ; SOURCE LINE # 1205
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 166 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 166 
 
 00B7         ?C0291:
 00B7 22                RET     
@@ -10585,7 +10585,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003B 7C00        E     MOV     R4,#HIGH c_mem
 003D 7D01              MOV     R5,#01H
 003F 7B01              MOV     R3,#01H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 167 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 167 
 
 0041 7A00        E     MOV     R2,#HIGH g_mem
 0043 7900        E     MOV     R1,#LOW g_mem
@@ -10649,7 +10649,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0036         ?C0299:
                                            ; SOURCE LINE # 1243
 0036 900000      E     MOV     DPTR,#g_mem
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 168 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 168 
 
 0039 E0                MOVX    A,@DPTR
 003A 7004              JNZ     ?C0301
@@ -10713,7 +10713,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0036 7F41              MOV     R7,#041H
 0038 FE                MOV     R6,A
 0039 FD                MOV     R5,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 169 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 169 
 
 003A FC                MOV     R4,A
 003B 900000      E     MOV     DPTR,#g_mem+012H
@@ -10777,7 +10777,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1275
 0093 E4                CLR     A
 0094 900000      E     MOV     DPTR,#g_mem+032H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 170 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 170 
 
 0097 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1276
@@ -10841,7 +10841,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00DB 120000      E     LCALL   ?C?LSHL
 00DE EB                MOV     A,R3
 00DF 25E0              ADD     A,ACC
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 171 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 171 
 
 00E1 25E0              ADD     A,ACC
 00E3 2400        E     ADD     A,#LOW g_mem+059H
@@ -10905,7 +10905,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0135 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 1296
 0138 0B                INC     R3
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 172 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 172 
 
 0139 80B9              SJMP    ?C0307
 013B         ?C0308:
@@ -10969,7 +10969,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0183 900000      E     MOV     DPTR,#g_mem+078H
 0186 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1314
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 173 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 173 
 
 0187 A3                INC     DPTR
 0188 7401              MOV     A,#01H
@@ -11033,7 +11033,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0023 FD                MOV     R5,A
 0024 A3                INC     DPTR
 0025 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 174 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 174 
 
 0026 FE                MOV     R6,A
 0027 A3                INC     DPTR
@@ -11097,7 +11097,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000D A3                INC     DPTR
 000E E0                MOVX    A,@DPTR
 000F FF                MOV     R7,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 175 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 175 
 
 0010 EE                MOV     A,R6
 0011 33                RLC     A
@@ -11161,7 +11161,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1366
                                            ; SOURCE LINE # 1367
 0061 900000      E     MOV     DPTR,#g_rx+01H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 176 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 176 
 
 0064 E0                MOVX    A,@DPTR
 0065 FE                MOV     R6,A
@@ -11225,7 +11225,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00B4 900000      E     MOV     DPTR,#g_mem+036H
 00B7 E0                MOVX    A,@DPTR
 00B8 F9                MOV     R1,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 177 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 177 
 
 00B9 F8                MOV     R0,A
 00BA 120000      E     LCALL   ?C?LSHL
@@ -11289,7 +11289,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0107 FE                MOV     R6,A
 0108 A3                INC     DPTR
 0109 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 178 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 178 
 
 010A FF                MOV     R7,A
 010B 900000      E     MOV     DPTR,#g_refNew
@@ -11353,7 +11353,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0153 E0                MOVX    A,@DPTR
 0154 FF                MOV     R7,A
 0155 900000      E     MOV     DPTR,#g_refNew
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 179 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 179 
 
 0158 E0                MOVX    A,@DPTR
 0159 F8                MOV     R0,A
@@ -11417,7 +11417,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 019F 900000      E     MOV     DPTR,#c_mem+05DH
 01A2 E0                MOVX    A,@DPTR
 01A3 FC                MOV     R4,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 180 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 180 
 
 01A4 A3                INC     DPTR
 01A5 E0                MOVX    A,@DPTR
@@ -11481,7 +11481,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0034 900000      E     MOV     DPTR,#g_refNew+04H
 0037 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 1402
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 181 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 181 
 
 003A         ?C0327:
                                            ; SOURCE LINE # 1405
@@ -11545,7 +11545,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0015 F0                MOVX    @DPTR,A
 0016 A3                INC     DPTR
 0017 EF                MOV     A,R7
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 182 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 182 
 
 0018 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1439
@@ -11609,7 +11609,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0068 9B                SUBB    A,R3
 0069 FF                MOV     R7,A
 006A EE                MOV     A,R6
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 183 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 183 
 
 006B 9A                SUBB    A,R2
 006C FE                MOV     R6,A
@@ -11673,7 +11673,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00C0 F583              MOV     DPH,A
 00C2 EE                MOV     A,R6
 00C3 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 184 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 184 
 
 00C4 A3                INC     DPTR
 00C5 EF                MOV     A,R7
@@ -11737,7 +11737,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0026 FF                MOV     R7,A
 0027 900000      E     MOV     DPTR,#?_curr_estim?BYTE+04H
 002A 120000      E     LCALL   ?C?LSTXDATA
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 185 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 185 
 
 002D 900000      E     MOV     DPTR,#g_measOld+02BH
 0030 E0                MOVX    A,@DPTR
@@ -11801,7 +11801,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 007C EF                MOV     A,R7
 007D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1467
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 186 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 186 
 
 007E 7B01              MOV     R3,#01H
 0080 7A00        R     MOV     R2,#HIGH packet_data
@@ -11865,7 +11865,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0006 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1497
 0007 7B01              MOV     R3,#01H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 187 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 187 
 
 0009 7A00        R     MOV     R2,#HIGH packet_data
 000B 7900        R     MOV     R1,#LOW packet_data
@@ -11929,7 +11929,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0040         ?C0343:
 0040 22                RET     
              ; FUNCTION cmd_set_watchdog (END)
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 188 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 188 
 
 
              ; FUNCTION cmd_get_inputs (BEGIN)
@@ -11993,7 +11993,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004A 7D05              MOV     R5,#05H
 004C 120000      R     LCALL   _LCRChecksum
 004F 900000      R     MOV     DPTR,#packet_data+05H
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 189 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 189 
 
 0052 EF                MOV     A,R7
 0053 F0                MOVX    @DPTR,A
@@ -12057,7 +12057,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003C A3                INC     DPTR
 003D E0                MOVX    A,@DPTR
 003E FE                MOV     R6,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 190 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 190 
 
 003F A3                INC     DPTR
 0040 E0                MOVX    A,@DPTR
@@ -12121,7 +12121,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0091 E0                MOVX    A,@DPTR
 0092 FE                MOV     R6,A
 0093 A3                INC     DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 191 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 191 
 
 0094 E0                MOVX    A,@DPTR
 0095 FF                MOV     R7,A
@@ -12185,7 +12185,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00E9 E0                MOVX    A,@DPTR
 00EA FE                MOV     R6,A
 00EB A3                INC     DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 192 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 192 
 
 00EC E0                MOVX    A,@DPTR
 00ED FF                MOV     R7,A
@@ -12249,7 +12249,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 013F A3                INC     DPTR
 0140 E0                MOVX    A,@DPTR
 0141 FE                MOV     R6,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 193 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 193 
 
 0142 A3                INC     DPTR
 0143 E0                MOVX    A,@DPTR
@@ -12313,7 +12313,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 018C E0                MOVX    A,@DPTR
 018D FF                MOV     R7,A
 018E FB                MOV     R3,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 194 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 194 
 
 018F AA06              MOV     R2,AR6
 0191 A905              MOV     R1,AR5
@@ -12377,7 +12377,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01DA A3                INC     DPTR
 01DB E0                MOVX    A,@DPTR
 01DC FF                MOV     R7,A
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 195 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 195 
 
 01DD 900000      E     MOV     DPTR,#g_refNew
 01E0 E0                MOVX    A,@DPTR
@@ -12441,7 +12441,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1571
 0227 900000      E     MOV     DPTR,#c_mem+055H
 022A E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 196 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 196 
 
 022B FC                MOV     R4,A
 022C A3                INC     DPTR
@@ -12505,7 +12505,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0274 E0                MOVX    A,@DPTR
 0275 FC                MOV     R4,A
 0276 A3                INC     DPTR
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 197 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 197 
 
 0277 E0                MOVX    A,@DPTR
 0278 FD                MOV     R5,A
@@ -12569,7 +12569,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1584
 02BF 750001      R     MOV     packet_data,#01H
                                            ; SOURCE LINE # 1585
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 198 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 198 
 
 02C2 750001      R     MOV     packet_data+01H,#01H
                                            ; SOURCE LINE # 1586
@@ -12633,7 +12633,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION cmd_get_emg (BEGIN)
                                            ; SOURCE LINE # 1602
                                            ; SOURCE LINE # 1607
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 199 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 199 
 
 0000 900000      R     MOV     DPTR,#packet_data
 0003 7488              MOV     A,#088H
@@ -12697,7 +12697,7 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    CONSTANT SIZE    =   4769    ----
    XDATA SIZE       =      2    4696
    PDATA SIZE       =   ----    ----
-C51 COMPILER V9.51   COMMAND_PROCESSING                                                    10/17/2016 17:22:57 PAGE 200 
+C51 COMPILER V9.51   COMMAND_PROCESSING                                                    01/10/2017 17:24:38 PAGE 200 
 
    DATA SIZE        =      2      33
    IDATA SIZE       =   ----    ----

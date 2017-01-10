@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: LED_REG.h  
+* File Name: LED_CTRL.h  
 * Version 1.80
 *
 * Description:
@@ -14,8 +14,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_CONTROL_REG_LED_REG_H) /* CY_CONTROL_REG_LED_REG_H */
-#define CY_CONTROL_REG_LED_REG_H
+#if !defined(CY_CONTROL_REG_LED_CTRL_H) /* CY_CONTROL_REG_LED_CTRL_H */
+#define CY_CONTROL_REG_LED_CTRL_H
 
 #include "cytypes.h"
 
@@ -29,20 +29,20 @@ typedef struct
 {
     uint8 controlState;
 
-} LED_REG_BACKUP_STRUCT;
+} LED_CTRL_BACKUP_STRUCT;
 
 
 /***************************************
 *         Function Prototypes 
 ***************************************/
 
-void    LED_REG_Write(uint8 control) ;
-uint8   LED_REG_Read(void) ;
+void    LED_CTRL_Write(uint8 control) ;
+uint8   LED_CTRL_Read(void) ;
 
-void LED_REG_SaveConfig(void) ;
-void LED_REG_RestoreConfig(void) ;
-void LED_REG_Sleep(void) ; 
-void LED_REG_Wakeup(void) ;
+void LED_CTRL_SaveConfig(void) ;
+void LED_CTRL_RestoreConfig(void) ;
+void LED_CTRL_Sleep(void) ; 
+void LED_CTRL_Wakeup(void) ;
 
 
 /***************************************
@@ -50,10 +50,10 @@ void LED_REG_Wakeup(void) ;
 ***************************************/
 
 /* Control Register */
-#define LED_REG_Control        (* (reg8 *) LED_REG_Sync_ctrl_reg__CONTROL_REG )
-#define LED_REG_Control_PTR    (  (reg8 *) LED_REG_Sync_ctrl_reg__CONTROL_REG )
+#define LED_CTRL_Control        (* (reg8 *) LED_CTRL_Sync_ctrl_reg__CONTROL_REG )
+#define LED_CTRL_Control_PTR    (  (reg8 *) LED_CTRL_Sync_ctrl_reg__CONTROL_REG )
 
-#endif /* End CY_CONTROL_REG_LED_REG_H */
+#endif /* End CY_CONTROL_REG_LED_CTRL_H */
 
 
 /* [] END OF FILE */

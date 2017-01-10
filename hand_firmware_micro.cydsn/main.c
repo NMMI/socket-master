@@ -70,6 +70,13 @@ int main()
     CyDelay(100);
     FTDI_ENABLE_REG_Write(0x01);
     
+    // BOARD LED Enable
+    LED_CTRL_Write(1);
+    //PWM Blink Enable
+    LED_BLINK_EN_Write(0);
+    LED_BLINK_Start();
+    LED_BLINK_WriteCompare(128);
+    
     // RS485
 
     UART_RS485_Stop();                                  // stop UART

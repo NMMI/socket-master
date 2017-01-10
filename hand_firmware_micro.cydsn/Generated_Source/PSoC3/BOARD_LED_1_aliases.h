@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: LED.h  
+* File Name: BOARD_LED_1.h  
 * Version 2.10
 *
 * Description:
@@ -14,8 +14,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_LED_ALIASES_H) /* Pins LED_ALIASES_H */
-#define CY_PINS_LED_ALIASES_H
+#if !defined(CY_PINS_BOARD_LED_1_ALIASES_H) /* Pins BOARD_LED_1_ALIASES_H */
+#define CY_PINS_BOARD_LED_1_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -24,9 +24,9 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define LED_0		(LED__0__PC)
+#define BOARD_LED_1_0		(BOARD_LED_1__0__PC)
 
-#endif /* End Pins LED_ALIASES_H */
+#endif /* End Pins BOARD_LED_1_ALIASES_H */
 
 
 /* [] END OF FILE */

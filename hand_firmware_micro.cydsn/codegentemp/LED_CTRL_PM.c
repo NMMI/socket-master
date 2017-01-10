@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: LED_REG_PM.c
+* File Name: LED_CTRL_PM.c
 * Version 1.80
 *
 * Description:
@@ -15,16 +15,16 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#include "LED_REG.h"
+#include "LED_CTRL.h"
 
 /* Check for removal by optimization */
-#if !defined(LED_REG_Sync_ctrl_reg__REMOVED)
+#if !defined(LED_CTRL_Sync_ctrl_reg__REMOVED)
 
-static LED_REG_BACKUP_STRUCT  LED_REG_backup = {0u};
+static LED_CTRL_BACKUP_STRUCT  LED_CTRL_backup = {0u};
 
     
 /*******************************************************************************
-* Function Name: LED_REG_SaveConfig
+* Function Name: LED_CTRL_SaveConfig
 ********************************************************************************
 *
 * Summary:
@@ -37,14 +37,14 @@ static LED_REG_BACKUP_STRUCT  LED_REG_backup = {0u};
 *  None
 *
 *******************************************************************************/
-void LED_REG_SaveConfig(void) 
+void LED_CTRL_SaveConfig(void) 
 {
-    LED_REG_backup.controlState = LED_REG_Control;
+    LED_CTRL_backup.controlState = LED_CTRL_Control;
 }
 
 
 /*******************************************************************************
-* Function Name: LED_REG_RestoreConfig
+* Function Name: LED_CTRL_RestoreConfig
 ********************************************************************************
 *
 * Summary:
@@ -58,14 +58,14 @@ void LED_REG_SaveConfig(void)
 *
 *
 *******************************************************************************/
-void LED_REG_RestoreConfig(void) 
+void LED_CTRL_RestoreConfig(void) 
 {
-     LED_REG_Control = LED_REG_backup.controlState;
+     LED_CTRL_Control = LED_CTRL_backup.controlState;
 }
 
 
 /*******************************************************************************
-* Function Name: LED_REG_Sleep
+* Function Name: LED_CTRL_Sleep
 ********************************************************************************
 *
 * Summary:
@@ -78,14 +78,14 @@ void LED_REG_RestoreConfig(void)
 *  None
 *
 *******************************************************************************/
-void LED_REG_Sleep(void) 
+void LED_CTRL_Sleep(void) 
 {
-    LED_REG_SaveConfig();
+    LED_CTRL_SaveConfig();
 }
 
 
 /*******************************************************************************
-* Function Name: LED_REG_Wakeup
+* Function Name: LED_CTRL_Wakeup
 ********************************************************************************
 *
 * Summary:
@@ -98,9 +98,9 @@ void LED_REG_Sleep(void)
 *  None
 *
 *******************************************************************************/
-void LED_REG_Wakeup(void)  
+void LED_CTRL_Wakeup(void)  
 {
-    LED_REG_RestoreConfig();
+    LED_CTRL_RestoreConfig();
 }
 
 #endif /* End check for removal by optimization */
