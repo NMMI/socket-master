@@ -56,13 +56,13 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION                 "SH-PRO v6.1.0 - Master"
+#define VERSION                 "SH-PRO v6.1.1 - Master w/Rest position"
 
 #define NUM_OF_MOTORS           2       /*!< Number of motors.*/
 #define NUM_OF_SENSORS          3       /*!< Number of encoders.*/
 #define NUM_OF_EMGS             2       /*!< Number of emg channels.*/
 #define NUM_OF_ANALOG_INPUTS    4       /*!< Total number of analogic inputs.*/
-#define NUM_OF_PARAMS           21      /*!< Number of parameters saved in the EEPROM */
+#define NUM_OF_PARAMS           25      /*!< Number of parameters saved in the EEPROM */
 
 //==============================================================================
 //                                                               SYNCHRONIZATION
@@ -150,6 +150,7 @@ struct st_meas {
     int32 emg[NUM_OF_EMGS];         /*!< EMG sensors values.*/
     int32 vel[NUM_OF_SENSORS];      /*!< Encoder rotational velocity.*/
     int32 acc[NUM_OF_SENSORS];      /*!< Encoder rotational acceleration.*/
+    int32 hand_meas;                  /*!< Position measurement from SH */
 };
 
 //==============================================================     data packet
@@ -218,8 +219,12 @@ struct st_mem {
 
     uint8   baud_rate;                  /*!< Baud Rate setted.*/                                            //1
     uint8   watchdog_period;            /*!< Watchdog period setted, 255 = disable.*/                       //1
-
-                                                                                            //TOT           150 bytes
+    
+    int32   rest_pos;                   /*!< Hand rest position while in EMG mode.*/                        //4
+    float  rest_delay;                 /*!< Hand rest position delay while in EMG mode.*/                  //4
+    float  rest_vel;                   /*!< Hand velocity closure for rest position reaching*/             //4
+    float   rest_ratio;                 /*!< Hand rest ratio between velocity closure and rest position error*/  //4
+                                                                                                //TOT           166 bytes
 };
 
 //=================================================     device related variables
@@ -289,6 +294,16 @@ extern int16 ADC_buf[4];                            /*! ADC measurements buffer 
 extern int8 pwm_sign;                               /*!< Sign of pwm driven. Used to obtain current sign.*/
 
 extern uint8 master_mode;               /*|< Flag used to set/unset master mode to send messages to other boards*/
+
+extern uint8 rest_enabled;
+extern uint8 forced_open;
+extern int32 rest_pos_curr_ref;
+extern uint8 receive_meas_from_hand;
+
+extern int16 check2;
+extern uint8 check3, check4;
+extern int32 check5;
+extern int32 curr_pos_res;
 // -----------------------------------------------------------------------------
 
 

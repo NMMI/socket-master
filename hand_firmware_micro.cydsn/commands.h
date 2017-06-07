@@ -121,8 +121,9 @@ enum qbmove_command
                                         ///  of communication
     CMD_EXT_DRIVE               = 145,  ///< Command to set the actual measurements as inputs
                                         ///  to another device (Only for Armslider device)
-    CMD_GET_JOYSTICK            = 146   ///< Command to get the joystick measurements (Only 
+    CMD_GET_JOYSTICK            = 146,  ///< Command to get the joystick measurements (Only 
                                         ///  for devices driven by a joystick)
+    CMD_GET_HAND_MEASUREMENTS   = 147   ///< Command for receiving SH position measurements
 };
 
 /** \} */
@@ -212,7 +213,8 @@ enum qbmove_control_mode {
     CONTROL_ANGLE           = 0,        ///< Classic position control
     CONTROL_PWM             = 1,        ///< Direct PWM value
     CONTROL_CURRENT         = 2,        ///< Current control
-    CURR_AND_POS_CONTROL    = 3         ///< Current and position control
+    CURR_AND_POS_CONTROL    = 3,         ///< Current and position control
+    CONTROL_ANGLE_AND_REST_POS = 4      ///< Position control with rest position check
 
 };
 

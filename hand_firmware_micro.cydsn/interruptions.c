@@ -192,6 +192,11 @@ void interrupt_manager(){
                 else                //packet is for others
                     rx_data_type = TRUE;
                 
+                // Master with Rest position mode
+                if (receive_meas_from_hand == 1){
+                    rx_data_type = FALSE;
+                }
+                
                 data_packet_length = 0;
                 state = WAIT_LENGTH;
                 break;
@@ -232,12 +237,18 @@ void interrupt_manager(){
                         memcpy(g_rx.buffer, data_packet_buffer, data_packet_length);
                         g_rx.length = data_packet_length;
                         g_rx.ready  = 1;
+                        
+                        // Master with Rest position mode
+                        if (receive_meas_from_hand == 1){
+                            g_rx.buffer[0] = CMD_GET_HAND_MEASUREMENTS;
+                        }
+                
                         commProcess();
                     }
                     
                     data_packet_index  = 0;
                     data_packet_length = 0;
-                    state              = WAIT_START;
+                    state = WAIT_START;
                     package_count++;
                 
                 }
@@ -344,8 +355,28 @@ void function_scheduler(void) {
     
     //---------------------------------- Master Mode
       
-    if(master_mode)
-        command_slave();
+    if(master_mode){
+        // Rest position check (only if Master mode is enabled)
+        if (c_mem.control_mode == CONTROL_ANGLE_AND_REST_POS){
+            if (counter_calibration == CALIBRATION_DIV) {
+                
+                    // Read Measure (valid since this routine is enabled only in Master mode)
+                    curr_pos_res = (int32)commReadMeasFromAnother();
+
+                    check_rest_position();
+                    counter_calibration = 0;
+            }
+            counter_calibration++;
+
+            // Check Interrupt     
+            if (interrupt_flag){
+                interrupt_flag = FALSE;
+                interrupt_manager();
+            }
+        }
+        
+        command_slave();        
+    }
             
     // Check Interrupt 
     
@@ -371,7 +402,8 @@ void function_scheduler(void) {
         interrupt_flag = FALSE;
         interrupt_manager();
     }
-   
+    
+    
     //---------------------------------- Update States
     
     // Load k-1 state
@@ -784,6 +816,7 @@ void motor_control() {
             
 
         break;
+
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -1090,7 +1123,8 @@ void analog_read_end() {
         // Calibration state machine
         switch(emg_1_status) {
             case NORMAL: // normal execution
-                i_aux = filter_ch1(ADC_buf[2]);
+                i_aux = (int32)ADC_buf[2];
+                i_aux = filter_ch1(i_aux);
                 i_aux = (i_aux << 10) / g_mem.emg_max_value[0];
     
                 if (interrupt_flag){
@@ -1100,7 +1134,7 @@ void analog_read_end() {
                 //Saturation
                 if (i_aux < 0)
                     i_aux = 0;
-                else 
+                else
                     if (i_aux > 1024) 
                         i_aux = 1024;
                 
@@ -1142,7 +1176,7 @@ void analog_read_end() {
             case SUM_AND_MEAN: // sum first SAMPLES_FOR_EMG_MEAN samples
                 // NOTE max(value)*SAMPLES_FOR_EMG_MEAN must fit in 32bit
                 emg_counter_1++;
-                g_mem.emg_max_value[0] += filter_ch1(ADC_buf[2]);
+                g_mem.emg_max_value[0] += filter_ch1((int32)ADC_buf[2]);
                 
                 if (interrupt_flag){
                     interrupt_flag = FALSE;
@@ -1179,7 +1213,8 @@ void analog_read_end() {
         // EMG 2 calibration state machine
         switch(emg_2_status) {
             case NORMAL: // normal execution
-                i_aux = filter_ch2(ADC_buf[3]);
+                i_aux = (int32)ADC_buf[3];
+                i_aux = filter_ch2(i_aux);
                 i_aux = (i_aux << 10) / g_mem.emg_max_value[1];
     
                 if (interrupt_flag){
@@ -1189,7 +1224,7 @@ void analog_read_end() {
                 
                 if (i_aux < 0) 
                     i_aux = 0;
-                else 
+                else
                     if (i_aux > 1024)
                         i_aux = 1024;
                 
@@ -1231,7 +1266,7 @@ void analog_read_end() {
             case SUM_AND_MEAN: // sum first SAMPLES_FOR_EMG_MEAN samples
                 // NOTE max(value)*SAMPLES_FOR_EMG_MEAN must fit in 32bit
                 emg_counter_2++;
-                g_mem.emg_max_value[1] += filter_ch2(ADC_buf[3]);
+                g_mem.emg_max_value[1] += filter_ch2((int32)ADC_buf[3]);
     
                 if (interrupt_flag){
                     interrupt_flag = FALSE;
@@ -1414,5 +1449,6 @@ void command_slave() {
     packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
     
     commWriteAnother(packet_data, packet_lenght);
+    
 }
 /* [] END OF FILE */

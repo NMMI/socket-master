@@ -90,13 +90,16 @@ int32 filter_i1(int32 new_value) {
 
 int32 filter_ch1(int32 new_value) {
 
-    static int32 old_value, aux;
+   static int32 old_value, aux;    
+     
+    if (new_value < 0)
+        new_value = 0;
 
-    aux = (old_value * (1024 - BETA) + new_value * (BETA)) / 1024;
+    aux = (old_value * (1024 - BETA) + (new_value << 6) * (BETA)) /1024;
 
     old_value = aux;
 
-    return aux;
+    return (aux /64);
 }
 
 //==============================================================================
@@ -159,12 +162,15 @@ int32 filter_curr_diff(int32 curr_diff) {
 int32 filter_ch2(int32 new_value) {
 
     static int32 old_value, aux;
+    
+    if (new_value < 0)
+        new_value = 0;
 
-    aux = (old_value * (1024 - BETA) + new_value * (BETA)) / 1024;
+    aux = (old_value * (1024 - BETA) + (new_value << 6) * (BETA)) /1024;
 
     old_value = aux;
 
-    return aux;
+    return (aux /64);
 }
 
 //==============================================================================
@@ -320,5 +326,112 @@ int calc_turns_fcn(const int32 pos1, const int32 pos2) {
     
     return (my_mod(aux + N2/2, N2) - N2/2);
 }
+
+
+//==============================================================================
+//                                                              REST POSITION
+//==============================================================================
+
+void check_rest_position(void) {     // 100 Hz frequency
+    
+    static uint32 count = 0;        // Range [0 - 2^31]
+    static uint8 flag_count = 1;
+    static uint8 first_time = 1;
+    static float m = 0;
+    static int32 abs_err_thr = 0;
+    static int32 delta_inc = 0;
+    static int32 rest_error;
+    static int32 stop;
+    int32 CYDATA err_emg_2;
+    
+    
+    if (first_time){
+        count = 0;
+        first_time = 0;
+    }
+
+    stop = g_refOld.pos[0] >> g_mem.res[0];
+    
+    if (g_meas.emg[0] < 200 && g_meas.emg[1] < 200 && stop < 10000){
+        if (flag_count == 1){
+            count = count + 1;
+        }
+    }
+    else {
+        count = 0;
+        rest_enabled = 0;
+        flag_count = 1;
+    }
+    
+    /********** Velocity closure procedure *************
+    * m = error/time
+    * m = (g_mem.rest_pos - init_pos)/time
+    * time = g_mem.rest_pos/g_mem.rest_vel (g_mem.rest_vel in ticks/msec)
+    ***************************************************/
+    
+    if (count == (uint32)(g_mem.rest_delay/CALIBRATION_DIV)){ //10 seconds 
+        rest_enabled = 1;
+        rest_pos_curr_ref = curr_pos_res;
+        
+        // Ramp angular coefficient
+        m = ((float)(g_mem.rest_pos - curr_pos_res)/((float)g_mem.rest_pos))*(g_mem.rest_vel);
+        
+        // Stop condition threshold is related to m coefficient by g_mem.rest_ratio value
+        abs_err_thr = (int32)( (int32)(g_mem.rest_ratio*m*((float)CALIBRATION_DIV)) << g_mem.res[0]);
+        abs_err_thr = (abs_err_thr>0)?abs_err_thr:(0-abs_err_thr);
+        
+        rest_error = g_mem.rest_pos - curr_pos_res;    
+        
+        delta_inc = (int32)( ((int32)(m*(float)CALIBRATION_DIV)) << g_mem.res[0] );
+        delta_inc = (delta_inc>0)?delta_inc:(0-delta_inc);
+        
+        count = 0;
+        flag_count = 0;
+    }
+    
+    if (rest_enabled){
+
+        if (rest_error < abs_err_thr && rest_error > -abs_err_thr){
+            // Stop condition
+            rest_pos_curr_ref = g_mem.rest_pos;
+            forced_open = 1;
+            count = 0;
+        }
+        else {
+            rest_error = g_mem.rest_pos - curr_pos_res;        
+            if (rest_error > 0){
+                rest_pos_curr_ref = rest_pos_curr_ref + delta_inc;
+            }
+            if (rest_error < 0){
+                rest_pos_curr_ref = rest_pos_curr_ref - delta_inc;
+            }
+        } 
+        
+        // Change position reference to drive motor to rest position smoothly
+        g_ref.pos[0] = rest_pos_curr_ref;
+        
+        if (forced_open == 1) {
+            // Open the SoftHand as EMG PROPORTIONAL input mode 
+            err_emg_2 = g_meas.emg[1] - c_mem.emg_threshold[1];
+            
+            if (err_emg_2 > 0)
+                g_ref.pos[0] = g_mem.rest_pos - (err_emg_2 * g_mem.rest_pos) / (1024 - c_mem.emg_threshold[1]);
+            else {
+                g_ref.pos[0] = g_mem.rest_pos;
+                forced_open = 0;
+            }
+        }
+        
+        // Position limit saturation
+        if (c_mem.pos_lim_flag) {
+            if (g_ref.pos[0] < c_mem.pos_lim_inf[0]) 
+                g_ref.pos[0] = c_mem.pos_lim_inf[0];
+            if (g_ref.pos[0] > c_mem.pos_lim_sup[0]) 
+                g_ref.pos[0] = c_mem.pos_lim_sup[0];
+        }
+    }
+
+}
+
 
 /* [] END OF FILE */

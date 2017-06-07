@@ -192,6 +192,7 @@ int main()
     for (i = NUM_OF_SENSORS; i--;) { 
         g_meas.pos[i] = 0;
         g_meas.rot[i] = 0;
+        g_meas.hand_meas = 0;
     }
 
     g_refNew = g_ref;                                   // Initialize k+1 measurements structure
@@ -215,6 +216,8 @@ int main()
         
     // enable master_mode by default
     master_mode = 1;
+    
+    rest_enabled = 1;
 
     //============================================================     main loop
 

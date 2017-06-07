@@ -94,7 +94,7 @@ void commProcess(void){
 //=====================================================     CMD_GET_MEASUREMENTS
 
         case CMD_GET_MEASUREMENTS:
-            cmd_get_measurements();
+                cmd_get_measurements();
             break;
 
 //=========================================================     CMD_GET_CURRENTS
@@ -224,6 +224,12 @@ void commProcess(void){
             calib.enabled = TRUE;
             break;
 
+//============================================================     CMD_GET_HAND_MEASUREMENTS
+            
+        case CMD_GET_HAND_MEASUREMENTS:
+            cmd_get_measurements_from_SH();
+            break;
+
 //=========================================================== ALL OTHER COMMANDS
         default:
             break;
@@ -248,7 +254,7 @@ void infoSend(void){
 //==============================================================================
 
 void infoGet(uint16 info_type) {
-    unsigned char packet_string[1100] = "";
+    unsigned char packet_string[1500] = "";
 
     //==================================     choose info type and prepare string
 
@@ -269,8 +275,8 @@ void infoGet(uint16 info_type) {
 
 void get_param_list(uint16 index) {
     //Package to be sent variables
-    uint8 packet_data[1551] = "";
-    uint16 packet_lenght = 1551;
+    uint8 packet_data[1751] = "";
+    uint16 packet_lenght = 1751;
 
     //Auxiliary variables
     uint8 CYDATA i;
@@ -299,11 +305,16 @@ void get_param_list(uint16 index) {
     char abs_enc_str[36] = "18 - Absolute encoder position:";
     char handle_ratio_str[25] = "19 - Motor handle ratio:"; 
     char motor_type_str[24] = "20 - PWM rescaling:";
-    char curr_lookup_str[21] = "21 - Current lookup:";
+    char rest_pos_str[20] = "21 - Rest position:";
+    char rest_pos_delay_str[36] = "22 - Rest position time delay (ms):";
+    char rest_vel_str[35] = "23 - Rest vel closure (ticks/sec):";
+    char rest_ratio_str[17] = "24 - Rest ratio:";
+    char curr_lookup_str[21] = "25 - Current lookup:";
+
 
     //Parameters menus
     char input_mode_menu[99] = "0 -> Usb\n1 -> Handle\n2 -> EMG proportional\n3 -> EMG Integral\n4 -> EMG FCFS\n5 -> EMG FCFS Advanced\n";
-    char control_mode_menu[63] = "0 -> Position\n1 -> PWM\n2 -> Current\n3 -> Position and Current\n";
+    char control_mode_menu[92] = "0 -> Position\n1 -> PWM\n2 -> Current\n3 -> Position and Current\n4 -> Position w. rest check\n";
     char yes_no_menu[42] = "0 -> Deactivate [NO]\n1 -> Activate [YES]\n";
 
     //Strings lenghts
@@ -328,6 +339,10 @@ void get_param_list(uint16 index) {
     uint8 CYDATA input_mode_menu_len = strlen(input_mode_menu);
     uint8 CYDATA control_mode_menu_len = strlen(control_mode_menu);
     uint8 CYDATA yes_no_menu_len = strlen(yes_no_menu);
+    uint8 CYDATA rest_pos_str_len = strlen(rest_pos_str);
+    uint8 CYDATA rest_pos_delay_str_len = strlen(rest_pos_delay_str);
+    uint8 CYDATA rest_vel_str_len = strlen(rest_vel_str);
+    uint8 CYDATA rest_ratio_str_len = strlen(rest_ratio_str);
 
     packet_data[0] = CMD_GET_PARAM_LIST;
     packet_data[1] = NUM_OF_PARAMS;
@@ -453,6 +468,10 @@ void get_param_list(uint16 index) {
                 case CURR_AND_POS_CONTROL:
                     strcat(contr_str, " Position and Current\0");
                     string_lenght = 39;
+                break;
+                case CONTROL_ANGLE_AND_REST_POS:
+                    strcat(contr_str, " Position and Rest\0");
+                    string_lenght = 36;
                 break;
             }
             for(i = string_lenght; i != 0; i--)
@@ -621,25 +640,57 @@ void get_param_list(uint16 index) {
             //The following byte indicates the number of menus at the end of the packet to send
             packet_data[955 + string_lenght] = 3;
 
+            /*-----------REST POSITION----------*/
+            
+            packet_data[1002] = TYPE_INT32;
+            packet_data[1003] = 1;
+            *((int32 *)( packet_data + 1004 )) = (c_mem.rest_pos >> c_mem.res[0]);
+            for(i = rest_pos_str_len; i != 0; i--)
+                packet_data[1008 + rest_pos_str_len - i] = rest_pos_str[rest_pos_str_len - i];
+                
+            /*-----------REST POSITION TIME DELAY----------*/
+            
+            packet_data[1052] = TYPE_FLOAT;
+            packet_data[1053] = 1;
+            *((float *)( packet_data + 1054 )) = c_mem.rest_delay;
+            for(i = rest_pos_delay_str_len; i != 0; i--)
+                packet_data[1058 + rest_pos_delay_str_len - i] = rest_pos_delay_str[rest_pos_delay_str_len - i];
+                
+            /*-----------REST POSITION VELOCITY----------*/
+            
+            packet_data[1102] = TYPE_FLOAT;
+            packet_data[1103] = 1;
+            *((float *)( packet_data + 1104 )) = (float)(c_mem.rest_vel*1000.0);
+            for(i = rest_vel_str_len; i != 0; i--)
+                packet_data[1108 + rest_vel_str_len - i] = rest_vel_str[rest_vel_str_len - i];   
+                
+            /*-----------REST RATIO----------*/
+            
+            packet_data[1152] = TYPE_FLOAT;
+            packet_data[1153] = 1;
+            *((float *)( packet_data + 1154 )) = (float)(c_mem.rest_ratio);
+            for(i = rest_ratio_str_len; i != 0; i--)
+                packet_data[1158 + rest_ratio_str_len - i] = rest_ratio_str[rest_ratio_str_len - i];   
+                
             /*---------CURRENT LOOKUP TABLE---------*/
 
-            packet_data[1002] = TYPE_FLOAT;
-            packet_data[1003] = 6;
+            packet_data[1202] = TYPE_FLOAT;
+            packet_data[1203] = 6;
             for(i = 0; i < LOOKUP_DIM; i++)
-                *((float *) ( packet_data + 1004 + (i * 4) )) = c_mem.curr_lookup[i];
+                *((float *) ( packet_data + 1204 + (i * 4) )) = c_mem.curr_lookup[i];
             for(i = curr_lookup_str_len; i != 0; i--)
-                packet_data[1028 + curr_lookup_str_len - i] = curr_lookup_str[curr_lookup_str_len - i];
+                packet_data[1228 + curr_lookup_str_len - i] = curr_lookup_str[curr_lookup_str_len - i];
                 
             /*------------PARAMETERS MENU-----------*/
 
             for(i = input_mode_menu_len; i != 0; i--)
-                packet_data[1052 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
+                packet_data[1252 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
 
             for(i = control_mode_menu_len; i != 0; i--)
-                packet_data[1202 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
+                packet_data[1402 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
 
             for(i = yes_no_menu_len; i!= 0; i--)
-                packet_data[1352 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
+                packet_data[1552 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
 
             packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
             commWrite(packet_data, packet_lenght);
@@ -795,8 +846,26 @@ void get_param_list(uint16 index) {
         case 20:        //Motor type - uint8
             g_mem.activate_pwm_rescaling = g_rx.buffer[3];
         break;
+//============================================================     set_rest_pos
+        case 21:        //Rest Position - int32
+            g_mem.rest_pos = *((int32 *) &g_rx.buffer[3]);
+            g_mem.rest_pos = g_mem.rest_pos << g_mem.res[0];
+        break;   
+//============================================================     set_rest_delay_pos
+        case 22:        //Rest Position Time Delay - float
+            g_mem.rest_delay = *((float *) &g_rx.buffer[3]);
+        break;   
+//============================================================     set_rest_vel
+        case 23:        //Rest Position Velocity - float
+            g_mem.rest_vel = *((float *) &g_rx.buffer[3]);
+            g_mem.rest_vel = g_mem.rest_vel/1000.0;       //conversion [s -> ms]
+        break;     
+//============================================================     set_rest_ratio
+        case 24:        //Rest Ratio - float
+            g_mem.rest_ratio = *((float *) &g_rx.buffer[3]);
+        break;                 
 //===================================================     set_curr_lookup_table
-        case 21:        //Current lookup table - float
+        case 25:        //Current lookup table - float
             for(i = 0; i < LOOKUP_DIM; i++)
                 g_mem.curr_lookup[i] = *((float *) &g_rx.buffer[3 + i*4]);
         break;
@@ -988,6 +1057,9 @@ void infoPrepare(unsigned char *info_string)
             case CURR_AND_POS_CONTROL:
                 strcat(info_string, "Control mode: Position and Current\r\n");
                 break;
+            case CONTROL_ANGLE_AND_REST_POS:
+                strcat(info_string, "Control mode: Position and Rest check\r\n");
+                break;
             default:
                 break;
         }
@@ -1072,6 +1144,38 @@ void infoPrepare(unsigned char *info_string)
         sprintf(str, "EMG max speed: %d", (int)g_mem.emg_speed);
         strcat(info_string, str);
         strcat(info_string, "\r\n");
+        
+        sprintf(str, "Rest time delay (ms): %f", (float)g_mem.rest_delay);
+        strcat(info_string, str);
+        strcat(info_string, "\r\n");
+        
+        sprintf(str, "Rest velocity closure (ticks/sec): %f", (float)(g_mem.rest_vel*1000));
+        strcat(info_string, str);
+        strcat(info_string, "\r\n");
+        
+        sprintf(str, "Rest position: %d", (int)(g_mem.rest_pos >> c_mem.res[0]));
+        strcat(info_string, str);
+        strcat(info_string, "\r\n");   
+        
+        sprintf(str, "Rest ratio: %f", (float)(g_mem.rest_ratio));
+        strcat(info_string, str);
+        strcat(info_string, "\r\n"); 
+        
+        sprintf(str, "Hand meas: %d", (int)(g_measOld.hand_meas));
+        strcat(info_string, str);
+        strcat(info_string, "\r\n"); 
+        
+        sprintf(str, "Check: %d", (int)(check2));
+        strcat(info_string, str);
+        strcat(info_string, "\r\n"); 
+        
+        sprintf(str, "Check 5: %d", (int)(check5));
+        strcat(info_string, str);
+        strcat(info_string, "\r\n"); 
+        
+        sprintf(str, "Check 3 and 4: %d, %d", (int)(check3), (int)check4);
+        strcat(info_string, str);
+        strcat(info_string, "\r\n");
 
         sprintf(str, "debug: %ld", (uint32)timer_value0 - (uint32)timer_value); //5000001
         strcat(info_string, str);
@@ -1133,6 +1237,76 @@ void commWrite(uint8 *packet_data, uint16 packet_lenght)
 
     RS485_CTS_Write(1);
     RS485_CTS_Write(0);
+}
+
+//==============================================================================
+//                                READ MEASUREMENTS FUNCTION FROM ANOTHER DEVICE
+//==============================================================================
+
+int32 commReadMeasFromAnother()
+{
+    uint8 packet_data[10];
+    uint8 packet_lenght;
+    int32 aux_val;
+    uint16 b_l, b_h;
+    uint32 t_start, t_end;
+    
+    uint8 CYDATA index;
+
+    packet_lenght = 2;
+    packet_data[0] = CMD_GET_MEASUREMENTS;
+    packet_data[1] = CMD_GET_MEASUREMENTS;
+    commWriteAnother(packet_data, packet_lenght);
+     
+    receive_meas_from_hand = 1;
+    t_start = (uint32) MY_TIMER_ReadCounter();
+    while(g_rx.buffer[0] != CMD_GET_HAND_MEASUREMENTS) {
+        if (interrupt_flag){
+            interrupt_flag = FALSE;
+            //receive_meas_from_hand = 1;
+            interrupt_manager();
+        }
+
+        t_end = (uint32) MY_TIMER_ReadCounter();
+        if((t_start - t_end) > 4500000){            // 4.5 s timeout
+            master_mode = 0;                        // exit from master mode
+            break;
+        }
+    }
+
+    //b_l = (uint16)g_rx.buffer[1];
+    //b_h = (uint16)g_rx.buffer[2];
+    //curr_pos = (int16)((b_h << 8) | b_l);
+//    ((int8 *) &curr_pos)[0] = (int8)g_rx.buffer[2];
+//    ((int8 *) &curr_pos)[1] = (int8)g_rx.buffer[1];
+ //   curr_pos = *((int16 *) &g_rx.buffer[1]);
+  //  ((int16 *) &curr_pos)[0] = (int16)g_rx.buffer[2];
+  //  ((int16 *) &curr_pos)[1] = (int16)g_rx.buffer[1];
+    
+  //  aux_val_2 = *((int16 *) &g_rx.buffer[1]);
+    
+
+//    for (index = 1; index--;) 
+//        curr_pos = *((int16 *) &g_rx.buffer[(index << 1) + 1]);
+    
+    aux_val = *((int16 *) &g_rx.buffer[1]);
+    
+    //g_meas.hand_meas = aux_val;
+    
+    check2 = aux_val;
+  //  aux_val = (int32)curr_pos;
+    //aux_val = aux_val << g_mem.res[0];
+
+    check3 = (uint8)g_rx.buffer[1];
+    check4 = (uint8)g_rx.buffer[2];
+    
+    check5 = (int16)(aux_val << g_mem.res[0]);
+
+    
+    receive_meas_from_hand = 0;
+  //  return aux_val;
+    
+    return (int32)(g_refOld.pos[0]);
 }
 
 //==============================================================================
@@ -1377,6 +1551,14 @@ void cmd_get_measurements(){
     packet_data[7] = LCRChecksum (packet_data, 7);
 
     commWrite(packet_data, 8);
+   
+}
+
+void cmd_get_measurements_from_SH(){
+ 
+//    ((int8 *) &curr_pos)[0] = (int8)g_rx.buffer[2];
+//    ((int8 *) &curr_pos)[1] = (int8)g_rx.buffer[1];
+    g_meas.hand_meas = *((int16 *) &g_rx.buffer[1]);
    
 }
 

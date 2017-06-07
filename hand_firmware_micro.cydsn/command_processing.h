@@ -129,6 +129,12 @@ void    commWrite         (uint8 *packet_data, uint16 packet_lenght);
 **/
 void    commWriteAnother  (uint8 *packet_data, uint16 packet_lenght);
 
+//============================================================  commReadMeasFromAnother
+/** This function reads on the serial port the measurements package from another board.
+ *
+**/
+int32    commReadMeasFromAnother  ();
+
 
 /** \} */
 
@@ -229,6 +235,11 @@ void cmd_set_inputs();
 	to be sent.
 **/
 void cmd_get_measurements();
+//============================================================  cmd_get_measurements
+/** This function gets the encoders measurements from SH in master mode and puts them 
+    in the package to be sent.
+**/
+void cmd_get_measurements_from_SH();
 //============================================================  cmd_get_currents
 /** This function gets the motor current and puts it in the package to 
 	be sent.

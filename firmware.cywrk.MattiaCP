@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="firmware\hand_firmware_micro\Header Files\globals.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="firmware\hand_firmware_micro\hand_firmware_micro.cydwr">
 <ExpandedNodeIds>
 <v>firmware</v>
 <v>firmware\hand_firmware_micro</v>
@@ -620,9 +620,15 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\hand_firmware_micro.cydsn\interruptions.c" />
+<name v=".\hand_firmware_micro.cydsn\utils.c" />
+<name v=".\hand_firmware_micro.cydsn\command_processing.c" />
 <name v=".\hand_firmware_micro.cydsn\main.c" />
-<name v=".\hand_firmware_micro.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\hand_firmware_micro.cydsn\command_processing.h" />
+<name v=".\hand_firmware_micro.cydsn\globals.h" />
+<name v=".\hand_firmware_micro.cydsn\globals.c" />
+<name v=".\hand_firmware_micro.cydsn\commands.h" />
 <name v=".\hand_firmware_micro.cydsn\hand_firmware_micro.cydwr" />
+<name v=".\hand_firmware_micro.cydsn\TopDesign\TopDesign.cysch" />
 </OpenDocs>
 <config v="Release" />
 <AutoUpdate v="true" />

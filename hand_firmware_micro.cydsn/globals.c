@@ -83,4 +83,14 @@ int8 pwm_sign;
 // Mater mode
 uint8 master_mode;
 
+uint8 rest_enabled;
+uint8 forced_open;
+int32 rest_pos_curr_ref;
+uint8 receive_meas_from_hand;
+
+int16 check2;
+uint8 check3, check4;
+int32 check5;
+int32 curr_pos_res;
+
 /* END OF FILE */

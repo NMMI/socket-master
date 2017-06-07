@@ -6,7 +6,7 @@
 
 #Build Date:         Oct  1 2015 13:46:59
 
-#File Generated:     Jan 10 2017 17:24:29
+#File Generated:     Mar 22 2017 18:28:14
 
 #Purpose:            
 
@@ -132,7 +132,7 @@ Clock: timer_clock          | Frequency:  44.6 MHz | Target:   1.0 MHz
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 1.4 (sec)
+D2088: Phase 7, elapsed time : 1.3 (sec)
 
 Final Design Statistics
     Number of Combinational MCs 	:	23

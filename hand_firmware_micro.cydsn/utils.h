@@ -60,6 +60,8 @@
 
 #define SIGN(A) (((A) >=0) ? (1) : (-1))	///< Sign calculation function
 
+
+    
 //-------------------------------------------------------------     DECLARATIONS
 
 /** \name Filters */
@@ -206,6 +208,8 @@ int calc_turns_fcn(const int32 pos1,const int32 pos2);
  * calibration of the device.
 **/
 void calibration();
+
+void check_rest_position();
 
 #endif
 
