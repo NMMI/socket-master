@@ -1288,6 +1288,25 @@ void analog_read_end() {
                         interrupt_manager();
                     }
                     
+                    emg_2_status = WAIT_EoC;           // goto end of calibration wait
+                }
+                break;
+
+            case WAIT: // wait for EMG calibration to be done
+                if (emg_1_status == NORMAL)
+                    emg_2_status = DISCARD;           // goto discard sample
+                break;
+            
+            case WAIT_EoC:  // wait for end of calibration procedure (only for LED visibility reasons)
+                emg_counter_2++;
+                if (emg_counter_2 == EMG_SAMPLE_TO_DISCARD) {
+                    emg_counter_2 = 0;          // reset counter
+
+                    if (interrupt_flag){
+                        interrupt_flag = FALSE;
+                        interrupt_manager();
+                    }
+                    
                     // if EMG control mode active, activate motors accordingly with startup value
                     if ((c_mem.input_mode == INPUT_MODE_EMG_PROPORTIONAL) ||
                         (c_mem.input_mode == INPUT_MODE_EMG_INTEGRAL) ||
@@ -1300,13 +1319,9 @@ void analog_read_end() {
                         g_ref.onoff = c_mem.activ;
                         MOTOR_ON_OFF_Write(g_ref.onoff);
                     }
+                        
                     emg_2_status = NORMAL;           // goto normal execution
                 }
-                break;
-
-            case WAIT: // wait for EMG calibration to be done
-                if (emg_1_status == NORMAL)
-                    emg_2_status = DISCARD;           // goto discard sample
                 break;
 
             default:
@@ -1369,6 +1384,23 @@ void analog_read_end() {
             
             //PWM Blink Enable
             LED_BLINK_EN_Write(1);
+            
+            // Disable slave or motors because of not fully charged battery
+            if (master_mode) {
+                deactivate_slave();
+                
+                // Check Interrupt 
+                if (interrupt_flag){
+                    interrupt_flag = FALSE;
+                    interrupt_manager();
+                }
+                
+                master_mode = 0;        // exit from master mode
+            }
+            else {
+                g_refNew.onoff = 0x00;
+                MOTOR_ON_OFF_Write(g_refNew.onoff); // Deactivate motors
+            }
         }
     }
         
@@ -1446,6 +1478,35 @@ void command_slave() {
     *((int16 *) &packet_data[1]) = (int16) (g_ref.pos[0] >> g_mem.res[0]);
     *((int16 *) &packet_data[3]) = 0;
     packet_lenght = 6;
+    packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
+    
+    commWriteAnother(packet_data, packet_lenght);
+    
+}
+
+//==============================================================================
+//                                                              DEACTIVATE SLAVE
+//==============================================================================
+ 
+void deactivate_slave() {
+    uint8 packet_data[10];
+    uint8 packet_lenght;
+    
+    // If not a emg input mode is set, exit from master_mode
+    if((c_mem.input_mode != INPUT_MODE_EMG_PROPORTIONAL  &&
+        c_mem.input_mode != INPUT_MODE_EMG_INTEGRAL      &&
+        c_mem.input_mode != INPUT_MODE_EMG_FCFS          &&
+        c_mem.input_mode != INPUT_MODE_EMG_FCFS_ADV     )||
+        tension_valid == FALSE                   ) {
+        master_mode = 0;
+        return;
+    }
+    
+    //Sends a Set inputs command to a second board
+    packet_data[0] = CMD_ACTIVATE;
+
+    *((int16 *) &packet_data[1]) = 0;   //3 to activate, 0 to deactivate
+    packet_lenght = 3;
     packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
     
     commWriteAnother(packet_data, packet_lenght);

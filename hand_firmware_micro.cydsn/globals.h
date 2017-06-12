@@ -257,7 +257,8 @@ typedef enum {
     RESET         = 1,              /*!< Reset analog measurements */
     DISCARD       = 2,              /*!< Discard first samples to obtain a correct value */
     SUM_AND_MEAN  = 3,              /*!< Sum and mean a definite value of samples*/
-    WAIT          = 4               /*!< The second emg waits until the first emg has a valid value */
+    WAIT          = 4,               /*!< The second emg waits until the first emg has a valid value */
+	WAIT_EoC      = 5               /*!< The second emg waits for end of calibration */
 
 } emg_status;                       /*!< EMG status enumeration */
 
