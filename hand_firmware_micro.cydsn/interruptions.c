@@ -1371,7 +1371,8 @@ void analog_read_end() {
     
     // The board LED blinks if attached battery is not fully charged
     if (emg_1_status == NORMAL && emg_2_status == NORMAL && !first_tension_valid && tension_valid == TRUE){
-        if (dev_tension > 0.92 * pow_tension){
+        dev_tension_f = filter_voltage(dev_tension);
+        if (dev_tension_f > 0.92 * pow_tension){
             //fixed
             LED_CTRL_Write(1);
             
