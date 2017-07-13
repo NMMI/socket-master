@@ -967,7 +967,11 @@ void infoPrepare(unsigned char *info_string)
             strcat(info_string, "\r\n");
         }
 
-        sprintf(str, "Voltage (mV): %ld", (int32) dev_tension );
+        sprintf(str, "Battery Voltage (mV): %ld", (int32) dev_tension );
+        strcat(info_string, str);
+        strcat(info_string, "\r\n");
+        
+        sprintf(str, "Full charge power tension (mV): %ld", (int32) pow_tension );
         strcat(info_string, str);
         strcat(info_string, "\r\n");
 
@@ -1160,7 +1164,7 @@ void infoPrepare(unsigned char *info_string)
         sprintf(str, "Rest ratio: %f", (float)(g_mem.rest_ratio));
         strcat(info_string, str);
         strcat(info_string, "\r\n"); 
-        
+      /*  
         sprintf(str, "Hand meas: %d", (int)(g_measOld.hand_meas));
         strcat(info_string, str);
         strcat(info_string, "\r\n"); 
@@ -1176,7 +1180,7 @@ void infoPrepare(unsigned char *info_string)
         sprintf(str, "Check 3 and 4: %d, %d", (int)(check3), (int)check4);
         strcat(info_string, str);
         strcat(info_string, "\r\n");
-
+        */
         sprintf(str, "debug: %ld", (uint32)timer_value0 - (uint32)timer_value); //5000001
         strcat(info_string, str);
         strcat(info_string, "\r\n");
@@ -1248,10 +1252,10 @@ int32 commReadMeasFromAnother()
     uint8 packet_data[10];
     uint8 packet_lenght;
     int32 aux_val;
-    uint16 b_l, b_h;
+//    uint16 b_l, b_h;
     uint32 t_start, t_end;
     
-    uint8 CYDATA index;
+//    uint8 CYDATA index;
 
     packet_lenght = 2;
     packet_data[0] = CMD_GET_MEASUREMENTS;

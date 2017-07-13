@@ -212,7 +212,8 @@ int32 filter_acc_3(int32 new_value) {
 
 int32 filter_voltage(int32 new_value) {
 
-    static int32 old_value, aux;
+    static int32 old_value = 12000;
+    static int32 aux;
 
     aux = (old_value * (1024 - EPSILON) + (new_value << 6) * (EPSILON)) /1024;
 
@@ -319,8 +320,8 @@ void calibration(void) {
 // return
 
 // Number of teeth of the two wheels
-#define N1 28           ///< Teeth of the first encoder wheel
-#define N2 27           ///< Teeth of the second encoder wheel
+#define N1 15           ///< Teeth of the first encoder wheel
+#define N2 14           ///< Teeth of the second encoder wheel
 
 #define I1 1            ///< First wheel invariant value
 #define I2 (-1)         ///< Second wheel invariant value
@@ -345,7 +346,7 @@ int calc_turns_fcn(const int32 pos1, const int32 pos2) {
 
 void check_rest_position(void) {     // 100 Hz frequency
     
-    static uint32 count = 0;        // Range [0 - 2^31]
+    static uint32 count = 0;         // Range [0 - 2^31]
     static uint8 flag_count = 1;
     static uint8 first_time = 1;
     static float m = 0;
@@ -363,7 +364,7 @@ void check_rest_position(void) {     // 100 Hz frequency
 
     stop = g_refOld.pos[0] >> g_mem.res[0];
     
-    if (g_meas.emg[0] < 200 && g_meas.emg[1] < 200 && stop < 10000){
+    if (g_meas.emg[0] < c_mem.emg_threshold[0] && g_meas.emg[1] < c_mem.emg_threshold[1] && stop < 10000){
         if (flag_count == 1){
             count = count + 1;
         }

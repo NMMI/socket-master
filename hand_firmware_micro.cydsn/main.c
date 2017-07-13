@@ -206,6 +206,7 @@ int main()
     MOTOR_ON_OFF_Write(g_ref.onoff);                    // Activating motors
 
     dev_pwm_limit = 0;                                  // Init PWM limit
+    pow_tension = 12000;       //12000 mV (12 V)
     tension_valid = FALSE;                              // Init tension_valid BIT
 
     reset_last_value_flag = 0;
@@ -215,6 +216,7 @@ int main()
     g_rx.ready  = 0;
         
     // enable master_mode by default
+    
     master_mode = 1;
     
     rest_enabled = 1;

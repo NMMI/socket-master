@@ -66,6 +66,7 @@ uint32 timer_value0;
 int32   dev_tension;                // Power supply tension
 uint8   dev_pwm_limit;
 int32   dev_tension_f;
+int32   pow_tension;
 
 // Bit Flag
 

@@ -278,6 +278,7 @@ extern uint32 timer_value0;                         /*!< Start time of the firmw
 extern int32   dev_tension;                         /*!< Power supply tension */
 extern uint8   dev_pwm_limit;                       /*!< Device pwm limit */
 extern int32   dev_tension_f;                       /*!< Filtered power supply tension */
+extern int32   pow_tension;
 
 // Bit Flag
 
