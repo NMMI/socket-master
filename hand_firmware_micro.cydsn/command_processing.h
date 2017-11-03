@@ -36,9 +36,8 @@
  * \file        command_processing.h
  *
  * \brief       Received commands processing functions
- *              
- * \date         June 06, 2016
- * \author       _qbrobotics_
+ * \date        October 01, 2017
+ * \author      _Centro "E.Piaggio"_
  * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
  * \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
  * \details
@@ -225,56 +224,67 @@ void    sendAcknowledgment (uint8 value);
 /** This function activates the board
 **/
 void cmd_activate();
+
 //============================================================  cmd_set_inputs
 /** This function gets the inputs from the received package and sets them as
 	motor reference.
 **/
 void cmd_set_inputs();
+
 //============================================================  cmd_get_measurements
 /** This function gets the encoders measurements and puts them in the package
 	to be sent.
 **/
 void cmd_get_measurements();
+
 //============================================================  cmd_get_measurements
 /** This function gets the encoders measurements from SH in master mode and puts them 
     in the package to be sent.
 **/
 void cmd_get_measurements_from_SH();
+
 //============================================================  cmd_get_currents
 /** This function gets the motor current and puts it in the package to 
 	be sent.
 **/
 void cmd_get_currents();
+
 //============================================================  cmd_get_emg
 /** This function gets the electromyographic sensors measurements and puts
 	them in the package to be sent.
 **/
 void cmd_get_emg();
+
 //============================================================  cmd_set_watchdog
 /** This function sets the watchdog timer to the one received from the package.
 	The board automatically deactivate when the time equivalent, to watchdog timer, 
 	has passed.
 **/
 void cmd_set_watchdog();
+
 //============================================================  cmd_get_activate
 /** This function gets the board activation status and puts it in the package
 	to be sent.
 **/
 void cmd_get_activate();
+
 //============================================================  cmd_set_baudrate
 /** This function sets the desired communication baudrate. It is possible to
 	select a value equal to 460800 or 2000000.
 **/
 void cmd_set_baudrate();
+
 //============================================================  cmd_get_inputs
 /** This function gets the current motor reference inputs and puts them in the
 	package to be sent.
 **/
 void cmd_get_inputs();
+
 //============================================================  cmd_store_params
 /** This function stores the parameters to the EEPROM memory
 **/
 void cmd_store_params();
+
 //============================================================  cmd_ping
 /** This function is used to ping the device and see if is connected.
 **/

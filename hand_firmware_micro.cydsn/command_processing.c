@@ -38,8 +38,8 @@
 *
 
 * \brief        Command processing functions.
-* \date         June 06, 2016
-* \author       _qbrobotics_
+* \date         October 01, 2017
+* \author       _Centro "E.Piaggio"_
 * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
 * \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
 */
@@ -102,7 +102,6 @@ void commProcess(void){
         case CMD_GET_CURRENTS:
             cmd_get_currents();
             break;
-
 
 //=========================================================     CMD_GET_EMG
 

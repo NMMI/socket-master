@@ -458,6 +458,51 @@
 <VisibleNodeIds>
 <v>firmware</v>
 <v>firmware\hand_firmware_micro</v>
+<v>firmware\hand_firmware_micro\DP8051</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug\hand_firmware_micro.cyacd</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug\hand_firmware_micro.elf</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug\hand_firmware_micro.hex</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug\hand_firmware_micro.map</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_AMux.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_Ext_CP_Clk.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_INT.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_IRQ.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_PM.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_SOC.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_SOC_PM.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_STATUS.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_theACLK.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\BOARD_LED.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\Bootloadable.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CLOCK_ENCODERS.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CLOCK_PWM.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CLOCK_PWM_1.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CLOCK_UART.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\command_processing.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\COUNTER_ENC.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\COUNTER_ENC_PM.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CURRENT_SENSE_1.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CyBootAsmKeil.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CyDmac.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\cyfitter_cfg.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CyFlash.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CyLib.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\cymem.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\cyPm.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CySpc.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\cyutils.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\DMA_dma.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\EEPROM.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\EMG_1.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\EMG_2.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FF_STATUS.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FTDI_ENABLE.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FTDI_ENABLE_REG.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -577,13 +622,8 @@
 <name v=".\hand_firmware_micro.cydsn\command_processing.c" />
 <name v=".\hand_firmware_micro.cydsn\main.c" />
 <name v=".\hand_firmware_micro.cydsn\command_processing.h" />
-<name v=".\hand_firmware_micro.cydsn\globals.h" />
-<name v=".\hand_firmware_micro.cydsn\globals.c" />
-<name v=".\hand_firmware_micro.cydsn\commands.h" />
-<name v=".\hand_firmware_micro.cydsn\hand_firmware_micro.cydwr" />
-<name v=".\hand_firmware_micro.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\hand_firmware_micro.cydsn\interruptions.h" />
-<name v=".\hand_firmware_micro.cydsn\utils.h" />
+<name v=".\hand_firmware_micro.cydsn\globals.h" />
 </OpenDocs>
 <config v="Release" />
 <AutoUpdate v="true" />

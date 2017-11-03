@@ -37,27 +37,17 @@
 * \file         main.c
 *
 * \brief        Firmware main file.
-* \date         June 06, 2016
-* \author       qbrobotics
+* \date         October 01, 2017
+* \author       _Centro "E.Piaggio"_
 * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
 * \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
-*/
-
-/**
 * \mainpage     Firmware
-* \brief        This is the firmware of the qbHand.
-* \version      6.0.0
+* \brief        This is the firmware of the SoftHand Pro board.
+* \version      6.1.1
 *
-* \author       _qbrobotics_
-*
-* \date         June 06, 2016
-*
-* \details      This is the firmware of the qbHand. It can control a motor and
-*               read its encoder. Also can read and convert analog measurements
-*               connected to the PSoC microcontroller.                
-*
-* \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
-* \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
+* \details      This is the firmware of the SoftHand Pro board in Master configuration. 
+*				It reads EMG connected to socket and control a motor of an attached SoftHand. 
+*				Also can read and convert analog measurements connected to the PSoC microcontroller.                
 *
 */
 
@@ -94,7 +84,7 @@ int main()
     // EEPROM
 
     EEPROM_Start();
-    memRecall();                                        // recall configuration
+    memRecall();                                        // Recall configuration.
 
     // FTDI chip enable
 
@@ -110,20 +100,20 @@ int main()
     
     // RS485
 
-    UART_RS485_Stop();                                  // stop UART
-    UART_RS485_Start();                                 // start UART
+    UART_RS485_Stop();                                  // Stop UART.
+    UART_RS485_Start();                                 // Start UART.
     UART_RS485_Init();
 
     UART_RS485_ClearRxBuffer();
     UART_RS485_ClearTxBuffer();
 
-    ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);     // RS485 isr function
+    ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);     // RS485 isr function.
     
     // WATCHDOG
     
     WATCHDOG_COUNTER_Start();
     
-    ISR_WATCHDOG_StartEx(ISR_WATCHDOG_Handler);         // WATCHDOG isr function    
+    ISR_WATCHDOG_StartEx(ISR_WATCHDOG_Handler);         // WATCHDOG isr function.   
 
     // PWM
 
@@ -144,8 +134,8 @@ int main()
 
     // ADC
 
-    ADC_Start();                                        // start ADC
-    ADC_SOC_Write(0x01);                                // Force first read cycle
+    ADC_Start();                                        // Start ADC.
+    ADC_SOC_Write(0x01);                                // Force first read cycle.
    
     // DMA
     DMA_Chan = DMA_DmaInitialize(DMA_BYTES_PER_BURST, DMA_REQUEST_PER_BURST, HI16(DMA_SRC_BASE), HI16(DMA_DST_BASE));
@@ -156,22 +146,22 @@ int main()
     
     CyDmaChEnable(DMA_Chan, 1);                                                                             // Enable DMA
 
-    RS485_CTS_Write(0);                                 // Clear To Send on RS485
+    RS485_CTS_Write(0);                                 // Clear To Send on RS485.
 
     // TIMER
 
     MY_TIMER_Start();           
     PACER_TIMER_Start();
 
-    CYGlobalIntEnable;                                  // enable interrupts
+    CYGlobalIntEnable;                                  // Enable interrupts.
 
 //========================================     initializations - clean variables
 
-    RESET_COUNTERS_Write(0x00);                         // Activate encoder counters
+    RESET_COUNTERS_Write(0x00);                         // Activate encoder counters.
 
-    CyDelay(10);                                        // Wait for encoders to have a valid value
+    CyDelay(10);                                        // Wait for encoders to have a valid value.
 
-    //---------------------------------------------------  Initialize referiment structure
+    //---------------------------------------------------  Initialize reference structure
     for (i = NUM_OF_MOTORS; i--;) 
         g_ref.pos[i] = 0;
 
@@ -195,19 +185,19 @@ int main()
         g_meas.hand_meas = 0;
     }
 
-    g_refNew = g_ref;                                   // Initialize k+1 measurements structure
+    g_refNew = g_ref;                                   // Initialize k+1 measurements structure.
 
-    g_ref.onoff = c_mem.activ;                          // Initalize Activation
+    g_ref.onoff = c_mem.activ;                          // Initalize Activation.
     
     //---------------------------------------------------  Initialize emg structure
     g_meas.emg[0] = 0;
     g_meas.emg[1] = 0;
 
-    MOTOR_ON_OFF_Write(g_ref.onoff);                    // Activating motors
+    MOTOR_ON_OFF_Write(g_ref.onoff);                    // Activating motors.
 
-    dev_pwm_limit = 0;                                  // Init PWM limit
+    dev_pwm_limit = 0;                                  // Init PWM limit.
     pow_tension = 12000;       //12000 mV (12 V)
-    tension_valid = FALSE;                              // Init tension_valid BIT
+    tension_valid = FALSE;                              // Init tension_valid BIT.
 
     reset_last_value_flag = 0;
 

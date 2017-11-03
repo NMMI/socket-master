@@ -36,8 +36,8 @@
 * \file         interruptions.h
 *
 * \brief        Interruptions header file.
-* \date         Feb 06, 2012
-* \author       qbrobotics
+* \date         October 01, 2017
+* \author       _Centro "E.Piaggio"_
 * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
 * \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
 */
@@ -48,7 +48,7 @@
 //==================================================================     include
 #include <device.h>
 
-//=====================================================        Interrupt Handler
+//=====================================================        Interrupt Declaration
  
 /** \name Interruptions */
 /** \{ */
@@ -61,7 +61,7 @@
 **/
 CY_ISR_PROTO(ISR_RS485_RX_ExInterrupt);
 
-//====================================================     interrupt declaration
+//====================================================     Watchdog interruption
 /** This interruption sets a flag to let the firmware know that a watchdog
  *	interruption is pending and needs to be handled. The interrpution will be 
  * 	handled in predefined moments during the firmware execution.

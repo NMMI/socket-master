@@ -1,0 +1,198 @@
+\section{globals.\+c File Reference}
+\label{globals_8c}\index{globals.\+c@{globals.\+c}}
+
+
+Global variables.  
+
+
+{\ttfamily \#include $<$globals.\+h$>$}\newline
+Include dependency graph for globals.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{globals_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \textbf{ st\+\_\+ref} g\+\_\+ref g\+\_\+ref\+New \textbf{ g\+\_\+ref\+Old}
+\item 
+struct \textbf{ st\+\_\+meas} g\+\_\+meas \textbf{ g\+\_\+meas\+Old}
+\item 
+struct \textbf{ st\+\_\+data} \textbf{ g\+\_\+rx}
+\item 
+struct \textbf{ st\+\_\+mem} g\+\_\+mem \textbf{ c\+\_\+mem}
+\item 
+\mbox{\label{globals_8c_aed96fdd8308fe2c4fc07c3b5db1c7bbb}} 
+struct \textbf{ st\+\_\+calib} {\bfseries calib}
+\item 
+float \textbf{ tau\+\_\+feedback}
+\item 
+uint32 \textbf{ timer\+\_\+value}
+\item 
+uint32 \textbf{ timer\+\_\+value0}
+\item 
+int32 \textbf{ dev\+\_\+tension}
+\item 
+uint8 \textbf{ dev\+\_\+pwm\+\_\+limit}
+\item 
+int32 \textbf{ dev\+\_\+tension\+\_\+f}
+\item 
+\mbox{\label{globals_8c_a63d713ff9ac5ba0651f6af9115a32e4d}} 
+int32 {\bfseries pow\+\_\+tension}
+\item 
+C\+Y\+B\+IT \textbf{ reset\+\_\+last\+\_\+value\+\_\+flag}
+\item 
+C\+Y\+B\+IT \textbf{ tension\+\_\+valid}
+\item 
+C\+Y\+B\+IT \textbf{ interrupt\+\_\+flag}
+\item 
+C\+Y\+B\+IT \textbf{ watchdog\+\_\+flag}
+\item 
+\mbox{\label{globals_8c_abb22f0a4462a0b4db27496654f2175a0}} 
+int16 {\bfseries A\+D\+C\+\_\+buf} [4]
+\item 
+int8 \textbf{ pwm\+\_\+sign}
+\item 
+\mbox{\label{globals_8c_acf0e2a5d5954714103e295ac35513215}} 
+uint8 {\bfseries master\+\_\+mode}
+\item 
+\mbox{\label{globals_8c_a1f8839fadee52a47a0042eaa695c3f3a}} 
+uint8 {\bfseries rest\+\_\+enabled}
+\item 
+\mbox{\label{globals_8c_a0f13b80a0c329fa3176eb1e72ef36fb8}} 
+uint8 {\bfseries forced\+\_\+open}
+\item 
+\mbox{\label{globals_8c_a485e5b90bbfb79aa97f874873cd6c93a}} 
+int32 {\bfseries rest\+\_\+pos\+\_\+curr\+\_\+ref}
+\item 
+\mbox{\label{globals_8c_a50b50a565306d9a28c9e86694428a759}} 
+uint8 {\bfseries receive\+\_\+meas\+\_\+from\+\_\+hand}
+\item 
+\mbox{\label{globals_8c_ab43d57397f71cb35c19d91058c48bed2}} 
+int16 {\bfseries check2}
+\item 
+\mbox{\label{globals_8c_a07ae6981551bcb1232593903a0cec1be}} 
+uint8 {\bfseries check3}
+\item 
+\mbox{\label{globals_8c_a57815d5e67537f44e37f31deb0cca84e}} 
+uint8 {\bfseries check4}
+\item 
+\mbox{\label{globals_8c_a3e70f7fe645db3f664a6a47e63af6bff}} 
+int32 {\bfseries check5}
+\item 
+\mbox{\label{globals_8c_ab2b7ed40fdef23f9dad3b7351df3b8f4}} 
+int32 {\bfseries curr\+\_\+pos\+\_\+res}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Global variables. 
+
+\begin{DoxyDate}{Date}
+June 06, 2016 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+{\itshape qbrobotics} 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+(C) 2012-\/2016 qbrobotics. All rights reserved. 
+
+(C) 2017 Centro \char`\"{}\+E.\+Piaggio\char`\"{}. All rights reserved. 
+\end{DoxyCopyright}
+
+
+\subsection{Variable Documentation}
+\mbox{\label{globals_8c_a44c3cbd8e234e0816f0334e29646a800}} 
+\index{globals.\+c@{globals.\+c}!c\+\_\+mem@{c\+\_\+mem}}
+\index{c\+\_\+mem@{c\+\_\+mem}!globals.\+c@{globals.\+c}}
+\subsubsection{c\+\_\+mem}
+{\footnotesize\ttfamily struct \textbf{ st\+\_\+mem} g\+\_\+mem c\+\_\+mem}
+
+Memory parameters. \mbox{\label{globals_8c_a21f4f67e4203dea0b9956589eaa6cef3}} 
+\index{globals.\+c@{globals.\+c}!dev\+\_\+pwm\+\_\+limit@{dev\+\_\+pwm\+\_\+limit}}
+\index{dev\+\_\+pwm\+\_\+limit@{dev\+\_\+pwm\+\_\+limit}!globals.\+c@{globals.\+c}}
+\subsubsection{dev\+\_\+pwm\+\_\+limit}
+{\footnotesize\ttfamily uint8 dev\+\_\+pwm\+\_\+limit}
+
+Device pwm limit \mbox{\label{globals_8c_a53a494e9edc739a4f7c884778d1a93b1}} 
+\index{globals.\+c@{globals.\+c}!dev\+\_\+tension@{dev\+\_\+tension}}
+\index{dev\+\_\+tension@{dev\+\_\+tension}!globals.\+c@{globals.\+c}}
+\subsubsection{dev\+\_\+tension}
+{\footnotesize\ttfamily int32 dev\+\_\+tension}
+
+Power supply tension \mbox{\label{globals_8c_a600f1f02d397d3ffd8b03b8a4edace02}} 
+\index{globals.\+c@{globals.\+c}!dev\+\_\+tension\+\_\+f@{dev\+\_\+tension\+\_\+f}}
+\index{dev\+\_\+tension\+\_\+f@{dev\+\_\+tension\+\_\+f}!globals.\+c@{globals.\+c}}
+\subsubsection{dev\+\_\+tension\+\_\+f}
+{\footnotesize\ttfamily int32 dev\+\_\+tension\+\_\+f}
+
+Filtered power supply tension \mbox{\label{globals_8c_a47c3980e6bddec492ca4315e36602ba0}} 
+\index{globals.\+c@{globals.\+c}!g\+\_\+meas\+Old@{g\+\_\+meas\+Old}}
+\index{g\+\_\+meas\+Old@{g\+\_\+meas\+Old}!globals.\+c@{globals.\+c}}
+\subsubsection{g\+\_\+meas\+Old}
+{\footnotesize\ttfamily struct \textbf{ st\+\_\+meas} g\+\_\+meas g\+\_\+meas\+Old}
+
+Measurements. \mbox{\label{globals_8c_a158d26b6d15050b37d8039881d75e0dc}} 
+\index{globals.\+c@{globals.\+c}!g\+\_\+ref\+Old@{g\+\_\+ref\+Old}}
+\index{g\+\_\+ref\+Old@{g\+\_\+ref\+Old}!globals.\+c@{globals.\+c}}
+\subsubsection{g\+\_\+ref\+Old}
+{\footnotesize\ttfamily struct \textbf{ st\+\_\+ref} g\+\_\+ref g\+\_\+ref\+New g\+\_\+ref\+Old}
+
+Reference variables. \mbox{\label{globals_8c_aa963ce8fafc11e104eb7ee22982d0345}} 
+\index{globals.\+c@{globals.\+c}!g\+\_\+rx@{g\+\_\+rx}}
+\index{g\+\_\+rx@{g\+\_\+rx}!globals.\+c@{globals.\+c}}
+\subsubsection{g\+\_\+rx}
+{\footnotesize\ttfamily struct \textbf{ st\+\_\+data} g\+\_\+rx}
+
+Incoming/\+Outcoming data. \mbox{\label{globals_8c_a1e6fda88dfdabc63859f8907eb702920}} 
+\index{globals.\+c@{globals.\+c}!interrupt\+\_\+flag@{interrupt\+\_\+flag}}
+\index{interrupt\+\_\+flag@{interrupt\+\_\+flag}!globals.\+c@{globals.\+c}}
+\subsubsection{interrupt\+\_\+flag}
+{\footnotesize\ttfamily C\+Y\+B\+IT interrupt\+\_\+flag}
+
+Interrupt flag enabler \mbox{\label{globals_8c_a8ac7ad7c894db750e93bc745818e26ca}} 
+\index{globals.\+c@{globals.\+c}!pwm\+\_\+sign@{pwm\+\_\+sign}}
+\index{pwm\+\_\+sign@{pwm\+\_\+sign}!globals.\+c@{globals.\+c}}
+\subsubsection{pwm\+\_\+sign}
+{\footnotesize\ttfamily int8 pwm\+\_\+sign}
+
+A\+DC measurements buffer Sign of pwm driven. Used to obtain current sign. \mbox{\label{globals_8c_aa89a782cfe75ce7970236babd308fe69}} 
+\index{globals.\+c@{globals.\+c}!reset\+\_\+last\+\_\+value\+\_\+flag@{reset\+\_\+last\+\_\+value\+\_\+flag}}
+\index{reset\+\_\+last\+\_\+value\+\_\+flag@{reset\+\_\+last\+\_\+value\+\_\+flag}!globals.\+c@{globals.\+c}}
+\subsubsection{reset\+\_\+last\+\_\+value\+\_\+flag}
+{\footnotesize\ttfamily C\+Y\+B\+IT reset\+\_\+last\+\_\+value\+\_\+flag}
+
+This flag is set when the encoders last values must be resetted. \mbox{\label{globals_8c_a894b799ffe45f442a6a897580ab7e98e}} 
+\index{globals.\+c@{globals.\+c}!tau\+\_\+feedback@{tau\+\_\+feedback}}
+\index{tau\+\_\+feedback@{tau\+\_\+feedback}!globals.\+c@{globals.\+c}}
+\subsubsection{tau\+\_\+feedback}
+{\footnotesize\ttfamily float tau\+\_\+feedback}
+
+Torque feedback. \mbox{\label{globals_8c_ac42fa606610c2600210d9b7b2c1d0882}} 
+\index{globals.\+c@{globals.\+c}!tension\+\_\+valid@{tension\+\_\+valid}}
+\index{tension\+\_\+valid@{tension\+\_\+valid}!globals.\+c@{globals.\+c}}
+\subsubsection{tension\+\_\+valid}
+{\footnotesize\ttfamily C\+Y\+B\+IT tension\+\_\+valid}
+
+Tension validation bit \mbox{\label{globals_8c_ad47cd0e4d0fcf5739a88e52e949a8084}} 
+\index{globals.\+c@{globals.\+c}!timer\+\_\+value@{timer\+\_\+value}}
+\index{timer\+\_\+value@{timer\+\_\+value}!globals.\+c@{globals.\+c}}
+\subsubsection{timer\+\_\+value}
+{\footnotesize\ttfamily uint32 timer\+\_\+value}
+
+End time of the firmware main loop. \mbox{\label{globals_8c_a9bab7f1b1cf2ba38d5968eee42644c32}} 
+\index{globals.\+c@{globals.\+c}!timer\+\_\+value0@{timer\+\_\+value0}}
+\index{timer\+\_\+value0@{timer\+\_\+value0}!globals.\+c@{globals.\+c}}
+\subsubsection{timer\+\_\+value0}
+{\footnotesize\ttfamily uint32 timer\+\_\+value0}
+
+Start time of the firmware main loop \mbox{\label{globals_8c_a156a860c465529ff2f515725ab816a58}} 
+\index{globals.\+c@{globals.\+c}!watchdog\+\_\+flag@{watchdog\+\_\+flag}}
+\index{watchdog\+\_\+flag@{watchdog\+\_\+flag}!globals.\+c@{globals.\+c}}
+\subsubsection{watchdog\+\_\+flag}
+{\footnotesize\ttfamily C\+Y\+B\+IT watchdog\+\_\+flag}
+
+Watchdog flag enabler 

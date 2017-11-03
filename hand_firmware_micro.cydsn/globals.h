@@ -36,8 +36,8 @@
 * \file         globals.h
 *
 * \brief        Global definitions and macros are set in this file.
-* \date         June 06, 2016
-* \author       _qbrobotics_, Mattia Poggiani
+* \date         October 01, 2017
+* \author       _Centro "E.Piaggio"_
 * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
 * \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
 */
@@ -62,7 +62,7 @@
 #define NUM_OF_SENSORS          3       /*!< Number of encoders.*/
 #define NUM_OF_EMGS             2       /*!< Number of emg channels.*/
 #define NUM_OF_ANALOG_INPUTS    4       /*!< Total number of analogic inputs.*/
-#define NUM_OF_PARAMS           25      /*!< Number of parameters saved in the EEPROM */
+#define NUM_OF_PARAMS           25      /*!< Number of parameters saved in the EEPROM.*/
 
 //==============================================================================
 //                                                               SYNCHRONIZATION
@@ -71,7 +71,7 @@
 //Main frequency 1000 Hz
 #define CALIBRATION_DIV         10      /*!< Frequency divisor for hand calibration (100Hz).*/
 
-#define DIV_INIT_VALUE          1       /*!<*/
+#define DIV_INIT_VALUE          1       /*!< Initial value for hand counter calibration.*/
 
 //==============================================================================
 //                                                                           DMA
@@ -86,11 +86,11 @@
 //                                                                     INTERRUPT
 //==============================================================================
 
-#define    WAIT_START   0               /*!< Package start waiting status*/
-#define    WAIT_ID      1               /*!< Package ID waiting status*/
-#define    WAIT_LENGTH  2               /*!< Package lenght waiting status*/
-#define    RECEIVE      3               /*!< Package data receiving status*/
-#define    UNLOAD       4               /*!< Package data flush status*/
+#define    WAIT_START   0               /*!< Package start waiting status.*/
+#define    WAIT_ID      1               /*!< Package ID waiting status.*/
+#define    WAIT_LENGTH  2               /*!< Package lenght waiting status.*/
+#define    RECEIVE      3               /*!< Package data receiving status.*/
+#define    UNLOAD       4               /*!< Package data flush status.*/
 
 //==============================================================================
 //                                                                         OTHER
@@ -150,7 +150,7 @@ struct st_meas {
     int32 emg[NUM_OF_EMGS];         /*!< EMG sensors values.*/
     int32 vel[NUM_OF_SENSORS];      /*!< Encoder rotational velocity.*/
     int32 acc[NUM_OF_SENSORS];      /*!< Encoder rotational acceleration.*/
-    int32 hand_meas;                  /*!< Position measurement from SH */
+    int32 hand_meas;                  /*!< Position measurement from SH.*/
 };
 
 //==============================================================     data packet
@@ -217,13 +217,13 @@ struct st_mem {
 
     float   curr_lookup[LOOKUP_DIM];    /*!< Table of values to get estimated curr.*/                       //24
 
-    uint8   baud_rate;                  /*!< Baud Rate setted.*/                                            //1
+    uint8   baud_rate;                  /*!< Baud Rate set.*/                                            //1
     uint8   watchdog_period;            /*!< Watchdog period setted, 255 = disable.*/                       //1
     
     int32   rest_pos;                   /*!< Hand rest position while in EMG mode.*/                        //4
-    float  rest_delay;                 /*!< Hand rest position delay while in EMG mode.*/                  //4
-    float  rest_vel;                   /*!< Hand velocity closure for rest position reaching*/             //4
-    float   rest_ratio;                 /*!< Hand rest ratio between velocity closure and rest position error*/  //4
+    float   rest_delay;                 /*!< Hand rest position delay while in EMG mode.*/                  //4
+    float   rest_vel;                   /*!< Hand velocity closure for rest position reaching.*/             //4
+    float   rest_ratio;                 /*!< Hand rest ratio between velocity closure and rest position error.*/  //4
                                                                                                 //TOT           166 bytes
 };
 
@@ -253,14 +253,14 @@ struct st_calib {
 //=================================================     emg status
 typedef enum {
 
-    NORMAL        = 0,              /*!< Normal execution */
-    RESET         = 1,              /*!< Reset analog measurements */
-    DISCARD       = 2,              /*!< Discard first samples to obtain a correct value */
-    SUM_AND_MEAN  = 3,              /*!< Sum and mean a definite value of samples*/
-    WAIT          = 4,               /*!< The second emg waits until the first emg has a valid value */
-	WAIT_EoC      = 5               /*!< The second emg waits for end of calibration */
+    NORMAL        = 0,              /*!< Normal execution.*/
+    RESET         = 1,              /*!< Reset analog measurements.*/
+    DISCARD       = 2,              /*!< Discard first samples to obtain a correct value.*/
+    SUM_AND_MEAN  = 3,              /*!< Sum and mean a definite value of samples.*/
+    WAIT          = 4,               /*!< The second emg waits until the first emg has a valid value.*/
+	WAIT_EoC      = 5               /*!< The second emg waits for end of calibration.*/
 
-} emg_status;                       /*!< EMG status enumeration */
+} emg_status;                       /*!< EMG status enumeration.*/
 
 //====================================      external global variables definition
 
@@ -275,33 +275,33 @@ extern uint32 timer_value0;                         /*!< Start time of the firmw
 
 // Device Data
 
-extern int32   dev_tension;                         /*!< Power supply tension */
-extern uint8   dev_pwm_limit;                       /*!< Device pwm limit */
-extern int32   dev_tension_f;                       /*!< Filtered power supply tension */
+extern int32   dev_tension;                         /*!< Power supply tension.*/
+extern uint8   dev_pwm_limit;                       /*!< Device pwm limit.*/
+extern int32   dev_tension_f;                       /*!< Filtered power supply tension.*/
 extern int32   pow_tension;
 
 // Bit Flag
 
 extern CYBIT reset_last_value_flag;                 /*!< This flag is set when the encoders last values must be resetted.*/
-extern CYBIT tension_valid;                         /*!< Tension validation bit */
-extern CYBIT interrupt_flag;                        /*!< Interrupt flag enabler */
-extern CYBIT watchdog_flag;                         /*!< Watchdog flag enabler  */
+extern CYBIT tension_valid;                         /*!< Tension validation bit.*/
+extern CYBIT interrupt_flag;                        /*!< Interrupt flag enabler.*/
+extern CYBIT watchdog_flag;                         /*!< Watchdog flag enabler.*/
 extern float tau_feedback;                          /*!< Torque feedback.*/
 
 // DMA Buffer
 
-extern int16 ADC_buf[4];                            /*! ADC measurements buffer */
+extern int16 ADC_buf[4];                            /*! ADC measurements buffer.*/
 
 // PWM value
 
 extern int8 pwm_sign;                               /*!< Sign of pwm driven. Used to obtain current sign.*/
 
-extern uint8 master_mode;               /*|< Flag used to set/unset master mode to send messages to other boards*/
+extern uint8 master_mode;               /*!< Flag used to set/unset master mode to send messages to other boards.*/
 
-extern uint8 rest_enabled;
-extern uint8 forced_open;
-extern int32 rest_pos_curr_ref;
-extern uint8 receive_meas_from_hand;
+extern uint8 rest_enabled;				/*!< Rest position flag.*/
+extern uint8 forced_open;               /*!< Forced open flag (used in position with rest position control).*/
+extern int32 rest_pos_curr_ref;			/*!< Rest position current reference.*/
+extern uint8 receive_meas_from_hand;	/*!< Position measurement form hand.*/
 
 extern int16 check2;
 extern uint8 check3, check4;

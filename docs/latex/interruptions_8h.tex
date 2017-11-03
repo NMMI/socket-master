@@ -1,0 +1,168 @@
+\section{interruptions.\+h File Reference}
+\label{interruptions_8h}\index{interruptions.\+h@{interruptions.\+h}}
+
+
+Interruptions header file.  
+
+
+{\ttfamily \#include $<$device.\+h$>$}\newline
+Include dependency graph for interruptions.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=158pt]{interruptions_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{interruptions_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{Indent}\textbf{ Interruptions}\par
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO} (I\+S\+R\+\_\+\+R\+S485\+\_\+\+R\+X\+\_\+\+Ex\+Interrupt)
+\item 
+\textbf{ C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO} (I\+S\+R\+\_\+\+W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+Handler)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ General function scheduler}\par
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ function\+\_\+scheduler} (void)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Encoder reading function}\par
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ encoder\+\_\+reading} (const uint8 index)
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Motor control function}\par
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ motor\+\_\+control} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Analog readings}\par
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ analog\+\_\+read\+\_\+end} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Interrupt manager}\par
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ interrupt\+\_\+manager} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Utility functions}\par
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ pwm\+\_\+limit\+\_\+search} ()
+\item 
+void \textbf{ overcurrent\+\_\+control} ()
+\item 
+void \textbf{ command\+\_\+slave} ()
+\item 
+void \textbf{ deactivate\+\_\+slave} ()
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Interruptions header file. 
+
+\begin{DoxyDate}{Date}
+Feb 06, 2012 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+qbrobotics 
+\end{DoxyAuthor}
+\begin{DoxyCopyright}{Copyright}
+(C) 2012-\/2016 qbrobotics. All rights reserved. 
+
+(C) 2017 Centro \char`\"{}\+E.\+Piaggio\char`\"{}. All rights reserved. 
+\end{DoxyCopyright}
+
+
+\subsection{Function Documentation}
+\mbox{\label{interruptions_8h_a00a8d34962a63161405e5d7785b9625e}} 
+\index{interruptions.\+h@{interruptions.\+h}!analog\+\_\+read\+\_\+end@{analog\+\_\+read\+\_\+end}}
+\index{analog\+\_\+read\+\_\+end@{analog\+\_\+read\+\_\+end}!interruptions.\+h@{interruptions.\+h}}
+\subsubsection{analog\+\_\+read\+\_\+end()}
+{\footnotesize\ttfamily void analog\+\_\+read\+\_\+end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function executes and terminates the analog readings. \mbox{\label{interruptions_8h_a8e10d86a40e34fc094b817f8e40b30e0}} 
+\index{interruptions.\+h@{interruptions.\+h}!command\+\_\+slave@{command\+\_\+slave}}
+\index{command\+\_\+slave@{command\+\_\+slave}!interruptions.\+h@{interruptions.\+h}}
+\subsubsection{command\+\_\+slave()}
+{\footnotesize\ttfamily void command\+\_\+slave (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function is used to create a package and send it to another device, only if the actual board is in master mode. \mbox{\label{interruptions_8h_a7e24af8c83537b0441877bf0f00dd30a}} 
+\index{interruptions.\+h@{interruptions.\+h}!C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO@{C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO}}
+\index{C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO@{C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO}!interruptions.\+h@{interruptions.\+h}}
+\subsubsection{C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+T\+O()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO (\begin{DoxyParamCaption}\item[{I\+S\+R\+\_\+\+R\+S485\+\_\+\+R\+X\+\_\+\+Ex\+Interrupt}]{ }\end{DoxyParamCaption})}
+
+This interruption sets a flag to let the firmware know that a communication interruption is pending and needs to be handled. The interruption will be handled in predefined moments during the firmware execution. When this interruption is handled, it unpacks the package received on the R\+S485 communication bus. \mbox{\label{interruptions_8h_a212cae8995d67d612c236fb54a4d29dc}} 
+\index{interruptions.\+h@{interruptions.\+h}!C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO@{C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO}}
+\index{C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO@{C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO}!interruptions.\+h@{interruptions.\+h}}
+\subsubsection{C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+T\+O()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO (\begin{DoxyParamCaption}\item[{I\+S\+R\+\_\+\+W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+Handler}]{ }\end{DoxyParamCaption})}
+
+This interruption sets a flag to let the firmware know that a watchdog interruption is pending and needs to be handled. The interrpution will be handled in predefined moments during the firmware execution. When this interruption is handled, it deactivates the board because the watchdog timer has expired. \mbox{\label{interruptions_8h_a71cb50f2e34246bbedd5918da1b6ef5e}} 
+\index{interruptions.\+h@{interruptions.\+h}!deactivate\+\_\+slave@{deactivate\+\_\+slave}}
+\index{deactivate\+\_\+slave@{deactivate\+\_\+slave}!interruptions.\+h@{interruptions.\+h}}
+\subsubsection{deactivate\+\_\+slave()}
+{\footnotesize\ttfamily void deactivate\+\_\+slave (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function is used to create a package to deactivate motors on another device, only if the actual board is in master mode. \mbox{\label{interruptions_8h_a02aa2fd33f7b2f645490b9c7642084d7}} 
+\index{interruptions.\+h@{interruptions.\+h}!encoder\+\_\+reading@{encoder\+\_\+reading}}
+\index{encoder\+\_\+reading@{encoder\+\_\+reading}!interruptions.\+h@{interruptions.\+h}}
+\subsubsection{encoder\+\_\+reading()}
+{\footnotesize\ttfamily void encoder\+\_\+reading (\begin{DoxyParamCaption}\item[{const uint8}]{index }\end{DoxyParamCaption})}
+
+This functions reads the value from the encoder pointed by index.
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & The number of the encoder that must be read. \\
+\hline
+\end{DoxyParams}
+\mbox{\label{interruptions_8h_a39df971c4e9f194be50c54dfd7aeabfe}} 
+\index{interruptions.\+h@{interruptions.\+h}!function\+\_\+scheduler@{function\+\_\+scheduler}}
+\index{function\+\_\+scheduler@{function\+\_\+scheduler}!interruptions.\+h@{interruptions.\+h}}
+\subsubsection{function\+\_\+scheduler()}
+{\footnotesize\ttfamily void function\+\_\+scheduler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+This function schedules the other functions in an order that optimizes the controller usage. \mbox{\label{interruptions_8h_a9790811526002d99b25a814afd02cbae}} 
+\index{interruptions.\+h@{interruptions.\+h}!interrupt\+\_\+manager@{interrupt\+\_\+manager}}
+\index{interrupt\+\_\+manager@{interrupt\+\_\+manager}!interruptions.\+h@{interruptions.\+h}}
+\subsubsection{interrupt\+\_\+manager()}
+{\footnotesize\ttfamily void interrupt\+\_\+manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function is called in predefinited moments during firmware execution in order to unpack the received package. \mbox{\label{interruptions_8h_a8c7c487a5a127331b0de53443e3ca964}} 
+\index{interruptions.\+h@{interruptions.\+h}!motor\+\_\+control@{motor\+\_\+control}}
+\index{motor\+\_\+control@{motor\+\_\+control}!interruptions.\+h@{interruptions.\+h}}
+\subsubsection{motor\+\_\+control()}
+{\footnotesize\ttfamily void motor\+\_\+control (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function controls the motor direction and velocity, depending on the input and control modality set. \mbox{\label{interruptions_8h_a4e92908805632dc8cab2936d89bb3ba1}} 
+\index{interruptions.\+h@{interruptions.\+h}!overcurrent\+\_\+control@{overcurrent\+\_\+control}}
+\index{overcurrent\+\_\+control@{overcurrent\+\_\+control}!interruptions.\+h@{interruptions.\+h}}
+\subsubsection{overcurrent\+\_\+control()}
+{\footnotesize\ttfamily void overcurrent\+\_\+control (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function increases or decreases the pwm value, depending on the current absorbed by the motor. \mbox{\label{interruptions_8h_ab7b287cf5df2ea548297b951be2f20d4}} 
+\index{interruptions.\+h@{interruptions.\+h}!pwm\+\_\+limit\+\_\+search@{pwm\+\_\+limit\+\_\+search}}
+\index{pwm\+\_\+limit\+\_\+search@{pwm\+\_\+limit\+\_\+search}!interruptions.\+h@{interruptions.\+h}}
+\subsubsection{pwm\+\_\+limit\+\_\+search()}
+{\footnotesize\ttfamily void pwm\+\_\+limit\+\_\+search (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function scales the pwm value of the motor, depending on the power supply voltage, in order to not make the motor wind too fast. 

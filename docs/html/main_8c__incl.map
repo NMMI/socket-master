@@ -1,0 +1,8 @@
+<map id="main.c" name="main.c">
+<area shape="rect" id="node2" href="$device_8h_source.html" title="device.h" alt="" coords="10,229,79,256"/>
+<area shape="rect" id="node4" href="$globals_8h.html" title="Global definitions and macros are set in this file. " alt="" coords="158,155,232,181"/>
+<area shape="rect" id="node8" href="$interruptions_8h.html" title="Interruptions header file. " alt="" coords="20,155,124,181"/>
+<area shape="rect" id="node9" href="$command__processing_8h.html" title="Received commands processing functions. " alt="" coords="232,80,392,107"/>
+<area shape="rect" id="node10" href="$utils_8h.html" title="Utility functions declaration. " alt="" coords="100,80,157,107"/>
+<area shape="rect" id="node7" href="$commands_8h.html" title="Definitions for qbMove and qbHand commands, parameters and packages. " alt="" coords="278,229,376,256"/>
+</map>

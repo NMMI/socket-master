@@ -1,0 +1,9 @@
+<map id="globals.h" name="globals.h">
+<area shape="rect" id="node2" href="$command__processing_8h.html" title="Received commands processing functions. " alt="" coords="95,80,255,107"/>
+<area shape="rect" id="node4" href="$interruptions_8c.html" title="Interruption handling and firmware core functions. " alt="" coords="5,155,109,181"/>
+<area shape="rect" id="node5" href="$main_8c.html" title="Firmware main file. " alt="" coords="317,155,379,181"/>
+<area shape="rect" id="node6" href="$utils_8h.html" title="Utility functions declaration. " alt="" coords="279,80,337,107"/>
+<area shape="rect" id="node8" href="$globals_8c.html" title="Global variables. " alt="" coords="412,80,487,107"/>
+<area shape="rect" id="node3" href="$command__processing_8c.html" title="Command processing functions. " alt="" coords="133,155,293,181"/>
+<area shape="rect" id="node7" href="$utils_8c.html" title="Definition of utility functions. " alt="" coords="403,155,461,181"/>
+</map>
