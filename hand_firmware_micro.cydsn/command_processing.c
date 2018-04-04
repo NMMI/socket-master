@@ -223,12 +223,6 @@ void commProcess(void){
             calib.enabled = TRUE;
             break;
 
-//============================================================     CMD_GET_HAND_MEASUREMENTS
-            
-        case CMD_GET_HAND_MEASUREMENTS:
-            cmd_get_measurements_from_SH();
-            break;
-
 //=========================================================== ALL OTHER COMMANDS
         default:
             break;
@@ -242,7 +236,7 @@ void commProcess(void){
 //==============================================================================
 
 void infoSend(void){
-    unsigned char packet_string[1100];
+    unsigned char packet_string[1500];
     infoPrepare(packet_string);
     UART_RS485_PutString(packet_string);
 }
@@ -253,7 +247,7 @@ void infoSend(void){
 //==============================================================================
 
 void infoGet(uint16 info_type) {
-    unsigned char packet_string[1500] = "";
+    unsigned char packet_string[1700] = "";
 
     //==================================     choose info type and prepare string
 
@@ -274,8 +268,8 @@ void infoGet(uint16 info_type) {
 
 void get_param_list(uint16 index) {
     //Package to be sent variables
-    uint8 packet_data[1751] = "";
-    uint16 packet_lenght = 1751;
+    uint8 packet_data[2301] = "";
+    uint16 packet_lenght = 2301;
 
     //Auxiliary variables
     uint8 CYDATA i;
@@ -309,7 +303,20 @@ void get_param_list(uint16 index) {
     char rest_vel_str[35] = "23 - Rest vel closure (ticks/sec):";
     char rest_ratio_str[17] = "24 - Rest ratio:";
     char curr_lookup_str[21] = "25 - Current lookup:";
-
+    
+    char myo2_master_str[36] = "26 - Myoelectric case 2 Master:";
+    char master_mode_force_str[35] = "27 - Master with Force device:";
+    char master_mode_proprio_str[41] = "28 - Master with Proprioc. device:";
+    
+    char curr_prop_gain_str[40] = "29 - Current proportional gain (force):";
+    char curr_sat_str[44]       = "30 - Current difference saturation (force):";
+    char curr_dead_zone_str[32] = "31 - Current dead zone (force):";
+    
+    char max_slide_str[35]      = "32 - Max slide movement (proprio):";
+    char max_SH_pos_str[37]     = "33 - Max SoftHand closure (proprio):";
+    char SH_ID_str[18]          = "34 - SoftHand ID:";
+    char FF_ID_str[22]          = "35 - Force device ID:";
+    char PF_ID_str[31]          = "36 - Proprioceptive device ID:";
 
     //Parameters menus
     char input_mode_menu[99] = "0 -> Usb\n1 -> Handle\n2 -> EMG proportional\n3 -> EMG Integral\n4 -> EMG FCFS\n5 -> EMG FCFS Advanced\n";
@@ -342,7 +349,17 @@ void get_param_list(uint16 index) {
     uint8 CYDATA rest_pos_delay_str_len = strlen(rest_pos_delay_str);
     uint8 CYDATA rest_vel_str_len = strlen(rest_vel_str);
     uint8 CYDATA rest_ratio_str_len = strlen(rest_ratio_str);
+    
+    uint8 CYDATA curr_prop_gain_str_len = strlen(curr_prop_gain_str);
+    uint8 CYDATA curr_sat_str_len = strlen(curr_sat_str);
+    uint8 CYDATA curr_dead_zone_str_len = strlen(curr_dead_zone_str);
 
+    uint8 CYDATA max_slide_str_len = strlen(max_slide_str);
+    uint8 CYDATA max_SH_pos_str_len = strlen(max_SH_pos_str);
+    uint8 CYDATA SH_ID_str_len = strlen(SH_ID_str);
+    uint8 CYDATA FF_ID_str_len = strlen(FF_ID_str);
+    uint8 CYDATA PF_ID_str_len = strlen(PF_ID_str);
+    
     packet_data[0] = CMD_GET_PARAM_LIST;
     packet_data[1] = NUM_OF_PARAMS;
 
@@ -679,17 +696,136 @@ void get_param_list(uint16 index) {
                 *((float *) ( packet_data + 1204 + (i * 4) )) = c_mem.curr_lookup[i];
             for(i = curr_lookup_str_len; i != 0; i--)
                 packet_data[1228 + curr_lookup_str_len - i] = curr_lookup_str[curr_lookup_str_len - i];
+            
+                            
+            /*------------MASTER MODE MYO2----------*/
+            
+            packet_data[1252] = TYPE_FLAG;
+            packet_data[1253] = 1;
+            packet_data[1254] = c_mem.is_myo2_master;
+            if(c_mem.is_myo2_master) {
+                strcat(myo2_master_str, " YES\0");
+                string_lenght = 36;
+            }
+            else {
+                strcat(myo2_master_str, " NO\0");
+                string_lenght = 35;
+            }
+            for(i = string_lenght; i != 0; i--)
+                packet_data[1255 + string_lenght - i] = myo2_master_str[string_lenght - i];
+            //The following byte indicates the number of menus at the end of the packet to send
+            packet_data[1255 + string_lenght] = 3;
+            
+            /*------------MASTER MODE CUFF----------*/
+            
+            packet_data[1302] = TYPE_FLAG;
+            packet_data[1303] = 1;
+            packet_data[1304] = c_mem.is_force_fb_present;
+            if(c_mem.is_force_fb_present) {
+                strcat(master_mode_force_str, " YES\0");
+                string_lenght = 35;
+            }
+            else {
+                strcat(master_mode_force_str, " NO\0");
+                string_lenght = 34;
+            }
+            for(i = string_lenght; i != 0; i--)
+                packet_data[1305 + string_lenght - i] = master_mode_force_str[string_lenght - i];
+            //The following byte indicates the number of menus at the end of the packet to send
+            packet_data[1305 + string_lenght] = 3;
+            
+            /*------------MASTER MODE HAP PRO----------*/
+            
+            packet_data[1352] = TYPE_FLAG;
+            packet_data[1353] = 1;
+            packet_data[1354] = c_mem.is_proprio_fb_present;
+            if(c_mem.is_proprio_fb_present) {
+                strcat(master_mode_proprio_str, " YES\0");
+                string_lenght = 41;
+            }
+            else {
+                strcat(master_mode_proprio_str, " NO\0");
+                string_lenght = 40;
+            }
+            for(i = string_lenght; i != 0; i--)
+                packet_data[1355 + string_lenght - i] = master_mode_proprio_str[string_lenght - i];
+            //The following byte indicates the number of menus at the end of the packet to send
+            packet_data[1355 + string_lenght] = 3;
+            
+             /*-----CURRENT PROPORTIONAL GAIN-----*/
+
+            packet_data[1402] = TYPE_FLOAT;
+            packet_data[1403] = 1;
+            *((float *)(packet_data + 1404)) = c_mem.curr_prop_gain;
+            for(i = curr_prop_gain_str_len; i!= 0; i--)
+                packet_data[1408 + curr_prop_gain_str_len - i] = curr_prop_gain_str[curr_prop_gain_str_len - i];
+
+            /*---------CURRENT SATURATION--------*/
+
+            packet_data[1452] = TYPE_INT16;
+            packet_data[1453] = 1;
+            *((int16 *)(packet_data + 1454)) = c_mem.curr_sat;
+            for(i = curr_sat_str_len; i!= 0; i--)
+                packet_data[1456 + curr_sat_str_len - i] = curr_sat_str[curr_sat_str_len - i];
+
+            /*---------CURRENT DEAD ZONE---------*/
+
+            packet_data[1502] = TYPE_INT16;
+            packet_data[1503] = 1;
+            *((int16 *)(packet_data + 1504)) = c_mem.curr_dead_zone;
+            for(i = curr_dead_zone_str_len; i!= 0; i--)
+                packet_data[1506 + curr_dead_zone_str_len - i] = curr_dead_zone_str[curr_dead_zone_str_len - i];
+                
+            /*---------MAX SLIDE---------*/
+
+            packet_data[1552] = TYPE_INT32;
+            packet_data[1553] = 1;
+            *((int32 *)(packet_data + 1554)) = c_mem.max_slide;
+            for(i = max_slide_str_len; i!= 0; i--)
+                packet_data[1558 + max_slide_str_len - i] = max_slide_str[max_slide_str_len - i];
+                
+            /*---------MAX SH POS---------*/
+
+            packet_data[1602] = TYPE_INT32;
+            packet_data[1603] = 1;
+            *((int32 *)(packet_data + 1604)) = c_mem.max_SH_pos;
+            for(i = max_SH_pos_str_len; i!= 0; i--)
+                packet_data[1608 + max_SH_pos_str_len - i] = max_SH_pos_str[max_SH_pos_str_len - i];
+                
+            /*---------HAND ID---------*/
+
+            packet_data[1652] = TYPE_UINT8;
+            packet_data[1653] = 1;
+            *((uint8 *)(packet_data + 1654)) = c_mem.SH_ID;
+            for(i = SH_ID_str_len; i!= 0; i--)
+                packet_data[1655 + SH_ID_str_len - i] = SH_ID_str[SH_ID_str_len - i];
+                
+            /*---------FORCE FEEDBACK DEVICE ID---------*/
+
+            packet_data[1702] = TYPE_UINT8;
+            packet_data[1703] = 1;
+            *((uint8 *)(packet_data + 1704)) = c_mem.ForceF_ID;
+            for(i = FF_ID_str_len; i!= 0; i--)
+                packet_data[1705 + FF_ID_str_len - i] = FF_ID_str[FF_ID_str_len - i];
+                
+            /*---------PROPRIOCEPTIVE FEEDBACK DEVICE ID---------*/
+
+            packet_data[1752] = TYPE_UINT8;
+            packet_data[1753] = 1;
+            *((uint8 *)(packet_data + 1754)) = c_mem.ProprioF_ID;
+            for(i = PF_ID_str_len; i!= 0; i--)
+                packet_data[1755 + PF_ID_str_len - i] = PF_ID_str[PF_ID_str_len - i];                
                 
             /*------------PARAMETERS MENU-----------*/
 
             for(i = input_mode_menu_len; i != 0; i--)
-                packet_data[1252 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
+                packet_data[1802 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
 
             for(i = control_mode_menu_len; i != 0; i--)
-                packet_data[1402 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
+                packet_data[1952 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
 
             for(i = yes_no_menu_len; i!= 0; i--)
-                packet_data[1552 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
+                packet_data[2102 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
 
             packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
             commWrite(packet_data, packet_lenght);
@@ -868,7 +1004,66 @@ void get_param_list(uint16 index) {
             for(i = 0; i < LOOKUP_DIM; i++)
                 g_mem.curr_lookup[i] = *((float *) &g_rx.buffer[3 + i*4]);
         break;
-    }
+//================================================     set_myo2_master
+        case 26:        //Is Myo2 master present - uint8
+            aux_uchar = *((uint8*) &g_rx.buffer[3]);
+            if (aux_uchar) {
+                g_mem.is_myo2_master = 1;
+            } else {
+                g_mem.is_myo2_master = 0;
+            }
+        break;                 
+//================================================     set_master_mode_force
+        case 27:        //Is force feedback present - uint8
+            aux_uchar = *((uint8*) &g_rx.buffer[3]);
+            if (aux_uchar) {
+                g_mem.is_force_fb_present = 1;
+            } else {
+                g_mem.is_force_fb_present = 0;
+            }
+        break;
+//================================================     set_master_mode_proprio
+        case 28:        //Is proprio feedback present - uint8
+            aux_uchar = *((uint8*) &g_rx.buffer[3]);
+            if (aux_uchar) {
+                g_mem.is_proprio_fb_present = 1;
+            } else {
+                g_mem.is_proprio_fb_present = 0;
+            }
+        break;   
+//=======================================================     set_curr_prop_gain
+        case 29:
+            g_mem.curr_prop_gain = *((float*) &g_rx.buffer[3]);
+        break;
+//=============================================================     set_curr_sat
+        case 30: 
+            g_mem.curr_sat = *((int16*) &g_rx.buffer[3]);
+        break;
+//=======================================================     set_curr_dead_zone
+        case 31:
+            g_mem.curr_dead_zone = *((int16*) &g_rx.buffer[3]);
+        break;            
+//=============================================================     set_max_slide
+        case 32: 
+            g_mem.max_slide = *((int32*) &g_rx.buffer[3]);
+        break;            
+//=============================================================     set_max_SH_pos
+        case 33: 
+            g_mem.max_SH_pos = *((int32*) &g_rx.buffer[3]);
+        break;   
+//=============================================================     set_SH_ID
+        case 34: 
+            g_mem.SH_ID = *((uint8*) &g_rx.buffer[3]);
+        break;   
+//=============================================================     set_FF_ID
+        case 35: 
+            g_mem.ForceF_ID = *((uint8*) &g_rx.buffer[3]);
+        break; 
+//=============================================================     set_PF_ID
+        case 36: 
+            g_mem.ProprioF_ID = *((uint8*) &g_rx.buffer[3]);
+        break;             
+    }            
 }
 
 //==============================================================================
@@ -1163,23 +1358,41 @@ void infoPrepare(unsigned char *info_string)
         sprintf(str, "Rest ratio: %f", (float)(g_mem.rest_ratio));
         strcat(info_string, str);
         strcat(info_string, "\r\n"); 
-      /*  
-        sprintf(str, "Hand meas: %d", (int)(g_measOld.hand_meas));
+        
+        sprintf(str, "Tension count: %ld", (uint32)(count_tension_valid));
         strcat(info_string, str);
         strcat(info_string, "\r\n"); 
         
-        sprintf(str, "Check: %d", (int)(check2));
-        strcat(info_string, str);
-        strcat(info_string, "\r\n"); 
-        
-        sprintf(str, "Check 5: %d", (int)(check5));
-        strcat(info_string, str);
-        strcat(info_string, "\r\n"); 
-        
-        sprintf(str, "Check 3 and 4: %d, %d", (int)(check3), (int)check4);
+        sprintf(str, "Tension valid: %u", (uint8)(tension_valid));
         strcat(info_string, str);
         strcat(info_string, "\r\n");
-        */
+        
+        sprintf(str, "Battery Voltage (mV): %ld", (int32) dev_tension );
+        strcat(info_string, str);
+        strcat(info_string, "\r\n");
+        
+        sprintf(str, "Battery Filtered Voltage (mV): %ld", (int32) dev_tension_f );
+        strcat(info_string, str);
+        strcat(info_string, "\r\n");
+        
+        if (g_mem.is_myo2_master) {
+            strcat(info_string, "Myoelectric case 2 Master: YES\r\n");
+        } else {
+            strcat(info_string, "Myoelectric case 2 Master: NO\r\n");
+        }
+        
+        if (g_mem.is_force_fb_present) {
+            strcat(info_string, "Master with Force device: YES\r\n");
+        } else {
+            strcat(info_string, "Master with Force device: NO\r\n");
+        }
+        
+        if (g_mem.is_proprio_fb_present) {
+            strcat(info_string, "Master with Proprioceptive device: YES\r\n");
+        } else {
+            strcat(info_string, "Master with Proprioceptive device: NO\r\n");
+        }
+
         sprintf(str, "debug: %ld", (uint32)timer_value0 - (uint32)timer_value); //5000001
         strcat(info_string, str);
         strcat(info_string, "\r\n");
@@ -1243,30 +1456,25 @@ void commWrite(uint8 *packet_data, uint16 packet_lenght)
 }
 
 //==============================================================================
-//                                READ MEASUREMENTS FUNCTION FROM ANOTHER DEVICE
+//                                      READ MEASUREMENTS FUNCTION FROM SOFTHAND
 //==============================================================================
 
-int32 commReadMeasFromAnother()
+int32 commReadMeasFromSH()
 {
     uint8 packet_data[10];
     uint8 packet_lenght;
-    int32 aux_val;
-//    uint16 b_l, b_h;
+    int32 aux_val = 0;
     uint32 t_start, t_end;
-    
-//    uint8 CYDATA index;
 
     packet_lenght = 2;
     packet_data[0] = CMD_GET_MEASUREMENTS;
     packet_data[1] = CMD_GET_MEASUREMENTS;
-    commWriteAnother(packet_data, packet_lenght);
-     
-    receive_meas_from_hand = 1;
+    commWriteID(packet_data, packet_lenght, c_mem.SH_ID);
+
     t_start = (uint32) MY_TIMER_ReadCounter();
-    while(g_rx.buffer[0] != CMD_GET_HAND_MEASUREMENTS) {
+    while(g_rx.buffer[0] != CMD_GET_MEASUREMENTS) {
         if (interrupt_flag){
             interrupt_flag = FALSE;
-            //receive_meas_from_hand = 1;
             interrupt_manager();
         }
 
@@ -1277,46 +1485,20 @@ int32 commReadMeasFromAnother()
         }
     }
 
-    //b_l = (uint16)g_rx.buffer[1];
-    //b_h = (uint16)g_rx.buffer[2];
-    //curr_pos = (int16)((b_h << 8) | b_l);
-//    ((int8 *) &curr_pos)[0] = (int8)g_rx.buffer[2];
-//    ((int8 *) &curr_pos)[1] = (int8)g_rx.buffer[1];
- //   curr_pos = *((int16 *) &g_rx.buffer[1]);
-  //  ((int16 *) &curr_pos)[0] = (int16)g_rx.buffer[2];
-  //  ((int16 *) &curr_pos)[1] = (int16)g_rx.buffer[1];
-    
-  //  aux_val_2 = *((int16 *) &g_rx.buffer[1]);
-    
+    if (master_mode) {
+        aux_val = *((int16 *) &g_rx.buffer[1]);
 
-//    for (index = 1; index--;) 
-//        curr_pos = *((int16 *) &g_rx.buffer[(index << 1) + 1]);
+        aux_val = (aux_val << g_mem.res[0]);       //g_mem.res[0] (SoftHand sensor resolution)
+    }
     
-    aux_val = *((int16 *) &g_rx.buffer[1]);
-    
-    //g_meas.hand_meas = aux_val;
-    
-    check2 = aux_val;
-  //  aux_val = (int32)curr_pos;
-    //aux_val = aux_val << g_mem.res[0];
-
-    check3 = (uint8)g_rx.buffer[1];
-    check4 = (uint8)g_rx.buffer[2];
-    
-    check5 = (int16)(aux_val << g_mem.res[0]);
-
-    
-    receive_meas_from_hand = 0;
-  //  return aux_val;
-    
-    return (int32)(g_refOld.pos[0]);
+    return aux_val;
 }
 
 //==============================================================================
 //                                             WRITE FUNCTION FOR ANOTHER DEVICE
 //==============================================================================
 
-void commWriteAnother(uint8 *packet_data, uint16 packet_lenght)
+void commWriteID(uint8 *packet_data, uint16 packet_lenght, uint8 id)
 {
     static uint16 CYDATA i;    // iterator
 
@@ -1324,7 +1506,7 @@ void commWriteAnother(uint8 *packet_data, uint16 packet_lenght)
     UART_RS485_PutChar(':');
     UART_RS485_PutChar(':');
     // frame - ID
-    UART_RS485_PutChar(g_mem.id - 1);
+    UART_RS485_PutChar(id);
     // frame - length
     UART_RS485_PutChar((uint8)packet_lenght);
     // frame - packet data
@@ -1335,6 +1517,147 @@ void commWriteAnother(uint8 *packet_data, uint16 packet_lenght)
     i = 0;
 
     while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000){}
+}
+
+//==============================================================================
+//                                                                DRIVE SOFTHAND
+//==============================================================================
+ 
+void drive_SH() {
+    uint8 packet_data[6];
+    uint8 packet_lenght;
+    
+    // If not a emg input mode is set, exit from master_mode
+    if( c_mem.input_mode != INPUT_MODE_EMG_PROPORTIONAL  &&
+        c_mem.input_mode != INPUT_MODE_EMG_INTEGRAL      &&
+        c_mem.input_mode != INPUT_MODE_EMG_FCFS          &&
+        c_mem.input_mode != INPUT_MODE_EMG_FCFS_ADV     ){
+        master_mode = 0;
+        return;
+    }
+        
+    if (dev_tension < 7000){
+        master_mode = 0;
+        return;
+    }
+    
+       
+    //Sends a Set inputs command to a second board
+    packet_data[0] = CMD_SET_INPUTS;
+    *((int16 *) &packet_data[1]) = (int16) (g_ref.pos[0] >> g_mem.res[0]);
+    *((int16 *) &packet_data[3]) = 0;
+    packet_lenght = 6;
+    packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
+    commWriteID(packet_data, packet_lenght, c_mem.SH_ID);
+
+}
+
+//==============================================================================
+//                                                   DRIVE FORCE FEEDBACK DEVICE
+//==============================================================================
+/* Function called when is_force_fb_present is set. It asks current difference to 
+the SoftHand and sets force feedback device inputs proportionally to this difference.*/
+
+void drive_force_fb() {
+    CYDATA uint8 packet_data[6];    // output packet
+    uint8 packet_length;
+    int16 curr_diff;
+    int32 aux_val;
+    int32 aux_p1, aux_p2;
+    uint32 t_start, t_end;
+
+    packet_length = 2;
+    packet_data[0] = CMD_GET_CURR_DIFF;
+    packet_data[1] = CMD_GET_CURR_DIFF;
+    commWriteID(packet_data, packet_length, c_mem.SH_ID);         //To SoftHand ID
+    
+    t_start = (uint32) MY_TIMER_ReadCounter();
+    while(g_rx.buffer[0] != CMD_SET_CUFF_INPUTS) {
+        if (interrupt_flag){
+            interrupt_flag = FALSE;
+            interrupt_manager();
+        }
+        t_end = (uint32) MY_TIMER_ReadCounter();
+        if((t_start - t_end) > 4500000){             // 4.5 s timeout
+            g_mem.is_force_fb_present = 0;
+            break;
+        }
+        
+    }
+
+    curr_diff = *((int16 *) &g_rx.buffer[1]);
+    
+    // Current difference saturation
+    if(curr_diff > g_mem.curr_sat)
+        curr_diff = g_mem.curr_sat;
+    //Current difference dead zone
+    if(curr_diff < g_mem.curr_dead_zone)
+        curr_diff = 0;
+    else
+        curr_diff -= g_mem.curr_dead_zone;
+
+    aux_val = ((curr_diff * g_mem.curr_prop_gain) * 65535 / 1440);
+    
+    aux_p1 = -(aux_val << g_mem.res[0]);
+    aux_p2 =  (aux_val << g_mem.res[1]);
+        
+    // Send SET_CUFF_INPUTS to ForceF ID
+    packet_data[0] = CMD_SET_INPUTS;
+    *((int16 *) &packet_data[1]) = (int16) (aux_p1 >> g_mem.res[0]);
+    *((int16 *) &packet_data[3]) = (int16) (aux_p2 >> g_mem.res[1]);
+    packet_data[5] = LCRChecksum(packet_data, 5); 
+    commWriteID(packet_data, 6, c_mem.ForceF_ID);         // To force feedback device ID
+    
+}
+
+//==============================================================================
+//                                          DRIVE PROPRIOCEPTIVE FEEDBACK DEVICE
+//==============================================================================
+/* Function called when is_proprio_fb_present is set. It asks position to 
+the SoftHand and sets proprioceptive feedback device inputs proportionally to this value.*/
+void drive_proprio_fb(){ 
+    int32 aux_p1, aux_p2;
+    CYDATA uint8 packet_data[6];
+    
+    // Get SoftHand position
+    aux_p1 = (int32)commReadMeasFromSH();
+    aux_p2 = aux_p1;
+    
+    // Send SoftHand position to ProprioF device
+    packet_data[0] = CMD_SET_INPUTS;
+    *((int16 *) &packet_data[1]) = (int16) (aux_p1 >> g_mem.res[0]);
+    *((int16 *) &packet_data[3]) = (int16) (aux_p2 >> g_mem.res[1]);
+    packet_data[5] = LCRChecksum(packet_data, 5); 
+    commWriteID(packet_data, 6, c_mem.ProprioF_ID);         // To proprioceptive feedback device ID
+
+}
+
+//==============================================================================
+//                                                             DEACTIVATE SLAVES
+//==============================================================================
+ 
+void deactivate_slaves() {
+    uint8 packet_data[10];
+    uint8 packet_lenght;
+    
+    // If not a emg input mode is set, exit from master_mode
+    if(c_mem.input_mode != INPUT_MODE_EMG_PROPORTIONAL  &&
+        c_mem.input_mode != INPUT_MODE_EMG_INTEGRAL      &&
+        c_mem.input_mode != INPUT_MODE_EMG_FCFS          &&
+        c_mem.input_mode != INPUT_MODE_EMG_FCFS_ADV     ){
+        master_mode = 0;
+        return;
+    }
+    
+    //Sends a Set inputs command to a second board
+    packet_data[0] = CMD_ACTIVATE;
+
+    *((int16 *) &packet_data[1]) = 0;   //3 to activate, 0 to deactivate
+    packet_lenght = 3;
+    packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
+    
+    commWrite(packet_data, packet_lenght);
+    
 }
 
 //==============================================================================
@@ -1463,7 +1786,7 @@ uint8 memInit(void)
     uint8 i;
 
     //initialize memory settings
-    g_mem.id            = 1;
+    g_mem.id            = 2;
 
     g_mem.k_p           = 0.015 * 65536;
     g_mem.k_i           =     0 * 65536;
@@ -1502,6 +1825,10 @@ uint8 memInit(void)
         g_mem.m_off[i] = (int32)0 << g_mem.res[i];
     }
 
+    g_mem.curr_prop_gain = 0;
+    g_mem.curr_sat = 0;
+    g_mem.curr_dead_zone = 0;
+    
     g_mem.max_step_pos = 0;
     g_mem.max_step_neg = 0;
 
@@ -1520,6 +1847,26 @@ uint8 memInit(void)
 
     g_mem.double_encoder_on_off = 1;
     g_mem.motor_handle_ratio = 22;
+    
+    //Initialize rest position parameters        
+    g_mem.rest_pos = (int32)7000 << g_mem.res[0]; // 56000
+    g_mem.rest_delay = 5000;
+    g_mem.rest_vel = 2; //*1000
+    g_mem.rest_ratio = 5.0;
+    
+    g_mem.is_force_fb_present = 0;
+    g_mem.is_proprio_fb_present = 0;
+    g_mem.is_myo2_master = 0;
+    
+    g_mem.curr_prop_gain = 0.3;
+    g_mem.curr_sat = 1000;
+    g_mem.curr_dead_zone = 75;
+    g_mem.max_slide = 10000;
+    g_mem.max_SH_pos = (c_mem.pos_lim_sup[0] >> c_mem.res[0]);
+    
+    g_mem.SH_ID = 1;
+    g_mem.ForceF_ID = 3;
+    g_mem.ProprioF_ID = 4;
 
     // set the initialized flag to show EEPROM has been populated
     g_mem.flag = TRUE;
@@ -1554,14 +1901,6 @@ void cmd_get_measurements(){
     packet_data[7] = LCRChecksum (packet_data, 7);
 
     commWrite(packet_data, 8);
-   
-}
-
-void cmd_get_measurements_from_SH(){
- 
-//    ((int8 *) &curr_pos)[0] = (int8)g_rx.buffer[2];
-//    ((int8 *) &curr_pos)[1] = (int8)g_rx.buffer[1];
-    g_meas.hand_meas = *((int16 *) &g_rx.buffer[1]);
    
 }
 

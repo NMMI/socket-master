@@ -83,17 +83,14 @@ int16 ADC_buf[4];                           /*! ADC measurements buffer.*/
 
 int8 pwm_sign;                               /*!< Sign of pwm driven. Used to obtain current sign.*/
 
-// Mater mode
+// Master mode
 uint8 master_mode;               /*!< Flag used to set/unset master mode to send messages to other boards.*/
+uint32 count_tension_valid;
+uint8 first_tension_valid;
 
 uint8 rest_enabled;				/*!< Rest position flag.*/
 uint8 forced_open;               /*!< Forced open flag (used in position with rest position control).*/
 int32 rest_pos_curr_ref;			/*!< Rest position current reference.*/
-uint8 receive_meas_from_hand;	/*!< Position measurement form hand.*/
-
-int16 check2;
-uint8 check3, check4;
-int32 check5;
 int32 curr_pos_res;
 
 /* END OF FILE */

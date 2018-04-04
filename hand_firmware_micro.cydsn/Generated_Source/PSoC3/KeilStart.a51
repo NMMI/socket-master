@@ -1,12 +1,11 @@
 ;*******************************************************************************
-; FILENAME: KeilStart.a51
-; Version 5.20
+; \file KeilStart.a51
+; \version 5.60
 ;
-;  DESCRIPTION:
-;   Bootup Code for PSoC3 chips using the Keil toolchain.
+; \brief Bootup Code for PSoC3 chips using the Keil toolchain.
 ;
 ;*******************************************************************************
-; Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+; Copyright 2008-2017, Cypress Semiconductor Corporation.  All rights reserved.
 ; You may use this file only in accordance with the license, terms, conditions,
 ; disclaimers, and limitations in the end user license agreement accompanying
 ; the software package with which this file was provided.
@@ -62,6 +61,8 @@ IF CYDEV_PROJ_TYPE <> CYDEV_PROJ_TYPE_LOADABLEANDBOOTLOADER
                 EXTRN CODE (CyBtldr_CheckLaunch)
 ENDIF
 ENDIF
+
+                EXTRN CODE (CyIntInitVectors)
 
                 PUBLIC  ?C_STARTUP, ?C?XPAGE1SFR, ?C?XPAGE1RST
                 PUBLIC  STARTUP1   ; include STARTUP1 for bootloader
@@ -349,6 +350,9 @@ IF PBPSTACK <> 0
        ;* ?C_XBP acts as a base pointer to the reentrant stack for the COMPACT model.
        mov      ?C_PBP, #LOW PBPSTACKTOP
 ENDIF
+
+       ;* Initialize the interrupt address vector registers.
+       lcall    CyIntInitVectors
 
        ;* Initialize the configuration registers.
        lcall    cyfitter_cfg

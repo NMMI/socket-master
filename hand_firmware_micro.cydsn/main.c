@@ -182,7 +182,6 @@ int main()
     for (i = NUM_OF_SENSORS; i--;) { 
         g_meas.pos[i] = 0;
         g_meas.rot[i] = 0;
-        g_meas.hand_meas = 0;
     }
 
     g_refNew = g_ref;                                   // Initialize k+1 measurements structure.
@@ -198,6 +197,7 @@ int main()
     dev_pwm_limit = 0;                                  // Init PWM limit.
     pow_tension = 12000;       //12000 mV (12 V)
     tension_valid = FALSE;                              // Init tension_valid BIT.
+    first_tension_valid = TRUE;
 
     reset_last_value_flag = 0;
 
@@ -208,6 +208,7 @@ int main()
     // enable master_mode by default
     
     master_mode = 1;
+    count_tension_valid = 0;
     
     rest_enabled = 1;
 

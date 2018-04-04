@@ -1,14 +1,14 @@
 /*******************************************************************************
 * File Name: USB_VDD.h  
-* Version 2.10
+* Version 2.20
 *
 * Description:
-*  This file containts Control Register function prototypes and register defines
+*  This file contains Pin function prototypes and register defines
 *
 * Note:
 *
 ********************************************************************************
-* Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+* Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions, 
 * disclaimers, and limitations in the end user license agreement accompanying 
 * the software package with which this file was provided.
@@ -27,31 +27,66 @@
 *        Function Prototypes             
 ***************************************/    
 
+/**
+* \addtogroup group_general
+* @{
+*/
 void    USB_VDD_Write(uint8 value) ;
 void    USB_VDD_SetDriveMode(uint8 mode) ;
 uint8   USB_VDD_ReadDataReg(void) ;
 uint8   USB_VDD_Read(void) ;
+void    USB_VDD_SetInterruptMode(uint16 position, uint16 mode) ;
 uint8   USB_VDD_ClearInterrupt(void) ;
-
+/** @} general */
 
 /***************************************
 *           API Constants        
 ***************************************/
 
-/* Drive Modes */
-#define USB_VDD_DM_ALG_HIZ         PIN_DM_ALG_HIZ
-#define USB_VDD_DM_DIG_HIZ         PIN_DM_DIG_HIZ
-#define USB_VDD_DM_RES_UP          PIN_DM_RES_UP
-#define USB_VDD_DM_RES_DWN         PIN_DM_RES_DWN
-#define USB_VDD_DM_OD_LO           PIN_DM_OD_LO
-#define USB_VDD_DM_OD_HI           PIN_DM_OD_HI
-#define USB_VDD_DM_STRONG          PIN_DM_STRONG
-#define USB_VDD_DM_RES_UPDWN       PIN_DM_RES_UPDWN
-
+/**
+* \addtogroup group_constants
+* @{
+*/
+    /** \addtogroup driveMode Drive mode constants
+     * \brief Constants to be passed as "mode" parameter in the USB_VDD_SetDriveMode() function.
+     *  @{
+     */
+        /* Drive Modes */
+        #define USB_VDD_DM_ALG_HIZ         PIN_DM_ALG_HIZ   /**< \brief High Impedance Analog   */
+        #define USB_VDD_DM_DIG_HIZ         PIN_DM_DIG_HIZ   /**< \brief High Impedance Digital  */
+        #define USB_VDD_DM_RES_UP          PIN_DM_RES_UP    /**< \brief Resistive Pull Up       */
+        #define USB_VDD_DM_RES_DWN         PIN_DM_RES_DWN   /**< \brief Resistive Pull Down     */
+        #define USB_VDD_DM_OD_LO           PIN_DM_OD_LO     /**< \brief Open Drain, Drives Low  */
+        #define USB_VDD_DM_OD_HI           PIN_DM_OD_HI     /**< \brief Open Drain, Drives High */
+        #define USB_VDD_DM_STRONG          PIN_DM_STRONG    /**< \brief Strong Drive            */
+        #define USB_VDD_DM_RES_UPDWN       PIN_DM_RES_UPDWN /**< \brief Resistive Pull Up/Down  */
+    /** @} driveMode */
+/** @} group_constants */
+    
 /* Digital Port Constants */
 #define USB_VDD_MASK               USB_VDD__MASK
 #define USB_VDD_SHIFT              USB_VDD__SHIFT
 #define USB_VDD_WIDTH              1u
+
+/* Interrupt constants */
+#if defined(USB_VDD__INTSTAT)
+/**
+* \addtogroup group_constants
+* @{
+*/
+    /** \addtogroup intrMode Interrupt constants
+     * \brief Constants to be passed as "mode" parameter in USB_VDD_SetInterruptMode() function.
+     *  @{
+     */
+        #define USB_VDD_INTR_NONE      (uint16)(0x0000u)   /**< \brief Disabled             */
+        #define USB_VDD_INTR_RISING    (uint16)(0x0001u)   /**< \brief Rising edge trigger  */
+        #define USB_VDD_INTR_FALLING   (uint16)(0x0002u)   /**< \brief Falling edge trigger */
+        #define USB_VDD_INTR_BOTH      (uint16)(0x0003u)   /**< \brief Both edge trigger    */
+        /** @} intrMode */
+/** @} group_constants */
+
+    #define USB_VDD_INTR_MASK      (0x01u)
+#endif /* (USB_VDD__INTSTAT) */
 
 
 /***************************************
@@ -104,13 +139,21 @@ uint8   USB_VDD_ClearInterrupt(void) ;
 /* Sync Output Enable Registers */
 #define USB_VDD_PRTDSI__SYNC_OUT       (* (reg8 *) USB_VDD__PRTDSI__SYNC_OUT) 
 
+/* SIO registers */
+#if defined(USB_VDD__SIO_CFG)
+    #define USB_VDD_SIO_HYST_EN        (* (reg8 *) USB_VDD__SIO_HYST_EN)
+    #define USB_VDD_SIO_REG_HIFREQ     (* (reg8 *) USB_VDD__SIO_REG_HIFREQ)
+    #define USB_VDD_SIO_CFG            (* (reg8 *) USB_VDD__SIO_CFG)
+    #define USB_VDD_SIO_DIFF           (* (reg8 *) USB_VDD__SIO_DIFF)
+#endif /* (USB_VDD__SIO_CFG) */
 
-#if defined(USB_VDD__INTSTAT)  /* Interrupt Registers */
-
-    #define USB_VDD_INTSTAT                (* (reg8 *) USB_VDD__INTSTAT)
-    #define USB_VDD_SNAP                   (* (reg8 *) USB_VDD__SNAP)
-
-#endif /* Interrupt Registers */
+/* Interrupt Registers */
+#if defined(USB_VDD__INTSTAT)
+    #define USB_VDD_INTSTAT             (* (reg8 *) USB_VDD__INTSTAT)
+    #define USB_VDD_SNAP                (* (reg8 *) USB_VDD__SNAP)
+    
+	#define USB_VDD_0_INTTYPE_REG 		(* (reg8 *) USB_VDD__0__INTTYPE)
+#endif /* (USB_VDD__INTSTAT) */
 
 #endif /* End Pins USB_VDD_H */
 

@@ -4,9 +4,9 @@
 
 #Version:            1.1
 
-#Build Date:         Oct  1 2015 13:46:59
+#Build Date:         Jul 19 2017 14:31:00
 
-#File Generated:     Mar 22 2017 18:28:14
+#File Generated:     Jan 2 2018 16:43:35
 
 #Purpose:            
 
@@ -14,16 +14,16 @@
 
 #***************************************************************************
 
-Executing : C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\bin/sjplacer.exe --proj-name hand_firmware_micro --netlist-vh2 hand_firmware_micro_p.vh2 --arch-file C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\dev/arch/p35_udb4x6.ark --rrg-file C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\dev/psoc3/route_arch-rrg.cydata --irq-file C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\dev/psoc3/irqconn.cydata --drq-file C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\dev/psoc3/dmaconn.cydata --dsi-conn-file C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\dev/psoc3/dsiconn.cydata --pins-file pins_48-SSOP.xml --lib-file hand_firmware_micro_p.lib --sdc-file hand_firmware_micro.sdc --io-pcf hand_firmware_micro.pci --outdir .
+Executing : C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\bin/sjplacer.exe --proj-name hand_firmware_micro --netlist-vh2 hand_firmware_micro_p.vh2 --arch p35_udb4x6 --arch-file C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\dev\arch/udbdsi_4x6_24.cydata --ip-file C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\dev\psoc3/ip_blocks.cydata --rrg-file C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\dev\psoc3/route_arch-rrg.cydata --irq-file C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\dev\psoc3/irqconn.cydata --drq-file C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\dev\psoc3/dmaconn.cydata --dsi-conn-file C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\dev\psoc3/dsiconn.cydata --pins-file pins_48-SSOP.xml --lib-file hand_firmware_micro_p.lib --sdc-file hand_firmware_micro.sdc --io-pcf hand_firmware_micro.pci --outdir .
 
 		Softjin Techologies Placer, Version 1.1
 
-Build Date : Oct  1 2015	13:44:59
+Build Date : Jul 19 2017	14:29:55
 
 D2004: Option and Settings Summary
 =============================================================
 Netlist vh2 file          - hand_firmware_micro_p.vh2
-Architecture file         - C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\dev/arch/p35_udb4x6.ark
+Architecture file         - C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\dev\arch/udbdsi_4x6_24.cydata
 Package                   - 
 Defparam file             - 
 SDC file                  - hand_firmware_micro.sdc
@@ -34,7 +34,7 @@ IO Placement file         - hand_firmware_micro.pci
 D2050: Starting reading inputs for placer
 =============================================================
 D2065: Reading netlist file : "hand_firmware_micro_p.vh2"
-D2065: Reading arch file : "C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\dev/arch/p35_udb4x6.ark"
+D2065: Reading arch file : "C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\dev\arch/udbdsi_4x6_24.cydata"
 D2051: Reading of inputs for placer completed successfully
 
 D2053: Starting placement of the design
@@ -54,7 +54,7 @@ Design Statistics after Packing
 
 Device Utilization Summary after Packing
     Macrocells                  :	61/192
-    UDBS                        :	21/24
+    UDBS                        :	20/24
     IOs                         :	19/72
 
 
@@ -84,11 +84,11 @@ Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_theACLK          | Frequency: N/A       | Target:   2.2 MHz
 Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
-Clock: CLOCK_ENCODERS       | Frequency:  34.4 MHz | Target:   0.2 MHz
+Clock: CLOCK_ENCODERS       | Frequency:  28.6 MHz | Target:   0.2 MHz
 Clock: CLOCK_PWM            | Frequency:  76.9 MHz | Target:   2.0 MHz
-Clock: CLOCK_PWM_1          | Frequency:  76.9 MHz | Target:   0.0 MHz
-Clock: CLOCK_UART           | Frequency:  53.8 MHz | Target:  16.0 MHz
-Clock: CyBUS_CLK            | Frequency:  47.8 MHz | Target:  48.0 MHz
+Clock: CLOCK_PWM_1          | Frequency:  57.0 MHz | Target:   0.0 MHz
+Clock: CLOCK_UART           | Frequency:  46.3 MHz | Target:  16.0 MHz
+Clock: CyBUS_CLK            | Frequency:  39.1 MHz | Target:  48.0 MHz
 Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
@@ -114,11 +114,11 @@ Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_theACLK          | Frequency: N/A       | Target:   2.2 MHz
 Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
-Clock: CLOCK_ENCODERS       | Frequency:   2.5 MHz | Target:   0.2 MHz
+Clock: CLOCK_ENCODERS       | Frequency:  40.6 MHz | Target:   0.2 MHz
 Clock: CLOCK_PWM            | Frequency:  76.9 MHz | Target:   2.0 MHz
-Clock: CLOCK_PWM_1          | Frequency:   7.4 MHz | Target:   0.0 MHz
-Clock: CLOCK_UART           | Frequency:  55.6 MHz | Target:  16.0 MHz
-Clock: CyBUS_CLK            | Frequency:   2.5 MHz | Target:  48.0 MHz
+Clock: CLOCK_PWM_1          | Frequency:  57.0 MHz | Target:   0.0 MHz
+Clock: CLOCK_UART           | Frequency:  45.9 MHz | Target:  16.0 MHz
+Clock: CyBUS_CLK            | Frequency:  49.8 MHz | Target:  48.0 MHz
 Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
@@ -127,7 +127,7 @@ Clock: CyPLL_OUT            | Frequency: N/A       | Target:  48.0 MHz
 Clock: WATCHDOG_CLK         | Frequency: N/A       | Target:   0.0 MHz
 Clock: WATCHDOG_CLK(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
 Clock: \ADC:DSM\/dec_clock  | Frequency: N/A       | Target:   0.1 MHz
-Clock: timer_clock          | Frequency:  44.6 MHz | Target:   1.0 MHz
+Clock: timer_clock          | Frequency:  43.5 MHz | Target:   1.0 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -168,9 +168,9 @@ Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_theACLK          | Frequency: N/A       | Target:   2.2 MHz
 Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
 Clock: CLOCK_ENCODERS       | Frequency:   2.5 MHz | Target:   0.2 MHz
-Clock: CLOCK_PWM            | Frequency:  76.9 MHz | Target:   2.0 MHz
+Clock: CLOCK_PWM            | Frequency:  60.0 MHz | Target:   2.0 MHz
 Clock: CLOCK_PWM_1          | Frequency:   7.4 MHz | Target:   0.0 MHz
-Clock: CLOCK_UART           | Frequency:  43.9 MHz | Target:  16.0 MHz
+Clock: CLOCK_UART           | Frequency:  46.9 MHz | Target:  16.0 MHz
 Clock: CyBUS_CLK            | Frequency:   2.7 MHz | Target:  48.0 MHz
 Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
@@ -180,7 +180,7 @@ Clock: CyPLL_OUT            | Frequency: N/A       | Target:  48.0 MHz
 Clock: WATCHDOG_CLK         | Frequency: N/A       | Target:   0.0 MHz
 Clock: WATCHDOG_CLK(fixed-function) | Frequency: N/A       | Target:   0.0 MHz
 Clock: \ADC:DSM\/dec_clock  | Frequency: N/A       | Target:   0.1 MHz
-Clock: timer_clock          | Frequency:  43.5 MHz | Target:   1.0 MHz
+Clock: timer_clock          | Frequency:  44.6 MHz | Target:   1.0 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -191,5 +191,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 2.2 sec.
+I2076: Total run-time: 2.1 sec.
 

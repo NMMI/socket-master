@@ -1,6 +1,6 @@
 <map id="command_processing.c" name="command_processing.c">
 <area shape="rect" id="node2" href="$command__processing_8h.html" title="Received commands processing functions. " alt="" coords="93,80,253,107"/>
-<area shape="rect" id="node8" href="$commands_8h.html" title="Definitions for qbMove and qbHand commands, parameters and packages. " alt="" coords="318,229,415,256"/>
+<area shape="rect" id="node8" href="$commands_8h.html" title="Definitions for SoftHand commands, parameters and packages. " alt="" coords="318,229,415,256"/>
 <area shape="rect" id="node9" href="$interruptions_8h.html" title="Interruptions header file. " alt="" coords="5,155,109,181"/>
 <area shape="rect" id="node11" href="$utils_8h.html" title="Utility functions declaration. " alt="" coords="278,80,335,107"/>
 <area shape="rect" id="node3" href="$globals_8h.html" title="Global definitions and macros are set in this file. " alt="" coords="177,155,252,181"/>

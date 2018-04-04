@@ -4,6 +4,7 @@ var searchData=
   ['m_5fmult',['m_mult',['../structst__mem.html#aecf0baab567443534c0ded663b746896',1,'st_mem']]],
   ['m_5foff',['m_off',['../structst__mem.html#ab544f035124be893918bafb611fe88d9',1,'st_mem']]],
   ['main_2ec',['main.c',['../main_8c.html',1,'']]],
+  ['master_5fmode',['master_mode',['../globals_8c.html#acf0e2a5d5954714103e295ac35513215',1,'master_mode():&#160;globals.c'],['../globals_8h.html#acf0e2a5d5954714103e295ac35513215',1,'master_mode():&#160;globals.c']]],
   ['max_5fstep_5fneg',['max_step_neg',['../structst__mem.html#a14fe3ed96d232dced2d33efc493a0667',1,'st_mem']]],
   ['max_5fstep_5fpos',['max_step_pos',['../structst__mem.html#a9be5987152b8c6bb28c1d311bc94e5e3',1,'st_mem']]],
   ['max_5fwatchdog_5ftimer',['MAX_WATCHDOG_TIMER',['../globals_8h.html#a887dbd571d7f138cbe0e994e3fcc661b',1,'globals.h']]],

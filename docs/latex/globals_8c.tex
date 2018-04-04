@@ -40,14 +40,13 @@ uint8 \textbf{ dev\+\_\+pwm\+\_\+limit}
 \item 
 int32 \textbf{ dev\+\_\+tension\+\_\+f}
 \item 
-\mbox{\label{globals_8c_a63d713ff9ac5ba0651f6af9115a32e4d}} 
-int32 {\bfseries pow\+\_\+tension}
+int32 \textbf{ pow\+\_\+tension}
 \item 
 C\+Y\+B\+IT \textbf{ reset\+\_\+last\+\_\+value\+\_\+flag}
 \item 
 C\+Y\+B\+IT \textbf{ tension\+\_\+valid}
 \item 
-C\+Y\+B\+IT \textbf{ interrupt\+\_\+flag}
+C\+Y\+B\+IT \textbf{ interrupt\+\_\+flag} = F\+A\+L\+SE
 \item 
 C\+Y\+B\+IT \textbf{ watchdog\+\_\+flag}
 \item 
@@ -56,20 +55,15 @@ int16 {\bfseries A\+D\+C\+\_\+buf} [4]
 \item 
 int8 \textbf{ pwm\+\_\+sign}
 \item 
-\mbox{\label{globals_8c_acf0e2a5d5954714103e295ac35513215}} 
-uint8 {\bfseries master\+\_\+mode}
+uint8 \textbf{ master\+\_\+mode}
 \item 
-\mbox{\label{globals_8c_a1f8839fadee52a47a0042eaa695c3f3a}} 
-uint8 {\bfseries rest\+\_\+enabled}
+uint8 \textbf{ rest\+\_\+enabled}
 \item 
-\mbox{\label{globals_8c_a0f13b80a0c329fa3176eb1e72ef36fb8}} 
-uint8 {\bfseries forced\+\_\+open}
+uint8 \textbf{ forced\+\_\+open}
 \item 
-\mbox{\label{globals_8c_a485e5b90bbfb79aa97f874873cd6c93a}} 
-int32 {\bfseries rest\+\_\+pos\+\_\+curr\+\_\+ref}
+int32 \textbf{ rest\+\_\+pos\+\_\+curr\+\_\+ref}
 \item 
-\mbox{\label{globals_8c_a50b50a565306d9a28c9e86694428a759}} 
-uint8 {\bfseries receive\+\_\+meas\+\_\+from\+\_\+hand}
+uint8 \textbf{ receive\+\_\+meas\+\_\+from\+\_\+hand}
 \item 
 \mbox{\label{globals_8c_ab43d57397f71cb35c19d91058c48bed2}} 
 int16 {\bfseries check2}
@@ -92,10 +86,10 @@ int32 {\bfseries curr\+\_\+pos\+\_\+res}
 Global variables. 
 
 \begin{DoxyDate}{Date}
-June 06, 2016 
+October 01, 2017 
 \end{DoxyDate}
 \begin{DoxyAuthor}{Author}
-{\itshape qbrobotics} 
+{\itshape Centro \char`\"{}\+E.\+Piaggio\char`\"{}} 
 \end{DoxyAuthor}
 \begin{DoxyCopyright}{Copyright}
 (C) 2012-\/2016 qbrobotics. All rights reserved. 
@@ -117,19 +111,25 @@ Memory parameters. \mbox{\label{globals_8c_a21f4f67e4203dea0b9956589eaa6cef3}}
 \subsubsection{dev\+\_\+pwm\+\_\+limit}
 {\footnotesize\ttfamily uint8 dev\+\_\+pwm\+\_\+limit}
 
-Device pwm limit \mbox{\label{globals_8c_a53a494e9edc739a4f7c884778d1a93b1}} 
+Device pwm limit. It may change during execution. \mbox{\label{globals_8c_a53a494e9edc739a4f7c884778d1a93b1}} 
 \index{globals.\+c@{globals.\+c}!dev\+\_\+tension@{dev\+\_\+tension}}
 \index{dev\+\_\+tension@{dev\+\_\+tension}!globals.\+c@{globals.\+c}}
 \subsubsection{dev\+\_\+tension}
 {\footnotesize\ttfamily int32 dev\+\_\+tension}
 
-Power supply tension \mbox{\label{globals_8c_a600f1f02d397d3ffd8b03b8a4edace02}} 
+Power supply tension. \mbox{\label{globals_8c_a600f1f02d397d3ffd8b03b8a4edace02}} 
 \index{globals.\+c@{globals.\+c}!dev\+\_\+tension\+\_\+f@{dev\+\_\+tension\+\_\+f}}
 \index{dev\+\_\+tension\+\_\+f@{dev\+\_\+tension\+\_\+f}!globals.\+c@{globals.\+c}}
 \subsubsection{dev\+\_\+tension\+\_\+f}
 {\footnotesize\ttfamily int32 dev\+\_\+tension\+\_\+f}
 
-Filtered power supply tension \mbox{\label{globals_8c_a47c3980e6bddec492ca4315e36602ba0}} 
+Filtered power supply tension. \mbox{\label{globals_8c_a0f13b80a0c329fa3176eb1e72ef36fb8}} 
+\index{globals.\+c@{globals.\+c}!forced\+\_\+open@{forced\+\_\+open}}
+\index{forced\+\_\+open@{forced\+\_\+open}!globals.\+c@{globals.\+c}}
+\subsubsection{forced\+\_\+open}
+{\footnotesize\ttfamily uint8 forced\+\_\+open}
+
+Forced open flag (used in position with rest position control). \mbox{\label{globals_8c_a47c3980e6bddec492ca4315e36602ba0}} 
 \index{globals.\+c@{globals.\+c}!g\+\_\+meas\+Old@{g\+\_\+meas\+Old}}
 \index{g\+\_\+meas\+Old@{g\+\_\+meas\+Old}!globals.\+c@{globals.\+c}}
 \subsubsection{g\+\_\+meas\+Old}
@@ -151,21 +151,51 @@ Incoming/\+Outcoming data. \mbox{\label{globals_8c_a1e6fda88dfdabc63859f8907eb70
 \index{globals.\+c@{globals.\+c}!interrupt\+\_\+flag@{interrupt\+\_\+flag}}
 \index{interrupt\+\_\+flag@{interrupt\+\_\+flag}!globals.\+c@{globals.\+c}}
 \subsubsection{interrupt\+\_\+flag}
-{\footnotesize\ttfamily C\+Y\+B\+IT interrupt\+\_\+flag}
+{\footnotesize\ttfamily C\+Y\+B\+IT interrupt\+\_\+flag = F\+A\+L\+SE}
 
-Interrupt flag enabler \mbox{\label{globals_8c_a8ac7ad7c894db750e93bc745818e26ca}} 
+Interrupt flag enabler. \mbox{\label{globals_8c_acf0e2a5d5954714103e295ac35513215}} 
+\index{globals.\+c@{globals.\+c}!master\+\_\+mode@{master\+\_\+mode}}
+\index{master\+\_\+mode@{master\+\_\+mode}!globals.\+c@{globals.\+c}}
+\subsubsection{master\+\_\+mode}
+{\footnotesize\ttfamily uint8 master\+\_\+mode}
+
+Flag used to set/unset master mode to send messages to other boards. \mbox{\label{globals_8c_a63d713ff9ac5ba0651f6af9115a32e4d}} 
+\index{globals.\+c@{globals.\+c}!pow\+\_\+tension@{pow\+\_\+tension}}
+\index{pow\+\_\+tension@{pow\+\_\+tension}!globals.\+c@{globals.\+c}}
+\subsubsection{pow\+\_\+tension}
+{\footnotesize\ttfamily int32 pow\+\_\+tension}
+
+Computed power supply tension. \mbox{\label{globals_8c_a8ac7ad7c894db750e93bc745818e26ca}} 
 \index{globals.\+c@{globals.\+c}!pwm\+\_\+sign@{pwm\+\_\+sign}}
 \index{pwm\+\_\+sign@{pwm\+\_\+sign}!globals.\+c@{globals.\+c}}
 \subsubsection{pwm\+\_\+sign}
 {\footnotesize\ttfamily int8 pwm\+\_\+sign}
 
-A\+DC measurements buffer Sign of pwm driven. Used to obtain current sign. \mbox{\label{globals_8c_aa89a782cfe75ce7970236babd308fe69}} 
+A\+DC measurements buffer. Sign of pwm driven. Used to obtain current sign. \mbox{\label{globals_8c_a50b50a565306d9a28c9e86694428a759}} 
+\index{globals.\+c@{globals.\+c}!receive\+\_\+meas\+\_\+from\+\_\+hand@{receive\+\_\+meas\+\_\+from\+\_\+hand}}
+\index{receive\+\_\+meas\+\_\+from\+\_\+hand@{receive\+\_\+meas\+\_\+from\+\_\+hand}!globals.\+c@{globals.\+c}}
+\subsubsection{receive\+\_\+meas\+\_\+from\+\_\+hand}
+{\footnotesize\ttfamily uint8 receive\+\_\+meas\+\_\+from\+\_\+hand}
+
+Position measurement form hand. \mbox{\label{globals_8c_aa89a782cfe75ce7970236babd308fe69}} 
 \index{globals.\+c@{globals.\+c}!reset\+\_\+last\+\_\+value\+\_\+flag@{reset\+\_\+last\+\_\+value\+\_\+flag}}
 \index{reset\+\_\+last\+\_\+value\+\_\+flag@{reset\+\_\+last\+\_\+value\+\_\+flag}!globals.\+c@{globals.\+c}}
 \subsubsection{reset\+\_\+last\+\_\+value\+\_\+flag}
 {\footnotesize\ttfamily C\+Y\+B\+IT reset\+\_\+last\+\_\+value\+\_\+flag}
 
-This flag is set when the encoders last values must be resetted. \mbox{\label{globals_8c_a894b799ffe45f442a6a897580ab7e98e}} 
+This flag is set when the encoders last values must be resetted. \mbox{\label{globals_8c_a1f8839fadee52a47a0042eaa695c3f3a}} 
+\index{globals.\+c@{globals.\+c}!rest\+\_\+enabled@{rest\+\_\+enabled}}
+\index{rest\+\_\+enabled@{rest\+\_\+enabled}!globals.\+c@{globals.\+c}}
+\subsubsection{rest\+\_\+enabled}
+{\footnotesize\ttfamily uint8 rest\+\_\+enabled}
+
+Rest position flag. \mbox{\label{globals_8c_a485e5b90bbfb79aa97f874873cd6c93a}} 
+\index{globals.\+c@{globals.\+c}!rest\+\_\+pos\+\_\+curr\+\_\+ref@{rest\+\_\+pos\+\_\+curr\+\_\+ref}}
+\index{rest\+\_\+pos\+\_\+curr\+\_\+ref@{rest\+\_\+pos\+\_\+curr\+\_\+ref}!globals.\+c@{globals.\+c}}
+\subsubsection{rest\+\_\+pos\+\_\+curr\+\_\+ref}
+{\footnotesize\ttfamily int32 rest\+\_\+pos\+\_\+curr\+\_\+ref}
+
+Rest position current reference. \mbox{\label{globals_8c_a894b799ffe45f442a6a897580ab7e98e}} 
 \index{globals.\+c@{globals.\+c}!tau\+\_\+feedback@{tau\+\_\+feedback}}
 \index{tau\+\_\+feedback@{tau\+\_\+feedback}!globals.\+c@{globals.\+c}}
 \subsubsection{tau\+\_\+feedback}
@@ -177,7 +207,7 @@ Torque feedback. \mbox{\label{globals_8c_ac42fa606610c2600210d9b7b2c1d0882}}
 \subsubsection{tension\+\_\+valid}
 {\footnotesize\ttfamily C\+Y\+B\+IT tension\+\_\+valid}
 
-Tension validation bit \mbox{\label{globals_8c_ad47cd0e4d0fcf5739a88e52e949a8084}} 
+Tension validation bit. \mbox{\label{globals_8c_ad47cd0e4d0fcf5739a88e52e949a8084}} 
 \index{globals.\+c@{globals.\+c}!timer\+\_\+value@{timer\+\_\+value}}
 \index{timer\+\_\+value@{timer\+\_\+value}!globals.\+c@{globals.\+c}}
 \subsubsection{timer\+\_\+value}
@@ -195,4 +225,4 @@ Start time of the firmware main loop \mbox{\label{globals_8c_a156a860c465529ff2f
 \subsubsection{watchdog\+\_\+flag}
 {\footnotesize\ttfamily C\+Y\+B\+IT watchdog\+\_\+flag}
 
-Watchdog flag enabler 
+Watchdog flag enabler. 

@@ -78,7 +78,7 @@ Include dependency graph for globals.c:</div>
 <map name="globals_8c" id="globals_8c">
 <area shape="rect" id="node2" href="globals_8h.html" title="Global definitions and macros are set in this file. " alt="" coords="139,80,213,107"/>
 <area shape="rect" id="node3" href="device_8h_source.html" title="device.h" alt="" coords="7,155,76,181"/>
-<area shape="rect" id="node7" href="commands_8h.html" title="Definitions for qbMove and qbHand commands, parameters and packages. " alt="" coords="275,155,373,181"/>
+<area shape="rect" id="node7" href="commands_8h.html" title="Definitions for SoftHand commands, parameters and packages. " alt="" coords="275,155,373,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -107,14 +107,13 @@ struct <a class="el" href="structst__calib.html">st_calib</a>&#160;</td><td clas
 <tr class="separator:a21f4f67e4203dea0b9956589eaa6cef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a600f1f02d397d3ffd8b03b8a4edace02"><td class="memItemLeft" align="right" valign="top">int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8c.html#a600f1f02d397d3ffd8b03b8a4edace02">dev_tension_f</a></td></tr>
 <tr class="separator:a600f1f02d397d3ffd8b03b8a4edace02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63d713ff9ac5ba0651f6af9115a32e4d"><td class="memItemLeft" align="right" valign="top"><a id="a63d713ff9ac5ba0651f6af9115a32e4d"></a>
-int32&#160;</td><td class="memItemRight" valign="bottom"><b>pow_tension</b></td></tr>
+<tr class="memitem:a63d713ff9ac5ba0651f6af9115a32e4d"><td class="memItemLeft" align="right" valign="top">int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8c.html#a63d713ff9ac5ba0651f6af9115a32e4d">pow_tension</a></td></tr>
 <tr class="separator:a63d713ff9ac5ba0651f6af9115a32e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa89a782cfe75ce7970236babd308fe69"><td class="memItemLeft" align="right" valign="top">CYBIT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8c.html#aa89a782cfe75ce7970236babd308fe69">reset_last_value_flag</a></td></tr>
 <tr class="separator:aa89a782cfe75ce7970236babd308fe69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac42fa606610c2600210d9b7b2c1d0882"><td class="memItemLeft" align="right" valign="top">CYBIT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8c.html#ac42fa606610c2600210d9b7b2c1d0882">tension_valid</a></td></tr>
 <tr class="separator:ac42fa606610c2600210d9b7b2c1d0882"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e6fda88dfdabc63859f8907eb702920"><td class="memItemLeft" align="right" valign="top">CYBIT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8c.html#a1e6fda88dfdabc63859f8907eb702920">interrupt_flag</a></td></tr>
+<tr class="memitem:a1e6fda88dfdabc63859f8907eb702920"><td class="memItemLeft" align="right" valign="top">CYBIT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8c.html#a1e6fda88dfdabc63859f8907eb702920">interrupt_flag</a> = FALSE</td></tr>
 <tr class="separator:a1e6fda88dfdabc63859f8907eb702920"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a156a860c465529ff2f515725ab816a58"><td class="memItemLeft" align="right" valign="top">CYBIT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8c.html#a156a860c465529ff2f515725ab816a58">watchdog_flag</a></td></tr>
 <tr class="separator:a156a860c465529ff2f515725ab816a58"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,20 +122,15 @@ int16&#160;</td><td class="memItemRight" valign="bottom"><b>ADC_buf</b> [4]</td>
 <tr class="separator:abb22f0a4462a0b4db27496654f2175a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ac7ad7c894db750e93bc745818e26ca"><td class="memItemLeft" align="right" valign="top">int8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8c.html#a8ac7ad7c894db750e93bc745818e26ca">pwm_sign</a></td></tr>
 <tr class="separator:a8ac7ad7c894db750e93bc745818e26ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf0e2a5d5954714103e295ac35513215"><td class="memItemLeft" align="right" valign="top"><a id="acf0e2a5d5954714103e295ac35513215"></a>
-uint8&#160;</td><td class="memItemRight" valign="bottom"><b>master_mode</b></td></tr>
+<tr class="memitem:acf0e2a5d5954714103e295ac35513215"><td class="memItemLeft" align="right" valign="top">uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8c.html#acf0e2a5d5954714103e295ac35513215">master_mode</a></td></tr>
 <tr class="separator:acf0e2a5d5954714103e295ac35513215"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f8839fadee52a47a0042eaa695c3f3a"><td class="memItemLeft" align="right" valign="top"><a id="a1f8839fadee52a47a0042eaa695c3f3a"></a>
-uint8&#160;</td><td class="memItemRight" valign="bottom"><b>rest_enabled</b></td></tr>
+<tr class="memitem:a1f8839fadee52a47a0042eaa695c3f3a"><td class="memItemLeft" align="right" valign="top">uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8c.html#a1f8839fadee52a47a0042eaa695c3f3a">rest_enabled</a></td></tr>
 <tr class="separator:a1f8839fadee52a47a0042eaa695c3f3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f13b80a0c329fa3176eb1e72ef36fb8"><td class="memItemLeft" align="right" valign="top"><a id="a0f13b80a0c329fa3176eb1e72ef36fb8"></a>
-uint8&#160;</td><td class="memItemRight" valign="bottom"><b>forced_open</b></td></tr>
+<tr class="memitem:a0f13b80a0c329fa3176eb1e72ef36fb8"><td class="memItemLeft" align="right" valign="top">uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8c.html#a0f13b80a0c329fa3176eb1e72ef36fb8">forced_open</a></td></tr>
 <tr class="separator:a0f13b80a0c329fa3176eb1e72ef36fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a485e5b90bbfb79aa97f874873cd6c93a"><td class="memItemLeft" align="right" valign="top"><a id="a485e5b90bbfb79aa97f874873cd6c93a"></a>
-int32&#160;</td><td class="memItemRight" valign="bottom"><b>rest_pos_curr_ref</b></td></tr>
+<tr class="memitem:a485e5b90bbfb79aa97f874873cd6c93a"><td class="memItemLeft" align="right" valign="top">int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8c.html#a485e5b90bbfb79aa97f874873cd6c93a">rest_pos_curr_ref</a></td></tr>
 <tr class="separator:a485e5b90bbfb79aa97f874873cd6c93a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50b50a565306d9a28c9e86694428a759"><td class="memItemLeft" align="right" valign="top"><a id="a50b50a565306d9a28c9e86694428a759"></a>
-uint8&#160;</td><td class="memItemRight" valign="bottom"><b>receive_meas_from_hand</b></td></tr>
+<tr class="memitem:a50b50a565306d9a28c9e86694428a759"><td class="memItemLeft" align="right" valign="top">uint8&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="globals_8c.html#a50b50a565306d9a28c9e86694428a759">receive_meas_from_hand</a></td></tr>
 <tr class="separator:a50b50a565306d9a28c9e86694428a759"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab43d57397f71cb35c19d91058c48bed2"><td class="memItemLeft" align="right" valign="top"><a id="ab43d57397f71cb35c19d91058c48bed2"></a>
 int16&#160;</td><td class="memItemRight" valign="bottom"><b>check2</b></td></tr>
@@ -156,8 +150,8 @@ int32&#160;</td><td class="memItemRight" valign="bottom"><b>curr_pos_res</b></td
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Global variables. </p>
-<dl class="section date"><dt>Date</dt><dd>June 06, 2016 </dd></dl>
-<dl class="section author"><dt>Author</dt><dd><em>qbrobotics</em> </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>October 01, 2017 </dd></dl>
+<dl class="section author"><dt>Author</dt><dd><em>Centro "E.Piaggio"</em> </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>(C) 2012-2016 qbrobotics. All rights reserved. </dd>
 <dd>
 (C) 2017 Centro "E.Piaggio". All rights reserved. </dd></dl>
@@ -188,7 +182,7 @@ int32&#160;</td><td class="memItemRight" valign="bottom"><b>curr_pos_res</b></td
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Device pwm limit </p>
+<p>Device pwm limit. It may change during execution. </p>
 
 </div>
 </div>
@@ -203,7 +197,7 @@ int32&#160;</td><td class="memItemRight" valign="bottom"><b>curr_pos_res</b></td
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Power supply tension </p>
+<p>Power supply tension. </p>
 
 </div>
 </div>
@@ -218,7 +212,22 @@ int32&#160;</td><td class="memItemRight" valign="bottom"><b>curr_pos_res</b></td
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Filtered power supply tension </p>
+<p>Filtered power supply tension. </p>
+
+</div>
+</div>
+<a id="a0f13b80a0c329fa3176eb1e72ef36fb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f13b80a0c329fa3176eb1e72ef36fb8">&#9670;&nbsp;</a></span>forced_open</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8 forced_open</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Forced open flag (used in position with rest position control). </p>
 
 </div>
 </div>
@@ -274,11 +283,41 @@ int32&#160;</td><td class="memItemRight" valign="bottom"><b>curr_pos_res</b></td
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">CYBIT interrupt_flag</td>
+          <td class="memname">CYBIT interrupt_flag = FALSE</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Interrupt flag enabler </p>
+<p>Interrupt flag enabler. </p>
+
+</div>
+</div>
+<a id="acf0e2a5d5954714103e295ac35513215"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf0e2a5d5954714103e295ac35513215">&#9670;&nbsp;</a></span>master_mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8 master_mode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Flag used to set/unset master mode to send messages to other boards. </p>
+
+</div>
+</div>
+<a id="a63d713ff9ac5ba0651f6af9115a32e4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63d713ff9ac5ba0651f6af9115a32e4d">&#9670;&nbsp;</a></span>pow_tension</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32 pow_tension</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Computed power supply tension. </p>
 
 </div>
 </div>
@@ -293,7 +332,22 @@ int32&#160;</td><td class="memItemRight" valign="bottom"><b>curr_pos_res</b></td
         </tr>
       </table>
 </div><div class="memdoc">
-<p>ADC measurements buffer Sign of pwm driven. Used to obtain current sign. </p>
+<p>ADC measurements buffer. Sign of pwm driven. Used to obtain current sign. </p>
+
+</div>
+</div>
+<a id="a50b50a565306d9a28c9e86694428a759"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50b50a565306d9a28c9e86694428a759">&#9670;&nbsp;</a></span>receive_meas_from_hand</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8 receive_meas_from_hand</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Position measurement form hand. </p>
 
 </div>
 </div>
@@ -309,6 +363,36 @@ int32&#160;</td><td class="memItemRight" valign="bottom"><b>curr_pos_res</b></td
       </table>
 </div><div class="memdoc">
 <p>This flag is set when the encoders last values must be resetted. </p>
+
+</div>
+</div>
+<a id="a1f8839fadee52a47a0042eaa695c3f3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f8839fadee52a47a0042eaa695c3f3a">&#9670;&nbsp;</a></span>rest_enabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8 rest_enabled</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Rest position flag. </p>
+
+</div>
+</div>
+<a id="a485e5b90bbfb79aa97f874873cd6c93a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a485e5b90bbfb79aa97f874873cd6c93a">&#9670;&nbsp;</a></span>rest_pos_curr_ref</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32 rest_pos_curr_ref</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Rest position current reference. </p>
 
 </div>
 </div>
@@ -338,7 +422,7 @@ int32&#160;</td><td class="memItemRight" valign="bottom"><b>curr_pos_res</b></td
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Tension validation bit </p>
+<p>Tension validation bit. </p>
 
 </div>
 </div>
@@ -383,7 +467,7 @@ int32&#160;</td><td class="memItemRight" valign="bottom"><b>curr_pos_res</b></td
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Watchdog flag enabler </p>
+<p>Watchdog flag enabler. </p>
 
 </div>
 </div>

@@ -136,18 +136,6 @@ void pwm_limit_search();
 **/
 void overcurrent_control();
 
-//=====================================================     command_slave
-/** This function is used to create a package and send it to another device, only
- *  if the actual board is in master mode.
-**/
-void command_slave();
-
-//=====================================================     deactivate_slave
-/** This function is used to create a package to deactivate motors on another device, only
- *  if the actual board is in master mode.
-**/
-void deactivate_slave();
-
 /** \} */
 
 // ----------------------------------------------------------------------------

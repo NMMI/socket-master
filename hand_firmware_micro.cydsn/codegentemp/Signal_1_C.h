@@ -1,14 +1,14 @@
 /*******************************************************************************
 * File Name: Signal_1_C.h  
-* Version 2.10
+* Version 2.20
 *
 * Description:
-*  This file containts Control Register function prototypes and register defines
+*  This file contains Pin function prototypes and register defines
 *
 * Note:
 *
 ********************************************************************************
-* Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+* Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions, 
 * disclaimers, and limitations in the end user license agreement accompanying 
 * the software package with which this file was provided.
@@ -27,31 +27,66 @@
 *        Function Prototypes             
 ***************************************/    
 
+/**
+* \addtogroup group_general
+* @{
+*/
 void    Signal_1_C_Write(uint8 value) ;
 void    Signal_1_C_SetDriveMode(uint8 mode) ;
 uint8   Signal_1_C_ReadDataReg(void) ;
 uint8   Signal_1_C_Read(void) ;
+void    Signal_1_C_SetInterruptMode(uint16 position, uint16 mode) ;
 uint8   Signal_1_C_ClearInterrupt(void) ;
-
+/** @} general */
 
 /***************************************
 *           API Constants        
 ***************************************/
 
-/* Drive Modes */
-#define Signal_1_C_DM_ALG_HIZ         PIN_DM_ALG_HIZ
-#define Signal_1_C_DM_DIG_HIZ         PIN_DM_DIG_HIZ
-#define Signal_1_C_DM_RES_UP          PIN_DM_RES_UP
-#define Signal_1_C_DM_RES_DWN         PIN_DM_RES_DWN
-#define Signal_1_C_DM_OD_LO           PIN_DM_OD_LO
-#define Signal_1_C_DM_OD_HI           PIN_DM_OD_HI
-#define Signal_1_C_DM_STRONG          PIN_DM_STRONG
-#define Signal_1_C_DM_RES_UPDWN       PIN_DM_RES_UPDWN
-
+/**
+* \addtogroup group_constants
+* @{
+*/
+    /** \addtogroup driveMode Drive mode constants
+     * \brief Constants to be passed as "mode" parameter in the Signal_1_C_SetDriveMode() function.
+     *  @{
+     */
+        /* Drive Modes */
+        #define Signal_1_C_DM_ALG_HIZ         PIN_DM_ALG_HIZ   /**< \brief High Impedance Analog   */
+        #define Signal_1_C_DM_DIG_HIZ         PIN_DM_DIG_HIZ   /**< \brief High Impedance Digital  */
+        #define Signal_1_C_DM_RES_UP          PIN_DM_RES_UP    /**< \brief Resistive Pull Up       */
+        #define Signal_1_C_DM_RES_DWN         PIN_DM_RES_DWN   /**< \brief Resistive Pull Down     */
+        #define Signal_1_C_DM_OD_LO           PIN_DM_OD_LO     /**< \brief Open Drain, Drives Low  */
+        #define Signal_1_C_DM_OD_HI           PIN_DM_OD_HI     /**< \brief Open Drain, Drives High */
+        #define Signal_1_C_DM_STRONG          PIN_DM_STRONG    /**< \brief Strong Drive            */
+        #define Signal_1_C_DM_RES_UPDWN       PIN_DM_RES_UPDWN /**< \brief Resistive Pull Up/Down  */
+    /** @} driveMode */
+/** @} group_constants */
+    
 /* Digital Port Constants */
 #define Signal_1_C_MASK               Signal_1_C__MASK
 #define Signal_1_C_SHIFT              Signal_1_C__SHIFT
 #define Signal_1_C_WIDTH              1u
+
+/* Interrupt constants */
+#if defined(Signal_1_C__INTSTAT)
+/**
+* \addtogroup group_constants
+* @{
+*/
+    /** \addtogroup intrMode Interrupt constants
+     * \brief Constants to be passed as "mode" parameter in Signal_1_C_SetInterruptMode() function.
+     *  @{
+     */
+        #define Signal_1_C_INTR_NONE      (uint16)(0x0000u)   /**< \brief Disabled             */
+        #define Signal_1_C_INTR_RISING    (uint16)(0x0001u)   /**< \brief Rising edge trigger  */
+        #define Signal_1_C_INTR_FALLING   (uint16)(0x0002u)   /**< \brief Falling edge trigger */
+        #define Signal_1_C_INTR_BOTH      (uint16)(0x0003u)   /**< \brief Both edge trigger    */
+        /** @} intrMode */
+/** @} group_constants */
+
+    #define Signal_1_C_INTR_MASK      (0x01u)
+#endif /* (Signal_1_C__INTSTAT) */
 
 
 /***************************************
@@ -104,13 +139,21 @@ uint8   Signal_1_C_ClearInterrupt(void) ;
 /* Sync Output Enable Registers */
 #define Signal_1_C_PRTDSI__SYNC_OUT       (* (reg8 *) Signal_1_C__PRTDSI__SYNC_OUT) 
 
+/* SIO registers */
+#if defined(Signal_1_C__SIO_CFG)
+    #define Signal_1_C_SIO_HYST_EN        (* (reg8 *) Signal_1_C__SIO_HYST_EN)
+    #define Signal_1_C_SIO_REG_HIFREQ     (* (reg8 *) Signal_1_C__SIO_REG_HIFREQ)
+    #define Signal_1_C_SIO_CFG            (* (reg8 *) Signal_1_C__SIO_CFG)
+    #define Signal_1_C_SIO_DIFF           (* (reg8 *) Signal_1_C__SIO_DIFF)
+#endif /* (Signal_1_C__SIO_CFG) */
 
-#if defined(Signal_1_C__INTSTAT)  /* Interrupt Registers */
-
-    #define Signal_1_C_INTSTAT                (* (reg8 *) Signal_1_C__INTSTAT)
-    #define Signal_1_C_SNAP                   (* (reg8 *) Signal_1_C__SNAP)
-
-#endif /* Interrupt Registers */
+/* Interrupt Registers */
+#if defined(Signal_1_C__INTSTAT)
+    #define Signal_1_C_INTSTAT             (* (reg8 *) Signal_1_C__INTSTAT)
+    #define Signal_1_C_SNAP                (* (reg8 *) Signal_1_C__SNAP)
+    
+	#define Signal_1_C_0_INTTYPE_REG 		(* (reg8 *) Signal_1_C__0__INTTYPE)
+#endif /* (Signal_1_C__INTSTAT) */
 
 #endif /* End Pins Signal_1_C_H */
 

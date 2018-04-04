@@ -44,15 +44,15 @@ int32 \textbf{ filter\+\_\+i1} (int32 new\+\_\+value)
 \item 
 int32 \textbf{ filter\+\_\+ch1} (int32 new\+\_\+value)
 \item 
+int32 \textbf{ filter\+\_\+ch2} (int32 new\+\_\+value)
+\item 
+int32 \textbf{ filter\+\_\+curr\+\_\+diff} (int32 curr\+\_\+diff)
+\item 
 int32 \textbf{ filter\+\_\+vel\+\_\+1} (int32 new\+\_\+value)
 \item 
 int32 \textbf{ filter\+\_\+vel\+\_\+2} (int32 new\+\_\+value)
 \item 
 int32 \textbf{ filter\+\_\+vel\+\_\+3} (int32 new\+\_\+value)
-\item 
-int32 \textbf{ filter\+\_\+curr\+\_\+diff} (int32 curr\+\_\+diff)
-\item 
-int32 \textbf{ filter\+\_\+ch2} (int32 new\+\_\+value)
 \item 
 int32 \textbf{ filter\+\_\+acc\+\_\+1} (int32 new\+\_\+value)
 \item 
@@ -72,8 +72,7 @@ void \textbf{ calibration} (void)
 \item 
 int \textbf{ calc\+\_\+turns\+\_\+fcn} (const int32 pos1, const int32 pos2)
 \item 
-\mbox{\label{utils_8c_a13fca172b37b6f76749a864c1439b497}} 
-void {\bfseries check\+\_\+rest\+\_\+position} (void)
+void \textbf{ check\+\_\+rest\+\_\+position} (void)
 \end{DoxyCompactItemize}
 
 
@@ -81,10 +80,10 @@ void {\bfseries check\+\_\+rest\+\_\+position} (void)
 Definition of utility functions. 
 
 \begin{DoxyDate}{Date}
-June 06, 2016 
+October 01, 2017 
 \end{DoxyDate}
 \begin{DoxyAuthor}{Author}
-{\itshape qbrobotics} 
+{\itshape Centro \char`\"{}\+E.\+Piaggio\char`\"{}} 
 \end{DoxyAuthor}
 \begin{DoxyCopyright}{Copyright}
 (C) 2012-\/2016 qbrobotics. All rights reserved. 
@@ -134,7 +133,13 @@ This function controls if the read encoder data is correct or not.
 \begin{DoxyReturn}{Returns}
 Returns 1 if the read data is correct, 0 otherwise 
 \end{DoxyReturn}
-\mbox{\label{utils_8c_a2a9b9e0226b8dfe02b028d4f87a814ef}} 
+\mbox{\label{utils_8c_a13fca172b37b6f76749a864c1439b497}} 
+\index{utils.\+c@{utils.\+c}!check\+\_\+rest\+\_\+position@{check\+\_\+rest\+\_\+position}}
+\index{check\+\_\+rest\+\_\+position@{check\+\_\+rest\+\_\+position}!utils.\+c@{utils.\+c}}
+\subsubsection{check\+\_\+rest\+\_\+position()}
+{\footnotesize\ttfamily void check\+\_\+rest\+\_\+position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This function checks for rest position and, in case, gives a position reference to the hand. \mbox{\label{utils_8c_a2a9b9e0226b8dfe02b028d4f87a814ef}} 
 \index{utils.\+c@{utils.\+c}!curr\+\_\+estim@{curr\+\_\+estim}}
 \index{curr\+\_\+estim@{curr\+\_\+estim}!utils.\+c@{utils.\+c}}
 \subsubsection{curr\+\_\+estim()}

@@ -5,6 +5,7 @@ var searchData=
   ['calibration',['calibration',['../utils_8c.html#a0b6a0b24c6bd8af032a6778166201f7e',1,'calibration(void):&#160;utils.c'],['../utils_8h.html#a6d9dc88d64cd1f74a30fd0e404a3bb31',1,'calibration():&#160;utils.c']]],
   ['calibration_5fdiv',['CALIBRATION_DIV',['../globals_8h.html#a80db2dce057c92400a7fb1678bc0b0a8',1,'globals.h']]],
   ['check_5fenc_5fdata',['check_enc_data',['../utils_8c.html#ae7faec5b3a1d000c90f70abfc1dfca92',1,'check_enc_data(const uint32 *value):&#160;utils.c'],['../utils_8h.html#ae7faec5b3a1d000c90f70abfc1dfca92',1,'check_enc_data(const uint32 *value):&#160;utils.c']]],
+  ['check_5frest_5fposition',['check_rest_position',['../utils_8c.html#a13fca172b37b6f76749a864c1439b497',1,'check_rest_position(void):&#160;utils.c'],['../utils_8h.html#a2cb024aea0170c085d18670f5a851df8',1,'check_rest_position():&#160;utils.c']]],
   ['cmd_5factivate',['CMD_ACTIVATE',['../commands_8h.html#abf0494aabdc65d654a54044eddc9210ba341cc0e29a584b4c75a7502529920a7f',1,'CMD_ACTIVATE():&#160;commands.h'],['../command__processing_8c.html#a107fc9f2982f9a953bdd82aa07279499',1,'cmd_activate():&#160;command_processing.c'],['../command__processing_8h.html#a107fc9f2982f9a953bdd82aa07279499',1,'cmd_activate():&#160;command_processing.c']]],
   ['cmd_5fbootloader',['CMD_BOOTLOADER',['../commands_8h.html#abf0494aabdc65d654a54044eddc9210bac72c6075e3464ea5abbe0c0d6e11559e',1,'commands.h']]],
   ['cmd_5fcalibrate',['CMD_CALIBRATE',['../commands_8h.html#abf0494aabdc65d654a54044eddc9210ba238830aded332d3bd5cbbb4ea2cb6ce7',1,'commands.h']]],

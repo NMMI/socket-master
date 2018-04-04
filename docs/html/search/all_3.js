@@ -9,5 +9,6 @@ var searchData=
   ['dev_5ftension_5ff',['dev_tension_f',['../globals_8c.html#a600f1f02d397d3ffd8b03b8a4edace02',1,'dev_tension_f():&#160;globals.c'],['../globals_8h.html#a600f1f02d397d3ffd8b03b8a4edace02',1,'dev_tension_f():&#160;globals.c']]],
   ['direction',['direction',['../structst__calib.html#a99283a3fa628676ec7ca1edcba1fea6a',1,'st_calib']]],
   ['discard',['DISCARD',['../globals_8h.html#a723f289c2be966c5e6c8dfe3d0b46f1ea2c65e1f3e87da84f74b4fc2a908bf69d',1,'globals.h']]],
+  ['div_5finit_5fvalue',['DIV_INIT_VALUE',['../globals_8h.html#a14df76a41da04070ee775565e8d67e81',1,'globals.h']]],
   ['double_5fencoder_5fon_5foff',['double_encoder_on_off',['../structst__mem.html#a3d5832272cab9dc9f831471a9634b43e',1,'st_mem']]]
 ];

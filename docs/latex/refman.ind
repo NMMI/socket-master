@@ -1,0 +1,756 @@
+\begin{theindex}
+
+  \item {A\+N\+T\+I\+\_\+\+W\+I\+N\+D\+UP}
+    \subitem {globals.\+h}, 46
+  \item {acc}
+    \subitem {st\+\_\+meas}, 10
+  \item {activ}
+    \subitem {st\+\_\+mem}, 12
+  \item {activate\+\_\+pwm\+\_\+rescaling}
+    \subitem {st\+\_\+mem}, 13
+  \item {analog\+\_\+read\+\_\+end}
+    \subitem {interruptions.\+c}, 54
+    \subitem {interruptions.\+h}, 58
+
+  \indexspace
+
+  \item {baud\+\_\+rate}
+    \subitem {st\+\_\+mem}, 13
+  \item {buffer}
+    \subitem {st\+\_\+data}, 8
+
+  \indexspace
+
+  \item {c\+\_\+mem}
+    \subitem {globals.\+c}, 40
+    \subitem {globals.\+h}, 50
+  \item {C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+D\+IV}
+    \subitem {globals.\+h}, 46
+  \item {C\+U\+R\+R\+\_\+\+I\+N\+T\+E\+G\+R\+A\+L\+\_\+\+S\+A\+T\+\_\+\+L\+I\+M\+IT}
+    \subitem {globals.\+h}, 47
+  \item {C\+U\+R\+R\+E\+N\+T\+\_\+\+H\+Y\+S\+T\+E\+R\+E\+S\+IS}
+    \subitem {globals.\+h}, 47
+  \item {C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO}
+    \subitem {interruptions.\+h}, 58
+  \item {calc\+\_\+turns\+\_\+fcn}
+    \subitem {utils.\+c}, 63
+    \subitem {utils.\+h}, 71
+  \item {calibration}
+    \subitem {utils.\+c}, 63
+    \subitem {utils.\+h}, 71
+  \item {check\+\_\+enc\+\_\+data}
+    \subitem {utils.\+c}, 63
+    \subitem {utils.\+h}, 71
+  \item {check\+\_\+rest\+\_\+position}
+    \subitem {utils.\+c}, 63
+    \subitem {utils.\+h}, 72
+  \item {cmd\+\_\+activate}
+    \subitem {command\+\_\+processing.\+c}, 21
+    \subitem {command\+\_\+processing.\+h}, 29
+  \item {cmd\+\_\+get\+\_\+activate}
+    \subitem {command\+\_\+processing.\+c}, 21
+    \subitem {command\+\_\+processing.\+h}, 29
+  \item {cmd\+\_\+get\+\_\+currents}
+    \subitem {command\+\_\+processing.\+c}, 21
+    \subitem {command\+\_\+processing.\+h}, 29
+  \item {cmd\+\_\+get\+\_\+emg}
+    \subitem {command\+\_\+processing.\+c}, 21
+    \subitem {command\+\_\+processing.\+h}, 29
+  \item {cmd\+\_\+get\+\_\+inputs}
+    \subitem {command\+\_\+processing.\+c}, 21
+    \subitem {command\+\_\+processing.\+h}, 29
+  \item {cmd\+\_\+get\+\_\+measurements}
+    \subitem {command\+\_\+processing.\+c}, 21
+    \subitem {command\+\_\+processing.\+h}, 29
+  \item {cmd\+\_\+get\+\_\+measurements\+\_\+from\+\_\+\+SH}
+    \subitem {command\+\_\+processing.\+c}, 21
+    \subitem {command\+\_\+processing.\+h}, 29
+  \item {cmd\+\_\+ping}
+    \subitem {command\+\_\+processing.\+c}, 21
+    \subitem {command\+\_\+processing.\+h}, 29
+  \item {cmd\+\_\+set\+\_\+baudrate}
+    \subitem {command\+\_\+processing.\+c}, 22
+    \subitem {command\+\_\+processing.\+h}, 30
+  \item {cmd\+\_\+set\+\_\+inputs}
+    \subitem {command\+\_\+processing.\+c}, 22
+    \subitem {command\+\_\+processing.\+h}, 30
+  \item {cmd\+\_\+set\+\_\+watchdog}
+    \subitem {command\+\_\+processing.\+c}, 22
+    \subitem {command\+\_\+processing.\+h}, 30
+  \item {cmd\+\_\+store\+\_\+params}
+    \subitem {command\+\_\+processing.\+c}, 22
+    \subitem {command\+\_\+processing.\+h}, 30
+  \item {comm\+Process}
+    \subitem {command\+\_\+processing.\+c}, 22
+    \subitem {command\+\_\+processing.\+h}, 30
+  \item {comm\+Read\+Meas\+From\+Another}
+    \subitem {command\+\_\+processing.\+c}, 22
+    \subitem {command\+\_\+processing.\+h}, 30
+  \item {comm\+Write}
+    \subitem {command\+\_\+processing.\+c}, 22
+    \subitem {command\+\_\+processing.\+h}, 30
+  \item {comm\+Write\+\_\+old\+\_\+id}
+    \subitem {command\+\_\+processing.\+c}, 23
+    \subitem {command\+\_\+processing.\+h}, 31
+  \item {comm\+Write\+Another}
+    \subitem {command\+\_\+processing.\+c}, 23
+    \subitem {command\+\_\+processing.\+h}, 31
+  \item {command\+\_\+processing.\+c}, 19
+    \subitem {cmd\+\_\+activate}, 21
+    \subitem {cmd\+\_\+get\+\_\+activate}, 21
+    \subitem {cmd\+\_\+get\+\_\+currents}, 21
+    \subitem {cmd\+\_\+get\+\_\+emg}, 21
+    \subitem {cmd\+\_\+get\+\_\+inputs}, 21
+    \subitem {cmd\+\_\+get\+\_\+measurements}, 21
+    \subitem {cmd\+\_\+get\+\_\+measurements\+\_\+from\+\_\+\+SH}, 21
+    \subitem {cmd\+\_\+ping}, 21
+    \subitem {cmd\+\_\+set\+\_\+baudrate}, 22
+    \subitem {cmd\+\_\+set\+\_\+inputs}, 22
+    \subitem {cmd\+\_\+set\+\_\+watchdog}, 22
+    \subitem {cmd\+\_\+store\+\_\+params}, 22
+    \subitem {comm\+Process}, 22
+    \subitem {comm\+Read\+Meas\+From\+Another}, 22
+    \subitem {comm\+Write}, 22
+    \subitem {comm\+Write\+\_\+old\+\_\+id}, 23
+    \subitem {comm\+Write\+Another}, 23
+    \subitem {get\+\_\+param\+\_\+list}, 23
+    \subitem {info\+Get}, 24
+    \subitem {info\+Prepare}, 24
+    \subitem {info\+Send}, 24
+    \subitem {L\+C\+R\+Checksum}, 24
+    \subitem {mem\+Init}, 25
+    \subitem {mem\+Recall}, 25
+    \subitem {mem\+Restore}, 25
+    \subitem {mem\+Store}, 25
+    \subitem {send\+Acknowledgment}, 26
+    \subitem {set\+Zeros}, 26
+  \item {command\+\_\+processing.\+h}, 26
+    \subitem {cmd\+\_\+activate}, 29
+    \subitem {cmd\+\_\+get\+\_\+activate}, 29
+    \subitem {cmd\+\_\+get\+\_\+currents}, 29
+    \subitem {cmd\+\_\+get\+\_\+emg}, 29
+    \subitem {cmd\+\_\+get\+\_\+inputs}, 29
+    \subitem {cmd\+\_\+get\+\_\+measurements}, 29
+    \subitem {cmd\+\_\+get\+\_\+measurements\+\_\+from\+\_\+\+SH}, 29
+    \subitem {cmd\+\_\+ping}, 29
+    \subitem {cmd\+\_\+set\+\_\+baudrate}, 30
+    \subitem {cmd\+\_\+set\+\_\+inputs}, 30
+    \subitem {cmd\+\_\+set\+\_\+watchdog}, 30
+    \subitem {cmd\+\_\+store\+\_\+params}, 30
+    \subitem {comm\+Process}, 30
+    \subitem {comm\+Read\+Meas\+From\+Another}, 30
+    \subitem {comm\+Write}, 30
+    \subitem {comm\+Write\+\_\+old\+\_\+id}, 31
+    \subitem {comm\+Write\+Another}, 31
+    \subitem {get\+\_\+param\+\_\+list}, 31
+    \subitem {info\+Get}, 32
+    \subitem {info\+Prepare}, 32
+    \subitem {info\+Send}, 32
+    \subitem {L\+C\+R\+Checksum}, 32
+    \subitem {mem\+Init}, 33
+    \subitem {mem\+Recall}, 33
+    \subitem {mem\+Restore}, 33
+    \subitem {mem\+Store}, 33
+    \subitem {send\+Acknowledgment}, 34
+    \subitem {set\+Zeros}, 34
+  \item {command\+\_\+slave}
+    \subitem {interruptions.\+c}, 54
+    \subitem {interruptions.\+h}, 58
+  \item {commands.\+h}, 34
+    \subitem {qbmove\+\_\+command}, 36
+    \subitem {qbmove\+\_\+control\+\_\+mode}, 38
+    \subitem {qbmove\+\_\+input\+\_\+mode}, 38
+    \subitem {qbmove\+\_\+parameter}, 38
+  \item {control\+\_\+mode}
+    \subitem {st\+\_\+mem}, 13
+  \item {curr}
+    \subitem {st\+\_\+meas}, 11
+    \subitem {st\+\_\+ref}, 18
+  \item {curr\+\_\+estim}
+    \subitem {utils.\+c}, 64
+    \subitem {utils.\+h}, 72
+  \item {curr\+\_\+lookup}
+    \subitem {st\+\_\+mem}, 13
+  \item {current\+\_\+limit}
+    \subitem {st\+\_\+mem}, 13
+
+  \indexspace
+
+  \item {D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+L\+I\+M\+IT}
+    \subitem {globals.\+h}, 47
+  \item {D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+\+D\+I\+S\+P\+L\+A\+C\+E\+M\+E\+NT}
+    \subitem {globals.\+h}, 47
+  \item {D\+I\+V\+\_\+\+I\+N\+I\+T\+\_\+\+V\+A\+L\+UE}
+    \subitem {globals.\+h}, 47
+  \item {deactivate\+\_\+slave}
+    \subitem {interruptions.\+c}, 54
+    \subitem {interruptions.\+h}, 58
+  \item {dev\+\_\+pwm\+\_\+limit}
+    \subitem {globals.\+c}, 41
+    \subitem {globals.\+h}, 50
+  \item {dev\+\_\+tension}
+    \subitem {globals.\+c}, 41
+    \subitem {globals.\+h}, 50
+  \item {dev\+\_\+tension\+\_\+f}
+    \subitem {globals.\+c}, 41
+    \subitem {globals.\+h}, 50
+  \item {direction}
+    \subitem {st\+\_\+calib}, 7
+  \item {double\+\_\+encoder\+\_\+on\+\_\+off}
+    \subitem {st\+\_\+mem}, 13
+
+  \indexspace
+
+  \item {E\+M\+G\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+T\+O\+\_\+\+D\+I\+S\+C\+A\+RD}
+    \subitem {globals.\+h}, 47
+  \item {emg}
+    \subitem {st\+\_\+meas}, 11
+  \item {emg\+\_\+calibration\+\_\+flag}
+    \subitem {st\+\_\+mem}, 13
+  \item {emg\+\_\+max\+\_\+value}
+    \subitem {st\+\_\+mem}, 13
+  \item {emg\+\_\+speed}
+    \subitem {st\+\_\+mem}, 14
+  \item {emg\+\_\+status}
+    \subitem {globals.\+h}, 49
+  \item {emg\+\_\+threshold}
+    \subitem {st\+\_\+mem}, 14
+  \item {enabled}
+    \subitem {st\+\_\+calib}, 7
+  \item {encoder\+\_\+reading}
+    \subitem {interruptions.\+c}, 54
+    \subitem {interruptions.\+h}, 59
+
+  \indexspace
+
+  \item {filter\+\_\+acc\+\_\+1}
+    \subitem {utils.\+c}, 64
+    \subitem {utils.\+h}, 72
+  \item {filter\+\_\+acc\+\_\+2}
+    \subitem {utils.\+c}, 64
+    \subitem {utils.\+h}, 73
+  \item {filter\+\_\+acc\+\_\+3}
+    \subitem {utils.\+c}, 65
+    \subitem {utils.\+h}, 73
+  \item {filter\+\_\+ch1}
+    \subitem {utils.\+c}, 65
+    \subitem {utils.\+h}, 73
+  \item {filter\+\_\+ch2}
+    \subitem {utils.\+c}, 65
+    \subitem {utils.\+h}, 74
+  \item {filter\+\_\+curr\+\_\+diff}
+    \subitem {utils.\+c}, 66
+    \subitem {utils.\+h}, 74
+  \item {filter\+\_\+i1}
+    \subitem {utils.\+c}, 66
+    \subitem {utils.\+h}, 75
+  \item {filter\+\_\+v}
+    \subitem {utils.\+c}, 67
+    \subitem {utils.\+h}, 75
+  \item {filter\+\_\+vel\+\_\+1}
+    \subitem {utils.\+c}, 67
+    \subitem {utils.\+h}, 75
+  \item {filter\+\_\+vel\+\_\+2}
+    \subitem {utils.\+c}, 67
+    \subitem {utils.\+h}, 76
+  \item {filter\+\_\+vel\+\_\+3}
+    \subitem {utils.\+c}, 68
+    \subitem {utils.\+h}, 76
+  \item {filter\+\_\+voltage}
+    \subitem {utils.\+c}, 68
+    \subitem {utils.\+h}, 76
+  \item {flag}
+    \subitem {st\+\_\+mem}, 14
+  \item {forced\+\_\+open}
+    \subitem {globals.\+c}, 41
+    \subitem {globals.\+h}, 50
+  \item {function\+\_\+scheduler}
+    \subitem {interruptions.\+c}, 55
+    \subitem {interruptions.\+h}, 59
+
+  \indexspace
+
+  \item {g\+\_\+meas\+Old}
+    \subitem {globals.\+c}, 41
+    \subitem {globals.\+h}, 50
+  \item {g\+\_\+ref\+Old}
+    \subitem {globals.\+c}, 41
+    \subitem {globals.\+h}, 51
+  \item {g\+\_\+rx}
+    \subitem {globals.\+c}, 41
+    \subitem {globals.\+h}, 51
+  \item {get\+\_\+param\+\_\+list}
+    \subitem {command\+\_\+processing.\+c}, 23
+    \subitem {command\+\_\+processing.\+h}, 31
+  \item {globals.\+c}, 39
+    \subitem {c\+\_\+mem}, 40
+    \subitem {dev\+\_\+pwm\+\_\+limit}, 41
+    \subitem {dev\+\_\+tension}, 41
+    \subitem {dev\+\_\+tension\+\_\+f}, 41
+    \subitem {forced\+\_\+open}, 41
+    \subitem {g\+\_\+meas\+Old}, 41
+    \subitem {g\+\_\+ref\+Old}, 41
+    \subitem {g\+\_\+rx}, 41
+    \subitem {interrupt\+\_\+flag}, 41
+    \subitem {master\+\_\+mode}, 42
+    \subitem {pow\+\_\+tension}, 42
+    \subitem {pwm\+\_\+sign}, 42
+    \subitem {receive\+\_\+meas\+\_\+from\+\_\+hand}, 42
+    \subitem {reset\+\_\+last\+\_\+value\+\_\+flag}, 42
+    \subitem {rest\+\_\+enabled}, 42
+    \subitem {rest\+\_\+pos\+\_\+curr\+\_\+ref}, 42
+    \subitem {tau\+\_\+feedback}, 42
+    \subitem {tension\+\_\+valid}, 43
+    \subitem {timer\+\_\+value}, 43
+    \subitem {timer\+\_\+value0}, 43
+    \subitem {watchdog\+\_\+flag}, 43
+  \item {globals.\+h}, 43
+    \subitem {A\+N\+T\+I\+\_\+\+W\+I\+N\+D\+UP}, 46
+    \subitem {c\+\_\+mem}, 50
+    \subitem {C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N\+\_\+\+D\+IV}, 46
+    \subitem {C\+U\+R\+R\+\_\+\+I\+N\+T\+E\+G\+R\+A\+L\+\_\+\+S\+A\+T\+\_\+\+L\+I\+M\+IT}, 
+		47
+    \subitem {C\+U\+R\+R\+E\+N\+T\+\_\+\+H\+Y\+S\+T\+E\+R\+E\+S\+IS}, 
+		47
+    \subitem {D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+U\+R\+R\+E\+N\+T\+\_\+\+L\+I\+M\+IT}, 
+		47
+    \subitem {D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+E\+P\+R\+O\+M\+\_\+\+D\+I\+S\+P\+L\+A\+C\+E\+M\+E\+NT}, 
+		47
+    \subitem {D\+I\+V\+\_\+\+I\+N\+I\+T\+\_\+\+V\+A\+L\+UE}, 47
+    \subitem {dev\+\_\+pwm\+\_\+limit}, 50
+    \subitem {dev\+\_\+tension}, 50
+    \subitem {dev\+\_\+tension\+\_\+f}, 50
+    \subitem {E\+M\+G\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+\+T\+O\+\_\+\+D\+I\+S\+C\+A\+RD}, 
+		47
+    \subitem {emg\+\_\+status}, 49
+    \subitem {forced\+\_\+open}, 50
+    \subitem {g\+\_\+meas\+Old}, 50
+    \subitem {g\+\_\+ref\+Old}, 51
+    \subitem {g\+\_\+rx}, 51
+    \subitem {interrupt\+\_\+flag}, 51
+    \subitem {L\+O\+O\+K\+U\+P\+\_\+\+D\+IM}, 47
+    \subitem {M\+A\+X\+\_\+\+W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+T\+I\+M\+ER}, 
+		47
+    \subitem {master\+\_\+mode}, 51
+    \subitem {N\+U\+M\+\_\+\+O\+F\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+I\+N\+P\+U\+TS}, 
+		48
+    \subitem {N\+U\+M\+\_\+\+O\+F\+\_\+\+E\+M\+GS}, 48
+    \subitem {N\+U\+M\+\_\+\+O\+F\+\_\+\+M\+O\+T\+O\+RS}, 48
+    \subitem {N\+U\+M\+\_\+\+O\+F\+\_\+\+P\+A\+R\+A\+MS}, 48
+    \subitem {N\+U\+M\+\_\+\+O\+F\+\_\+\+S\+E\+N\+S\+O\+RS}, 48
+    \subitem {P\+O\+S\+\_\+\+I\+N\+T\+E\+G\+R\+A\+L\+\_\+\+S\+A\+T\+\_\+\+L\+I\+M\+IT}, 
+		48
+    \subitem {P\+W\+M\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE}, 48
+    \subitem {pow\+\_\+tension}, 51
+    \subitem {pwm\+\_\+sign}, 51
+    \subitem {R\+E\+C\+E\+I\+VE}, 48
+    \subitem {receive\+\_\+meas\+\_\+from\+\_\+hand}, 51
+    \subitem {reset\+\_\+last\+\_\+value\+\_\+flag}, 51
+    \subitem {rest\+\_\+enabled}, 52
+    \subitem {rest\+\_\+pos\+\_\+curr\+\_\+ref}, 52
+    \subitem {S\+A\+M\+P\+L\+E\+S\+\_\+\+F\+O\+R\+\_\+\+E\+M\+G\+\_\+\+M\+E\+AN}, 
+		49
+    \subitem {S\+A\+M\+P\+L\+E\+S\+\_\+\+F\+O\+R\+\_\+\+M\+E\+AN}, 49
+    \subitem {tau\+\_\+feedback}, 52
+    \subitem {tension\+\_\+valid}, 52
+    \subitem {timer\+\_\+value}, 52
+    \subitem {timer\+\_\+value0}, 52
+    \subitem {U\+N\+L\+O\+AD}, 49
+    \subitem {W\+A\+I\+T\+\_\+\+ID}, 49
+    \subitem {W\+A\+I\+T\+\_\+\+L\+E\+N\+G\+TH}, 49
+    \subitem {W\+A\+I\+T\+\_\+\+S\+T\+A\+RT}, 49
+    \subitem {watchdog\+\_\+flag}, 52
+
+  \indexspace
+
+  \item {hand\+\_\+meas}
+    \subitem {st\+\_\+meas}, 11
+
+  \indexspace
+
+  \item {id}
+    \subitem {st\+\_\+mem}, 14
+  \item {ind}
+    \subitem {st\+\_\+data}, 8
+  \item {info\+Get}
+    \subitem {command\+\_\+processing.\+c}, 24
+    \subitem {command\+\_\+processing.\+h}, 32
+  \item {info\+Prepare}
+    \subitem {command\+\_\+processing.\+c}, 24
+    \subitem {command\+\_\+processing.\+h}, 32
+  \item {info\+Send}
+    \subitem {command\+\_\+processing.\+c}, 24
+    \subitem {command\+\_\+processing.\+h}, 32
+  \item {input\+\_\+mode}
+    \subitem {st\+\_\+mem}, 14
+  \item {interrupt\+\_\+flag}
+    \subitem {globals.\+c}, 41
+    \subitem {globals.\+h}, 51
+  \item {interrupt\+\_\+manager}
+    \subitem {interruptions.\+c}, 55
+    \subitem {interruptions.\+h}, 59
+  \item {interruptions.\+c}, 53
+    \subitem {analog\+\_\+read\+\_\+end}, 54
+    \subitem {command\+\_\+slave}, 54
+    \subitem {deactivate\+\_\+slave}, 54
+    \subitem {encoder\+\_\+reading}, 54
+    \subitem {function\+\_\+scheduler}, 55
+    \subitem {interrupt\+\_\+manager}, 55
+    \subitem {motor\+\_\+control}, 55
+    \subitem {overcurrent\+\_\+control}, 55
+    \subitem {pwm\+\_\+limit\+\_\+search}, 55
+    \subitem {pwm\+\_\+preload\+\_\+values}, 55
+  \item {interruptions.\+h}, 56
+    \subitem {analog\+\_\+read\+\_\+end}, 58
+    \subitem {C\+Y\+\_\+\+I\+S\+R\+\_\+\+P\+R\+O\+TO}, 58
+    \subitem {command\+\_\+slave}, 58
+    \subitem {deactivate\+\_\+slave}, 58
+    \subitem {encoder\+\_\+reading}, 59
+    \subitem {function\+\_\+scheduler}, 59
+    \subitem {interrupt\+\_\+manager}, 59
+    \subitem {motor\+\_\+control}, 59
+    \subitem {overcurrent\+\_\+control}, 59
+    \subitem {pwm\+\_\+limit\+\_\+search}, 59
+
+  \indexspace
+
+  \item {k\+\_\+d}
+    \subitem {st\+\_\+mem}, 14
+  \item {k\+\_\+d\+\_\+c}
+    \subitem {st\+\_\+mem}, 14
+  \item {k\+\_\+d\+\_\+c\+\_\+dl}
+    \subitem {st\+\_\+mem}, 14
+  \item {k\+\_\+d\+\_\+dl}
+    \subitem {st\+\_\+mem}, 15
+  \item {k\+\_\+i}
+    \subitem {st\+\_\+mem}, 15
+  \item {k\+\_\+i\+\_\+c}
+    \subitem {st\+\_\+mem}, 15
+  \item {k\+\_\+i\+\_\+c\+\_\+dl}
+    \subitem {st\+\_\+mem}, 15
+  \item {k\+\_\+i\+\_\+dl}
+    \subitem {st\+\_\+mem}, 15
+  \item {k\+\_\+p}
+    \subitem {st\+\_\+mem}, 15
+  \item {k\+\_\+p\+\_\+c}
+    \subitem {st\+\_\+mem}, 15
+  \item {k\+\_\+p\+\_\+c\+\_\+dl}
+    \subitem {st\+\_\+mem}, 15
+  \item {k\+\_\+p\+\_\+dl}
+    \subitem {st\+\_\+mem}, 16
+
+  \indexspace
+
+  \item {L\+C\+R\+Checksum}
+    \subitem {command\+\_\+processing.\+c}, 24
+    \subitem {command\+\_\+processing.\+h}, 32
+  \item {L\+O\+O\+K\+U\+P\+\_\+\+D\+IM}
+    \subitem {globals.\+h}, 47
+  \item {length}
+    \subitem {st\+\_\+data}, 9
+
+  \indexspace
+
+  \item {m\+\_\+mult}
+    \subitem {st\+\_\+mem}, 16
+  \item {m\+\_\+off}
+    \subitem {st\+\_\+mem}, 16
+  \item {M\+A\+X\+\_\+\+W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+T\+I\+M\+ER}
+    \subitem {globals.\+h}, 47
+  \item {main.\+c}, 60
+  \item {master\+\_\+mode}
+    \subitem {globals.\+c}, 42
+    \subitem {globals.\+h}, 51
+  \item {max\+\_\+step\+\_\+neg}
+    \subitem {st\+\_\+mem}, 16
+  \item {max\+\_\+step\+\_\+pos}
+    \subitem {st\+\_\+mem}, 16
+  \item {mem\+Init}
+    \subitem {command\+\_\+processing.\+c}, 25
+    \subitem {command\+\_\+processing.\+h}, 33
+  \item {mem\+Recall}
+    \subitem {command\+\_\+processing.\+c}, 25
+    \subitem {command\+\_\+processing.\+h}, 33
+  \item {mem\+Restore}
+    \subitem {command\+\_\+processing.\+c}, 25
+    \subitem {command\+\_\+processing.\+h}, 33
+  \item {mem\+Store}
+    \subitem {command\+\_\+processing.\+c}, 25
+    \subitem {command\+\_\+processing.\+h}, 33
+  \item {motor\+\_\+control}
+    \subitem {interruptions.\+c}, 55
+    \subitem {interruptions.\+h}, 59
+  \item {motor\+\_\+handle\+\_\+ratio}
+    \subitem {st\+\_\+mem}, 16
+  \item {my\+\_\+mod}
+    \subitem {utils.\+c}, 68
+    \subitem {utils.\+h}, 77
+  \item {my\+\_\+round}
+    \subitem {utils.\+c}, 69
+    \subitem {utils.\+h}, 77
+
+  \indexspace
+
+  \item {N\+U\+M\+\_\+\+O\+F\+\_\+\+A\+N\+A\+L\+O\+G\+\_\+\+I\+N\+P\+U\+TS}
+    \subitem {globals.\+h}, 48
+  \item {N\+U\+M\+\_\+\+O\+F\+\_\+\+E\+M\+GS}
+    \subitem {globals.\+h}, 48
+  \item {N\+U\+M\+\_\+\+O\+F\+\_\+\+M\+O\+T\+O\+RS}
+    \subitem {globals.\+h}, 48
+  \item {N\+U\+M\+\_\+\+O\+F\+\_\+\+P\+A\+R\+A\+MS}
+    \subitem {globals.\+h}, 48
+  \item {N\+U\+M\+\_\+\+O\+F\+\_\+\+S\+E\+N\+S\+O\+RS}
+    \subitem {globals.\+h}, 48
+
+  \indexspace
+
+  \item {onoff}
+    \subitem {st\+\_\+ref}, 18
+  \item {overcurrent\+\_\+control}
+    \subitem {interruptions.\+c}, 55
+    \subitem {interruptions.\+h}, 59
+
+  \indexspace
+
+  \item {P\+O\+S\+\_\+\+I\+N\+T\+E\+G\+R\+A\+L\+\_\+\+S\+A\+T\+\_\+\+L\+I\+M\+IT}
+    \subitem {globals.\+h}, 48
+  \item {P\+W\+M\+\_\+\+M\+A\+X\+\_\+\+V\+A\+L\+UE}
+    \subitem {globals.\+h}, 48
+  \item {pos}
+    \subitem {st\+\_\+meas}, 11
+    \subitem {st\+\_\+ref}, 18
+  \item {pos\+\_\+lim\+\_\+flag}
+    \subitem {st\+\_\+mem}, 16
+  \item {pos\+\_\+lim\+\_\+inf}
+    \subitem {st\+\_\+mem}, 16
+  \item {pos\+\_\+lim\+\_\+sup}
+    \subitem {st\+\_\+mem}, 17
+  \item {pow\+\_\+tension}
+    \subitem {globals.\+c}, 42
+    \subitem {globals.\+h}, 51
+  \item {pwm}
+    \subitem {st\+\_\+ref}, 18
+  \item {pwm\+\_\+limit}
+    \subitem {st\+\_\+dev}, 9
+  \item {pwm\+\_\+limit\+\_\+search}
+    \subitem {interruptions.\+c}, 55
+    \subitem {interruptions.\+h}, 59
+  \item {pwm\+\_\+preload\+\_\+values}
+    \subitem {interruptions.\+c}, 55
+  \item {pwm\+\_\+sign}
+    \subitem {globals.\+c}, 42
+    \subitem {globals.\+h}, 51
+
+  \indexspace
+
+  \item {qbmove\+\_\+command}
+    \subitem {commands.\+h}, 36
+  \item {qbmove\+\_\+control\+\_\+mode}
+    \subitem {commands.\+h}, 38
+  \item {qbmove\+\_\+input\+\_\+mode}
+    \subitem {commands.\+h}, 38
+  \item {qbmove\+\_\+parameter}
+    \subitem {commands.\+h}, 38
+
+  \indexspace
+
+  \item {R\+E\+C\+E\+I\+VE}
+    \subitem {globals.\+h}, 48
+  \item {ready}
+    \subitem {st\+\_\+data}, 9
+  \item {receive\+\_\+meas\+\_\+from\+\_\+hand}
+    \subitem {globals.\+c}, 42
+    \subitem {globals.\+h}, 51
+  \item {repetitions}
+    \subitem {st\+\_\+calib}, 7
+  \item {res}
+    \subitem {st\+\_\+mem}, 17
+  \item {reset\+\_\+last\+\_\+value\+\_\+flag}
+    \subitem {globals.\+c}, 42
+    \subitem {globals.\+h}, 51
+  \item {rest\+\_\+delay}
+    \subitem {st\+\_\+mem}, 17
+  \item {rest\+\_\+enabled}
+    \subitem {globals.\+c}, 42
+    \subitem {globals.\+h}, 52
+  \item {rest\+\_\+pos}
+    \subitem {st\+\_\+mem}, 17
+  \item {rest\+\_\+pos\+\_\+curr\+\_\+ref}
+    \subitem {globals.\+c}, 42
+    \subitem {globals.\+h}, 52
+  \item {rest\+\_\+ratio}
+    \subitem {st\+\_\+mem}, 17
+  \item {rest\+\_\+vel}
+    \subitem {st\+\_\+mem}, 17
+  \item {rot}
+    \subitem {st\+\_\+meas}, 11
+
+  \indexspace
+
+  \item {S\+A\+M\+P\+L\+E\+S\+\_\+\+F\+O\+R\+\_\+\+E\+M\+G\+\_\+\+M\+E\+AN}
+    \subitem {globals.\+h}, 49
+  \item {S\+A\+M\+P\+L\+E\+S\+\_\+\+F\+O\+R\+\_\+\+M\+E\+AN}
+    \subitem {globals.\+h}, 49
+  \item {send\+Acknowledgment}
+    \subitem {command\+\_\+processing.\+c}, 26
+    \subitem {command\+\_\+processing.\+h}, 34
+  \item {set\+Zeros}
+    \subitem {command\+\_\+processing.\+c}, 26
+    \subitem {command\+\_\+processing.\+h}, 34
+  \item {speed}
+    \subitem {st\+\_\+calib}, 8
+  \item {st\+\_\+calib}, 7
+    \subitem {direction}, 7
+    \subitem {enabled}, 7
+    \subitem {repetitions}, 7
+    \subitem {speed}, 8
+  \item {st\+\_\+data}, 8
+    \subitem {buffer}, 8
+    \subitem {ind}, 8
+    \subitem {length}, 9
+    \subitem {ready}, 9
+  \item {st\+\_\+dev}, 9
+    \subitem {pwm\+\_\+limit}, 9
+    \subitem {tension}, 10
+    \subitem {tension\+\_\+conv\+\_\+factor}, 10
+    \subitem {tension\+\_\+valid}, 10
+  \item {st\+\_\+meas}, 10
+    \subitem {acc}, 10
+    \subitem {curr}, 11
+    \subitem {emg}, 11
+    \subitem {hand\+\_\+meas}, 11
+    \subitem {pos}, 11
+    \subitem {rot}, 11
+    \subitem {vel}, 11
+  \item {st\+\_\+mem}, 12
+    \subitem {activ}, 12
+    \subitem {activate\+\_\+pwm\+\_\+rescaling}, 13
+    \subitem {baud\+\_\+rate}, 13
+    \subitem {control\+\_\+mode}, 13
+    \subitem {curr\+\_\+lookup}, 13
+    \subitem {current\+\_\+limit}, 13
+    \subitem {double\+\_\+encoder\+\_\+on\+\_\+off}, 13
+    \subitem {emg\+\_\+calibration\+\_\+flag}, 13
+    \subitem {emg\+\_\+max\+\_\+value}, 13
+    \subitem {emg\+\_\+speed}, 14
+    \subitem {emg\+\_\+threshold}, 14
+    \subitem {flag}, 14
+    \subitem {id}, 14
+    \subitem {input\+\_\+mode}, 14
+    \subitem {k\+\_\+d}, 14
+    \subitem {k\+\_\+d\+\_\+c}, 14
+    \subitem {k\+\_\+d\+\_\+c\+\_\+dl}, 14
+    \subitem {k\+\_\+d\+\_\+dl}, 15
+    \subitem {k\+\_\+i}, 15
+    \subitem {k\+\_\+i\+\_\+c}, 15
+    \subitem {k\+\_\+i\+\_\+c\+\_\+dl}, 15
+    \subitem {k\+\_\+i\+\_\+dl}, 15
+    \subitem {k\+\_\+p}, 15
+    \subitem {k\+\_\+p\+\_\+c}, 15
+    \subitem {k\+\_\+p\+\_\+c\+\_\+dl}, 15
+    \subitem {k\+\_\+p\+\_\+dl}, 16
+    \subitem {m\+\_\+mult}, 16
+    \subitem {m\+\_\+off}, 16
+    \subitem {max\+\_\+step\+\_\+neg}, 16
+    \subitem {max\+\_\+step\+\_\+pos}, 16
+    \subitem {motor\+\_\+handle\+\_\+ratio}, 16
+    \subitem {pos\+\_\+lim\+\_\+flag}, 16
+    \subitem {pos\+\_\+lim\+\_\+inf}, 16
+    \subitem {pos\+\_\+lim\+\_\+sup}, 17
+    \subitem {res}, 17
+    \subitem {rest\+\_\+delay}, 17
+    \subitem {rest\+\_\+pos}, 17
+    \subitem {rest\+\_\+ratio}, 17
+    \subitem {rest\+\_\+vel}, 17
+    \subitem {watchdog\+\_\+period}, 17
+  \item {st\+\_\+ref}, 18
+    \subitem {curr}, 18
+    \subitem {onoff}, 18
+    \subitem {pos}, 18
+    \subitem {pwm}, 18
+
+  \indexspace
+
+  \item {tau\+\_\+feedback}
+    \subitem {globals.\+c}, 42
+    \subitem {globals.\+h}, 52
+  \item {tension}
+    \subitem {st\+\_\+dev}, 10
+  \item {tension\+\_\+conv\+\_\+factor}
+    \subitem {st\+\_\+dev}, 10
+  \item {tension\+\_\+valid}
+    \subitem {globals.\+c}, 43
+    \subitem {globals.\+h}, 52
+    \subitem {st\+\_\+dev}, 10
+  \item {timer\+\_\+value}
+    \subitem {globals.\+c}, 43
+    \subitem {globals.\+h}, 52
+  \item {timer\+\_\+value0}
+    \subitem {globals.\+c}, 43
+    \subitem {globals.\+h}, 52
+
+  \indexspace
+
+  \item {U\+N\+L\+O\+AD}
+    \subitem {globals.\+h}, 49
+  \item {utils.\+c}, 61
+    \subitem {calc\+\_\+turns\+\_\+fcn}, 63
+    \subitem {calibration}, 63
+    \subitem {check\+\_\+enc\+\_\+data}, 63
+    \subitem {check\+\_\+rest\+\_\+position}, 63
+    \subitem {curr\+\_\+estim}, 64
+    \subitem {filter\+\_\+acc\+\_\+1}, 64
+    \subitem {filter\+\_\+acc\+\_\+2}, 64
+    \subitem {filter\+\_\+acc\+\_\+3}, 65
+    \subitem {filter\+\_\+ch1}, 65
+    \subitem {filter\+\_\+ch2}, 65
+    \subitem {filter\+\_\+curr\+\_\+diff}, 66
+    \subitem {filter\+\_\+i1}, 66
+    \subitem {filter\+\_\+v}, 67
+    \subitem {filter\+\_\+vel\+\_\+1}, 67
+    \subitem {filter\+\_\+vel\+\_\+2}, 67
+    \subitem {filter\+\_\+vel\+\_\+3}, 68
+    \subitem {filter\+\_\+voltage}, 68
+    \subitem {my\+\_\+mod}, 68
+    \subitem {my\+\_\+round}, 69
+  \item {utils.\+h}, 69
+    \subitem {calc\+\_\+turns\+\_\+fcn}, 71
+    \subitem {calibration}, 71
+    \subitem {check\+\_\+enc\+\_\+data}, 71
+    \subitem {check\+\_\+rest\+\_\+position}, 72
+    \subitem {curr\+\_\+estim}, 72
+    \subitem {filter\+\_\+acc\+\_\+1}, 72
+    \subitem {filter\+\_\+acc\+\_\+2}, 73
+    \subitem {filter\+\_\+acc\+\_\+3}, 73
+    \subitem {filter\+\_\+ch1}, 73
+    \subitem {filter\+\_\+ch2}, 74
+    \subitem {filter\+\_\+curr\+\_\+diff}, 74
+    \subitem {filter\+\_\+i1}, 75
+    \subitem {filter\+\_\+v}, 75
+    \subitem {filter\+\_\+vel\+\_\+1}, 75
+    \subitem {filter\+\_\+vel\+\_\+2}, 76
+    \subitem {filter\+\_\+vel\+\_\+3}, 76
+    \subitem {filter\+\_\+voltage}, 76
+    \subitem {my\+\_\+mod}, 77
+    \subitem {my\+\_\+round}, 77
+
+  \indexspace
+
+  \item {vel}
+    \subitem {st\+\_\+meas}, 11
+
+  \indexspace
+
+  \item {W\+A\+I\+T\+\_\+\+ID}
+    \subitem {globals.\+h}, 49
+  \item {W\+A\+I\+T\+\_\+\+L\+E\+N\+G\+TH}
+    \subitem {globals.\+h}, 49
+  \item {W\+A\+I\+T\+\_\+\+S\+T\+A\+RT}
+    \subitem {globals.\+h}, 49
+  \item {watchdog\+\_\+flag}
+    \subitem {globals.\+c}, 43
+    \subitem {globals.\+h}, 52
+  \item {watchdog\+\_\+period}
+    \subitem {st\+\_\+mem}, 17
+
+\end{theindex}

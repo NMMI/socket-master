@@ -118,21 +118,41 @@ void    commWrite_old_id   (uint8 *packet_data, uint16 packet_lenght, uint8 old_
 **/
 void    commWrite         (uint8 *packet_data, uint16 packet_lenght);
 
-//============================================================  commWriteAnother
+//============================================================  commWriteID
 /** This function writes on the serial port the package that needs to be sent
  * to another board.
  *
  *	\param packet_data 		The array of data that must be written.
  *	\param packet_lenght	The lenght of the data array.
+ *  \param device_id        The ID of slave device
  *
 **/
-void    commWriteAnother  (uint8 *packet_data, uint16 packet_lenght);
+void    commWriteID  (uint8 *packet_data, uint16 packet_lenght, uint8 id);
 
-//============================================================  commReadMeasFromAnother
-/** This function reads on the serial port the measurements package from another board.
+//============================================================  commReadMeasFromSH
+/** This function reads on the serial port the measurements package from SH.
  *
 **/
-int32    commReadMeasFromAnother  ();
+int32    commReadMeasFromSH  ();
+
+//=====================================================     command_slave
+/** This function is used to create a package and send it to another device, only
+ *  if the actual board is in master mode.
+**/
+void drive_SH();
+
+//============================================================  drive_force_fb_device
+/* This function is used to drive force feedback device */
+void drive_force_fb();
+
+//============================================================  drive_proprio_fb_device
+/* This function is used to drive proprioceptive feedback device */
+void drive_proprio_fb();
+
+//=====================================================     deactivate_slaves
+/** This function is used to create a package to deactivate motors on all the other devices.
+**/
+void deactivate_slaves();
 
 
 /** \} */
@@ -236,12 +256,6 @@ void cmd_set_inputs();
 	to be sent.
 **/
 void cmd_get_measurements();
-
-//============================================================  cmd_get_measurements
-/** This function gets the encoders measurements from SH in master mode and puts them 
-    in the package to be sent.
-**/
-void cmd_get_measurements_from_SH();
 
 //============================================================  cmd_get_currents
 /** This function gets the motor current and puts it in the package to 

@@ -1,14 +1,14 @@
 /*******************************************************************************
 * File Name: MOTOR_EN.h  
-* Version 2.10
+* Version 2.20
 *
 * Description:
-*  This file containts Control Register function prototypes and register defines
+*  This file contains Pin function prototypes and register defines
 *
 * Note:
 *
 ********************************************************************************
-* Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+* Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions, 
 * disclaimers, and limitations in the end user license agreement accompanying 
 * the software package with which this file was provided.
@@ -27,31 +27,66 @@
 *        Function Prototypes             
 ***************************************/    
 
+/**
+* \addtogroup group_general
+* @{
+*/
 void    MOTOR_EN_Write(uint8 value) ;
 void    MOTOR_EN_SetDriveMode(uint8 mode) ;
 uint8   MOTOR_EN_ReadDataReg(void) ;
 uint8   MOTOR_EN_Read(void) ;
+void    MOTOR_EN_SetInterruptMode(uint16 position, uint16 mode) ;
 uint8   MOTOR_EN_ClearInterrupt(void) ;
-
+/** @} general */
 
 /***************************************
 *           API Constants        
 ***************************************/
 
-/* Drive Modes */
-#define MOTOR_EN_DM_ALG_HIZ         PIN_DM_ALG_HIZ
-#define MOTOR_EN_DM_DIG_HIZ         PIN_DM_DIG_HIZ
-#define MOTOR_EN_DM_RES_UP          PIN_DM_RES_UP
-#define MOTOR_EN_DM_RES_DWN         PIN_DM_RES_DWN
-#define MOTOR_EN_DM_OD_LO           PIN_DM_OD_LO
-#define MOTOR_EN_DM_OD_HI           PIN_DM_OD_HI
-#define MOTOR_EN_DM_STRONG          PIN_DM_STRONG
-#define MOTOR_EN_DM_RES_UPDWN       PIN_DM_RES_UPDWN
-
+/**
+* \addtogroup group_constants
+* @{
+*/
+    /** \addtogroup driveMode Drive mode constants
+     * \brief Constants to be passed as "mode" parameter in the MOTOR_EN_SetDriveMode() function.
+     *  @{
+     */
+        /* Drive Modes */
+        #define MOTOR_EN_DM_ALG_HIZ         PIN_DM_ALG_HIZ   /**< \brief High Impedance Analog   */
+        #define MOTOR_EN_DM_DIG_HIZ         PIN_DM_DIG_HIZ   /**< \brief High Impedance Digital  */
+        #define MOTOR_EN_DM_RES_UP          PIN_DM_RES_UP    /**< \brief Resistive Pull Up       */
+        #define MOTOR_EN_DM_RES_DWN         PIN_DM_RES_DWN   /**< \brief Resistive Pull Down     */
+        #define MOTOR_EN_DM_OD_LO           PIN_DM_OD_LO     /**< \brief Open Drain, Drives Low  */
+        #define MOTOR_EN_DM_OD_HI           PIN_DM_OD_HI     /**< \brief Open Drain, Drives High */
+        #define MOTOR_EN_DM_STRONG          PIN_DM_STRONG    /**< \brief Strong Drive            */
+        #define MOTOR_EN_DM_RES_UPDWN       PIN_DM_RES_UPDWN /**< \brief Resistive Pull Up/Down  */
+    /** @} driveMode */
+/** @} group_constants */
+    
 /* Digital Port Constants */
 #define MOTOR_EN_MASK               MOTOR_EN__MASK
 #define MOTOR_EN_SHIFT              MOTOR_EN__SHIFT
 #define MOTOR_EN_WIDTH              2u
+
+/* Interrupt constants */
+#if defined(MOTOR_EN__INTSTAT)
+/**
+* \addtogroup group_constants
+* @{
+*/
+    /** \addtogroup intrMode Interrupt constants
+     * \brief Constants to be passed as "mode" parameter in MOTOR_EN_SetInterruptMode() function.
+     *  @{
+     */
+        #define MOTOR_EN_INTR_NONE      (uint16)(0x0000u)   /**< \brief Disabled             */
+        #define MOTOR_EN_INTR_RISING    (uint16)(0x0001u)   /**< \brief Rising edge trigger  */
+        #define MOTOR_EN_INTR_FALLING   (uint16)(0x0002u)   /**< \brief Falling edge trigger */
+        #define MOTOR_EN_INTR_BOTH      (uint16)(0x0003u)   /**< \brief Both edge trigger    */
+        /** @} intrMode */
+/** @} group_constants */
+
+    #define MOTOR_EN_INTR_MASK      (0x01u)
+#endif /* (MOTOR_EN__INTSTAT) */
 
 
 /***************************************
@@ -104,13 +139,22 @@ uint8   MOTOR_EN_ClearInterrupt(void) ;
 /* Sync Output Enable Registers */
 #define MOTOR_EN_PRTDSI__SYNC_OUT       (* (reg8 *) MOTOR_EN__PRTDSI__SYNC_OUT) 
 
+/* SIO registers */
+#if defined(MOTOR_EN__SIO_CFG)
+    #define MOTOR_EN_SIO_HYST_EN        (* (reg8 *) MOTOR_EN__SIO_HYST_EN)
+    #define MOTOR_EN_SIO_REG_HIFREQ     (* (reg8 *) MOTOR_EN__SIO_REG_HIFREQ)
+    #define MOTOR_EN_SIO_CFG            (* (reg8 *) MOTOR_EN__SIO_CFG)
+    #define MOTOR_EN_SIO_DIFF           (* (reg8 *) MOTOR_EN__SIO_DIFF)
+#endif /* (MOTOR_EN__SIO_CFG) */
 
-#if defined(MOTOR_EN__INTSTAT)  /* Interrupt Registers */
-
-    #define MOTOR_EN_INTSTAT                (* (reg8 *) MOTOR_EN__INTSTAT)
-    #define MOTOR_EN_SNAP                   (* (reg8 *) MOTOR_EN__SNAP)
-
-#endif /* Interrupt Registers */
+/* Interrupt Registers */
+#if defined(MOTOR_EN__INTSTAT)
+    #define MOTOR_EN_INTSTAT             (* (reg8 *) MOTOR_EN__INTSTAT)
+    #define MOTOR_EN_SNAP                (* (reg8 *) MOTOR_EN__SNAP)
+    
+	#define MOTOR_EN_0_INTTYPE_REG 		(* (reg8 *) MOTOR_EN__0__INTTYPE)
+	#define MOTOR_EN_1_INTTYPE_REG 		(* (reg8 *) MOTOR_EN__1__INTTYPE)
+#endif /* (MOTOR_EN__INTSTAT) */
 
 #endif /* End Pins MOTOR_EN_H */
 

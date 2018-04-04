@@ -1,40 +1,40 @@
 ;***************************************************************************
-; FILENAME: cymem.a51
-; Version 5.20
+; \file cymem.a51
+; \version 5.60
 ;
-;  DESCRIPTION:
-;    Specialized memory routines for Keil bootup. These functions accept
-;    3-byte pointers, but the pointers are interpreted as absolute locations
-;    rather than as Keil generic/far pointers. Interrupts should be disabled
-;    while these functions are executing unless the interrupt handler is
-;    aware of dual DPTRs (DPS register), extended DPTRs (DPX0/DPX1), and
-;    extended register-indirect memory access (MXAX register).
+; \brief
+; Specialized memory routines for Keil bootup. These functions accept
+; 3-byte pointers, but the pointers are interpreted as absolute locations
+; rather than as Keil generic/far pointers. Interrupts should be disabled
+; while these functions are executing unless the interrupt handler is
+; aware of dual DPTRs (DPS register), extended DPTRs (DPX0/DPX1), and
+; extended register-indirect memory access (MXAX register).
 ;
-;   C DECLARATIONS:
-;    extern void cymemzero(void far *addr, unsigned short size);
-;    extern void cyconfigcpy(unsigned short size, const void far *src, void far *dest) large;
-;    extern void cyconfigcpycode(unsigned short size, const void code *src, void far *dest);
-;    extern void cfg_write_bytes_code(const void code *table);
-;    extern void cfg_write_bytes(const void far *table);
-;    extern unsigned char cyread8(const void far *addr);
-;    extern unsigned char cyread8_nodpx(const void far *addr);
-;    extern void cywrite8(void far *addr, unsigned char value);
-;    extern void cywrite8_nodpx(void far *addr, unsigned char value);
-;    extern unsigned int cyread16(const void far *addr);
-;    extern unsigned int cyread16_nodpx(const void far *addr);
-;    extern void cywrite16(void far *addr, unsigned int value);
-;    extern void cywrite16_nodpx(void far *addr, unsigned int value);
-;    extern unsigned long cyread24(const void far *addr);
-;    extern unsigned long cyread24_nodpx(const void far *addr);
-;    extern void cywrite24(void far *addr, unsigned long value);
-;    extern void cywrite24_nodpx(void far *addr, unsigned long value);
-;    extern unsigned long cyread32(const void far *addr);
-;    extern unsigned long cyread32_nodpx(const void far *addr);
-;    extern void cywrite32(void far *addr, unsigned long value);
-;    extern void cywrite32_nodpx(void far *addr, unsigned long value);
+; C DECLARATIONS:
+;  extern void cymemzero(void far *addr, unsigned short size);
+;  extern void cyconfigcpy(unsigned short size, const void far *src, void far *dest) large;
+;  extern void cyconfigcpycode(unsigned short size, const void code *src, void far *dest);
+;  extern void cfg_write_bytes_code(const void code *table);
+;  extern void cfg_write_bytes(const void far *table);
+;  extern unsigned char cyread8(const void far *addr);
+;  extern unsigned char cyread8_nodpx(const void far *addr);
+;  extern void cywrite8(void far *addr, unsigned char value);
+;  extern void cywrite8_nodpx(void far *addr, unsigned char value);
+;  extern unsigned int cyread16(const void far *addr);
+;  extern unsigned int cyread16_nodpx(const void far *addr);
+;  extern void cywrite16(void far *addr, unsigned int value);
+;  extern void cywrite16_nodpx(void far *addr, unsigned int value);
+;  extern unsigned long cyread24(const void far *addr);
+;  extern unsigned long cyread24_nodpx(const void far *addr);
+;  extern void cywrite24(void far *addr, unsigned long value);
+;  extern void cywrite24_nodpx(void far *addr, unsigned long value);
+;  extern unsigned long cyread32(const void far *addr);
+;  extern unsigned long cyread32_nodpx(const void far *addr);
+;  extern void cywrite32(void far *addr, unsigned long value);
+;  extern void cywrite32_nodpx(void far *addr, unsigned long value);
 ;
 ;*******************************************************************************
-; Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+; Copyright 2008-2017, Cypress Semiconductor Corporation.  All rights reserved.
 ; You may use this file only in accordance with the license, terms, conditions,
 ; disclaimers, and limitations in the end user license agreement accompanying
 ; the software package with which this file was provided.

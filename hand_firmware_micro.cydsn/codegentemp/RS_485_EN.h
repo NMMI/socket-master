@@ -1,14 +1,14 @@
 /*******************************************************************************
 * File Name: RS_485_EN.h  
-* Version 2.10
+* Version 2.20
 *
 * Description:
-*  This file containts Control Register function prototypes and register defines
+*  This file contains Pin function prototypes and register defines
 *
 * Note:
 *
 ********************************************************************************
-* Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+* Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions, 
 * disclaimers, and limitations in the end user license agreement accompanying 
 * the software package with which this file was provided.
@@ -27,31 +27,66 @@
 *        Function Prototypes             
 ***************************************/    
 
+/**
+* \addtogroup group_general
+* @{
+*/
 void    RS_485_EN_Write(uint8 value) ;
 void    RS_485_EN_SetDriveMode(uint8 mode) ;
 uint8   RS_485_EN_ReadDataReg(void) ;
 uint8   RS_485_EN_Read(void) ;
+void    RS_485_EN_SetInterruptMode(uint16 position, uint16 mode) ;
 uint8   RS_485_EN_ClearInterrupt(void) ;
-
+/** @} general */
 
 /***************************************
 *           API Constants        
 ***************************************/
 
-/* Drive Modes */
-#define RS_485_EN_DM_ALG_HIZ         PIN_DM_ALG_HIZ
-#define RS_485_EN_DM_DIG_HIZ         PIN_DM_DIG_HIZ
-#define RS_485_EN_DM_RES_UP          PIN_DM_RES_UP
-#define RS_485_EN_DM_RES_DWN         PIN_DM_RES_DWN
-#define RS_485_EN_DM_OD_LO           PIN_DM_OD_LO
-#define RS_485_EN_DM_OD_HI           PIN_DM_OD_HI
-#define RS_485_EN_DM_STRONG          PIN_DM_STRONG
-#define RS_485_EN_DM_RES_UPDWN       PIN_DM_RES_UPDWN
-
+/**
+* \addtogroup group_constants
+* @{
+*/
+    /** \addtogroup driveMode Drive mode constants
+     * \brief Constants to be passed as "mode" parameter in the RS_485_EN_SetDriveMode() function.
+     *  @{
+     */
+        /* Drive Modes */
+        #define RS_485_EN_DM_ALG_HIZ         PIN_DM_ALG_HIZ   /**< \brief High Impedance Analog   */
+        #define RS_485_EN_DM_DIG_HIZ         PIN_DM_DIG_HIZ   /**< \brief High Impedance Digital  */
+        #define RS_485_EN_DM_RES_UP          PIN_DM_RES_UP    /**< \brief Resistive Pull Up       */
+        #define RS_485_EN_DM_RES_DWN         PIN_DM_RES_DWN   /**< \brief Resistive Pull Down     */
+        #define RS_485_EN_DM_OD_LO           PIN_DM_OD_LO     /**< \brief Open Drain, Drives Low  */
+        #define RS_485_EN_DM_OD_HI           PIN_DM_OD_HI     /**< \brief Open Drain, Drives High */
+        #define RS_485_EN_DM_STRONG          PIN_DM_STRONG    /**< \brief Strong Drive            */
+        #define RS_485_EN_DM_RES_UPDWN       PIN_DM_RES_UPDWN /**< \brief Resistive Pull Up/Down  */
+    /** @} driveMode */
+/** @} group_constants */
+    
 /* Digital Port Constants */
 #define RS_485_EN_MASK               RS_485_EN__MASK
 #define RS_485_EN_SHIFT              RS_485_EN__SHIFT
 #define RS_485_EN_WIDTH              1u
+
+/* Interrupt constants */
+#if defined(RS_485_EN__INTSTAT)
+/**
+* \addtogroup group_constants
+* @{
+*/
+    /** \addtogroup intrMode Interrupt constants
+     * \brief Constants to be passed as "mode" parameter in RS_485_EN_SetInterruptMode() function.
+     *  @{
+     */
+        #define RS_485_EN_INTR_NONE      (uint16)(0x0000u)   /**< \brief Disabled             */
+        #define RS_485_EN_INTR_RISING    (uint16)(0x0001u)   /**< \brief Rising edge trigger  */
+        #define RS_485_EN_INTR_FALLING   (uint16)(0x0002u)   /**< \brief Falling edge trigger */
+        #define RS_485_EN_INTR_BOTH      (uint16)(0x0003u)   /**< \brief Both edge trigger    */
+        /** @} intrMode */
+/** @} group_constants */
+
+    #define RS_485_EN_INTR_MASK      (0x01u)
+#endif /* (RS_485_EN__INTSTAT) */
 
 
 /***************************************
@@ -104,13 +139,21 @@ uint8   RS_485_EN_ClearInterrupt(void) ;
 /* Sync Output Enable Registers */
 #define RS_485_EN_PRTDSI__SYNC_OUT       (* (reg8 *) RS_485_EN__PRTDSI__SYNC_OUT) 
 
+/* SIO registers */
+#if defined(RS_485_EN__SIO_CFG)
+    #define RS_485_EN_SIO_HYST_EN        (* (reg8 *) RS_485_EN__SIO_HYST_EN)
+    #define RS_485_EN_SIO_REG_HIFREQ     (* (reg8 *) RS_485_EN__SIO_REG_HIFREQ)
+    #define RS_485_EN_SIO_CFG            (* (reg8 *) RS_485_EN__SIO_CFG)
+    #define RS_485_EN_SIO_DIFF           (* (reg8 *) RS_485_EN__SIO_DIFF)
+#endif /* (RS_485_EN__SIO_CFG) */
 
-#if defined(RS_485_EN__INTSTAT)  /* Interrupt Registers */
-
-    #define RS_485_EN_INTSTAT                (* (reg8 *) RS_485_EN__INTSTAT)
-    #define RS_485_EN_SNAP                   (* (reg8 *) RS_485_EN__SNAP)
-
-#endif /* Interrupt Registers */
+/* Interrupt Registers */
+#if defined(RS_485_EN__INTSTAT)
+    #define RS_485_EN_INTSTAT             (* (reg8 *) RS_485_EN__INTSTAT)
+    #define RS_485_EN_SNAP                (* (reg8 *) RS_485_EN__SNAP)
+    
+	#define RS_485_EN_0_INTTYPE_REG 		(* (reg8 *) RS_485_EN__0__INTTYPE)
+#endif /* (RS_485_EN__INTSTAT) */
 
 #endif /* End Pins RS_485_EN_H */
 

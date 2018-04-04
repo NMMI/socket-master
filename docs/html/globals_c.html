@@ -83,6 +83,10 @@ $(function() {
 : <a class="el" href="utils_8c.html#ae7faec5b3a1d000c90f70abfc1dfca92">utils.c</a>
 , <a class="el" href="utils_8h.html#ae7faec5b3a1d000c90f70abfc1dfca92">utils.h</a>
 </li>
+<li>check_rest_position()
+: <a class="el" href="utils_8c.html#a13fca172b37b6f76749a864c1439b497">utils.c</a>
+, <a class="el" href="utils_8h.html#a2cb024aea0170c085d18670f5a851df8">utils.h</a>
+</li>
 <li>CMD_ACTIVATE
 : <a class="el" href="commands_8h.html#abf0494aabdc65d654a54044eddc9210ba341cc0e29a584b4c75a7502529920a7f">commands.h</a>
 </li>
@@ -138,12 +142,12 @@ $(function() {
 <li>CMD_GET_INFO
 : <a class="el" href="commands_8h.html#abf0494aabdc65d654a54044eddc9210ba4681b714888632a2d8ad0a2140e4ba7f">commands.h</a>
 </li>
+<li>CMD_GET_INPUTS
+: <a class="el" href="commands_8h.html#abf0494aabdc65d654a54044eddc9210ba7e1020474f9835468c3cfbcce610f7df">commands.h</a>
+</li>
 <li>cmd_get_inputs()
 : <a class="el" href="command__processing_8c.html#a20db4694e8caa572ec479f73ce8b3b02">command_processing.c</a>
 , <a class="el" href="command__processing_8h.html#a20db4694e8caa572ec479f73ce8b3b02">command_processing.h</a>
-</li>
-<li>CMD_GET_INPUTS
-: <a class="el" href="commands_8h.html#abf0494aabdc65d654a54044eddc9210ba7e1020474f9835468c3cfbcce610f7df">commands.h</a>
 </li>
 <li>CMD_GET_JOYSTICK
 : <a class="el" href="commands_8h.html#abf0494aabdc65d654a54044eddc9210ba51f92ae4cb4dffafda985f714433039a">commands.h</a>
@@ -197,14 +201,12 @@ $(function() {
 <li>CMD_SET_CURR_DIFF
 : <a class="el" href="commands_8h.html#abf0494aabdc65d654a54044eddc9210ba75bb0f4bbebcfa9d066c0d1f41531127">commands.h</a>
 </li>
-<li>cmd_set_inputs()
-: <a class="el" href="command__processing_8c.html#a2d8a4542f55af960a27f875b00aad6a1">command_processing.c</a>
-</li>
 <li>CMD_SET_INPUTS
 : <a class="el" href="commands_8h.html#abf0494aabdc65d654a54044eddc9210bac271d0c424b55b263c47f451b3685d65">commands.h</a>
 </li>
 <li>cmd_set_inputs()
-: <a class="el" href="command__processing_8h.html#a2d8a4542f55af960a27f875b00aad6a1">command_processing.h</a>
+: <a class="el" href="command__processing_8c.html#a2d8a4542f55af960a27f875b00aad6a1">command_processing.c</a>
+, <a class="el" href="command__processing_8h.html#a2d8a4542f55af960a27f875b00aad6a1">command_processing.h</a>
 </li>
 <li>CMD_SET_POS_STIFF
 : <a class="el" href="commands_8h.html#abf0494aabdc65d654a54044eddc9210baa8ff629570855ac5162560c19fcbd374">commands.h</a>
@@ -212,12 +214,14 @@ $(function() {
 <li>CMD_SET_VALUE
 : <a class="el" href="commands_8h.html#abf0494aabdc65d654a54044eddc9210bac3ca8989b510cb78baff4425a0d47a67">commands.h</a>
 </li>
+<li>cmd_set_watchdog()
+: <a class="el" href="command__processing_8h.html#aa94cd9c2e2fbfc5b98e84f67569cfe82">command_processing.h</a>
+</li>
 <li>CMD_SET_WATCHDOG
 : <a class="el" href="commands_8h.html#abf0494aabdc65d654a54044eddc9210ba4fa373fa933adfa01f2a9bea1281aa2f">commands.h</a>
 </li>
 <li>cmd_set_watchdog()
 : <a class="el" href="command__processing_8c.html#aa94cd9c2e2fbfc5b98e84f67569cfe82">command_processing.c</a>
-, <a class="el" href="command__processing_8h.html#aa94cd9c2e2fbfc5b98e84f67569cfe82">command_processing.h</a>
 </li>
 <li>CMD_SET_ZEROS
 : <a class="el" href="commands_8h.html#abf0494aabdc65d654a54044eddc9210ba2d92e89157e03fe63bfebf8125c3a0d7">commands.h</a>
@@ -227,34 +231,36 @@ $(function() {
 </li>
 <li>cmd_store_params()
 : <a class="el" href="command__processing_8c.html#a1a2493bfc2f30171d7e7a3bd5aebab14">command_processing.c</a>
-, <a class="el" href="command__processing_8h.html#a1a2493bfc2f30171d7e7a3bd5aebab14">command_processing.h</a>
 </li>
 <li>CMD_STORE_PARAMS
 : <a class="el" href="commands_8h.html#abf0494aabdc65d654a54044eddc9210bac7d1170961179d8dc5ec1b4aeb4f3116">commands.h</a>
 </li>
+<li>cmd_store_params()
+: <a class="el" href="command__processing_8h.html#a1a2493bfc2f30171d7e7a3bd5aebab14">command_processing.h</a>
+</li>
 <li>command_slave()
-: <a class="el" href="interruptions_8h.html#a8e10d86a40e34fc094b817f8e40b30e0">interruptions.h</a>
-, <a class="el" href="interruptions_8c.html#a8e10d86a40e34fc094b817f8e40b30e0">interruptions.c</a>
+: <a class="el" href="interruptions_8c.html#a8e10d86a40e34fc094b817f8e40b30e0">interruptions.c</a>
+, <a class="el" href="interruptions_8h.html#a8e10d86a40e34fc094b817f8e40b30e0">interruptions.h</a>
 </li>
 <li>commProcess()
-: <a class="el" href="command__processing_8c.html#a0c97206a61d782ebd9aa24bbb96f8aea">command_processing.c</a>
-, <a class="el" href="command__processing_8h.html#a2e5d1711e19837adc3e8f479af3ae509">command_processing.h</a>
+: <a class="el" href="command__processing_8h.html#a2e5d1711e19837adc3e8f479af3ae509">command_processing.h</a>
+, <a class="el" href="command__processing_8c.html#a0c97206a61d782ebd9aa24bbb96f8aea">command_processing.c</a>
 </li>
 <li>commReadMeasFromAnother()
 : <a class="el" href="command__processing_8h.html#a61d4e075c64c8b4b79bfadfce576d357">command_processing.h</a>
 , <a class="el" href="command__processing_8c.html#a61d4e075c64c8b4b79bfadfce576d357">command_processing.c</a>
 </li>
 <li>commWrite()
-: <a class="el" href="command__processing_8c.html#af92ab4f3c1e0c0e8f5966bf2e2edeaba">command_processing.c</a>
-, <a class="el" href="command__processing_8h.html#af92ab4f3c1e0c0e8f5966bf2e2edeaba">command_processing.h</a>
+: <a class="el" href="command__processing_8h.html#af92ab4f3c1e0c0e8f5966bf2e2edeaba">command_processing.h</a>
+, <a class="el" href="command__processing_8c.html#af92ab4f3c1e0c0e8f5966bf2e2edeaba">command_processing.c</a>
 </li>
 <li>commWrite_old_id()
 : <a class="el" href="command__processing_8c.html#a517f4c61166381d40767fce9011e3c96">command_processing.c</a>
 , <a class="el" href="command__processing_8h.html#a517f4c61166381d40767fce9011e3c96">command_processing.h</a>
 </li>
 <li>commWriteAnother()
-: <a class="el" href="command__processing_8c.html#ab8e39f8e58dc9f567f24291b11b4d8d0">command_processing.c</a>
-, <a class="el" href="command__processing_8h.html#ab8e39f8e58dc9f567f24291b11b4d8d0">command_processing.h</a>
+: <a class="el" href="command__processing_8h.html#ab8e39f8e58dc9f567f24291b11b4d8d0">command_processing.h</a>
+, <a class="el" href="command__processing_8c.html#ab8e39f8e58dc9f567f24291b11b4d8d0">command_processing.c</a>
 </li>
 <li>CONTROL_ANGLE
 : <a class="el" href="commands_8h.html#a6960e5b914fe207839e82d6f66a6b87aa20c655b0cd3c61eec041dc6da114880d">commands.h</a>
@@ -282,7 +288,7 @@ $(function() {
 : <a class="el" href="globals_8h.html#ad03b1f5576bd45568413662f28b88d4e">globals.h</a>
 </li>
 <li>CY_ISR_PROTO()
-: <a class="el" href="interruptions_8h.html#a212cae8995d67d612c236fb54a4d29dc">interruptions.h</a>
+: <a class="el" href="interruptions_8h.html#a7e24af8c83537b0441877bf0f00dd30a">interruptions.h</a>
 </li>
 </ul>
 </div><!-- contents -->

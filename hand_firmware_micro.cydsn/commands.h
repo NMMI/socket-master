@@ -125,9 +125,8 @@ enum qbmove_command
                                         ///  of communication.
     CMD_EXT_DRIVE               = 145,  ///< Command to set the actual measurements as inputs
                                         ///  to another device (Only for Armslider device).
-    CMD_GET_JOYSTICK            = 146,  ///< Command to get the joystick measurements (Only 
+    CMD_GET_JOYSTICK            = 146  ///< Command to get the joystick measurements (Only 
                                         ///  for devices driven by a joystick).
-    CMD_GET_HAND_MEASUREMENTS   = 147   ///< Command for receiving SH position measurements.
 };
 
 /** \} */

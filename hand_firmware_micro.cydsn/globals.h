@@ -56,13 +56,13 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION                 "SH-PRO v6.1.1 - Master w/Rest position"
+#define VERSION                 "SH-PRO v6.1.2 - Master w/Rest position and Haptic Feedback"
 
 #define NUM_OF_MOTORS           2       /*!< Number of motors.*/
 #define NUM_OF_SENSORS          3       /*!< Number of encoders.*/
 #define NUM_OF_EMGS             2       /*!< Number of emg channels.*/
 #define NUM_OF_ANALOG_INPUTS    4       /*!< Total number of analogic inputs.*/
-#define NUM_OF_PARAMS           25      /*!< Number of parameters saved in the EEPROM.*/
+#define NUM_OF_PARAMS           36      /*!< Number of parameters saved in the EEPROM.*/
 
 //==============================================================================
 //                                                               SYNCHRONIZATION
@@ -150,7 +150,6 @@ struct st_meas {
     int32 emg[NUM_OF_EMGS];         /*!< EMG sensors values.*/
     int32 vel[NUM_OF_SENSORS];      /*!< Encoder rotational velocity.*/
     int32 acc[NUM_OF_SENSORS];      /*!< Encoder rotational acceleration.*/
-    int32 hand_meas;                  /*!< Position measurement from SH.*/
 };
 
 //==============================================================     data packet
@@ -224,7 +223,25 @@ struct st_mem {
     float   rest_delay;                 /*!< Hand rest position delay while in EMG mode.*/                  //4
     float   rest_vel;                   /*!< Hand velocity closure for rest position reaching.*/             //4
     float   rest_ratio;                 /*!< Hand rest ratio between velocity closure and rest position error.*/  //4
-                                                                                                //TOT           166 bytes
+    
+    uint8   is_force_fb_present;        /*!< Flag to know if a force feedback device is present */             // 1
+    uint8   is_proprio_fb_present;      /*!< Flag to know if a proprioceptive feedback device is present */    // 1
+    uint8   is_myo2_master;            /*!< Flag to know if Myoelectric case 2 is present */                   // 1
+    
+    // Force feedback device parameters
+    float   curr_prop_gain;             //                                          4
+    int16   curr_sat;                   //                                          2
+    int16   curr_dead_zone;             //                                          2  
+    
+    // Proprioceptive device parameters
+    int32   max_slide;
+    int32   max_SH_pos;
+    
+    // Devices IDs
+    uint8   SH_ID;
+    uint8   ForceF_ID;
+    uint8   ProprioF_ID;
+                                                                                                //TOT           178 bytes
 };
 
 //=================================================     device related variables
@@ -297,15 +314,13 @@ extern int16 ADC_buf[4];                            /*! ADC measurements buffer.
 extern int8 pwm_sign;                               /*!< Sign of pwm driven. Used to obtain current sign.*/
 
 extern uint8 master_mode;               /*!< Flag used to set/unset master mode to send messages to other boards.*/
+extern uint32 count_tension_valid;
+extern uint8 first_tension_valid;
 
 extern uint8 rest_enabled;				/*!< Rest position flag.*/
 extern uint8 forced_open;               /*!< Forced open flag (used in position with rest position control).*/
 extern int32 rest_pos_curr_ref;			/*!< Rest position current reference.*/
-extern uint8 receive_meas_from_hand;	/*!< Position measurement form hand.*/
 
-extern int16 check2;
-extern uint8 check3, check4;
-extern int32 check5;
 extern int32 curr_pos_res;
 // -----------------------------------------------------------------------------
 

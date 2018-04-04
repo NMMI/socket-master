@@ -13,6 +13,7 @@ var searchData=
   ['filter_5fvel_5f3',['filter_vel_3',['../utils_8c.html#a44d5627a5b0d37a70edddad83a3362ea',1,'filter_vel_3(int32 new_value):&#160;utils.c'],['../utils_8h.html#a70430ee90ed28e4c9fca0c4ca3d6583e',1,'filter_vel_3(int32 value):&#160;utils.c']]],
   ['filter_5fvoltage',['filter_voltage',['../utils_8c.html#ae34079960d1cb2d36ceb390569507710',1,'filter_voltage(int32 new_value):&#160;utils.c'],['../utils_8h.html#a31121e24e34f0c17ecd9d048577dd710',1,'filter_voltage(int32 value):&#160;utils.c']]],
   ['flag',['flag',['../structst__mem.html#af11e40d15a1361229a78e772af5b3c94',1,'st_mem']]],
+  ['forced_5fopen',['forced_open',['../globals_8c.html#a0f13b80a0c329fa3176eb1e72ef36fb8',1,'forced_open():&#160;globals.c'],['../globals_8h.html#a0f13b80a0c329fa3176eb1e72ef36fb8',1,'forced_open():&#160;globals.c']]],
   ['function_5fscheduler',['function_scheduler',['../interruptions_8c.html#a39df971c4e9f194be50c54dfd7aeabfe',1,'function_scheduler(void):&#160;interruptions.c'],['../interruptions_8h.html#a39df971c4e9f194be50c54dfd7aeabfe',1,'function_scheduler(void):&#160;interruptions.c']]],
   ['firmware',['Firmware',['../index.html',1,'']]]
 ];

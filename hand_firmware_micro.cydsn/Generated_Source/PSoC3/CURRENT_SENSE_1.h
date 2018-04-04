@@ -1,14 +1,14 @@
 /*******************************************************************************
 * File Name: CURRENT_SENSE_1.h  
-* Version 2.10
+* Version 2.20
 *
 * Description:
-*  This file containts Control Register function prototypes and register defines
+*  This file contains Pin function prototypes and register defines
 *
 * Note:
 *
 ********************************************************************************
-* Copyright 2008-2014, Cypress Semiconductor Corporation.  All rights reserved.
+* Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
 * You may use this file only in accordance with the license, terms, conditions, 
 * disclaimers, and limitations in the end user license agreement accompanying 
 * the software package with which this file was provided.
@@ -27,31 +27,66 @@
 *        Function Prototypes             
 ***************************************/    
 
+/**
+* \addtogroup group_general
+* @{
+*/
 void    CURRENT_SENSE_1_Write(uint8 value) ;
 void    CURRENT_SENSE_1_SetDriveMode(uint8 mode) ;
 uint8   CURRENT_SENSE_1_ReadDataReg(void) ;
 uint8   CURRENT_SENSE_1_Read(void) ;
+void    CURRENT_SENSE_1_SetInterruptMode(uint16 position, uint16 mode) ;
 uint8   CURRENT_SENSE_1_ClearInterrupt(void) ;
-
+/** @} general */
 
 /***************************************
 *           API Constants        
 ***************************************/
 
-/* Drive Modes */
-#define CURRENT_SENSE_1_DM_ALG_HIZ         PIN_DM_ALG_HIZ
-#define CURRENT_SENSE_1_DM_DIG_HIZ         PIN_DM_DIG_HIZ
-#define CURRENT_SENSE_1_DM_RES_UP          PIN_DM_RES_UP
-#define CURRENT_SENSE_1_DM_RES_DWN         PIN_DM_RES_DWN
-#define CURRENT_SENSE_1_DM_OD_LO           PIN_DM_OD_LO
-#define CURRENT_SENSE_1_DM_OD_HI           PIN_DM_OD_HI
-#define CURRENT_SENSE_1_DM_STRONG          PIN_DM_STRONG
-#define CURRENT_SENSE_1_DM_RES_UPDWN       PIN_DM_RES_UPDWN
-
+/**
+* \addtogroup group_constants
+* @{
+*/
+    /** \addtogroup driveMode Drive mode constants
+     * \brief Constants to be passed as "mode" parameter in the CURRENT_SENSE_1_SetDriveMode() function.
+     *  @{
+     */
+        /* Drive Modes */
+        #define CURRENT_SENSE_1_DM_ALG_HIZ         PIN_DM_ALG_HIZ   /**< \brief High Impedance Analog   */
+        #define CURRENT_SENSE_1_DM_DIG_HIZ         PIN_DM_DIG_HIZ   /**< \brief High Impedance Digital  */
+        #define CURRENT_SENSE_1_DM_RES_UP          PIN_DM_RES_UP    /**< \brief Resistive Pull Up       */
+        #define CURRENT_SENSE_1_DM_RES_DWN         PIN_DM_RES_DWN   /**< \brief Resistive Pull Down     */
+        #define CURRENT_SENSE_1_DM_OD_LO           PIN_DM_OD_LO     /**< \brief Open Drain, Drives Low  */
+        #define CURRENT_SENSE_1_DM_OD_HI           PIN_DM_OD_HI     /**< \brief Open Drain, Drives High */
+        #define CURRENT_SENSE_1_DM_STRONG          PIN_DM_STRONG    /**< \brief Strong Drive            */
+        #define CURRENT_SENSE_1_DM_RES_UPDWN       PIN_DM_RES_UPDWN /**< \brief Resistive Pull Up/Down  */
+    /** @} driveMode */
+/** @} group_constants */
+    
 /* Digital Port Constants */
 #define CURRENT_SENSE_1_MASK               CURRENT_SENSE_1__MASK
 #define CURRENT_SENSE_1_SHIFT              CURRENT_SENSE_1__SHIFT
 #define CURRENT_SENSE_1_WIDTH              1u
+
+/* Interrupt constants */
+#if defined(CURRENT_SENSE_1__INTSTAT)
+/**
+* \addtogroup group_constants
+* @{
+*/
+    /** \addtogroup intrMode Interrupt constants
+     * \brief Constants to be passed as "mode" parameter in CURRENT_SENSE_1_SetInterruptMode() function.
+     *  @{
+     */
+        #define CURRENT_SENSE_1_INTR_NONE      (uint16)(0x0000u)   /**< \brief Disabled             */
+        #define CURRENT_SENSE_1_INTR_RISING    (uint16)(0x0001u)   /**< \brief Rising edge trigger  */
+        #define CURRENT_SENSE_1_INTR_FALLING   (uint16)(0x0002u)   /**< \brief Falling edge trigger */
+        #define CURRENT_SENSE_1_INTR_BOTH      (uint16)(0x0003u)   /**< \brief Both edge trigger    */
+        /** @} intrMode */
+/** @} group_constants */
+
+    #define CURRENT_SENSE_1_INTR_MASK      (0x01u)
+#endif /* (CURRENT_SENSE_1__INTSTAT) */
 
 
 /***************************************
@@ -104,13 +139,21 @@ uint8   CURRENT_SENSE_1_ClearInterrupt(void) ;
 /* Sync Output Enable Registers */
 #define CURRENT_SENSE_1_PRTDSI__SYNC_OUT       (* (reg8 *) CURRENT_SENSE_1__PRTDSI__SYNC_OUT) 
 
+/* SIO registers */
+#if defined(CURRENT_SENSE_1__SIO_CFG)
+    #define CURRENT_SENSE_1_SIO_HYST_EN        (* (reg8 *) CURRENT_SENSE_1__SIO_HYST_EN)
+    #define CURRENT_SENSE_1_SIO_REG_HIFREQ     (* (reg8 *) CURRENT_SENSE_1__SIO_REG_HIFREQ)
+    #define CURRENT_SENSE_1_SIO_CFG            (* (reg8 *) CURRENT_SENSE_1__SIO_CFG)
+    #define CURRENT_SENSE_1_SIO_DIFF           (* (reg8 *) CURRENT_SENSE_1__SIO_DIFF)
+#endif /* (CURRENT_SENSE_1__SIO_CFG) */
 
-#if defined(CURRENT_SENSE_1__INTSTAT)  /* Interrupt Registers */
-
-    #define CURRENT_SENSE_1_INTSTAT                (* (reg8 *) CURRENT_SENSE_1__INTSTAT)
-    #define CURRENT_SENSE_1_SNAP                   (* (reg8 *) CURRENT_SENSE_1__SNAP)
-
-#endif /* Interrupt Registers */
+/* Interrupt Registers */
+#if defined(CURRENT_SENSE_1__INTSTAT)
+    #define CURRENT_SENSE_1_INTSTAT             (* (reg8 *) CURRENT_SENSE_1__INTSTAT)
+    #define CURRENT_SENSE_1_SNAP                (* (reg8 *) CURRENT_SENSE_1__SNAP)
+    
+	#define CURRENT_SENSE_1_0_INTTYPE_REG 		(* (reg8 *) CURRENT_SENSE_1__0__INTTYPE)
+#endif /* (CURRENT_SENSE_1__INTSTAT) */
 
 #endif /* End Pins CURRENT_SENSE_1_H */
 

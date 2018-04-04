@@ -187,15 +187,10 @@ void interrupt_manager(){
             case  WAIT_ID:
 
                 // packet is for my ID or is broadcast
-                if (rx_data == c_mem.id || rx_data == 0)
+                if (rx_data == c_mem.id || rx_data == 0 || rx_data == c_mem.SH_ID)
                     rx_data_type = FALSE;
                 else                //packet is for others
                     rx_data_type = TRUE;
-                
-                // Master with Rest position mode
-                if (receive_meas_from_hand == 1){
-                    rx_data_type = FALSE;
-                }
                 
                 data_packet_length = 0;
                 state = WAIT_LENGTH;
@@ -237,11 +232,6 @@ void interrupt_manager(){
                         memcpy(g_rx.buffer, data_packet_buffer, data_packet_length);
                         g_rx.length = data_packet_length;
                         g_rx.ready  = 1;
-                        
-                        // Master with Rest position mode
-                        if (receive_meas_from_hand == 1){
-                            g_rx.buffer[0] = CMD_GET_HAND_MEASUREMENTS;
-                        }
                 
                         commProcess();
                     }
@@ -356,26 +346,38 @@ void function_scheduler(void) {
     //---------------------------------- Master Mode
       
     if(master_mode){
-        // Rest position check (only if Master mode is enabled)
-        if (c_mem.control_mode == CONTROL_ANGLE_AND_REST_POS){
-            if (counter_calibration == CALIBRATION_DIV) {
-                
-                    // Read Measure (valid since this routine is enabled only in Master mode)
-                    curr_pos_res = (int32)commReadMeasFromAnother();
-
-                    check_rest_position();
-                    counter_calibration = 0;
-            }
-            counter_calibration++;
-
-            // Check Interrupt     
-            if (interrupt_flag){
-                interrupt_flag = FALSE;
-                interrupt_manager();
-            }
+        
+        if (c_mem.is_force_fb_present){
+            drive_force_fb(); 
         }
         
-        command_slave();        
+        if (c_mem.is_proprio_fb_present){
+            drive_proprio_fb();
+        }
+        
+        if (c_mem.is_myo2_master){
+            
+            // Rest position check (only if Master mode is enabled)
+            if (c_mem.control_mode == CONTROL_ANGLE_AND_REST_POS){
+                if (counter_calibration == CALIBRATION_DIV) {
+                    
+                        // Read Measure (valid since this routine is enabled only in Master mode)
+                        curr_pos_res = (int32)commReadMeasFromSH();
+
+                        check_rest_position();
+                        counter_calibration = 0;
+                }
+                counter_calibration++;
+
+                // Check Interrupt     
+                if (interrupt_flag){
+                    interrupt_flag = FALSE;
+                    interrupt_manager();
+                }
+            }
+            
+            drive_SH();        
+        }
     }
             
     // Check Interrupt 
@@ -1042,8 +1044,7 @@ void analog_read_end() {
     static uint16 emg_counter_1 = 0;
     static uint16 emg_counter_2 = 0;
     
-    static uint8 first_tension_valid = TRUE;
-    static uint32 count = 0;
+  //  static uint8 first_tension_valid = TRUE;
 
     // Wait for conversion end
     
@@ -1061,8 +1062,8 @@ void analog_read_end() {
         interrupt_flag = FALSE;
         interrupt_manager();
     }
-    
-    if (first_tension_valid && tension_valid) {
+        
+    if (first_tension_valid && tension_valid) {     
         if (dev_tension < 9000) {   // 8 V case
             pow_tension = 8000;
         }
@@ -1082,11 +1083,11 @@ void analog_read_end() {
     if (dev_tension > 7000) {       //at least > 7.36 V (92% of 8 V) that is minimum charge of smallest battery
         // Set tension valid bit to TRUE
 
-        if (count == 1000){
+        if (count_tension_valid == 1000){
             tension_valid = TRUE;   
         }
         else {                      // wait for battery voltage stabilization
-            count = count + 1;
+            count_tension_valid = count_tension_valid + 1;
             dev_tension_f = filter_voltage(dev_tension);
         }
 
@@ -1379,7 +1380,7 @@ void analog_read_end() {
             
             // Disable slave or motors because of not fully charged battery
             if (master_mode) {
-                deactivate_slave();
+                deactivate_slaves();
                 
                 // Check Interrupt 
                 if (interrupt_flag){
@@ -1445,62 +1446,4 @@ void pwm_limit_search() {
     }
 }
 
-
-//==============================================================================
-//                                                                 COMMAND SLAVE
-//==============================================================================
- 
-void command_slave() {
-    uint8 packet_data[10];
-    uint8 packet_lenght;
-    
-    // If not a emg input mode is set, exit from master_mode
-    if(c_mem.input_mode != INPUT_MODE_EMG_PROPORTIONAL  &&
-        c_mem.input_mode != INPUT_MODE_EMG_INTEGRAL      &&
-        c_mem.input_mode != INPUT_MODE_EMG_FCFS          &&
-        c_mem.input_mode != INPUT_MODE_EMG_FCFS_ADV     ){
-        master_mode = 0;
-        return;
-    }
-    
-    //Sends a Set inputs command to a second board
-    packet_data[0] = CMD_SET_INPUTS;
-
-    *((int16 *) &packet_data[1]) = (int16) (g_ref.pos[0] >> g_mem.res[0]);
-    *((int16 *) &packet_data[3]) = 0;
-    packet_lenght = 6;
-    packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
-    
-    commWriteAnother(packet_data, packet_lenght);
-    
-}
-
-//==============================================================================
-//                                                              DEACTIVATE SLAVE
-//==============================================================================
- 
-void deactivate_slave() {
-    uint8 packet_data[10];
-    uint8 packet_lenght;
-    
-    // If not a emg input mode is set, exit from master_mode
-    if((c_mem.input_mode != INPUT_MODE_EMG_PROPORTIONAL  &&
-        c_mem.input_mode != INPUT_MODE_EMG_INTEGRAL      &&
-        c_mem.input_mode != INPUT_MODE_EMG_FCFS          &&
-        c_mem.input_mode != INPUT_MODE_EMG_FCFS_ADV     )||
-        tension_valid == FALSE                   ) {
-        master_mode = 0;
-        return;
-    }
-    
-    //Sends a Set inputs command to a second board
-    packet_data[0] = CMD_ACTIVATE;
-
-    *((int16 *) &packet_data[1]) = 0;   //3 to activate, 0 to deactivate
-    packet_lenght = 3;
-    packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
-    
-    commWriteAnother(packet_data, packet_lenght);
-    
-}
 /* [] END OF FILE */

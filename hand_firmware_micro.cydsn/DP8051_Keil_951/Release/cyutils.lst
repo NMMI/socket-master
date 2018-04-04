@@ -1,24 +1,24 @@
-C51 COMPILER V9.51   CYUTILS                                                               03/22/2017 18:28:36 PAGE 1   
+C51 COMPILER V9.51   CYUTILS                                                               01/02/2018 13:37:11 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE CYUTILS
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\cyutils.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
-                    -.\Generated_Source\PSoC3\cyutils.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG
-                    -) WL(2) PR(.\DP8051_Keil_951\Release/cyutils.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\cyutils.obj)
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -Generated_Source\PSoC3\cyutils.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG) 
+                    -WL(2) PR(.\DP8051_Keil_951\Release/cyutils.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\cyutils.obj)
 
 line level    source
 
 *** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
-   1          /*******************************************************************************
-   2          * FILENAME: cyutils.c
-   3          * Version 5.20
+   1          /***************************************************************************//**
+   2          * \file cyutils.c
+   3          * \version 5.60
    4          *
-   5          *  Description:
-   6          *   CyUtils provides a function to handle 24-bit value writes.
-   7          *
-   8          ********************************************************************************
-   9          * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+   5          * \brief Provides a function to handle 24-bit value writes.
+   6          *
+   7          ********************************************************************************
+   8          * \copyright
+   9          * Copyright 2008-2017, Cypress Semiconductor Corporation.  All rights reserved.
   10          * You may use this file only in accordance with the license, terms, conditions,
   11          * disclaimers, and limitations in the end user license agreement accompanying
   12          * the software package with which this file was provided.
@@ -30,17 +30,12 @@ line level    source
               
                   /***************************************************************************
                   * Function Name: CySetReg24
-                  ****************************************************************************
+                  ************************************************************************//**
                   *
-                  * Summary:
-                  *  Writes a 24-bit value to the specified register.
+                  * Writes a 24-bit value to the specified register.
                   *
-                  * Parameters:
-                  *  addr : the address where data must be written.
-                  *  value: the data that must be written.
-                  *
-                  * Return:
-                  *  None
+                  * \param add The address where data must be written.
+                  * \param value The data that must be written.
                   *
                   * Reentrant:
                   *  No
@@ -62,18 +57,13 @@ line level    source
               
                       /***************************************************************************
                       * Function Name: CyGetReg24
-C51 COMPILER V9.51   CYUTILS                                                               03/22/2017 18:28:36 PAGE 2   
-
-                      ****************************************************************************
+                      ************************************************************************//**
                       *
-                      * Summary:
                       *  Reads the 24-bit value from the specified register.
                       *
-                      * Parameters:
-                      *  addr : the address where data must be read.
-                      *
-                      * Return:
-                      *  None
+                      *  \param addr : the address where data must be read.
+C51 COMPILER V9.51   CYUTILS                                                               01/02/2018 13:37:11 PAGE 2   
+
                       *
                       * Reentrant:
                       *  No
@@ -96,10 +86,10 @@ line level    source
                   #endif  /*(CY_PSOC4)*/
               
               #endif  /* (!CY_PSOC3) */
-  85          
-  86          
-  87          /* [] END OF FILE */
-C51 COMPILER V9.51   CYUTILS                                                               03/22/2017 18:28:36 PAGE 3   
+  75          
+  76          
+  77          /* [] END OF FILE */
+C51 COMPILER V9.51   CYUTILS                                                               01/02/2018 13:37:11 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
