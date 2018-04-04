@@ -350,25 +350,36 @@ int calc_turns_fcn(const int32 pos1, const int32 pos2) {
 
 void check_rest_position(void) {     // 100 Hz frequency.
     
-    static uint32 count = 0;         // Range [0 - 2^31].
+    static uint32 count = 0;        // Range [0 - 2^31].
     static uint8 flag_count = 1;
     static uint8 first_time = 1;
     static float m = 0;
     static int32 abs_err_thr = 0;
     static int32 delta_inc = 0;
+    int32 curr_pos = 0;
     static int32 rest_error;
-    static int32 stop;
-    int32 CYDATA err_emg_2;
-    
+    int32 handle_value = 0;
     
     if (first_time){
         count = 0;
         first_time = 0;
     }
-
-    stop = g_refOld.pos[0] >> g_mem.res[0];
     
-    if (g_meas.emg[0] < c_mem.emg_threshold[0] && g_meas.emg[1] < c_mem.emg_threshold[1] && stop < 10000){
+    curr_pos = (int32)(g_meas.pos[0] >> g_mem.res[0]);
+    
+    if (c_mem.input_mode == INPUT_MODE_ENCODER3) {
+        if (master_mode) {
+            handle_value = g_meas.pos[0];
+        } 
+        else {
+            if (c_mem.double_encoder_on_off == 0)
+                handle_value = g_meas.pos[1];
+            else
+                handle_value = g_meas.pos[2];
+        }
+    }
+    
+    if ( ( (c_mem.input_mode >= 2 && g_meas.emg[0] < 200 && g_meas.emg[1] < 200) || (c_mem.input_mode == INPUT_MODE_ENCODER3 && handle_value < 50) ) && curr_pos < 10000){
         if (flag_count == 1){
             count = count + 1;
         }
@@ -385,7 +396,7 @@ void check_rest_position(void) {     // 100 Hz frequency.
     * time = g_mem.rest_pos/g_mem.rest_vel (g_mem.rest_vel in ticks/msec)
     ***************************************************/
     
-    if (count == (uint32)(g_mem.rest_delay/CALIBRATION_DIV)){ //10 seconds.
+    if (count == (uint32)(g_mem.rest_delay/CALIBRATION_DIV)){ //10 seconds 
         rest_enabled = 1;
         rest_pos_curr_ref = curr_pos_res;
         
@@ -410,11 +421,15 @@ void check_rest_position(void) {     // 100 Hz frequency.
         if (rest_error < abs_err_thr && rest_error > -abs_err_thr){
             // Stop condition
             rest_pos_curr_ref = g_mem.rest_pos;
-            forced_open = 1;
+            
+            if (c_mem.input_mode >= 2)   // EMG input mode
+                forced_open = 1; 
+            
             count = 0;
         }
         else {
             rest_error = g_mem.rest_pos - curr_pos_res;        
+
             if (rest_error > 0){
                 rest_pos_curr_ref = rest_pos_curr_ref + delta_inc;
             }
@@ -422,29 +437,14 @@ void check_rest_position(void) {     // 100 Hz frequency.
                 rest_pos_curr_ref = rest_pos_curr_ref - delta_inc;
             }
         } 
-        
-        // Change position reference to drive motor to rest position smoothly
-        g_ref.pos[0] = rest_pos_curr_ref;
-        
-        if (forced_open == 1) {
-            // Open the SoftHand as EMG PROPORTIONAL input mode 
-            err_emg_2 = g_meas.emg[1] - c_mem.emg_threshold[1];
-            
-            if (err_emg_2 > 0)
-                g_ref.pos[0] = g_mem.rest_pos - (err_emg_2 * g_mem.rest_pos) / (1024 - c_mem.emg_threshold[1]);
-            else {
-                g_ref.pos[0] = g_mem.rest_pos;
-                forced_open = 0;
-            }
-        }
-        
-        // Position limit saturation
-        if (c_mem.pos_lim_flag) {
-            if (g_ref.pos[0] < c_mem.pos_lim_inf[0]) 
-                g_ref.pos[0] = c_mem.pos_lim_inf[0];
-            if (g_ref.pos[0] > c_mem.pos_lim_sup[0]) 
-                g_ref.pos[0] = c_mem.pos_lim_sup[0];
-        }
+    }
+    
+    // Position limit saturation
+    if (c_mem.pos_lim_flag) {
+        if (rest_pos_curr_ref < c_mem.pos_lim_inf[0]) 
+            rest_pos_curr_ref = c_mem.pos_lim_inf[0];
+        if (rest_pos_curr_ref > c_mem.pos_lim_sup[0]) 
+            rest_pos_curr_ref = c_mem.pos_lim_sup[0];
     }
 
 }

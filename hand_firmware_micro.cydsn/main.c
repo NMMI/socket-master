@@ -211,6 +211,7 @@ int main()
     count_tension_valid = 0;
     
     rest_enabled = 1;
+    g_mem.rest_position_flag = TRUE;
 
     //============================================================     main loop
 

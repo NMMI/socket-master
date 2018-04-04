@@ -268,8 +268,8 @@ void infoGet(uint16 info_type) {
 
 void get_param_list(uint16 index) {
     //Package to be sent variables
-    uint8 packet_data[2301] = "";
-    uint16 packet_lenght = 2301;
+    uint8 packet_data[2351] = "";
+    uint16 packet_lenght = 2351;
 
     //Auxiliary variables
     uint8 CYDATA i;
@@ -298,29 +298,30 @@ void get_param_list(uint16 index) {
     char abs_enc_str[36] = "18 - Absolute encoder position:";
     char handle_ratio_str[25] = "19 - Motor handle ratio:"; 
     char motor_type_str[24] = "20 - PWM rescaling:";
-    char rest_pos_str[20] = "21 - Rest position:";
-    char rest_pos_delay_str[36] = "22 - Rest position time delay (ms):";
-    char rest_vel_str[35] = "23 - Rest vel closure (ticks/sec):";
-    char rest_ratio_str[17] = "24 - Rest ratio:";
-    char curr_lookup_str[21] = "25 - Current lookup:";
+    char rest_pos_flag_str[29] = "21 - Rest position flag:";
+    char rest_pos_str[20] = "22 - Rest position:";
+    char rest_pos_delay_str[36] = "23 - Rest position time delay (ms):";
+    char rest_vel_str[35] = "24 - Rest vel closure (ticks/sec):";
+    char rest_ratio_str[17] = "25 - Rest ratio:";
+    char curr_lookup_str[21] = "26 - Current lookup:";
     
-    char myo2_master_str[36] = "26 - Myoelectric case 2 Master:";
-    char master_mode_force_str[35] = "27 - Master with Force device:";
-    char master_mode_proprio_str[41] = "28 - Master with Proprioc. device:";
+    char myo2_master_str[36] = "27 - Myoelectric case 2 Master:";
+    char master_mode_force_str[35] = "28 - Master with Force device:";
+    char master_mode_proprio_str[41] = "29 - Master with Proprioc. device:";
     
-    char curr_prop_gain_str[40] = "29 - Current proportional gain (force):";
-    char curr_sat_str[44]       = "30 - Current difference saturation (force):";
-    char curr_dead_zone_str[32] = "31 - Current dead zone (force):";
+    char curr_prop_gain_str[40] = "30 - Current proportional gain (force):";
+    char curr_sat_str[44]       = "31 - Current difference saturation (force):";
+    char curr_dead_zone_str[32] = "32 - Current dead zone (force):";
     
-    char max_slide_str[35]      = "32 - Max slide movement (proprio):";
-    char max_SH_pos_str[37]     = "33 - Max SoftHand closure (proprio):";
-    char SH_ID_str[18]          = "34 - SoftHand ID:";
-    char FF_ID_str[22]          = "35 - Force device ID:";
-    char PF_ID_str[31]          = "36 - Proprioceptive device ID:";
+    char max_slide_str[35]      = "33 - Max slide movement (proprio):";
+    char max_SH_pos_str[37]     = "34 - Max SoftHand closure (proprio):";
+    char SH_ID_str[18]          = "35 - SoftHand ID:";
+    char FF_ID_str[22]          = "36 - Force device ID:";
+    char PF_ID_str[31]          = "37 - Proprioceptive device ID:";
 
     //Parameters menus
     char input_mode_menu[99] = "0 -> Usb\n1 -> Handle\n2 -> EMG proportional\n3 -> EMG Integral\n4 -> EMG FCFS\n5 -> EMG FCFS Advanced\n";
-    char control_mode_menu[92] = "0 -> Position\n1 -> PWM\n2 -> Current\n3 -> Position and Current\n4 -> Position w. rest check\n";
+    char control_mode_menu[63] = "0 -> Position\n1 -> PWM\n2 -> Current\n3 -> Position and Current\n";
     char yes_no_menu[42] = "0 -> Deactivate [NO]\n1 -> Activate [YES]\n";
 
     //Strings lenghts
@@ -484,10 +485,6 @@ void get_param_list(uint16 index) {
                 case CURR_AND_POS_CONTROL:
                     strcat(contr_str, " Position and Current\0");
                     string_lenght = 39;
-                break;
-                case CONTROL_ANGLE_AND_REST_POS:
-                    strcat(contr_str, " Position and Rest\0");
-                    string_lenght = 36;
                 break;
             }
             for(i = string_lenght; i != 0; i--)
@@ -656,53 +653,71 @@ void get_param_list(uint16 index) {
             //The following byte indicates the number of menus at the end of the packet to send
             packet_data[955 + string_lenght] = 3;
 
+            /*-----------REST POSITION FLAG-----------*/            
+            
+            packet_data[1002] = TYPE_FLAG;
+            packet_data[1003] = 1;
+            packet_data[1004] = c_mem.rest_position_flag;
+            if(c_mem.rest_position_flag) {
+                strcat(rest_pos_flag_str, " YES\0");
+                string_lenght = 29;
+            }
+            else {
+                strcat(rest_pos_flag_str, " NO\0");
+                string_lenght = 28;
+            }
+            for(i = string_lenght; i != 0; i--)
+                packet_data[1005 + string_lenght - i] = rest_pos_flag_str[string_lenght - i];
+            //The following byte indicates the number of menus at the end of the packet to send
+            packet_data[1005 + string_lenght] = 3;
+            
             /*-----------REST POSITION----------*/
             
-            packet_data[1002] = TYPE_INT32;
-            packet_data[1003] = 1;
-            *((int32 *)( packet_data + 1004 )) = (c_mem.rest_pos >> c_mem.res[0]);
+            packet_data[1052] = TYPE_INT32;
+            packet_data[1053] = 1;
+            *((int32 *)( packet_data + 1054 )) = (c_mem.rest_pos >> c_mem.res[0]);
             for(i = rest_pos_str_len; i != 0; i--)
-                packet_data[1008 + rest_pos_str_len - i] = rest_pos_str[rest_pos_str_len - i];
+                packet_data[1058 + rest_pos_str_len - i] = rest_pos_str[rest_pos_str_len - i];
                 
             /*-----------REST POSITION TIME DELAY----------*/
             
-            packet_data[1052] = TYPE_FLOAT;
-            packet_data[1053] = 1;
-            *((float *)( packet_data + 1054 )) = c_mem.rest_delay;
+            packet_data[1102] = TYPE_FLOAT;
+            packet_data[1103] = 1;
+            *((float *)( packet_data + 1104 )) = c_mem.rest_delay;
             for(i = rest_pos_delay_str_len; i != 0; i--)
-                packet_data[1058 + rest_pos_delay_str_len - i] = rest_pos_delay_str[rest_pos_delay_str_len - i];
+                packet_data[1108 + rest_pos_delay_str_len - i] = rest_pos_delay_str[rest_pos_delay_str_len - i];
                 
             /*-----------REST POSITION VELOCITY----------*/
             
-            packet_data[1102] = TYPE_FLOAT;
-            packet_data[1103] = 1;
-            *((float *)( packet_data + 1104 )) = (float)(c_mem.rest_vel*1000.0);
+            packet_data[1152] = TYPE_FLOAT;
+            packet_data[1153] = 1;
+            *((float *)( packet_data + 1154 )) = (float)(c_mem.rest_vel*1000.0);
             for(i = rest_vel_str_len; i != 0; i--)
-                packet_data[1108 + rest_vel_str_len - i] = rest_vel_str[rest_vel_str_len - i];   
+                packet_data[1158 + rest_vel_str_len - i] = rest_vel_str[rest_vel_str_len - i];   
                 
             /*-----------REST RATIO----------*/
             
-            packet_data[1152] = TYPE_FLOAT;
-            packet_data[1153] = 1;
-            *((float *)( packet_data + 1154 )) = (float)(c_mem.rest_ratio);
+            packet_data[1202] = TYPE_FLOAT;
+            packet_data[1203] = 1;
+            *((float *)( packet_data + 1204 )) = (float)(c_mem.rest_ratio);
             for(i = rest_ratio_str_len; i != 0; i--)
-                packet_data[1158 + rest_ratio_str_len - i] = rest_ratio_str[rest_ratio_str_len - i];   
+                packet_data[1208 + rest_ratio_str_len - i] = rest_ratio_str[rest_ratio_str_len - i];   
                 
             /*---------CURRENT LOOKUP TABLE---------*/
 
-            packet_data[1202] = TYPE_FLOAT;
-            packet_data[1203] = 6;
+            packet_data[1252] = TYPE_FLOAT;
+            packet_data[1253] = 6;
             for(i = 0; i < LOOKUP_DIM; i++)
-                *((float *) ( packet_data + 1204 + (i * 4) )) = c_mem.curr_lookup[i];
+                *((float *) ( packet_data + 1254 + (i * 4) )) = c_mem.curr_lookup[i];
             for(i = curr_lookup_str_len; i != 0; i--)
-                packet_data[1228 + curr_lookup_str_len - i] = curr_lookup_str[curr_lookup_str_len - i];
+                packet_data[1278 + curr_lookup_str_len - i] = curr_lookup_str[curr_lookup_str_len - i];
             
                             
             /*------------MASTER MODE MYO2----------*/
             
-            packet_data[1252] = TYPE_FLAG;
-            packet_data[1253] = 1;
-            packet_data[1254] = c_mem.is_myo2_master;
+            packet_data[1302] = TYPE_FLAG;
+            packet_data[1303] = 1;
+            packet_data[1304] = c_mem.is_myo2_master;
             if(c_mem.is_myo2_master) {
                 strcat(myo2_master_str, " YES\0");
                 string_lenght = 36;
@@ -712,15 +727,15 @@ void get_param_list(uint16 index) {
                 string_lenght = 35;
             }
             for(i = string_lenght; i != 0; i--)
-                packet_data[1255 + string_lenght - i] = myo2_master_str[string_lenght - i];
+                packet_data[1305 + string_lenght - i] = myo2_master_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[1255 + string_lenght] = 3;
+            packet_data[1305 + string_lenght] = 3;
             
             /*------------MASTER MODE CUFF----------*/
             
-            packet_data[1302] = TYPE_FLAG;
-            packet_data[1303] = 1;
-            packet_data[1304] = c_mem.is_force_fb_present;
+            packet_data[1352] = TYPE_FLAG;
+            packet_data[1353] = 1;
+            packet_data[1354] = c_mem.is_force_fb_present;
             if(c_mem.is_force_fb_present) {
                 strcat(master_mode_force_str, " YES\0");
                 string_lenght = 35;
@@ -730,15 +745,15 @@ void get_param_list(uint16 index) {
                 string_lenght = 34;
             }
             for(i = string_lenght; i != 0; i--)
-                packet_data[1305 + string_lenght - i] = master_mode_force_str[string_lenght - i];
+                packet_data[1355 + string_lenght - i] = master_mode_force_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[1305 + string_lenght] = 3;
+            packet_data[1355 + string_lenght] = 3;
             
             /*------------MASTER MODE HAP PRO----------*/
             
-            packet_data[1352] = TYPE_FLAG;
-            packet_data[1353] = 1;
-            packet_data[1354] = c_mem.is_proprio_fb_present;
+            packet_data[1402] = TYPE_FLAG;
+            packet_data[1403] = 1;
+            packet_data[1404] = c_mem.is_proprio_fb_present;
             if(c_mem.is_proprio_fb_present) {
                 strcat(master_mode_proprio_str, " YES\0");
                 string_lenght = 41;
@@ -748,84 +763,84 @@ void get_param_list(uint16 index) {
                 string_lenght = 40;
             }
             for(i = string_lenght; i != 0; i--)
-                packet_data[1355 + string_lenght - i] = master_mode_proprio_str[string_lenght - i];
+                packet_data[1405 + string_lenght - i] = master_mode_proprio_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[1355 + string_lenght] = 3;
+            packet_data[1405 + string_lenght] = 3;
             
              /*-----CURRENT PROPORTIONAL GAIN-----*/
 
-            packet_data[1402] = TYPE_FLOAT;
-            packet_data[1403] = 1;
-            *((float *)(packet_data + 1404)) = c_mem.curr_prop_gain;
+            packet_data[1452] = TYPE_FLOAT;
+            packet_data[1453] = 1;
+            *((float *)(packet_data + 1454)) = c_mem.curr_prop_gain;
             for(i = curr_prop_gain_str_len; i!= 0; i--)
-                packet_data[1408 + curr_prop_gain_str_len - i] = curr_prop_gain_str[curr_prop_gain_str_len - i];
+                packet_data[1458 + curr_prop_gain_str_len - i] = curr_prop_gain_str[curr_prop_gain_str_len - i];
 
             /*---------CURRENT SATURATION--------*/
 
-            packet_data[1452] = TYPE_INT16;
-            packet_data[1453] = 1;
-            *((int16 *)(packet_data + 1454)) = c_mem.curr_sat;
+            packet_data[1502] = TYPE_INT16;
+            packet_data[1503] = 1;
+            *((int16 *)(packet_data + 1504)) = c_mem.curr_sat;
             for(i = curr_sat_str_len; i!= 0; i--)
-                packet_data[1456 + curr_sat_str_len - i] = curr_sat_str[curr_sat_str_len - i];
+                packet_data[1506 + curr_sat_str_len - i] = curr_sat_str[curr_sat_str_len - i];
 
             /*---------CURRENT DEAD ZONE---------*/
 
-            packet_data[1502] = TYPE_INT16;
-            packet_data[1503] = 1;
-            *((int16 *)(packet_data + 1504)) = c_mem.curr_dead_zone;
+            packet_data[1552] = TYPE_INT16;
+            packet_data[1553] = 1;
+            *((int16 *)(packet_data + 1554)) = c_mem.curr_dead_zone;
             for(i = curr_dead_zone_str_len; i!= 0; i--)
-                packet_data[1506 + curr_dead_zone_str_len - i] = curr_dead_zone_str[curr_dead_zone_str_len - i];
+                packet_data[1556 + curr_dead_zone_str_len - i] = curr_dead_zone_str[curr_dead_zone_str_len - i];
                 
             /*---------MAX SLIDE---------*/
 
-            packet_data[1552] = TYPE_INT32;
-            packet_data[1553] = 1;
-            *((int32 *)(packet_data + 1554)) = c_mem.max_slide;
+            packet_data[1602] = TYPE_INT32;
+            packet_data[1603] = 1;
+            *((int32 *)(packet_data + 1604)) = c_mem.max_slide;
             for(i = max_slide_str_len; i!= 0; i--)
-                packet_data[1558 + max_slide_str_len - i] = max_slide_str[max_slide_str_len - i];
+                packet_data[1608 + max_slide_str_len - i] = max_slide_str[max_slide_str_len - i];
                 
             /*---------MAX SH POS---------*/
 
-            packet_data[1602] = TYPE_INT32;
-            packet_data[1603] = 1;
-            *((int32 *)(packet_data + 1604)) = c_mem.max_SH_pos;
+            packet_data[1652] = TYPE_INT32;
+            packet_data[1653] = 1;
+            *((int32 *)(packet_data + 1654)) = c_mem.max_SH_pos;
             for(i = max_SH_pos_str_len; i!= 0; i--)
-                packet_data[1608 + max_SH_pos_str_len - i] = max_SH_pos_str[max_SH_pos_str_len - i];
+                packet_data[1658 + max_SH_pos_str_len - i] = max_SH_pos_str[max_SH_pos_str_len - i];
                 
             /*---------HAND ID---------*/
 
-            packet_data[1652] = TYPE_UINT8;
-            packet_data[1653] = 1;
-            *((uint8 *)(packet_data + 1654)) = c_mem.SH_ID;
+            packet_data[1702] = TYPE_UINT8;
+            packet_data[1703] = 1;
+            *((uint8 *)(packet_data + 1704)) = c_mem.SH_ID;
             for(i = SH_ID_str_len; i!= 0; i--)
-                packet_data[1655 + SH_ID_str_len - i] = SH_ID_str[SH_ID_str_len - i];
+                packet_data[1705 + SH_ID_str_len - i] = SH_ID_str[SH_ID_str_len - i];
                 
             /*---------FORCE FEEDBACK DEVICE ID---------*/
 
-            packet_data[1702] = TYPE_UINT8;
-            packet_data[1703] = 1;
-            *((uint8 *)(packet_data + 1704)) = c_mem.ForceF_ID;
+            packet_data[1752] = TYPE_UINT8;
+            packet_data[1753] = 1;
+            *((uint8 *)(packet_data + 1754)) = c_mem.ForceF_ID;
             for(i = FF_ID_str_len; i!= 0; i--)
-                packet_data[1705 + FF_ID_str_len - i] = FF_ID_str[FF_ID_str_len - i];
+                packet_data[1755 + FF_ID_str_len - i] = FF_ID_str[FF_ID_str_len - i];
                 
             /*---------PROPRIOCEPTIVE FEEDBACK DEVICE ID---------*/
 
-            packet_data[1752] = TYPE_UINT8;
-            packet_data[1753] = 1;
-            *((uint8 *)(packet_data + 1754)) = c_mem.ProprioF_ID;
+            packet_data[1802] = TYPE_UINT8;
+            packet_data[1803] = 1;
+            *((uint8 *)(packet_data + 1804)) = c_mem.ProprioF_ID;
             for(i = PF_ID_str_len; i!= 0; i--)
-                packet_data[1755 + PF_ID_str_len - i] = PF_ID_str[PF_ID_str_len - i];                
+                packet_data[1805 + PF_ID_str_len - i] = PF_ID_str[PF_ID_str_len - i];                
                 
             /*------------PARAMETERS MENU-----------*/
 
             for(i = input_mode_menu_len; i != 0; i--)
-                packet_data[1802 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
+                packet_data[1852 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
 
             for(i = control_mode_menu_len; i != 0; i--)
-                packet_data[1952 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
+                packet_data[2002 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
 
             for(i = yes_no_menu_len; i!= 0; i--)
-                packet_data[2102 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
+                packet_data[2152 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
 
             packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
             commWrite(packet_data, packet_lenght);
@@ -981,31 +996,35 @@ void get_param_list(uint16 index) {
         case 20:        //Motor type - uint8
             g_mem.activate_pwm_rescaling = g_rx.buffer[3];
         break;
+//=======================================================     set_rest_position_flag
+        case 21:        //Rest position flag - int8
+            g_mem.rest_position_flag = *((uint8*) &g_rx.buffer[3]);
+        break; 
 //============================================================     set_rest_pos
-        case 21:        //Rest Position - int32
+        case 22:        //Rest Position - int32
             g_mem.rest_pos = *((int32 *) &g_rx.buffer[3]);
             g_mem.rest_pos = g_mem.rest_pos << g_mem.res[0];
         break;   
 //============================================================     set_rest_delay_pos
-        case 22:        //Rest Position Time Delay - float
+        case 23:        //Rest Position Time Delay - float
             g_mem.rest_delay = *((float *) &g_rx.buffer[3]);
         break;   
 //============================================================     set_rest_vel
-        case 23:        //Rest Position Velocity - float
+        case 24:        //Rest Position Velocity - float
             g_mem.rest_vel = *((float *) &g_rx.buffer[3]);
             g_mem.rest_vel = g_mem.rest_vel/1000.0;       //conversion [s -> ms]
         break;     
 //============================================================     set_rest_ratio
-        case 24:        //Rest Ratio - float
+        case 25:        //Rest Ratio - float
             g_mem.rest_ratio = *((float *) &g_rx.buffer[3]);
         break;                 
 //===================================================     set_curr_lookup_table
-        case 25:        //Current lookup table - float
+        case 26:        //Current lookup table - float
             for(i = 0; i < LOOKUP_DIM; i++)
                 g_mem.curr_lookup[i] = *((float *) &g_rx.buffer[3 + i*4]);
         break;
 //================================================     set_myo2_master
-        case 26:        //Is Myo2 master present - uint8
+        case 27:        //Is Myo2 master present - uint8
             aux_uchar = *((uint8*) &g_rx.buffer[3]);
             if (aux_uchar) {
                 g_mem.is_myo2_master = 1;
@@ -1014,7 +1033,7 @@ void get_param_list(uint16 index) {
             }
         break;                 
 //================================================     set_master_mode_force
-        case 27:        //Is force feedback present - uint8
+        case 28:        //Is force feedback present - uint8
             aux_uchar = *((uint8*) &g_rx.buffer[3]);
             if (aux_uchar) {
                 g_mem.is_force_fb_present = 1;
@@ -1023,7 +1042,7 @@ void get_param_list(uint16 index) {
             }
         break;
 //================================================     set_master_mode_proprio
-        case 28:        //Is proprio feedback present - uint8
+        case 29:        //Is proprio feedback present - uint8
             aux_uchar = *((uint8*) &g_rx.buffer[3]);
             if (aux_uchar) {
                 g_mem.is_proprio_fb_present = 1;
@@ -1032,35 +1051,35 @@ void get_param_list(uint16 index) {
             }
         break;   
 //=======================================================     set_curr_prop_gain
-        case 29:
+        case 30:
             g_mem.curr_prop_gain = *((float*) &g_rx.buffer[3]);
         break;
 //=============================================================     set_curr_sat
-        case 30: 
+        case 31: 
             g_mem.curr_sat = *((int16*) &g_rx.buffer[3]);
         break;
 //=======================================================     set_curr_dead_zone
-        case 31:
+        case 32:
             g_mem.curr_dead_zone = *((int16*) &g_rx.buffer[3]);
         break;            
 //=============================================================     set_max_slide
-        case 32: 
+        case 33: 
             g_mem.max_slide = *((int32*) &g_rx.buffer[3]);
         break;            
 //=============================================================     set_max_SH_pos
-        case 33: 
+        case 34: 
             g_mem.max_SH_pos = *((int32*) &g_rx.buffer[3]);
         break;   
 //=============================================================     set_SH_ID
-        case 34: 
+        case 35: 
             g_mem.SH_ID = *((uint8*) &g_rx.buffer[3]);
         break;   
 //=============================================================     set_FF_ID
-        case 35: 
+        case 36: 
             g_mem.ForceF_ID = *((uint8*) &g_rx.buffer[3]);
         break; 
 //=============================================================     set_PF_ID
-        case 36: 
+        case 37: 
             g_mem.ProprioF_ID = *((uint8*) &g_rx.buffer[3]);
         break;             
     }            
@@ -1254,9 +1273,6 @@ void infoPrepare(unsigned char *info_string)
                 break;
             case CURR_AND_POS_CONTROL:
                 strcat(info_string, "Control mode: Position and Current\r\n");
-                break;
-            case CONTROL_ANGLE_AND_REST_POS:
-                strcat(info_string, "Control mode: Position and Rest check\r\n");
                 break;
             default:
                 break;
@@ -1527,8 +1543,9 @@ void drive_SH() {
     uint8 packet_data[6];
     uint8 packet_lenght;
     
-    // If not a emg input mode is set, exit from master_mode
-    if( c_mem.input_mode != INPUT_MODE_EMG_PROPORTIONAL  &&
+    // If not the use of handle or an emg input mode is set, exit from master_mode
+    if( c_mem.input_mode != INPUT_MODE_ENCODER3          &&
+        c_mem.input_mode != INPUT_MODE_EMG_PROPORTIONAL  &&
         c_mem.input_mode != INPUT_MODE_EMG_INTEGRAL      &&
         c_mem.input_mode != INPUT_MODE_EMG_FCFS          &&
         c_mem.input_mode != INPUT_MODE_EMG_FCFS_ADV     ){
@@ -1837,8 +1854,8 @@ uint8 memInit(void)
     // EMG calibration enabled by default
     g_mem.emg_calibration_flag = 0;
 
-    g_mem.emg_max_value[0] = 0;
-    g_mem.emg_max_value[1] = 0;
+    g_mem.emg_max_value[0] = 1024;
+    g_mem.emg_max_value[1] = 1024;
 
     g_mem.emg_threshold[0] = 100;
     g_mem.emg_threshold[1] = 100;
@@ -1849,6 +1866,7 @@ uint8 memInit(void)
     g_mem.motor_handle_ratio = 22;
     
     //Initialize rest position parameters        
+    g_mem.rest_position_flag = 1;
     g_mem.rest_pos = (int32)7000 << g_mem.res[0]; // 56000
     g_mem.rest_delay = 5000;
     g_mem.rest_vel = 2; //*1000

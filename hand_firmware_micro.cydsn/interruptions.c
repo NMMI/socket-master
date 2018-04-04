@@ -358,7 +358,7 @@ void function_scheduler(void) {
         if (c_mem.is_myo2_master){
             
             // Rest position check (only if Master mode is enabled)
-            if (c_mem.control_mode == CONTROL_ANGLE_AND_REST_POS){
+            if (c_mem.rest_position_flag == TRUE){
                 if (counter_calibration == CALIBRATION_DIV) {
                     
                         // Read Measure (valid since this routine is enabled only in Master mode)
@@ -480,13 +480,19 @@ void motor_control() {
 
         case INPUT_MODE_ENCODER3:
 
-            // Calculate handle value based on position of handle in the
-            // sensor chain and multiplication factor between handle and motor position
-            if (c_mem.double_encoder_on_off) 
-                handle_value = g_meas.pos[2] * c_mem.motor_handle_ratio;
-            else
-                handle_value = g_meas.pos[1] * c_mem.motor_handle_ratio;
-            
+            if (master_mode) {
+                // The only attached encoder is the handle lever
+                handle_value = g_meas.pos[0] * c_mem.motor_handle_ratio;
+            }
+            else {
+                // Like other firmwares working
+                // Calculate handle value based on position of handle in the
+                // sensor chain and multiplication factor between handle and motor position
+                if (c_mem.double_encoder_on_off) 
+                    handle_value = g_meas.pos[2] * c_mem.motor_handle_ratio;
+                else
+                    handle_value = g_meas.pos[1] * c_mem.motor_handle_ratio;
+            }
 
             // Read handle and use it as reference for the motor
             if (((handle_value - g_ref.pos[0]) > c_mem.max_step_pos) && (c_mem.max_step_pos != 0))
@@ -612,6 +618,23 @@ void motor_control() {
             g_ref.pos[0] = c_mem.pos_lim_sup[0];
     }
 
+    if (c_mem.rest_position_flag == TRUE) {
+        if (rest_enabled == 1){
+            // Change position reference to drive motor to rest position smoothly
+            g_ref.pos[0] = rest_pos_curr_ref;
+        }
+        
+        if (forced_open == 1) {
+            // Open the SoftHand as EMG PROPORTIONAL input mode 
+            if (err_emg_2 > 0)
+                g_ref.pos[0] = g_mem.rest_pos - (err_emg_2 * g_mem.rest_pos) / (1024 - c_mem.emg_threshold[1]);
+            else {
+                g_ref.pos[0] = g_mem.rest_pos;
+                forced_open = 0;
+            }
+        }
+    }
+    
     switch(c_mem.control_mode) {
         // ======================= CURRENT AND POSITION CONTROL =======================
         case CURR_AND_POS_CONTROL:
@@ -1043,6 +1066,8 @@ void analog_read_end() {
     
     static uint16 emg_counter_1 = 0;
     static uint16 emg_counter_2 = 0;
+    static uint8 count = 0;
+    static uint32 count2 = 0;
     
   //  static uint8 first_tension_valid = TRUE;
 
@@ -1063,19 +1088,23 @@ void analog_read_end() {
         interrupt_manager();
     }
         
-    if (first_tension_valid && tension_valid) {     
-        if (dev_tension < 9000) {   // 8 V case
-            pow_tension = 8000;
-        }
-        else {      // 12 V - 24 V cases
-            if (dev_tension < 13000) {
-                pow_tension = 12000;
+    if (first_tension_valid && tension_valid) {
+        count = count + 1;
+        
+        if (count == 1000){
+            if (dev_tension < 9000) {   // 8 V case
+                pow_tension = 8000;
             }
-            else
-                pow_tension = 24000;
-        }
+            else {      // 12 V - 24 V cases
+                if (dev_tension < 13000) {
+                    pow_tension = 12000;
+                }
+                else
+                    pow_tension = 24000;
+            }
 
-        first_tension_valid = FALSE;
+            first_tension_valid = FALSE;
+        }
     }
 
     // Until there is no valid input tension repeat this measurement
@@ -1083,11 +1112,11 @@ void analog_read_end() {
     if (dev_tension > 7000) {       //at least > 7.36 V (92% of 8 V) that is minimum charge of smallest battery
         // Set tension valid bit to TRUE
 
-        if (count_tension_valid == 1000){
+        if (count2 == 1000){
             tension_valid = TRUE;   
         }
         else {                      // wait for battery voltage stabilization
-            count_tension_valid = count_tension_valid + 1;
+            count2 = count2 + 1;
             dev_tension_f = filter_voltage(dev_tension);
         }
 
@@ -1116,6 +1145,8 @@ void analog_read_end() {
         switch(emg_1_status) {
             case NORMAL: // normal execution
                 i_aux = (int32)ADC_buf[2];
+                if (i_aux < 0) 
+                    i_aux = 0;
                 i_aux = filter_ch1(i_aux);
                 i_aux = (i_aux << 10) / g_mem.emg_max_value[0];
     
@@ -1151,9 +1182,7 @@ void analog_read_end() {
                 if (emg_counter_1 == EMG_SAMPLE_TO_DISCARD) {
                     emg_counter_1 = 0;          // reset counter
                     
-                    // turn on LED
                     LED_CTRL_Write(1);
-                    //PWM Blink Enable
                     LED_BLINK_EN_Write(0);
                         
                     if (interrupt_flag){
@@ -1168,6 +1197,8 @@ void analog_read_end() {
             case SUM_AND_MEAN: // sum first SAMPLES_FOR_EMG_MEAN samples
                 // NOTE max(value)*SAMPLES_FOR_EMG_MEAN must fit in 32bit
                 emg_counter_1++;
+                if (ADC_buf[2] < 0) 
+                    ADC_buf[2] = 0;
                 g_mem.emg_max_value[0] += filter_ch1((int32)ADC_buf[2]);
                 
                 if (interrupt_flag){
@@ -1183,9 +1214,7 @@ void analog_read_end() {
                         interrupt_manager();
                     }                    
                     
-                    // turn off LED
                     LED_CTRL_Write(0);
-                    //PWM Blink Enable
                     LED_BLINK_EN_Write(0);
                     
                     emg_counter_1 = 0;          // reset counter
@@ -1202,10 +1231,12 @@ void analog_read_end() {
             interrupt_flag = FALSE;
             interrupt_manager();
         }
-        // EMG 2 calibration state machine
+         // EMG 2 calibration state machine
         switch(emg_2_status) {
             case NORMAL: // normal execution
                 i_aux = (int32)ADC_buf[3];
+                if (i_aux < 0)
+                    i_aux = 0;
                 i_aux = filter_ch2(i_aux);
                 i_aux = (i_aux << 10) / g_mem.emg_max_value[1];
     
@@ -1241,9 +1272,7 @@ void analog_read_end() {
                 if (emg_counter_2 == EMG_SAMPLE_TO_DISCARD) {
                     emg_counter_2 = 0;          // reset counter
                     
-                    // turn on LED
                     LED_CTRL_Write(1);
-                    //PWM Blink Enable
                     LED_BLINK_EN_Write(0);
     
                     if (interrupt_flag){
@@ -1258,6 +1287,8 @@ void analog_read_end() {
             case SUM_AND_MEAN: // sum first SAMPLES_FOR_EMG_MEAN samples
                 // NOTE max(value)*SAMPLES_FOR_EMG_MEAN must fit in 32bit
                 emg_counter_2++;
+                if (ADC_buf[3] < 0)
+                    ADC_buf[3] = 0;
                 g_mem.emg_max_value[1] += filter_ch2((int32)ADC_buf[3]);
     
                 if (interrupt_flag){
@@ -1268,9 +1299,7 @@ void analog_read_end() {
                 if (emg_counter_2 == SAMPLES_FOR_EMG_MEAN) {
                     g_mem.emg_max_value[1] = g_mem.emg_max_value[1] / SAMPLES_FOR_EMG_MEAN; // calc mean
                     
-                    // turn off LED
                     LED_CTRL_Write(0);
-                    //PWM Blink Enable
                     LED_BLINK_EN_Write(0);
                     
                     emg_counter_2 = 0;          // reset counter
@@ -1288,7 +1317,7 @@ void analog_read_end() {
                 if (emg_1_status == NORMAL)
                     emg_2_status = DISCARD;           // goto discard sample
                 break;
-            
+
             case WAIT_EoC:  // wait for end of calibration procedure (only for LED visibility reasons)
                 emg_counter_2++;
                 if (emg_counter_2 == EMG_SAMPLE_TO_DISCARD) {
@@ -1315,7 +1344,7 @@ void analog_read_end() {
                     emg_2_status = NORMAL;           // goto normal execution
                 }
                 break;
-
+                
             default:
                 break;
         }
@@ -1362,7 +1391,7 @@ void analog_read_end() {
     }
     
     // The board LED blinks if attached battery is not fully charged
-    if (emg_1_status == NORMAL && emg_2_status == NORMAL && !first_tension_valid && tension_valid == TRUE){
+    if (!first_tension_valid && tension_valid == TRUE && emg_1_status == NORMAL && emg_2_status == NORMAL){
         dev_tension_f = filter_voltage(dev_tension);
         if (dev_tension_f > 0.92 * pow_tension){
             //fixed

@@ -62,7 +62,7 @@
 #define NUM_OF_SENSORS          3       /*!< Number of encoders.*/
 #define NUM_OF_EMGS             2       /*!< Number of emg channels.*/
 #define NUM_OF_ANALOG_INPUTS    4       /*!< Total number of analogic inputs.*/
-#define NUM_OF_PARAMS           36      /*!< Number of parameters saved in the EEPROM.*/
+#define NUM_OF_PARAMS           37      /*!< Number of parameters saved in the EEPROM.*/
 
 //==============================================================================
 //                                                               SYNCHRONIZATION
@@ -99,7 +99,7 @@
 #define FALSE                   0
 #define TRUE                    1
 
-#define DEFAULT_EEPROM_DISPLACEMENT 8   /*!< Number of pages occupied by the EEPROM.*/
+#define DEFAULT_EEPROM_DISPLACEMENT 50   /*!< Number of pages occupied by the EEPROM.*/
 
 #define MAX_WATCHDOG_TIMER      250     /*!< num * 2 [cs] */
 
@@ -219,6 +219,7 @@ struct st_mem {
     uint8   baud_rate;                  /*!< Baud Rate set.*/                                            //1
     uint8   watchdog_period;            /*!< Watchdog period setted, 255 = disable.*/                       //1
     
+    uint8   rest_position_flag;         /*!< Enable rest position feature.*/                                        //1    
     int32   rest_pos;                   /*!< Hand rest position while in EMG mode.*/                        //4
     float   rest_delay;                 /*!< Hand rest position delay while in EMG mode.*/                  //4
     float   rest_vel;                   /*!< Hand velocity closure for rest position reaching.*/             //4
