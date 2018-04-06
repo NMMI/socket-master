@@ -46,19 +46,6 @@
 #include <math.h>
 
 //==============================================================================
-//                                                            Current Estimation
-//==============================================================================
-
-int32 curr_estim (int32 pos, int32 vel, int32 acc) {
-    return (abs(g_mem.curr_lookup[0]*pos +
-                g_mem.curr_lookup[1]*pow(pos,2) + 
-                g_mem.curr_lookup[2]*pow(pos,3) + 
-                g_mem.curr_lookup[3]*vel + 
-                g_mem.curr_lookup[4]*pow(vel,2) + 
-                g_mem.curr_lookup[5]*acc));
-}
-
-//==============================================================================
 //                                                   Voltage and current filters
 //==============================================================================
 
@@ -118,22 +105,6 @@ int32 filter_ch2(int32 new_value) {
     old_value = aux;
 
     return (aux /64);
-}
-
-//==============================================================================
-//                                                     Current difference filter
-//==============================================================================
-
-int32 filter_curr_diff(int32 curr_diff) {
-
-    static int32 old_out, aux, old_input;
-
-    aux = (old_out * (1024 - 2) + (curr_diff + old_input) * (0.8)) / 1024;
-
-    old_out = aux;
-    old_input = curr_diff;
-
-    return aux;
 }
 
 //==============================================================================
@@ -379,7 +350,9 @@ void check_rest_position(void) {     // 100 Hz frequency.
         }
     }
     
-    if ( ( (c_mem.input_mode >= 2 && g_meas.emg[0] < 200 && g_meas.emg[1] < 200) || (c_mem.input_mode == INPUT_MODE_ENCODER3 && handle_value < 50) ) && curr_pos < 10000){
+    if ( ( (c_mem.input_mode >= 2 && c_mem.input_mode <= 5 && g_meas.emg[0] < 200 && g_meas.emg[1] < 200) || 
+           (c_mem.input_mode == INPUT_MODE_ENCODER3 && handle_value < 50) ||
+           (c_mem.input_mode == INPUT_MODE_JOYSTICK && g_meas.joystick[0] < 50 && g_meas.joystick[0] > -50)) && curr_pos < 10000){
         if (flag_count == 1){
             count = count + 1;
         }

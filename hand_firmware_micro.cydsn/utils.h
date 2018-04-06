@@ -171,31 +171,6 @@ int32 filter_voltage(int32 value);
 /** \} */ 
 
 
-/** \name Estimating current and difference */
-/** \{ */
-
-/** Function used to obtain current estimation through current lookup table.
- *
- * 	\param pos 			Position of the encoder in ticks.
- *	\param vel 			Speed of the encoder.
- *	\param accel 		Acceleration of the encoder
- *
- * 	\return Returns an estimation of the motor current, depending on its position, velocity
- * 			and acceleration.
-**/
-int32 curr_estim(int32 pos, int32 vel, int32 accel);
-
-/** Low pass filter on current difference between measured and estimated current 
- *
- *	\param curr_diff 	Difference between the measured current and the estimated one.
- *
- *	\return Returns the filtered current difference value
-**/
-int32 filter_curr_diff(int32 curr_diff);
-
-/** \} */
-
-
 /** \name Utility functions */
 /** \{ */
 

@@ -37,9 +37,9 @@
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\Signal_1_C.c" value="SOURCE_C;DP8051;;;;Signal_1_C" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\Signal_1_C.h" value="HEADER;;;;;Signal_1_C" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\Signal_1_C_aliases.h" value="HEADER;;;;;Signal_1_C" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\EMG_2.c" value="SOURCE_C;DP8051;;;;EMG_2" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\EMG_2.h" value="HEADER;;;;;EMG_2" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\EMG_2_aliases.h" value="HEADER;;;;;EMG_2" />
+  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\INPUT_2.c" value="SOURCE_C;DP8051;;;;INPUT_2" />
+  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\INPUT_2.h" value="HEADER;;;;;INPUT_2" />
+  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\INPUT_2_aliases.h" value="HEADER;;;;;INPUT_2" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\PACER_TIMER.c" value="SOURCE_C;DP8051;;;;PACER_TIMER" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\PACER_TIMER.h" value="HEADER;;;;;PACER_TIMER" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\PACER_TIMER_PM.c" value="SOURCE_C;DP8051;;;;PACER_TIMER" />
@@ -97,9 +97,9 @@
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\FTDI_ENABLE_REG.h" value="HEADER;;;;;FTDI_ENABLE_REG" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\FTDI_ENABLE_REG.c" value="SOURCE_C;DP8051;;;;FTDI_ENABLE_REG" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\FTDI_ENABLE_REG_PM.c" value="SOURCE_C;DP8051;;;;FTDI_ENABLE_REG" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\EMG_1.c" value="SOURCE_C;DP8051;;;;EMG_1" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\EMG_1.h" value="HEADER;;;;;EMG_1" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\EMG_1_aliases.h" value="HEADER;;;;;EMG_1" />
+  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\INPUT_1.c" value="SOURCE_C;DP8051;;;;INPUT_1" />
+  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\INPUT_1.h" value="HEADER;;;;;INPUT_1" />
+  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\INPUT_1_aliases.h" value="HEADER;;;;;INPUT_1" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\CURRENT_SENSE_1.c" value="SOURCE_C;DP8051;;;;CURRENT_SENSE_1" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\CURRENT_SENSE_1.h" value="HEADER;;;;;CURRENT_SENSE_1" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\CURRENT_SENSE_1_aliases.h" value="HEADER;;;;;CURRENT_SENSE_1" />

@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="firmware\hand_firmware_micro\Header Files\commands.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="firmware\hand_firmware_micro\Source Files\utils.c">
 <ExpandedNodeIds>
 <v>firmware</v>
 <v>firmware\hand_firmware_micro</v>
@@ -62,9 +62,6 @@
 <v>firmware\hand_firmware_micro\Generated_Source\PSoC3\BOARD_LED\BOARD_LED.c</v>
 <v>firmware\hand_firmware_micro\Generated_Source\PSoC3\BOARD_LED\BOARD_LED.h</v>
 <v>firmware\hand_firmware_micro\Generated_Source\PSoC3\BOARD_LED\BOARD_LED_aliases.h</v>
-<v>firmware\hand_firmware_micro\Generated_Source\PSoC3\Bootloadable</v>
-<v>firmware\hand_firmware_micro\Generated_Source\PSoC3\Bootloadable\Bootloadable.c</v>
-<v>firmware\hand_firmware_micro\Generated_Source\PSoC3\Bootloadable\Bootloadable.h</v>
 <v>firmware\hand_firmware_micro\Generated_Source\PSoC3\CLOCK_ENCODERS</v>
 <v>firmware\hand_firmware_micro\Generated_Source\PSoC3\CLOCK_ENCODERS\CLOCK_ENCODERS.c</v>
 <v>firmware\hand_firmware_micro\Generated_Source\PSoC3\CLOCK_ENCODERS\CLOCK_ENCODERS.h</v>
@@ -110,14 +107,6 @@
 <v>firmware\hand_firmware_micro\Generated_Source\PSoC3\EEPROM</v>
 <v>firmware\hand_firmware_micro\Generated_Source\PSoC3\EEPROM\EEPROM.c</v>
 <v>firmware\hand_firmware_micro\Generated_Source\PSoC3\EEPROM\EEPROM.h</v>
-<v>firmware\hand_firmware_micro\Generated_Source\PSoC3\EMG_1</v>
-<v>firmware\hand_firmware_micro\Generated_Source\PSoC3\EMG_1\EMG_1.c</v>
-<v>firmware\hand_firmware_micro\Generated_Source\PSoC3\EMG_1\EMG_1.h</v>
-<v>firmware\hand_firmware_micro\Generated_Source\PSoC3\EMG_1\EMG_1_aliases.h</v>
-<v>firmware\hand_firmware_micro\Generated_Source\PSoC3\EMG_2</v>
-<v>firmware\hand_firmware_micro\Generated_Source\PSoC3\EMG_2\EMG_2.c</v>
-<v>firmware\hand_firmware_micro\Generated_Source\PSoC3\EMG_2\EMG_2.h</v>
-<v>firmware\hand_firmware_micro\Generated_Source\PSoC3\EMG_2\EMG_2_aliases.h</v>
 <v>firmware\hand_firmware_micro\Generated_Source\PSoC3\FF_STATUS</v>
 <v>firmware\hand_firmware_micro\Generated_Source\PSoC3\FF_STATUS\FF_STATUS.c</v>
 <v>firmware\hand_firmware_micro\Generated_Source\PSoC3\FF_STATUS\FF_STATUS.h</v>
@@ -384,13 +373,13 @@
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\cyutils.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\DMA_dma.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\EEPROM.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\EMG_1.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\EMG_2.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FF_STATUS.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FTDI_ENABLE.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FTDI_ENABLE_REG.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FTDI_ENABLE_REG_PM.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\globals.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\INPUT_1.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\INPUT_2.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\interruptions.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ISR_RS485_RX.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ISR_WATCHDOG.lst</v>
@@ -499,12 +488,12 @@
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\cyutils.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\DMA_dma.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\EEPROM.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\EMG_1.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\EMG_2.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FF_STATUS.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FTDI_ENABLE.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FTDI_ENABLE_REG.lst</v>
 <v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FTDI_ENABLE_REG_PM.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\globals.lst</v>
+<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\INPUT_1.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -619,15 +608,9 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\hand_firmware_micro.cydsn\interruptions.c" />
-<name v=".\hand_firmware_micro.cydsn\utils.c" />
 <name v=".\hand_firmware_micro.cydsn\command_processing.c" />
-<name v=".\hand_firmware_micro.cydsn\main.c" />
-<name v=".\hand_firmware_micro.cydsn\interruptions.h" />
 <name v=".\hand_firmware_micro.cydsn\globals.h" />
 <name v=".\hand_firmware_micro.cydsn\globals.c" />
-<name v=".\hand_firmware_micro.cydsn\command_processing.h" />
-<name v=".\hand_firmware_micro.cydsn\utils.h" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -635,7 +618,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="1584, 678" SelectedTabbedMdiWindow="4f9fa1a5-d9cd-4aa3-9e13-7b1e1e1f4aa5"><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\interruptions.c" Guid="4f9fa1a5-d9cd-4aa3-9e13-7b1e1e1f4aa5" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\utils.c" Guid="685fe4e6-a6e1-4efa-bcb2-3384e2ada704" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\command_processing.c" Guid="c5030a0e-d0b6-4e17-be48-3b4bfaf2025b" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\main.c" Guid="e69274c8-9a80-48f5-bad2-21a98b8e44b0" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\interruptions.h" Guid="71f5f72c-d5ed-4957-bff6-513887bc8686" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\globals.h" Guid="131738c3-2ed0-4cb1-87a4-00a55910dd37" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\globals.c" Guid="142f66d9-0bd9-425c-9350-4a6010fe27d4" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\command_processing.h" Guid="7985ada7-6ccc-46b9-ba24-c5bb2086ee32" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\utils.h" Guid="d6f5b4bf-252d-4532-afc2-13b7ba7b6d62" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="1584, 626" SelectedTabbedMdiWindow="c5030a0e-d0b6-4e17-be48-3b4bfaf2025b"><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\command_processing.c" Guid="c5030a0e-d0b6-4e17-be48-3b4bfaf2025b" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\globals.h" Guid="131738c3-2ed0-4cb1-87a4-00a55910dd37" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\globals.c" Guid="142f66d9-0bd9-425c-9350-4a6010fe27d4" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="Release" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

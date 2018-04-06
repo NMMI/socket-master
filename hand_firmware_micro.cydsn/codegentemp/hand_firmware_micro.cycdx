@@ -52,7 +52,7 @@
   <block name="not_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="not_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="and_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="EMG_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="INPUT_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="CURRENT_SENSE_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="not_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="FF_STATUS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
@@ -273,7 +273,7 @@
   </block>
   <block name="RS485_RX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="timer_clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="EMG_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="INPUT_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="RS485_TX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Signal_1_C" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PACER_TIMER" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">

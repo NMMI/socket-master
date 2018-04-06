@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 1   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE CYFITTER_CFG
@@ -62,7 +62,7 @@ line level    source
   49          /* Clock startup error codes                                                   */
   50          #define CYCLOCKSTART_NO_ERROR    0u
   51          #define CYCLOCKSTART_XTAL_ERROR  1u
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 2   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 2   
 
   52          #define CYCLOCKSTART_32KHZ_ERROR 2u
   53          #define CYCLOCKSTART_PLL_ERROR   3u
@@ -126,7 +126,7 @@ line level    source
  111          
  112          /* IOPORT_1 Address: CYDEV_PRTDSI_PRT1_BASE Size (bytes): 7 */
  113          #define BS_IOPORT_1_VAL ((const uint8 CYFAR *)(0x00080010u + CYAPP_ECC_OFFSET))
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 3   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 3   
 
  114          
  115          /* IOPORT_2 Address: CYDEV_PRTDSI_PRT2_BASE Size (bytes): 7 */
@@ -190,7 +190,7 @@ line level    source
  173          #define BS_UDB_1_0_1_CONFIG_VAL ((const uint8 CYFAR *)(0x000806D0u + CYAPP_ECC_OFFSET))
  174          
  175          /* UDB_1_1_1_CONFIG Address: CYDEV_UCFG_B1_P3_U0_BASE Size (bytes): 128 */
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 4   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 4   
 
  176          #define BS_UDB_1_1_1_CONFIG_VAL ((const uint8 CYFAR *)(0x00080750u + CYAPP_ECC_OFFSET))
  177          
@@ -254,7 +254,7 @@ line level    source
  235          /* UDBSWITCH_0_0 Address: CYDEV_UCFG_B1_P5_ROUTE_BASE Size (bytes): 128 */
  236          #define BS_UDBSWITCH_0_0_VAL ((const uint8 CYFAR *)(0x00080FB0u + CYAPP_ECC_OFFSET))
  237          
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 5   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 5   
 
  238          /* UDB_1_0_HV_ROUTING Address: CYDEV_UCFG_B1_P5_ROUTE_BASE + 0x00000080u Size (bytes): 128 */
  239          #define BS_UDB_1_0_HV_ROUTING_VAL ((const uint8 CYFAR *)(0x00081030u + CYAPP_ECC_OFFSET))
@@ -318,7 +318,7 @@ line level    source
  297          
  298          /* DSI3_0_HV_ROUTING Address: CYDEV_UCFG_DSI9_BASE + 0x00000080u Size (bytes): 128 */
  299          #define BS_DSI3_0_HV_ROUTING_VAL ((const uint8 CYFAR *)(0x00081A30u + CYAPP_ECC_OFFSET))
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 6   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 6   
 
  300          
  301          /* DSISWITCH_1_1 Address: CYDEV_UCFG_DSI8_BASE Size (bytes): 128 */
@@ -382,7 +382,7 @@ line level    source
  351   1                      0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
              - 0x00u, 
  352   1                      0x00u, 0x10u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 7   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 7   
 
              - 0x00u, 
  353   1                      0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
@@ -446,7 +446,7 @@ line level    source
              - 0x00u, 
  387   1                      0x00u, 0x00u, 0x10u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
              - 0x00u, 
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 8   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 8   
 
  388   1                      0x00u, 0x00u, 0x00u, 0x00u, 0x10u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
              - 0x00u, 
@@ -510,7 +510,7 @@ line level    source
  422   1                      0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
              - 0x00u, 
  423   1                      0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 9   
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 9   
 
              - 0x00u, 
  424   1                      0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u, 0x00u,
@@ -574,7 +574,7 @@ line level    source
  468   1                      { 5u, 0x23u, 0x09u, (uint16)(uint32)(DMA_TD_START_CMD), (uint16)(CYREG_PHUB_CH4_BASIC_CFG) },   /* TD 8 */
  469   1                      { 5u, 0x23u, 0x0Au, (uint16)(uint32)(DMA_TD_START_CMD), (uint16)(CYREG_PHUB_CH5_BASIC_CFG) },   /* TD 9 */
  470   1                      { 5u, 0x23u, 0xFEu, (uint16)(uint32)(DMA_TD_START_CMD), (uint16)(CYREG_PHUB_CH6_BASIC_CFG) },   /* TD 10 *
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 10  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 10  
 
              -/
  471   1                      { 64u, 0x22u, 0xFEu, (uint16)(uint32)(&DMA_ZERO_VAL), (uint16)(CYREG_PRT3_DR) },        /* TD 11 */
@@ -638,7 +638,7 @@ line level    source
              -* TD 46 */
  507   1                      { 128u, 0x23u, 0x30u, (uint16)(uint32)(BS_UDB_1_0_0_CONFIG_VAL), (uint16)(CYDEV_UCFG_B1_P2_U0_BASE) },  /
              -* TD 47 */
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 11  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 11  
 
  508   1                      { 128u, 0x23u, 0x31u, (uint16)(uint32)(BS_UDB_1_0_1_CONFIG_VAL), (uint16)(CYDEV_UCFG_B1_P2_U1_BASE) },  /
              -* TD 48 */
@@ -702,7 +702,7 @@ line level    source
              -+ 0x00000080u) },     /* TD 78 */
  539   1                      { 128u, 0x23u, 0x50u, (uint16)(uint32)(BS_UDBSWITCH_0_3_VAL), (uint16)(CYDEV_UCFG_B0_P5_ROUTE_BASE) },  /
              -* TD 79 */
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 12  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 12  
 
  540   1                      { 128u, 0x23u, 0x51u, (uint16)(uint32)(BS_UDB_1_3_HV_ROUTING_VAL), (uint16)(CYDEV_UCFG_B0_P5_ROUTE_BASE 
              -+ 0x00000080u) },     /* TD 80 */
@@ -766,7 +766,7 @@ line level    source
  585          /*******************************************************************************
  586          * Function Name: ClockSetup
  587          ********************************************************************************
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 13  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 13  
 
  588          *
  589          * Summary:
@@ -830,7 +830,7 @@ line level    source
  644   1              /* If we ran out of time the PLL didn't lock so go to the error function */
  645   1              if (timeout == 0u)
  646   1              {
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 14  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 14  
 
  647   2                      CyClockStartupError(CYCLOCKSTART_PLL_ERROR);
  648   2              }
@@ -894,7 +894,7 @@ line level    source
  703          ********************************************************************************
  704          *
  705          * Summary:
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 15  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 15  
 
  706          * Enables or disables the analog pumps feeding analog routing switches.
  707          * Intended to be called at startup, based on the Vdda system configuration;
@@ -958,7 +958,7 @@ line level    source
  765   2                      *ADC_AMux__addrTable[channel] |= ADC_AMux__maskTable[channel];
  766   2              }
  767   1      }
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 16  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 16  
 
  768          
  769          /*******************************************************************************
@@ -1022,7 +1022,7 @@ line level    source
  827   1      
  828   1              /* PHUB_CFGMEM10 Address: CYREG_PHUB_CFGMEM10_CFG0 Size (bytes): 4 */
  829   1              DMAINITSEC static const uint8 CYCODE BS_PHUB_CFGMEM10_VAL[] = {
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 17  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 17  
 
  830   1                      0x00u, 0x0Au, 0x00u, 0x00u};
  831   1      
@@ -1080,7 +1080,7 @@ line level    source
  877   1              CY_SET_REG8((void CYXDATA *)CYREG_PM_STBY_CFG0, CY_GET_REG8((void CYXDATA *)CYREG_PM_STBY_CFG0) & (uint8)
              -~0x02u);        /* Disable CPU */
  878   1      }
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 18  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 18  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -1144,7 +1144,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0040 7A00        R     MOV     R2,#HIGH CFG_TD_LIST0
 0042 7900        R     MOV     R1,#LOW CFG_TD_LIST0
 0044 E9                MOV     A,R1
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 19  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 19  
 
 0045 EA                MOV     A,R2
 0046 E4                CLR     A
@@ -1208,7 +1208,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A0 E0                MOVX    A,@DPTR
 00A1 5401              ANL     A,#01H
 00A3 70F8              JNZ     ?C0010
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 20  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 20  
 
 00A5         ?C0011:
 00A5         ?C0012:
@@ -1272,7 +1272,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 609
 0000 7B00              MOV     R3,#00H
 0002 7A40              MOV     R2,#040H
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 21  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 21  
 
 0004 7980              MOV     R1,#080H
 0006 7D02              MOV     R5,#02H
@@ -1336,7 +1336,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0068 120000      E     LCALL   _cywrite16
                                            ; SOURCE LINE # 620
 006B 904096            MOV     DPTR,#04096H
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 22  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 22  
 
 006E 7418              MOV     A,#018H
 0070 F0                MOVX    @DPTR,A
@@ -1400,7 +1400,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 638
 00D0 E4                CLR     A
 00D1 900000      R     MOV     DPTR,#pllLock
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 23  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 23  
 
 00D4 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 639
@@ -1464,7 +1464,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0122 FF                MOV     R7,A
 0123 74FF              MOV     A,#0FFH
 0125 EF                MOV     A,R7
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 24  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 24  
 
 0126 24FF              ADD     A,#0FFH
 0128 FF                MOV     R7,A
@@ -1528,7 +1528,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 659
 0177 904001            MOV     DPTR,#04001H
 017A 7402              MOV     A,#02H
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 25  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 25  
 
 017C F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 660
@@ -1592,7 +1592,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 696
 002E 905B58            MOV     DPTR,#05B58H
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 26  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 26  
 
 0031 7418              MOV     A,#018H
 0033 F0                MOVX    @DPTR,A
@@ -1656,7 +1656,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0009 2400        R     ADD     A,#LOW ADC_AMux__addrTable
 000B F582              MOV     DPL,A
 000D E4                CLR     A
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 27  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 27  
 
 000E 3400        R     ADDC    A,#HIGH ADC_AMux__addrTable
 0010 F583              MOV     DPH,A
@@ -1720,7 +1720,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0026 93                MOVC    A,@A+DPTR
 0027 F4                CPL     A
 0028 FF                MOV     R7,A
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 28  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 28  
 
 0029 EE                MOV     A,R6
 002A 5F                ANL     A,R7
@@ -1784,7 +1784,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004F EF                MOV     A,R7
 0050 4402              ORL     A,#02H
 0052 FD                MOV     R5,A
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 29  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 29  
 
 0053 7B01              MOV     R3,#01H
 0055 7A50              MOV     R2,#050H
@@ -1848,7 +1848,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00B7 7C00        R     MOV     R4,#HIGH BS_IOPINS0_2_VAL
 00B9 7D00        R     MOV     R5,#LOW BS_IOPINS0_2_VAL
 00BB 7B00              MOV     R3,#00H
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 30  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 30  
 
 00BD 7A51              MOV     R2,#051H
 00BF 7922              MOV     R1,#022H
@@ -1912,7 +1912,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0117 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 878
 0118 22                RET     
-C51 COMPILER V9.51   CYFITTER_CFG                                                          01/02/2018 13:36:46 PAGE 31  
+C51 COMPILER V9.51   CYFITTER_CFG                                                          04/05/2018 14:23:10 PAGE 31  
 
              ; FUNCTION cyfitter_cfg (END)
 

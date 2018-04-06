@@ -62,7 +62,7 @@
 #define NUM_OF_SENSORS          3       /*!< Number of encoders.*/
 #define NUM_OF_EMGS             2       /*!< Number of emg channels.*/
 #define NUM_OF_ANALOG_INPUTS    4       /*!< Total number of analogic inputs.*/
-#define NUM_OF_PARAMS           37      /*!< Number of parameters saved in the EEPROM.*/
+#define NUM_OF_PARAMS           39      /*!< Number of parameters saved in the EEPROM.*/
 
 //==============================================================================
 //                                                               SYNCHRONIZATION
@@ -115,6 +115,9 @@
 
 #define SAMPLES_FOR_EMG_MEAN    1000    /*!< Number of samples used to mean emg values.*/
 
+#define SAMPLES_FOR_JOYSTICK_MEAN   200
+#define JOYSTICK_SAMPLE_TO_DISCARD  100
+    
 #define CALIB_DECIMATION        1
 #define NUM_OF_CLOSURES         5
 
@@ -150,6 +153,7 @@ struct st_meas {
     int32 emg[NUM_OF_EMGS];         /*!< EMG sensors values.*/
     int32 vel[NUM_OF_SENSORS];      /*!< Encoder rotational velocity.*/
     int32 acc[NUM_OF_SENSORS];      /*!< Encoder rotational acceleration.*/
+    int16 joystick[NUM_OF_MOTORS];  /*!< Joystick measurements.*/
 };
 
 //==============================================================     data packet
@@ -242,7 +246,10 @@ struct st_mem {
     uint8   SH_ID;
     uint8   ForceF_ID;
     uint8   ProprioF_ID;
-                                                                                                //TOT           178 bytes
+
+    uint16  joystick_closure_speed;     // Joystick - Hand closure speed            2 
+    uint16  joystick_gain;              // Joystick measurements gain               4
+                                                                //TOT           178 bytes
 };
 
 //=================================================     device related variables
@@ -278,7 +285,7 @@ typedef enum {
     WAIT          = 4,               /*!< The second emg waits until the first emg has a valid value.*/
 	WAIT_EoC      = 5               /*!< The second emg waits for end of calibration.*/
 
-} emg_status;                       /*!< EMG status enumeration.*/
+} emg_status, joystick_status;                       /*!< EMG and Joystick status enumeration.*/
 
 //====================================      external global variables definition
 

@@ -257,6 +257,12 @@ void cmd_set_inputs();
 **/
 void cmd_get_measurements();
 
+//============================================================  cmd_get_curr_and_meas
+/** This function gets the currents and encoders measurements and puts them in the package
+	to be sent.
+**/
+void cmd_get_curr_and_meas();
+
 //============================================================  cmd_get_currents
 /** This function gets the motor current and puts it in the package to 
 	be sent.
@@ -293,6 +299,12 @@ void cmd_set_baudrate();
 	package to be sent.
 **/
 void cmd_get_inputs();
+
+//============================================================  cmd_get_joystick
+/** This function gets the joystick reference inputs and puts them in the
+	package to be sent.
+**/
+void cmd_get_joystick();
 
 //============================================================  cmd_store_params
 /** This function stores the parameters to the EEPROM memory

@@ -94,9 +94,21 @@ void commProcess(void){
 //=====================================================     CMD_GET_MEASUREMENTS
 
         case CMD_GET_MEASUREMENTS:
-                cmd_get_measurements();
+			cmd_get_measurements();
             break;
 
+//=====================================================     CMD_GET_CURR_AND_MEAS
+
+        case CMD_GET_CURR_AND_MEAS:
+            cmd_get_curr_and_meas();
+            break;
+            
+//=========================================================     CMD_GET_JOYSTICK
+
+        case CMD_GET_JOYSTICK:
+            cmd_get_joystick();
+            break;
+			
 //=========================================================     CMD_GET_CURRENTS
 
         case CMD_GET_CURRENTS:
@@ -268,8 +280,8 @@ void infoGet(uint16 info_type) {
 
 void get_param_list(uint16 index) {
     //Package to be sent variables
-    uint8 packet_data[2351] = "";
-    uint16 packet_lenght = 2351;
+    uint8 packet_data[2451] = "";
+    uint16 packet_lenght = 2451;
 
     //Auxiliary variables
     uint8 CYDATA i;
@@ -319,8 +331,11 @@ void get_param_list(uint16 index) {
     char FF_ID_str[22]          = "36 - Force device ID:";
     char PF_ID_str[31]          = "37 - Proprioceptive device ID:";
 
+    char joystick_closure_speed_str[29] = "38 - Joystick closure speed:";
+    char joystick_gains_str[20]         = "39 - Joystick gain:";
+
     //Parameters menus
-    char input_mode_menu[99] = "0 -> Usb\n1 -> Handle\n2 -> EMG proportional\n3 -> EMG Integral\n4 -> EMG FCFS\n5 -> EMG FCFS Advanced\n";
+    char input_mode_menu[100] = "0 -> Usb\n1 -> Handle\n2 -> EMG prop.\n3 -> EMG Integ.\n4 -> EMG FCFS\n5 -> EMG FCFS Adv.\n6 -> Joystick\n";
     char control_mode_menu[63] = "0 -> Position\n1 -> PWM\n2 -> Current\n3 -> Position and Current\n";
     char yes_no_menu[42] = "0 -> Deactivate [NO]\n1 -> Activate [YES]\n";
 
@@ -360,6 +375,9 @@ void get_param_list(uint16 index) {
     uint8 CYDATA SH_ID_str_len = strlen(SH_ID_str);
     uint8 CYDATA FF_ID_str_len = strlen(FF_ID_str);
     uint8 CYDATA PF_ID_str_len = strlen(PF_ID_str);
+    
+    uint8 CYDATA joystick_closure_speed_str_len = strlen(joystick_closure_speed_str);
+    uint8 CYDATA joystick_gains_str_len = strlen(joystick_gains_str);
     
     packet_data[0] = CMD_GET_PARAM_LIST;
     packet_data[1] = NUM_OF_PARAMS;
@@ -458,6 +476,10 @@ void get_param_list(uint16 index) {
                     strcat(input_str, " EMG FCFS Advanced\0");
                     string_lenght = 34;
                 break;
+                case INPUT_MODE_JOYSTICK:
+                    strcat(input_str, " Joystick\0");
+                    string_lenght = 25;
+                break;                    
             }
             for(i = string_lenght; i != 0; i--)
                 packet_data[205 + string_lenght - i] = input_str[string_lenght - i];
@@ -711,8 +733,7 @@ void get_param_list(uint16 index) {
                 *((float *) ( packet_data + 1254 + (i * 4) )) = c_mem.curr_lookup[i];
             for(i = curr_lookup_str_len; i != 0; i--)
                 packet_data[1278 + curr_lookup_str_len - i] = curr_lookup_str[curr_lookup_str_len - i];
-            
-                            
+                                        
             /*------------MASTER MODE MYO2----------*/
             
             packet_data[1302] = TYPE_FLAG;
@@ -830,17 +851,33 @@ void get_param_list(uint16 index) {
             *((uint8 *)(packet_data + 1804)) = c_mem.ProprioF_ID;
             for(i = PF_ID_str_len; i!= 0; i--)
                 packet_data[1805 + PF_ID_str_len - i] = PF_ID_str[PF_ID_str_len - i];                
+
+            /*-------------JOYSTICK CLOSURE SPEED------------*/
+
+            packet_data[1852] = TYPE_UINT16;
+            packet_data[1853] = 1;
+            *((uint16 *) (packet_data + 1854)) = c_mem.joystick_closure_speed;
+            for(i = joystick_closure_speed_str_len; i != 0; i--)
+                packet_data[1856 + joystick_closure_speed_str_len - i] = joystick_closure_speed_str[joystick_closure_speed_str_len - i]; 
+
+            /*------------JOYSTICK GAIN------------*/
                 
+            packet_data[1902] = TYPE_UINT16;
+            packet_data[1903] = 1;
+            *((uint16 *) (packet_data + 1904)) = c_mem.joystick_gain;
+            for(i = joystick_gains_str_len; i != 0; i--)
+                packet_data[1906 + joystick_gains_str_len - i] = joystick_gains_str[joystick_gains_str_len - i];
+
             /*------------PARAMETERS MENU-----------*/
 
             for(i = input_mode_menu_len; i != 0; i--)
-                packet_data[1852 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
+                packet_data[1952 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
 
             for(i = control_mode_menu_len; i != 0; i--)
-                packet_data[2002 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
+                packet_data[2102 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
 
             for(i = yes_no_menu_len; i!= 0; i--)
-                packet_data[2152 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
+                packet_data[2252 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
 
             packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
             commWrite(packet_data, packet_lenght);
@@ -1081,6 +1118,16 @@ void get_param_list(uint16 index) {
 //=============================================================     set_PF_ID
         case 37: 
             g_mem.ProprioF_ID = *((uint8*) &g_rx.buffer[3]);
+        break;       
+
+//===================================================     set_joystick_closure_speed
+        case 38:
+            g_mem.joystick_closure_speed = *((uint16 *) &g_rx.buffer[3]);
+        break;
+
+//===================================================     set_joystick_gain
+        case 39:
+            g_mem.joystick_gain = *((uint16 *) &g_rx.buffer[3]);
         break;             
     }            
 }
@@ -1259,6 +1306,9 @@ void infoPrepare(unsigned char *info_string)
             case INPUT_MODE_EMG_FCFS_ADV:
                 strcat(info_string, "Input mode: EMG FCFS ADV\r\n");
                 break;
+            case INPUT_MODE_JOYSTICK:
+                strcat(info_string, "Input mode: Joystick\r\n");
+                break;
         }
 
         switch(c_mem.control_mode) {
@@ -1341,6 +1391,13 @@ void infoPrepare(unsigned char *info_string)
         strcat(info_string, str);
         strcat(info_string, "\r\n");
 
+        sprintf(str, "Joystick closure speed: %d", c_mem.joystick_closure_speed);
+        strcat(info_string, str);
+        strcat(info_string, "\r\n");
+        sprintf(str, "Joystick gain: %hu", c_mem.joystick_gain);
+        strcat(info_string, str);
+        strcat(info_string, "\r\n");
+		
         sprintf(str, "EMG thresholds [0 - 1024]: %u, %u", g_mem.emg_threshold[0], g_mem.emg_threshold[1]);
         strcat(info_string, str);
         strcat(info_string, "\r\n");
@@ -1374,22 +1431,6 @@ void infoPrepare(unsigned char *info_string)
         sprintf(str, "Rest ratio: %f", (float)(g_mem.rest_ratio));
         strcat(info_string, str);
         strcat(info_string, "\r\n"); 
-        
-        sprintf(str, "Tension count: %ld", (uint32)(count_tension_valid));
-        strcat(info_string, str);
-        strcat(info_string, "\r\n"); 
-        
-        sprintf(str, "Tension valid: %u", (uint8)(tension_valid));
-        strcat(info_string, str);
-        strcat(info_string, "\r\n");
-        
-        sprintf(str, "Battery Voltage (mV): %ld", (int32) dev_tension );
-        strcat(info_string, str);
-        strcat(info_string, "\r\n");
-        
-        sprintf(str, "Battery Filtered Voltage (mV): %ld", (int32) dev_tension_f );
-        strcat(info_string, str);
-        strcat(info_string, "\r\n");
         
         if (g_mem.is_myo2_master) {
             strcat(info_string, "Myoelectric case 2 Master: YES\r\n");
@@ -1545,6 +1586,7 @@ void drive_SH() {
     
     // If not the use of handle or an emg input mode is set, exit from master_mode
     if( c_mem.input_mode != INPUT_MODE_ENCODER3          &&
+		c_mem.input_mode != INPUT_MODE_JOYSTICK          &&
         c_mem.input_mode != INPUT_MODE_EMG_PROPORTIONAL  &&
         c_mem.input_mode != INPUT_MODE_EMG_INTEGRAL      &&
         c_mem.input_mode != INPUT_MODE_EMG_FCFS          &&
@@ -1819,7 +1861,7 @@ uint8 memInit(void)
     g_mem.k_i_c_dl      =0.0002 * 65536;
     g_mem.k_d_c_dl      =     0 * 65536;
 
-    g_mem.activ         = 0;
+    g_mem.activ         = 0x03;;
     g_mem.input_mode    = INPUT_MODE_EXTERNAL;
     g_mem.control_mode  = CONTROL_ANGLE;
 
@@ -1886,6 +1928,8 @@ uint8 memInit(void)
     g_mem.ForceF_ID = 3;
     g_mem.ProprioF_ID = 4;
 
+    g_mem.joystick_closure_speed = 150;
+    g_mem.joystick_gain = 1024;
     // set the initialized flag to show EEPROM has been populated
     g_mem.flag = TRUE;
     
@@ -1995,6 +2039,20 @@ void cmd_get_activate(){
 
 }
 
+void cmd_get_joystick() {
+
+    uint8 packet_data[6];
+    
+    packet_data[0] = CMD_GET_JOYSTICK;
+
+    *((int16 *) &packet_data[1]) = (int16) g_measOld.joystick[0];
+    *((int16 *) &packet_data[3]) = (int16) g_measOld.joystick[1];
+
+    packet_data[5] = LCRChecksum(packet_data, 5);
+
+    commWrite(packet_data, 6);
+}
+
 void cmd_get_curr_and_meas(){
     
     uint8 CYDATA index;
@@ -2008,11 +2066,11 @@ void cmd_get_curr_and_meas(){
     
     // Currents
     *((int16 *) &packet_data[1]) = (int16) g_measOld.curr[0];
-    *((int16 *) &packet_data[3]) = (int16) filter_curr_diff(((int32) g_measOld.curr[0] - curr_estim(g_measOld.pos[0],g_measOld.vel[0], g_measOld.acc[0])));
+    *((int16 *) &packet_data[3]) = (int16) 0;
 
     // Positions
     for (index = NUM_OF_SENSORS; index--;) 
-        *((int16 *) &packet_data[(index << 2) + 5]) = (int16) (g_measOld.pos[index] >> g_mem.res[index]);
+        *((int16 *) &packet_data[(index << 1) + 5]) = (int16) (g_measOld.pos[index] >> g_mem.res[index]);
         
     // Calculate Checksum and send message to UART 
         
@@ -2032,7 +2090,7 @@ void cmd_get_currents(){
     packet_data[0] = CMD_GET_CURRENTS;
 
     *((int16 *) &packet_data[1]) = (int16) g_measOld.curr[0];
-    *((int16 *) &packet_data[3]) = (int16) filter_curr_diff(((int32) g_measOld.curr[0] - curr_estim(g_measOld.pos[0],g_measOld.vel[0], g_measOld.acc[0])));
+    *((int16 *) &packet_data[3]) = (int16) 0;
 
     // Calculate Checksum and send message to UART 
 

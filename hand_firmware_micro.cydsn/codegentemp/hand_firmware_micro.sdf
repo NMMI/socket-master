@@ -1,6 +1,6 @@
 (DELAYFILE
  (SDFVERSION "IEEE 1497 4.0")
- (DATE "2018-01-02T15:43:41Z")
+ (DATE "2018-04-05T12:23:01Z")
  (DESIGN "hand_firmware_micro")
  (VENDOR "Cypress Semiconductor")
  (PROGRAM "PSoC Creator")
@@ -22,8 +22,8 @@
     (INTERCONNECT AMuxHw_Decoder_old_id_1.q AMuxHw_Decoder_one_hot_3.main_2 (2.423:2.423:2.423))
     (INTERCONNECT AMuxHw_Decoder_one_hot_0.q VOLTAGE_SENSE\(0\).pin_input (7.465:7.465:7.465))
     (INTERCONNECT AMuxHw_Decoder_one_hot_1.q CURRENT_SENSE_1\(0\).pin_input (7.536:7.536:7.536))
-    (INTERCONNECT AMuxHw_Decoder_one_hot_2.q EMG_1\(0\).pin_input (7.404:7.404:7.404))
-    (INTERCONNECT AMuxHw_Decoder_one_hot_3.q EMG_2\(0\).pin_input (8.145:8.145:8.145))
+    (INTERCONNECT AMuxHw_Decoder_one_hot_2.q INPUT_1\(0\).pin_input (7.404:7.404:7.404))
+    (INTERCONNECT AMuxHw_Decoder_one_hot_3.q INPUT_2\(0\).pin_input (8.145:8.145:8.145))
     (INTERCONNECT BOARD_LED\(0\).pad_out BOARD_LED\(0\).pad_in (0.000:0.000:0.000))
     (INTERCONNECT ClockBlock.clk_bus_glb AMuxHw_Decoder_old_id_0.clock_0 (0.000:0.000:0.000))
     (INTERCONNECT ClockBlock.clk_bus_glb AMuxHw_Decoder_old_id_1.clock_0 (0.000:0.000:0.000))

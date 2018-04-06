@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: EMG_1.c  
+* File Name: INPUT_2.c  
 * Version 2.20
 *
 * Description:
@@ -15,11 +15,11 @@
 *******************************************************************************/
 
 #include "cytypes.h"
-#include "EMG_1.h"
+#include "INPUT_2.h"
 
 
 /*******************************************************************************
-* Function Name: EMG_1_Write
+* Function Name: INPUT_2_Write
 ****************************************************************************//**
 *
 * \brief Writes the value to the physical port (data output register), masking
@@ -48,17 +48,17 @@
 *  this function.
 *
 * \funcusage
-*  \snippet EMG_1_SUT.c usage_EMG_1_Write
+*  \snippet INPUT_2_SUT.c usage_INPUT_2_Write
 *******************************************************************************/
-void EMG_1_Write(uint8 value) 
+void INPUT_2_Write(uint8 value) 
 {
-    uint8 staticBits = (EMG_1_DR & (uint8)(~EMG_1_MASK));
-    EMG_1_DR = staticBits | ((uint8)(value << EMG_1_SHIFT) & EMG_1_MASK);
+    uint8 staticBits = (INPUT_2_DR & (uint8)(~INPUT_2_MASK));
+    INPUT_2_DR = staticBits | ((uint8)(value << INPUT_2_SHIFT) & INPUT_2_MASK);
 }
 
 
 /*******************************************************************************
-* Function Name: EMG_1_SetDriveMode
+* Function Name: INPUT_2_SetDriveMode
 ****************************************************************************//**
 *
 * \brief Sets the drive mode for each of the Pins component's pins.
@@ -81,16 +81,16 @@ void EMG_1_Write(uint8 value)
 *  APIs (primary method) or disable interrupts around this function.
 *
 * \funcusage
-*  \snippet EMG_1_SUT.c usage_EMG_1_SetDriveMode
+*  \snippet INPUT_2_SUT.c usage_INPUT_2_SetDriveMode
 *******************************************************************************/
-void EMG_1_SetDriveMode(uint8 mode) 
+void INPUT_2_SetDriveMode(uint8 mode) 
 {
-	CyPins_SetPinDriveMode(EMG_1_0, mode);
+	CyPins_SetPinDriveMode(INPUT_2_0, mode);
 }
 
 
 /*******************************************************************************
-* Function Name: EMG_1_Read
+* Function Name: INPUT_2_Read
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port (pin status register) and masks 
@@ -104,16 +104,16 @@ void EMG_1_SetDriveMode(uint8 mode)
 *  The current value for the pins in the component as a right justified number.
 *
 * \funcusage
-*  \snippet EMG_1_SUT.c usage_EMG_1_Read  
+*  \snippet INPUT_2_SUT.c usage_INPUT_2_Read  
 *******************************************************************************/
-uint8 EMG_1_Read(void) 
+uint8 INPUT_2_Read(void) 
 {
-    return (EMG_1_PS & EMG_1_MASK) >> EMG_1_SHIFT;
+    return (INPUT_2_PS & INPUT_2_MASK) >> INPUT_2_SHIFT;
 }
 
 
 /*******************************************************************************
-* Function Name: EMG_1_ReadDataReg
+* Function Name: INPUT_2_ReadDataReg
 ****************************************************************************//**
 *
 * \brief Reads the associated physical port's data output register and masks 
@@ -122,8 +122,8 @@ uint8 EMG_1_Read(void)
 *
 * The data output register controls the signal applied to the physical pin in 
 * conjunction with the drive mode parameter. This is not the same as the 
-* preferred EMG_1_Read() API because the 
-* EMG_1_ReadDataReg() reads the data register instead of the status 
+* preferred INPUT_2_Read() API because the 
+* INPUT_2_ReadDataReg() reads the data register instead of the status 
 * register. For output pins this is a useful function to determine the value 
 * just written to the pin.
 *
@@ -132,19 +132,19 @@ uint8 EMG_1_Read(void)
 *  justified number for the component instance.
 *
 * \funcusage
-*  \snippet EMG_1_SUT.c usage_EMG_1_ReadDataReg 
+*  \snippet INPUT_2_SUT.c usage_INPUT_2_ReadDataReg 
 *******************************************************************************/
-uint8 EMG_1_ReadDataReg(void) 
+uint8 INPUT_2_ReadDataReg(void) 
 {
-    return (EMG_1_DR & EMG_1_MASK) >> EMG_1_SHIFT;
+    return (INPUT_2_DR & INPUT_2_MASK) >> INPUT_2_SHIFT;
 }
 
 
 /* If interrupt is connected for this Pins component */ 
-#if defined(EMG_1_INTSTAT) 
+#if defined(INPUT_2_INTSTAT) 
 
     /*******************************************************************************
-    * Function Name: EMG_1_SetInterruptMode
+    * Function Name: INPUT_2_SetInterruptMode
     ****************************************************************************//**
     *
     * \brief Configures the interrupt mode for each of the Pins component's
@@ -157,12 +157,12 @@ uint8 EMG_1_ReadDataReg(void)
     * \param position
     *  The pin position as listed in the Pins component. You may OR these to be 
     *  able to configure the interrupt mode of multiple pins within a Pins 
-    *  component. Or you may use EMG_1_INTR_ALL to configure the
+    *  component. Or you may use INPUT_2_INTR_ALL to configure the
     *  interrupt mode of all the pins in the Pins component.       
-    *  - EMG_1_0_INTR       (First pin in the list)
-    *  - EMG_1_1_INTR       (Second pin in the list)
+    *  - INPUT_2_0_INTR       (First pin in the list)
+    *  - INPUT_2_1_INTR       (Second pin in the list)
     *  - ...
-    *  - EMG_1_INTR_ALL     (All pins in Pins component)
+    *  - INPUT_2_INTR_ALL     (All pins in Pins component)
     *
     * \param mode
     *  Interrupt mode for the selected pins. Valid options are documented in
@@ -178,20 +178,20 @@ uint8 EMG_1_ReadDataReg(void)
     *  port.
     *
     * \funcusage
-    *  \snippet EMG_1_SUT.c usage_EMG_1_SetInterruptMode
+    *  \snippet INPUT_2_SUT.c usage_INPUT_2_SetInterruptMode
     *******************************************************************************/
-    void EMG_1_SetInterruptMode(uint16 position, uint16 mode) 
+    void INPUT_2_SetInterruptMode(uint16 position, uint16 mode) 
                             
     {
-		if((position & EMG_1_0_INTR) != 0u) 
+		if((position & INPUT_2_0_INTR) != 0u) 
 		{ 
-			 EMG_1_0_INTTYPE_REG = (uint8)mode; 
+			 INPUT_2_0_INTTYPE_REG = (uint8)mode; 
 		}
     }
     
     
     /*******************************************************************************
-    * Function Name: EMG_1_ClearInterrupt
+    * Function Name: INPUT_2_ClearInterrupt
     ****************************************************************************//**
     *
     * \brief Clears any active interrupts attached with the component and returns 
@@ -208,14 +208,14 @@ uint8 EMG_1_ReadDataReg(void)
     *  those associated with the Pins component.
     *
     * \funcusage
-    *  \snippet EMG_1_SUT.c usage_EMG_1_ClearInterrupt
+    *  \snippet INPUT_2_SUT.c usage_INPUT_2_ClearInterrupt
     *******************************************************************************/
-    uint8 EMG_1_ClearInterrupt(void) 
+    uint8 INPUT_2_ClearInterrupt(void) 
     {
-        return (EMG_1_INTSTAT & EMG_1_MASK) >> EMG_1_SHIFT;
+        return (INPUT_2_INTSTAT & INPUT_2_MASK) >> INPUT_2_SHIFT;
     }
 
-#endif /* (EMG_1_INTSTAT) */ 
+#endif /* (INPUT_2_INTSTAT) */ 
 
 
 /* [] END OF FILE */

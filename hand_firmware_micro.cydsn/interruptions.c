@@ -440,7 +440,8 @@ void motor_control() {
     int32 CYDATA handle_value;
 
     int32 CYDATA err_emg_1, err_emg_2;
-
+    float CYDATA joy_perc;
+	
     int32 CYDATA k_p = c_mem.k_p;  
     int32 CYDATA k_i = c_mem.k_i; 
     int32 CYDATA k_d = c_mem.k_d; 
@@ -474,7 +475,7 @@ void motor_control() {
 
     err_emg_1 = g_meas.emg[0] - c_mem.emg_threshold[0];
     err_emg_2 = g_meas.emg[1] - c_mem.emg_threshold[1];
-
+    
     // =========================== POSITION INPUT ==============================
     switch(c_mem.input_mode) {
 
@@ -605,7 +606,15 @@ void motor_control() {
                 default:
                     break;
             }
-
+  
+            break;
+            
+        case INPUT_MODE_JOYSTICK:
+            
+            joy_perc = (float)(g_meas.joystick[0])/((float)c_mem.joystick_gain/2);            
+            g_ref.pos[0] = g_refOld.pos[0] + c_mem.joystick_closure_speed * joy_perc;         
+        
+            break;
         default:
             break;
     }
@@ -1064,6 +1073,15 @@ void analog_read_end() {
     static emg_status CYDATA emg_1_status = RESET; 
     static emg_status CYDATA emg_2_status = RESET;                                             
     
+    static joystick_status CYDATA UD_status = RESET;
+    static joystick_status CYDATA LR_status = RESET;                                          
+
+    static uint16 CYDATA UD_counter = 0;
+    static uint16 CYDATA LR_counter = 0;
+    
+    static int32 CYDATA UD_mean_value;
+    static int32 CYDATA LR_mean_value;
+	
     static uint16 emg_counter_1 = 0;
     static uint16 emg_counter_2 = 0;
     static uint8 count = 0;
@@ -1139,219 +1157,385 @@ void analog_read_end() {
             emg_2_status = NORMAL; // normal execution
         }
 
-        // EMG 1 calibration state machine
-        
-        // Calibration state machine
-        switch(emg_1_status) {
-            case NORMAL: // normal execution
-                i_aux = (int32)ADC_buf[2];
-                if (i_aux < 0) 
-                    i_aux = 0;
-                i_aux = filter_ch1(i_aux);
-                i_aux = (i_aux << 10) / g_mem.emg_max_value[0];
-    
-                if (interrupt_flag){
-                    interrupt_flag = FALSE;
-                    interrupt_manager();
-                }
-                //Saturation
-                if (i_aux < 0)
-                    i_aux = 0;
-                else
-                    if (i_aux > 1024) 
-                        i_aux = 1024;
-                
-                g_meas.emg[0] = i_aux;
-    
-                if (interrupt_flag){
-                    interrupt_flag = FALSE;
-                    interrupt_manager();
-                }
-                
-                break;
-
-            case RESET: // reset variables
-                emg_counter_1 = 0;
-                g_mem.emg_max_value[0] = 0;
-                emg_1_status = DISCARD; // goto next status
-                
-                break;
-
-            case DISCARD: // discard first EMG_SAMPLE_TO_DISCARD samples
-                emg_counter_1++;
-                if (emg_counter_1 == EMG_SAMPLE_TO_DISCARD) {
-                    emg_counter_1 = 0;          // reset counter
+        // State machines for EMG or Joystick reading
+        if (c_mem.input_mode == INPUT_MODE_JOYSTICK) {
+            // Read ADC_buf[2] and ADC_buf[3] as JOYSTICK analog inputs
+            
+            // Joystick UD    
+            switch (UD_status) {
+                case NORMAL:
+                    i_aux = ADC_buf[2];
+                    // Remap the analog reading from -1024 to 1024.  
+                    i_aux = (int32) (((float) (i_aux - UD_mean_value) / UD_mean_value) * g_mem.joystick_gain); 
                     
-                    LED_CTRL_Write(1);
-                    LED_BLINK_EN_Write(0);
-                        
                     if (interrupt_flag){
                         interrupt_flag = FALSE;
                         interrupt_manager();
                     }
-                    
-                    emg_1_status = SUM_AND_MEAN;           // sum and mean status
-                }
-                break;
 
-            case SUM_AND_MEAN: // sum first SAMPLES_FOR_EMG_MEAN samples
-                // NOTE max(value)*SAMPLES_FOR_EMG_MEAN must fit in 32bit
-                emg_counter_1++;
-                if (ADC_buf[2] < 0) 
-                    ADC_buf[2] = 0;
-                g_mem.emg_max_value[0] += filter_ch1((int32)ADC_buf[2]);
-                
-                if (interrupt_flag){
-                    interrupt_flag = FALSE;
-                    interrupt_manager();
-                }
-                
-                if (emg_counter_1 == SAMPLES_FOR_EMG_MEAN) {
-                    g_mem.emg_max_value[0] = g_mem.emg_max_value[0] / SAMPLES_FOR_EMG_MEAN; // calc mean
-    
-                    if (interrupt_flag){
-                        interrupt_flag = FALSE;
-                        interrupt_manager();
-                    }                    
-                    
-                    LED_CTRL_Write(0);
-                    LED_BLINK_EN_Write(0);
-                    
-                    emg_counter_1 = 0;          // reset counter
-
-                    emg_1_status = NORMAL;           // goto normal execution
-                }
-                break;
-
-            default:
-                break;
-        }
-    
-        if (interrupt_flag){
-            interrupt_flag = FALSE;
-            interrupt_manager();
-        }
-         // EMG 2 calibration state machine
-        switch(emg_2_status) {
-            case NORMAL: // normal execution
-                i_aux = (int32)ADC_buf[3];
-                if (i_aux < 0)
-                    i_aux = 0;
-                i_aux = filter_ch2(i_aux);
-                i_aux = (i_aux << 10) / g_mem.emg_max_value[1];
-    
-                if (interrupt_flag){
-                    interrupt_flag = FALSE;
-                    interrupt_manager();
-                }
-                
-                if (i_aux < 0) 
-                    i_aux = 0;
-                else
+                    //Saturation
+                    if (i_aux < -1024) 
+                        i_aux = -1024;
                     if (i_aux > 1024)
                         i_aux = 1024;
-                
-                g_meas.emg[1] = i_aux;
 
-                break;
-
-            case RESET: // reset variables
-                emg_counter_2 = 0;
-                g_mem.emg_max_value[1] = 0;
-    
-                if (interrupt_flag){
-                    interrupt_flag = FALSE;
-                    interrupt_manager();
-                }
-                
-                emg_2_status = WAIT; // wait for EMG 1 calibration
-                break;
-
-            case DISCARD: // discard first EMG_SAMPLE_TO_DISCARD samples
-                emg_counter_2++;
-                if (emg_counter_2 == EMG_SAMPLE_TO_DISCARD) {
-                    emg_counter_2 = 0;          // reset counter
-                    
-                    LED_CTRL_Write(1);
-                    LED_BLINK_EN_Write(0);
-    
-                    if (interrupt_flag){
-                        interrupt_flag = FALSE;
-                        interrupt_manager();
-                    }
-                    
-                    emg_2_status = SUM_AND_MEAN;           // sum and mean status
-                }
-                break;
-
-            case SUM_AND_MEAN: // sum first SAMPLES_FOR_EMG_MEAN samples
-                // NOTE max(value)*SAMPLES_FOR_EMG_MEAN must fit in 32bit
-                emg_counter_2++;
-                if (ADC_buf[3] < 0)
-                    ADC_buf[3] = 0;
-                g_mem.emg_max_value[1] += filter_ch2((int32)ADC_buf[3]);
-    
-                if (interrupt_flag){
-                    interrupt_flag = FALSE;
-                    interrupt_manager();
-                }
-                
-                if (emg_counter_2 == SAMPLES_FOR_EMG_MEAN) {
-                    g_mem.emg_max_value[1] = g_mem.emg_max_value[1] / SAMPLES_FOR_EMG_MEAN; // calc mean
-                    
-                    LED_CTRL_Write(0);
-                    LED_BLINK_EN_Write(0);
-                    
-                    emg_counter_2 = 0;          // reset counter
-                
-                    if (interrupt_flag){
-                        interrupt_flag = FALSE;
-                        interrupt_manager();
-                    }
-                    
-                    emg_2_status = WAIT_EoC;           // goto end of calibration wait
-                }
-                break;
-
-            case WAIT: // wait for EMG calibration to be done
-                if (emg_1_status == NORMAL)
-                    emg_2_status = DISCARD;           // goto discard sample
-                break;
-
-            case WAIT_EoC:  // wait for end of calibration procedure (only for LED visibility reasons)
-                emg_counter_2++;
-                if (emg_counter_2 == EMG_SAMPLE_TO_DISCARD) {
-                    emg_counter_2 = 0;          // reset counter
+                    g_meas.joystick[1] = (int16) i_aux;
 
                     if (interrupt_flag){
                         interrupt_flag = FALSE;
                         interrupt_manager();
                     }
-                    
-                    // if EMG control mode active, activate motors accordingly with startup value
-                    if ((c_mem.input_mode == INPUT_MODE_EMG_PROPORTIONAL) ||
-                        (c_mem.input_mode == INPUT_MODE_EMG_INTEGRAL) ||
-                        (c_mem.input_mode == INPUT_MODE_EMG_FCFS) ||
-                        (c_mem.input_mode == INPUT_MODE_EMG_FCFS_ADV)) {
-                        if (c_mem.control_mode == CONTROL_ANGLE) {
-                            g_ref.pos[0] = g_meas.pos[0];
-                            g_ref.pos[1] = g_meas.pos[1];
+
+                break;
+
+                case RESET: // reset variables
+                    UD_counter = 0;
+                    UD_mean_value = 0;
+                    UD_status = WAIT; // go to waiting status
+
+                break;
+
+                case DISCARD: // discard first EMG_SAMPLE_TO_DISCARD samples
+                    UD_counter++;
+                    if (UD_counter == JOYSTICK_SAMPLE_TO_DISCARD) {
+                        UD_counter = 0;                     // reset counter
+
+                        if (interrupt_flag){
+                            interrupt_flag = FALSE;
+                            interrupt_manager();
                         }
-                        g_ref.onoff = c_mem.activ;
-                        MOTOR_ON_OFF_Write(g_ref.onoff);
+
+                        UD_status = SUM_AND_MEAN;           // sum and mean status
                     }
-                        
-                    emg_2_status = NORMAL;           // goto normal execution
-                }
+
                 break;
-                
-            default:
+
+                case SUM_AND_MEAN: // sum first SAMPLES_FOR_EMG_MEAN samples
+                    // NOTE max(value)*SAMPLES_FOR_EMG_MEAN must fit in 32bit
+                    UD_counter++;
+                    UD_mean_value += ADC_buf[2];
+
+                    if (interrupt_flag){
+                        interrupt_flag = FALSE;
+                        interrupt_manager();
+                    }
+
+                    if (UD_counter == SAMPLES_FOR_JOYSTICK_MEAN) {
+                        UD_mean_value = UD_mean_value / SAMPLES_FOR_JOYSTICK_MEAN; // calc mean
+
+                        if (interrupt_flag){
+                            interrupt_flag = FALSE;
+                            interrupt_manager();
+                        }
+
+                        UD_counter = 0;          // reset counter
+                        UD_status = NORMAL;           // goto normal execution
+                    }
                 break;
-        }
+
+                case WAIT: // wait for both EMG calibrations to be done
+                    if (emg_1_status == NORMAL && emg_2_status == NORMAL)
+                        UD_status = DISCARD;           // goto discard sample
+                break;
+            }
             
-        if (interrupt_flag){
-            interrupt_flag = FALSE;
-            interrupt_manager();
+            if (interrupt_flag){
+                interrupt_flag = FALSE;
+                interrupt_manager();
+            }
+            // Joystick LR
+            switch (LR_status) {
+                case NORMAL:
+                    i_aux = ADC_buf[3];
+
+                    i_aux = (int32) (((float) (i_aux - LR_mean_value) / LR_mean_value) * g_mem.joystick_gain); 
+                    
+                    if (interrupt_flag){
+                        interrupt_flag = FALSE;
+                        interrupt_manager();
+                    }
+
+                    //Saturation
+                    if (i_aux < -1024)
+                        i_aux = -1024;
+                    if (i_aux > 1024)
+                        i_aux = 1024;
+
+                    if (interrupt_flag){
+                        interrupt_flag = FALSE;
+                        interrupt_manager();
+                    }
+
+                    g_meas.joystick[0] = (int16) i_aux;
+
+                break;
+
+                case RESET: // reset variables
+                    LR_counter = 0;
+                    LR_mean_value = 0;
+                    LR_status = WAIT; // goes waiting for all conversions to be done
+                break;
+
+                case DISCARD: // discard first EMG_SAMPLE_TO_DISCARD samples8
+                    LR_counter++;
+                    if (LR_counter == JOYSTICK_SAMPLE_TO_DISCARD) {
+                        LR_counter = 0;                     // reset counter
+
+                        if (interrupt_flag){
+                            interrupt_flag = FALSE;
+                            interrupt_manager();
+                        }
+
+                        LR_status = SUM_AND_MEAN;           // sum and mean status
+                    }
+                break;
+
+                case SUM_AND_MEAN: // sum first SAMPLES_FOR_EMG_MEAN samples
+                    // NOTE max(value)*SAMPLES_FOR_EMG_MEAN must fit in 32bit
+                    LR_counter++;
+                    LR_mean_value += ADC_buf[3];
+                    if (LR_counter == SAMPLES_FOR_JOYSTICK_MEAN) {
+                        LR_mean_value = LR_mean_value / SAMPLES_FOR_JOYSTICK_MEAN; // calc mean
+                        
+                        if (interrupt_flag){
+                            interrupt_flag = FALSE;
+                            interrupt_manager();
+                        }
+
+                        LR_counter = 0;               // reset counter
+                        LR_status = NORMAL;           // goto normal execution
+                    }
+                break;
+
+                case WAIT:
+                    if(emg_1_status == NORMAL && emg_2_status == NORMAL && UD_status == NORMAL)
+                        LR_status = DISCARD;
+                break;
+            }
+
+            if (interrupt_flag){
+                interrupt_flag = FALSE;
+                interrupt_manager();
+            }
+            
+        } 
+        else {
+            // Read ADC_buf[2] and ADC_buf[3] as EMGs
+            
+            // EMG 1 calibration state machine
+        
+            // Calibration state machine
+            switch(emg_1_status) {
+                case NORMAL: // normal execution
+                    i_aux = (int32)ADC_buf[2];
+                    if (i_aux < 0) 
+                        i_aux = 0;
+                    i_aux = filter_ch1(i_aux);
+                    i_aux = (i_aux << 10) / g_mem.emg_max_value[0];
+        
+                    if (interrupt_flag){
+                        interrupt_flag = FALSE;
+                        interrupt_manager();
+                    }
+                    //Saturation
+                    if (i_aux < 0)
+                        i_aux = 0;
+                    else
+                        if (i_aux > 1024) 
+                            i_aux = 1024;
+                    
+                    g_meas.emg[0] = i_aux;
+        
+                    if (interrupt_flag){
+                        interrupt_flag = FALSE;
+                        interrupt_manager();
+                    }
+                    
+                    break;
+
+                case RESET: // reset variables
+                    emg_counter_1 = 0;
+                    g_mem.emg_max_value[0] = 0;
+                    emg_1_status = DISCARD; // goto next status
+                    
+                    break;
+
+                case DISCARD: // discard first EMG_SAMPLE_TO_DISCARD samples
+                    emg_counter_1++;
+                    if (emg_counter_1 == EMG_SAMPLE_TO_DISCARD) {
+                        emg_counter_1 = 0;          // reset counter
+                        
+                        LED_CTRL_Write(1);
+                        LED_BLINK_EN_Write(0);
+                            
+                        if (interrupt_flag){
+                            interrupt_flag = FALSE;
+                            interrupt_manager();
+                        }
+                        
+                        emg_1_status = SUM_AND_MEAN;           // sum and mean status
+                    }
+                    break;
+
+                case SUM_AND_MEAN: // sum first SAMPLES_FOR_EMG_MEAN samples
+                    // NOTE max(value)*SAMPLES_FOR_EMG_MEAN must fit in 32bit
+                    emg_counter_1++;
+                    if (ADC_buf[2] < 0) 
+                        ADC_buf[2] = 0;
+                    g_mem.emg_max_value[0] += filter_ch1((int32)ADC_buf[2]);
+                    
+                    if (interrupt_flag){
+                        interrupt_flag = FALSE;
+                        interrupt_manager();
+                    }
+                    
+                    if (emg_counter_1 == SAMPLES_FOR_EMG_MEAN) {
+                        g_mem.emg_max_value[0] = g_mem.emg_max_value[0] / SAMPLES_FOR_EMG_MEAN; // calc mean
+        
+                        if (interrupt_flag){
+                            interrupt_flag = FALSE;
+                            interrupt_manager();
+                        }                    
+                        
+                        LED_CTRL_Write(0);
+                        LED_BLINK_EN_Write(0);
+                        
+                        emg_counter_1 = 0;          // reset counter
+
+                        emg_1_status = NORMAL;           // goto normal execution
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        
+            if (interrupt_flag){
+                interrupt_flag = FALSE;
+                interrupt_manager();
+            }
+            // EMG 2 calibration state machine
+            switch(emg_2_status) {
+                case NORMAL: // normal execution
+                    i_aux = (int32)ADC_buf[3];
+                    if (i_aux < 0)
+                        i_aux = 0;
+                    i_aux = filter_ch2(i_aux);
+                    i_aux = (i_aux << 10) / g_mem.emg_max_value[1];
+        
+                    if (interrupt_flag){
+                        interrupt_flag = FALSE;
+                        interrupt_manager();
+                    }
+                    
+                    if (i_aux < 0) 
+                        i_aux = 0;
+                    else
+                        if (i_aux > 1024)
+                            i_aux = 1024;
+                    
+                    g_meas.emg[1] = i_aux;
+
+                    break;
+
+                case RESET: // reset variables
+                    emg_counter_2 = 0;
+                    g_mem.emg_max_value[1] = 0;
+        
+                    if (interrupt_flag){
+                        interrupt_flag = FALSE;
+                        interrupt_manager();
+                    }
+                    
+                    emg_2_status = WAIT; // wait for EMG 1 calibration
+                    break;
+
+                case DISCARD: // discard first EMG_SAMPLE_TO_DISCARD samples
+                    emg_counter_2++;
+                    if (emg_counter_2 == EMG_SAMPLE_TO_DISCARD) {
+                        emg_counter_2 = 0;          // reset counter
+                        
+                        LED_CTRL_Write(1);
+                        LED_BLINK_EN_Write(0);
+        
+                        if (interrupt_flag){
+                            interrupt_flag = FALSE;
+                            interrupt_manager();
+                        }
+                        
+                        emg_2_status = SUM_AND_MEAN;           // sum and mean status
+                    }
+                    break;
+
+                case SUM_AND_MEAN: // sum first SAMPLES_FOR_EMG_MEAN samples
+                    // NOTE max(value)*SAMPLES_FOR_EMG_MEAN must fit in 32bit
+                    emg_counter_2++;
+                    if (ADC_buf[3] < 0)
+                        ADC_buf[3] = 0;
+                    g_mem.emg_max_value[1] += filter_ch2((int32)ADC_buf[3]);
+        
+                    if (interrupt_flag){
+                        interrupt_flag = FALSE;
+                        interrupt_manager();
+                    }
+                    
+                    if (emg_counter_2 == SAMPLES_FOR_EMG_MEAN) {
+                        g_mem.emg_max_value[1] = g_mem.emg_max_value[1] / SAMPLES_FOR_EMG_MEAN; // calc mean
+                        
+                        LED_CTRL_Write(0);
+                        LED_BLINK_EN_Write(0);
+                        
+                        emg_counter_2 = 0;          // reset counter
+                    
+                        if (interrupt_flag){
+                            interrupt_flag = FALSE;
+                            interrupt_manager();
+                        }
+                        
+                        emg_2_status = WAIT_EoC;           // goto end of calibration wait
+                    }
+                    break;
+
+                case WAIT: // wait for EMG calibration to be done
+                    if (emg_1_status == NORMAL)
+                        emg_2_status = DISCARD;           // goto discard sample
+                    break;
+
+                case WAIT_EoC:  // wait for end of calibration procedure (only for LED visibility reasons)
+                    emg_counter_2++;
+                    if (emg_counter_2 == EMG_SAMPLE_TO_DISCARD) {
+                        emg_counter_2 = 0;          // reset counter
+
+                        if (interrupt_flag){
+                            interrupt_flag = FALSE;
+                            interrupt_manager();
+                        }
+                        
+                        // if EMG control mode active, activate motors accordingly with startup value
+                        if ((c_mem.input_mode == INPUT_MODE_EMG_PROPORTIONAL) ||
+                            (c_mem.input_mode == INPUT_MODE_EMG_INTEGRAL) ||
+                            (c_mem.input_mode == INPUT_MODE_EMG_FCFS) ||
+                            (c_mem.input_mode == INPUT_MODE_EMG_FCFS_ADV)) {
+                            if (c_mem.control_mode == CONTROL_ANGLE) {
+                                g_ref.pos[0] = g_meas.pos[0];
+                                g_ref.pos[1] = g_meas.pos[1];
+                            }
+                            g_ref.onoff = c_mem.activ;
+                            MOTOR_ON_OFF_Write(g_ref.onoff);
+                        }
+                            
+                        emg_2_status = NORMAL;           // goto normal execution
+                    }
+                    break;
+                    
+                default:
+                    break;
+            }
+                
+            if (interrupt_flag){
+                interrupt_flag = FALSE;
+                interrupt_manager();
+            }
         }
     }
     else {
@@ -1359,6 +1543,9 @@ void analog_read_end() {
         emg_1_status = RESET; 
         emg_2_status = RESET;
 
+        UD_status = RESET;
+        LR_status = RESET;
+		
         tension_valid = FALSE;
         
         //fixed
@@ -1387,6 +1574,10 @@ void analog_read_end() {
         // Reset emg
         g_meas.emg[0] = 0;
         g_meas.emg[1] = 0;
+        
+        // Reset Joystick
+        g_meas.joystick[0] = 0;
+        g_meas.joystick[1] = 0;
 
     }
     

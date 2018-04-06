@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   USB_VDD                                                               01/02/2018 13:36:56 PAGE 1   
+C51 COMPILER V9.51   USB_VDD                                                               04/05/2018 14:23:20 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE USB_VDD
@@ -62,7 +62,7 @@ line level    source
   50          * \funcusage
   51          *  \snippet USB_VDD_SUT.c usage_USB_VDD_Write
   52          *******************************************************************************/
-C51 COMPILER V9.51   USB_VDD                                                               01/02/2018 13:36:56 PAGE 2   
+C51 COMPILER V9.51   USB_VDD                                                               04/05/2018 14:23:20 PAGE 2   
 
   53          void USB_VDD_Write(uint8 value) 
   54          {
@@ -126,7 +126,7 @@ line level    source
  112   1      }
  113          
  114          
-C51 COMPILER V9.51   USB_VDD                                                               01/02/2018 13:36:56 PAGE 3   
+C51 COMPILER V9.51   USB_VDD                                                               04/05/2018 14:23:20 PAGE 3   
 
  115          /*******************************************************************************
  116          * Function Name: USB_VDD_ReadDataReg
@@ -190,7 +190,7 @@ line level    source
                   * \sideeffect
                   *  It is recommended that the interrupt be disabled before calling this 
                   *  function to avoid unintended interrupt requests. Note that the interrupt
-C51 COMPILER V9.51   USB_VDD                                                               01/02/2018 13:36:56 PAGE 4   
+C51 COMPILER V9.51   USB_VDD                                                               04/05/2018 14:23:20 PAGE 4   
 
                   *  type is port wide, and therefore will trigger for any enabled pin on the 
                   *  port.
@@ -237,7 +237,7 @@ line level    source
  219          
  220          
  221          /* [] END OF FILE */
-C51 COMPILER V9.51   USB_VDD                                                               01/02/2018 13:36:56 PAGE 5   
+C51 COMPILER V9.51   USB_VDD                                                               04/05/2018 14:23:20 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -301,7 +301,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 112
 0014         ?C0003:
 0014 22                RET     
-C51 COMPILER V9.51   USB_VDD                                                               01/02/2018 13:36:56 PAGE 6   
+C51 COMPILER V9.51   USB_VDD                                                               04/05/2018 14:23:20 PAGE 6   
 
              ; FUNCTION USB_VDD_Read (END)
 

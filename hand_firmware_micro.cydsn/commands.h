@@ -204,9 +204,10 @@ enum qbmove_input_mode
                                         ///  position.
     INPUT_MODE_EMG_FCFS         = 4,    ///< Use 2 EMG. First reaching threshold
                                         ///  wins and its value defines hand closure.
-    INPUT_MODE_EMG_FCFS_ADV     = 5     ///< Use 2 EMG. First reaching threshold
+    INPUT_MODE_EMG_FCFS_ADV     = 5,    ///< Use 2 EMG. First reaching threshold
                                         ///  wins and its value defines hand closure
                                         ///  Wait for both EMG to lower under threshold.
+    INPUT_MODE_JOYSTICK         = 6     ///< Joystick input mode
 };
 
 //============================================================     control modes

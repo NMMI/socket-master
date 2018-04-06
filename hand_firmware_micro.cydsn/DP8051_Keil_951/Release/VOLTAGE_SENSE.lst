@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   VOLTAGE_SENSE                                                         01/02/2018 13:37:02 PAGE 1   
+C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/05/2018 14:23:27 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE VOLTAGE_SENSE
@@ -62,7 +62,7 @@ line level    source
   49          *
   50          * \funcusage
   51          *  \snippet VOLTAGE_SENSE_SUT.c usage_VOLTAGE_SENSE_Write
-C51 COMPILER V9.51   VOLTAGE_SENSE                                                         01/02/2018 13:37:02 PAGE 2   
+C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/05/2018 14:23:27 PAGE 2   
 
   52          *******************************************************************************/
   53          void VOLTAGE_SENSE_Write(uint8 value) 
@@ -126,7 +126,7 @@ line level    source
  111   1          return (VOLTAGE_SENSE_PS & VOLTAGE_SENSE_MASK) >> VOLTAGE_SENSE_SHIFT;
  112   1      }
  113          
-C51 COMPILER V9.51   VOLTAGE_SENSE                                                         01/02/2018 13:37:02 PAGE 3   
+C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/05/2018 14:23:27 PAGE 3   
 
  114          
  115          /*******************************************************************************
@@ -190,7 +190,7 @@ line level    source
                   *  
                   * \sideeffect
                   *  It is recommended that the interrupt be disabled before calling this 
-C51 COMPILER V9.51   VOLTAGE_SENSE                                                         01/02/2018 13:37:02 PAGE 4   
+C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/05/2018 14:23:27 PAGE 4   
 
                   *  function to avoid unintended interrupt requests. Note that the interrupt
                   *  type is port wide, and therefore will trigger for any enabled pin on the 
@@ -238,7 +238,7 @@ line level    source
  219          
  220          
  221          /* [] END OF FILE */
-C51 COMPILER V9.51   VOLTAGE_SENSE                                                         01/02/2018 13:37:02 PAGE 5   
+C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/05/2018 14:23:27 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -302,7 +302,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0012         ?C0003:
 0012 22                RET     
              ; FUNCTION VOLTAGE_SENSE_Read (END)
-C51 COMPILER V9.51   VOLTAGE_SENSE                                                         01/02/2018 13:37:02 PAGE 6   
+C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/05/2018 14:23:27 PAGE 6   
 
 
              ; FUNCTION VOLTAGE_SENSE_ReadDataReg (BEGIN)

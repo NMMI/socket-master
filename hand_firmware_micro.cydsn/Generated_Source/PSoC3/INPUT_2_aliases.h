@@ -1,5 +1,5 @@
 /*******************************************************************************
-* File Name: EMG_2.h  
+* File Name: INPUT_2.h  
 * Version 2.20
 *
 * Description:
@@ -15,8 +15,8 @@
 * the software package with which this file was provided.
 *******************************************************************************/
 
-#if !defined(CY_PINS_EMG_2_ALIASES_H) /* Pins EMG_2_ALIASES_H */
-#define CY_PINS_EMG_2_ALIASES_H
+#if !defined(CY_PINS_INPUT_2_ALIASES_H) /* Pins INPUT_2_ALIASES_H */
+#define CY_PINS_INPUT_2_ALIASES_H
 
 #include "cytypes.h"
 #include "cyfitter.h"
@@ -25,12 +25,12 @@
 /***************************************
 *              Constants        
 ***************************************/
-#define EMG_2_0			(EMG_2__0__PC)
-#define EMG_2_0_INTR	((uint16)((uint16)0x0001u << EMG_2__0__SHIFT))
+#define INPUT_2_0			(INPUT_2__0__PC)
+#define INPUT_2_0_INTR	((uint16)((uint16)0x0001u << INPUT_2__0__SHIFT))
 
-#define EMG_2_INTR_ALL	 ((uint16)(EMG_2_0_INTR))
+#define INPUT_2_INTR_ALL	 ((uint16)(INPUT_2_0_INTR))
 
-#endif /* End Pins EMG_2_ALIASES_H */
+#endif /* End Pins INPUT_2_ALIASES_H */
 
 
 /* [] END OF FILE */

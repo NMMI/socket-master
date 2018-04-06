@@ -1,5 +1,5 @@
 -- Project:   C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\hand_firmware_micro.cyprj
--- Generated: 01/02/2018 16:43:41
+-- Generated: 04/05/2018 14:23:01
 -- PSoC Creator  4.1 Update 1
 
 ENTITY hand_firmware_micro IS
@@ -56,9 +56,9 @@ ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     SIGNAL ClockBlock_PLL_OUT : bit;
     SIGNAL ClockBlock_XTAL : bit;
     SIGNAL ClockBlock_XTAL_32KHZ : bit;
-    SIGNAL EMG_1(0)__PA : bit;
-    SIGNAL EMG_2(0)__PA : bit;
     SIGNAL FTDI_ENABLE(0)__PA : bit;
+    SIGNAL INPUT_1(0)__PA : bit;
+    SIGNAL INPUT_2(0)__PA : bit;
     SIGNAL MOTOR_1A(0)__PA : bit;
     SIGNAL MOTOR_1B(0)__PA : bit;
     SIGNAL MOTOR_2A(0)__PA : bit;
@@ -560,8 +560,8 @@ ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     ATTRIBUTE Location OF RS485_TX(0) : LABEL IS "P2[7]";
     ATTRIBUTE lib_model OF Signal_1_C(0) : LABEL IS "iocell7";
     ATTRIBUTE Location OF Signal_1_C(0) : LABEL IS "P15[2]";
-    ATTRIBUTE lib_model OF EMG_2(0) : LABEL IS "iocell8";
-    ATTRIBUTE Location OF EMG_2(0) : LABEL IS "P1[7]";
+    ATTRIBUTE lib_model OF INPUT_2(0) : LABEL IS "iocell8";
+    ATTRIBUTE Location OF INPUT_2(0) : LABEL IS "P1[7]";
     ATTRIBUTE lib_model OF RS485_RX(0) : LABEL IS "iocell9";
     ATTRIBUTE Location OF RS485_RX(0) : LABEL IS "P2[5]";
     ATTRIBUTE lib_model OF MOTOR_1B(0) : LABEL IS "iocell10";
@@ -576,8 +576,8 @@ ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     ATTRIBUTE Location OF Signal_1_B(0) : LABEL IS "P15[3]";
     ATTRIBUTE lib_model OF Signal_1_A(0) : LABEL IS "iocell15";
     ATTRIBUTE Location OF Signal_1_A(0) : LABEL IS "P12[2]";
-    ATTRIBUTE lib_model OF EMG_1(0) : LABEL IS "iocell16";
-    ATTRIBUTE Location OF EMG_1(0) : LABEL IS "P15[0]";
+    ATTRIBUTE lib_model OF INPUT_1(0) : LABEL IS "iocell16";
+    ATTRIBUTE Location OF INPUT_1(0) : LABEL IS "P15[0]";
     ATTRIBUTE lib_model OF CURRENT_SENSE_1(0) : LABEL IS "iocell17";
     ATTRIBUTE Location OF CURRENT_SENSE_1(0) : LABEL IS "P0[6]";
     ATTRIBUTE lib_model OF VOLTAGE_SENSE(0) : LABEL IS "iocell18";
@@ -1801,7 +1801,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    EMG_2:logicalport
+    INPUT_2:logicalport
         GENERIC MAP(
             drive_mode => "000",
             ibuf_enabled => "0",
@@ -1872,16 +1872,16 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    EMG_2(0):iocell
+    INPUT_2(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "EMG_2",
+            logicalport => "INPUT_2",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
-            pa_out => EMG_2(0)__PA,
+            pa_out => INPUT_2(0)__PA,
             oe => open,
             in_clock => open,
             pin_input => AMuxHw_Decoder_one_hot_3,
@@ -2535,7 +2535,7 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    EMG_1:logicalport
+    INPUT_1:logicalport
         GENERIC MAP(
             drive_mode => "000",
             ibuf_enabled => "0",
@@ -2606,16 +2606,16 @@ BEGIN
             out_clock_en => open,
             out_reset => open);
 
-    EMG_1(0):iocell
+    INPUT_1(0):iocell
         GENERIC MAP(
             in_sync_mode => 0,
             out_sync_mode => 0,
             oe_sync_mode => 0,
-            logicalport => "EMG_1",
+            logicalport => "INPUT_1",
             logicalport_pin_id => 0,
             io_capabilities => "0000000000000000000000000000000000000000000000000000000000000010")
         PORT MAP(
-            pa_out => EMG_1(0)__PA,
+            pa_out => INPUT_1(0)__PA,
             oe => open,
             in_clock => open,
             pin_input => AMuxHw_Decoder_one_hot_2,

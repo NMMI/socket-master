@@ -2,7 +2,7 @@
 --	Conversion of hand_firmware_micro.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Jan 02 16:43:34 2018
+--	Thu Apr 05 14:22:54 2018
 --
 
 USE cypress.cypress.all;
@@ -390,12 +390,12 @@ SIGNAL Net_1060 : bit;
 SIGNAL tmpIO_0__Signal_1_C_net_0 : bit;
 TERMINAL tmpSIOVREF__Signal_1_C_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__Signal_1_C_net_0 : bit;
-SIGNAL tmpOE__EMG_2_net_0 : bit;
-SIGNAL tmpFB_0__EMG_2_net_0 : bit;
+SIGNAL tmpOE__INPUT_2_net_0 : bit;
+SIGNAL tmpFB_0__INPUT_2_net_0 : bit;
 TERMINAL Net_3547 : bit;
-SIGNAL tmpIO_0__EMG_2_net_0 : bit;
-TERMINAL tmpSIOVREF__EMG_2_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__EMG_2_net_0 : bit;
+SIGNAL tmpIO_0__INPUT_2_net_0 : bit;
+TERMINAL tmpSIOVREF__INPUT_2_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__INPUT_2_net_0 : bit;
 SIGNAL tmpOE__RS485_RX_net_0 : bit;
 SIGNAL Net_6196 : bit;
 SIGNAL tmpIO_0__RS485_RX_net_0 : bit;
@@ -1519,12 +1519,12 @@ SIGNAL \FTDI_ENABLE_REG:control_3\ : bit;
 SIGNAL \FTDI_ENABLE_REG:control_2\ : bit;
 SIGNAL \FTDI_ENABLE_REG:control_1\ : bit;
 SIGNAL \FTDI_ENABLE_REG:control_0\ : bit;
-SIGNAL tmpOE__EMG_1_net_0 : bit;
-SIGNAL tmpFB_0__EMG_1_net_0 : bit;
+SIGNAL tmpOE__INPUT_1_net_0 : bit;
+SIGNAL tmpFB_0__INPUT_1_net_0 : bit;
 TERMINAL Net_3546 : bit;
-SIGNAL tmpIO_0__EMG_1_net_0 : bit;
-TERMINAL tmpSIOVREF__EMG_1_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__EMG_1_net_0 : bit;
+SIGNAL tmpIO_0__INPUT_1_net_0 : bit;
+TERMINAL tmpSIOVREF__INPUT_1_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__INPUT_1_net_0 : bit;
 SIGNAL tmpOE__CURRENT_SENSE_1_net_0 : bit;
 SIGNAL tmpFB_0__CURRENT_SENSE_1_net_0 : bit;
 TERMINAL Net_3545 : bit;
@@ -3770,7 +3770,7 @@ Signal_1_C:cy_psoc3_pins_v1_10
 		out_clock_en=>tmpOE__MOTOR_1A_net_0,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__Signal_1_C_net_0);
-EMG_2:cy_psoc3_pins_v1_10
+INPUT_2:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"a014e3ff-1a80-46b9-bbcb-22ceb5400b46",
 		drive_mode=>"000",
 		ibuf_enabled=>"0",
@@ -3828,10 +3828,10 @@ EMG_2:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__MOTOR_1A_net_0),
 		y=>(zero),
-		fb=>(tmpFB_0__EMG_2_net_0),
+		fb=>(tmpFB_0__INPUT_2_net_0),
 		analog=>Net_3547,
-		io=>(tmpIO_0__EMG_2_net_0),
-		siovref=>(tmpSIOVREF__EMG_2_net_0),
+		io=>(tmpIO_0__INPUT_2_net_0),
+		siovref=>(tmpSIOVREF__INPUT_2_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__MOTOR_1A_net_0,
@@ -3839,7 +3839,7 @@ EMG_2:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__MOTOR_1A_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__EMG_2_net_0);
+		interrupt=>tmpINTERRUPT_0__INPUT_2_net_0);
 RS485_RX:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"1425177d-0d0e-4468-8bcc-e638e5509a9b",
 		drive_mode=>"001",
@@ -5483,7 +5483,7 @@ Signal_1_A:cy_psoc3_pins_v1_10
 		clock=>zero,
 		control=>(\FTDI_ENABLE_REG:control_7\, \FTDI_ENABLE_REG:control_6\, \FTDI_ENABLE_REG:control_5\, \FTDI_ENABLE_REG:control_4\,
 			\FTDI_ENABLE_REG:control_3\, \FTDI_ENABLE_REG:control_2\, \FTDI_ENABLE_REG:control_1\, Net_3196));
-EMG_1:cy_psoc3_pins_v1_10
+INPUT_1:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"d2b73a47-2288-411e-8c5b-d740ba0840ec",
 		drive_mode=>"000",
 		ibuf_enabled=>"0",
@@ -5541,10 +5541,10 @@ EMG_1:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(tmpOE__MOTOR_1A_net_0),
 		y=>(zero),
-		fb=>(tmpFB_0__EMG_1_net_0),
+		fb=>(tmpFB_0__INPUT_1_net_0),
 		analog=>Net_3546,
-		io=>(tmpIO_0__EMG_1_net_0),
-		siovref=>(tmpSIOVREF__EMG_1_net_0),
+		io=>(tmpIO_0__INPUT_1_net_0),
+		siovref=>(tmpSIOVREF__INPUT_1_net_0),
 		annotation=>(open),
 		in_clock=>zero,
 		in_clock_en=>tmpOE__MOTOR_1A_net_0,
@@ -5552,7 +5552,7 @@ EMG_1:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>tmpOE__MOTOR_1A_net_0,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__EMG_1_net_0);
+		interrupt=>tmpINTERRUPT_0__INPUT_1_net_0);
 CURRENT_SENSE_1:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"7bc8296e-0925-4c45-bc42-d5d2c24c1efd",
 		drive_mode=>"000",

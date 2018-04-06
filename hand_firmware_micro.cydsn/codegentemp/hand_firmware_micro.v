@@ -1,6 +1,6 @@
 // ======================================================================
 // hand_firmware_micro.v generated from TopDesign.cysch
-// 01/02/2018 at 16:43
+// 04/05/2018 at 14:22
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -2153,11 +2153,11 @@ module top ;
 
 	assign tmpOE__Signal_1_C_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-	wire [0:0] tmpOE__EMG_2_net;
-	wire [0:0] tmpFB_0__EMG_2_net;
-	wire [0:0] tmpIO_0__EMG_2_net;
-	wire [0:0] tmpINTERRUPT_0__EMG_2_net;
-	electrical [0:0] tmpSIOVREF__EMG_2_net;
+	wire [0:0] tmpOE__INPUT_2_net;
+	wire [0:0] tmpFB_0__INPUT_2_net;
+	wire [0:0] tmpIO_0__INPUT_2_net;
+	wire [0:0] tmpINTERRUPT_0__INPUT_2_net;
+	electrical [0:0] tmpSIOVREF__INPUT_2_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("a014e3ff-1a80-46b9-bbcb-22ceb5400b46"),
@@ -2212,14 +2212,14 @@ module top ;
 		  .ovt_needed(1'b0),
 		  .ovt_slew_control(2'b00),
 		  .input_buffer_sel(2'b00))
-		EMG_2
-		 (.oe(tmpOE__EMG_2_net),
+		INPUT_2
+		 (.oe(tmpOE__INPUT_2_net),
 		  .y({1'b0}),
-		  .fb({tmpFB_0__EMG_2_net[0:0]}),
+		  .fb({tmpFB_0__INPUT_2_net[0:0]}),
 		  .analog({Net_3547}),
-		  .io({tmpIO_0__EMG_2_net[0:0]}),
-		  .siovref(tmpSIOVREF__EMG_2_net),
-		  .interrupt({tmpINTERRUPT_0__EMG_2_net[0:0]}),
+		  .io({tmpIO_0__INPUT_2_net[0:0]}),
+		  .siovref(tmpSIOVREF__INPUT_2_net),
+		  .interrupt({tmpINTERRUPT_0__INPUT_2_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -2227,7 +2227,7 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__EMG_2_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__INPUT_2_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 	wire [0:0] tmpOE__RS485_RX_net;
 	wire [0:0] tmpIO_0__RS485_RX_net;
@@ -3020,11 +3020,11 @@ module top ;
     defparam FTDI_ENABLE_REG.ExtrReset = 0;
     defparam FTDI_ENABLE_REG.NumOutputs = 1;
 
-	wire [0:0] tmpOE__EMG_1_net;
-	wire [0:0] tmpFB_0__EMG_1_net;
-	wire [0:0] tmpIO_0__EMG_1_net;
-	wire [0:0] tmpINTERRUPT_0__EMG_1_net;
-	electrical [0:0] tmpSIOVREF__EMG_1_net;
+	wire [0:0] tmpOE__INPUT_1_net;
+	wire [0:0] tmpFB_0__INPUT_1_net;
+	wire [0:0] tmpIO_0__INPUT_1_net;
+	wire [0:0] tmpINTERRUPT_0__INPUT_1_net;
+	electrical [0:0] tmpSIOVREF__INPUT_1_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("d2b73a47-2288-411e-8c5b-d740ba0840ec"),
@@ -3079,14 +3079,14 @@ module top ;
 		  .ovt_needed(1'b0),
 		  .ovt_slew_control(2'b00),
 		  .input_buffer_sel(2'b00))
-		EMG_1
-		 (.oe(tmpOE__EMG_1_net),
+		INPUT_1
+		 (.oe(tmpOE__INPUT_1_net),
 		  .y({1'b0}),
-		  .fb({tmpFB_0__EMG_1_net[0:0]}),
+		  .fb({tmpFB_0__INPUT_1_net[0:0]}),
 		  .analog({Net_3546}),
-		  .io({tmpIO_0__EMG_1_net[0:0]}),
-		  .siovref(tmpSIOVREF__EMG_1_net),
-		  .interrupt({tmpINTERRUPT_0__EMG_1_net[0:0]}),
+		  .io({tmpIO_0__INPUT_1_net[0:0]}),
+		  .siovref(tmpSIOVREF__INPUT_1_net),
+		  .interrupt({tmpINTERRUPT_0__INPUT_1_net[0:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -3094,7 +3094,7 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__EMG_1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+	assign tmpOE__INPUT_1_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
 	wire [0:0] tmpOE__CURRENT_SENSE_1_net;
 	wire [0:0] tmpFB_0__CURRENT_SENSE_1_net;
