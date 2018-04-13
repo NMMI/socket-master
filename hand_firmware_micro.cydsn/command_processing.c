@@ -319,7 +319,7 @@ void get_param_list(uint16 index) {
     
     char myo2_master_str[36] = "27 - Myoelectric case 2 Master:";
     char master_mode_force_str[35] = "28 - Master with Force device:";
-    char master_mode_proprio_str[41] = "29 - Master with Proprioc. device:";
+    char master_mode_proprio_str[39] = "29 - Master with Proprioc. device:";
     
     char curr_prop_gain_str[40] = "30 - Current proportional gain (force):";
     char curr_sat_str[44]       = "31 - Current difference saturation (force):";
@@ -752,7 +752,7 @@ void get_param_list(uint16 index) {
             //The following byte indicates the number of menus at the end of the packet to send
             packet_data[1305 + string_lenght] = 3;
             
-            /*------------MASTER MODE CUFF----------*/
+            /*------------MASTER MODE FORCE----------*/
             
             packet_data[1352] = TYPE_FLAG;
             packet_data[1353] = 1;
@@ -770,18 +770,18 @@ void get_param_list(uint16 index) {
             //The following byte indicates the number of menus at the end of the packet to send
             packet_data[1355 + string_lenght] = 3;
             
-            /*------------MASTER MODE HAP PRO----------*/
+            /*------------MASTER MODE PROPRIO----------*/
             
             packet_data[1402] = TYPE_FLAG;
             packet_data[1403] = 1;
             packet_data[1404] = c_mem.is_proprio_fb_present;
             if(c_mem.is_proprio_fb_present) {
                 strcat(master_mode_proprio_str, " YES\0");
-                string_lenght = 41;
+                string_lenght = 39;
             }
             else {
                 strcat(master_mode_proprio_str, " NO\0");
-                string_lenght = 40;
+                string_lenght = 38;
             }
             for(i = string_lenght; i != 0; i--)
                 packet_data[1405 + string_lenght - i] = master_mode_proprio_str[string_lenght - i];
@@ -1551,6 +1551,48 @@ int32 commReadMeasFromSH()
     return aux_val;
 }
 
+
+//==============================================================================
+//                                  READ RESIDUAL CURRENT FUNCTION FROM SOFTHAND
+//==============================================================================
+
+int16 commReadResCurrFromSH()
+{
+    uint8 packet_data[16];
+    uint8 packet_lenght;
+    int16 curr_diff = 0;
+    uint32 t_start, t_end;
+    int32 aux_val = 0;
+
+    packet_lenght = 2;
+    packet_data[0] = CMD_GET_CURR_AND_MEAS;
+    packet_data[1] = CMD_GET_CURR_AND_MEAS;
+    commWriteID(packet_data, packet_lenght, c_mem.SH_ID);
+
+    t_start = (uint32) MY_TIMER_ReadCounter();
+    while(g_rx.buffer[0] != CMD_GET_CURR_AND_MEAS) {
+        if (interrupt_flag){
+            interrupt_flag = FALSE;
+            interrupt_manager();
+        }
+
+        t_end = (uint32) MY_TIMER_ReadCounter();
+        if((t_start - t_end) > 10000000){            // 4.5 s timeout
+            master_mode = 0;
+            break;
+        }
+    }
+
+    if (master_mode) {
+        curr_diff = *((int16 *) &g_rx.buffer[3]);
+        
+        aux_val = *((int16 *) &g_rx.buffer[5]);
+        SH_current_position = (aux_val << g_mem.res[0]);
+    }
+    
+    return curr_diff;
+}
+
 //==============================================================================
 //                                             WRITE FUNCTION FOR ANOTHER DEVICE
 //==============================================================================
@@ -1619,32 +1661,11 @@ the SoftHand and sets force feedback device inputs proportionally to this differ
 
 void drive_force_fb() {
     CYDATA uint8 packet_data[6];    // output packet
-    uint8 packet_length;
     int16 curr_diff;
     int32 aux_val;
     int32 aux_p1, aux_p2;
-    uint32 t_start, t_end;
 
-    packet_length = 2;
-    packet_data[0] = CMD_GET_CURR_DIFF;
-    packet_data[1] = CMD_GET_CURR_DIFF;
-    commWriteID(packet_data, packet_length, c_mem.SH_ID);         //To SoftHand ID
-    
-    t_start = (uint32) MY_TIMER_ReadCounter();
-    while(g_rx.buffer[0] != CMD_SET_CUFF_INPUTS) {
-        if (interrupt_flag){
-            interrupt_flag = FALSE;
-            interrupt_manager();
-        }
-        t_end = (uint32) MY_TIMER_ReadCounter();
-        if((t_start - t_end) > 4500000){             // 4.5 s timeout
-            g_mem.is_force_fb_present = 0;
-            break;
-        }
-        
-    }
-
-    curr_diff = *((int16 *) &g_rx.buffer[1]);
+    curr_diff = (int16)commReadResCurrFromSH();
     
     // Current difference saturation
     if(curr_diff > g_mem.curr_sat)
@@ -1656,7 +1677,7 @@ void drive_force_fb() {
         curr_diff -= g_mem.curr_dead_zone;
 
     aux_val = ((curr_diff * g_mem.curr_prop_gain) * 65535 / 1440);
-    
+
     aux_p1 = -(aux_val << g_mem.res[0]);
     aux_p2 =  (aux_val << g_mem.res[1]);
         
@@ -1675,17 +1696,15 @@ void drive_force_fb() {
 /* Function called when is_proprio_fb_present is set. It asks position to 
 the SoftHand and sets proprioceptive feedback device inputs proportionally to this value.*/
 void drive_proprio_fb(){ 
-    int32 aux_p1, aux_p2;
     CYDATA uint8 packet_data[6];
     
     // Get SoftHand position
-    aux_p1 = (int32)commReadMeasFromSH();
-    aux_p2 = aux_p1;
+    SH_current_position = (int32)commReadMeasFromSH();
     
     // Send SoftHand position to ProprioF device
     packet_data[0] = CMD_SET_INPUTS;
-    *((int16 *) &packet_data[1]) = (int16) (aux_p1 >> g_mem.res[0]);
-    *((int16 *) &packet_data[3]) = (int16) (aux_p2 >> g_mem.res[1]);
+    *((int16 *) &packet_data[1]) = (int16) (SH_current_position >> g_mem.res[0]);
+    *((int16 *) &packet_data[3]) = (int16) (SH_current_position >> g_mem.res[1]);
     packet_data[5] = LCRChecksum(packet_data, 5); 
     commWriteID(packet_data, 6, c_mem.ProprioF_ID);         // To proprioceptive feedback device ID
 

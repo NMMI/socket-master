@@ -1,9 +1,9 @@
-C51 COMPILER V9.51   BOARD_LED                                                             04/05/2018 14:23:21 PAGE 1   
+C51 COMPILER V9.51   BOARD_LED                                                             04/10/2018 15:30:39 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE BOARD_LED
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\BOARD_LED.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -Generated_Source\PSoC3\BOARD_LED.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG
                     -) WL(2) PR(.\DP8051_Keil_951\Release/BOARD_LED.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\BOARD_LED.obj)
 
@@ -62,7 +62,7 @@ line level    source
   50          * \funcusage
   51          *  \snippet BOARD_LED_SUT.c usage_BOARD_LED_Write
   52          *******************************************************************************/
-C51 COMPILER V9.51   BOARD_LED                                                             04/05/2018 14:23:21 PAGE 2   
+C51 COMPILER V9.51   BOARD_LED                                                             04/10/2018 15:30:39 PAGE 2   
 
   53          void BOARD_LED_Write(uint8 value) 
   54          {
@@ -126,7 +126,7 @@ line level    source
  112   1      }
  113          
  114          
-C51 COMPILER V9.51   BOARD_LED                                                             04/05/2018 14:23:21 PAGE 3   
+C51 COMPILER V9.51   BOARD_LED                                                             04/10/2018 15:30:39 PAGE 3   
 
  115          /*******************************************************************************
  116          * Function Name: BOARD_LED_ReadDataReg
@@ -190,7 +190,7 @@ line level    source
                   * \sideeffect
                   *  It is recommended that the interrupt be disabled before calling this 
                   *  function to avoid unintended interrupt requests. Note that the interrupt
-C51 COMPILER V9.51   BOARD_LED                                                             04/05/2018 14:23:21 PAGE 4   
+C51 COMPILER V9.51   BOARD_LED                                                             04/10/2018 15:30:39 PAGE 4   
 
                   *  type is port wide, and therefore will trigger for any enabled pin on the 
                   *  port.
@@ -237,7 +237,7 @@ line level    source
  219          
  220          
  221          /* [] END OF FILE */
-C51 COMPILER V9.51   BOARD_LED                                                             04/05/2018 14:23:21 PAGE 5   
+C51 COMPILER V9.51   BOARD_LED                                                             04/10/2018 15:30:39 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -301,7 +301,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 112
 0012         ?C0003:
 0012 22                RET     
-C51 COMPILER V9.51   BOARD_LED                                                             04/05/2018 14:23:21 PAGE 6   
+C51 COMPILER V9.51   BOARD_LED                                                             04/10/2018 15:30:39 PAGE 6   
 
              ; FUNCTION BOARD_LED_Read (END)
 

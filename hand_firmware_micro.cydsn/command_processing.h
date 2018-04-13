@@ -135,6 +135,12 @@ void    commWriteID  (uint8 *packet_data, uint16 packet_lenght, uint8 id);
 **/
 int32    commReadMeasFromSH  ();
 
+//============================================================  commReadResCurrFromSH
+/** This function reads on the serial port the residual current from SH.
+ *
+**/
+int16 commReadResCurrFromSH();
+
 //=====================================================     command_slave
 /** This function is used to create a package and send it to another device, only
  *  if the actual board is in master mode.

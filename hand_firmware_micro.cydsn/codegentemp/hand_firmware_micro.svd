@@ -9,7 +9,7 @@
     <peripheral>
       <name>RESET_COUNTERS</name>
       <description>No description available</description>
-      <baseAddress>0x6477</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -19,7 +19,7 @@
         <register>
           <name>RESET_COUNTERS_CONTROL_REG</name>
           <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x6477</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -30,7 +30,7 @@
     <peripheral>
       <name>ADC_SOC</name>
       <description>No description available</description>
-      <baseAddress>0x6579</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -40,7 +40,7 @@
         <register>
           <name>ADC_SOC_CONTROL_REG</name>
           <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x6579</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -51,7 +51,7 @@
     <peripheral>
       <name>ADC_STATUS</name>
       <description>No description available</description>
-      <baseAddress>0x6569</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -61,7 +61,7 @@
         <register>
           <name>ADC_STATUS_STATUS_REG</name>
           <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x6569</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -70,7 +70,7 @@
         <register>
           <name>ADC_STATUS_MASK_REG</name>
           <description>No description available</description>
-          <addressOffset>0x20</addressOffset>
+          <addressOffset>0x6589</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -79,7 +79,7 @@
         <register>
           <name>ADC_STATUS_STATUS_AUX_CTL_REG</name>
           <description>No description available</description>
-          <addressOffset>0x30</addressOffset>
+          <addressOffset>0x6599</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -206,7 +206,7 @@
     <peripheral>
       <name>FF_STATUS</name>
       <description>No description available</description>
-      <baseAddress>0x646B</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -216,7 +216,7 @@
         <register>
           <name>FF_STATUS_STATUS_REG</name>
           <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x646B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -225,7 +225,7 @@
         <register>
           <name>FF_STATUS_MASK_REG</name>
           <description>No description available</description>
-          <addressOffset>0x20</addressOffset>
+          <addressOffset>0x648B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -234,7 +234,7 @@
         <register>
           <name>FF_STATUS_STATUS_AUX_CTL_REG</name>
           <description>No description available</description>
-          <addressOffset>0x30</addressOffset>
+          <addressOffset>0x649B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -601,7 +601,7 @@
     <peripheral>
       <name>RESET_FF</name>
       <description>No description available</description>
-      <baseAddress>0x6478</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -611,7 +611,7 @@
         <register>
           <name>RESET_FF_CONTROL_REG</name>
           <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x6478</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -798,51 +798,9 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>WATCHDOG_REFRESH</name>
-      <description>No description available</description>
-      <baseAddress>0x6475</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>WATCHDOG_REFRESH_CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>WATCHDOG_ENABLER</name>
-      <description>No description available</description>
-      <baseAddress>0x6472</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>WATCHDOG_ENABLER_CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
       <name>LED_CTRL</name>
       <description>No description available</description>
-      <baseAddress>0x647D</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -852,7 +810,28 @@
         <register>
           <name>LED_CTRL_CONTROL_REG</name>
           <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x647D</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>WATCHDOG_REFRESH</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>WATCHDOG_REFRESH_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x6475</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -863,7 +842,7 @@
     <peripheral>
       <name>LED_BLINK_EN</name>
       <description>No description available</description>
-      <baseAddress>0x647C</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -873,7 +852,28 @@
         <register>
           <name>LED_BLINK_EN_CONTROL_REG</name>
           <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x647C</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>WATCHDOG_ENABLER</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>WATCHDOG_ENABLER_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x6472</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1174,27 +1174,6 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>FTDI_ENABLE_REG</name>
-      <description>No description available</description>
-      <baseAddress>0x657A</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>FTDI_ENABLE_REG_CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
       <name>PACER_TIMER</name>
       <description>No description available</description>
       <baseAddress>0x0</baseAddress>
@@ -1487,27 +1466,6 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>MOTOR_DIR</name>
-      <description>No description available</description>
-      <baseAddress>0x6473</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>MOTOR_DIR_CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
       <name>UART_RS485</name>
       <description>UART</description>
       <baseAddress>0x0</baseAddress>
@@ -1651,6 +1609,27 @@
               <access>read-only</access>
             </field>
           </fields>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>MOTOR_DIR</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>MOTOR_DIR_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x6473</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
         </register>
       </registers>
     </peripheral>
@@ -5869,30 +5848,9 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>MOTOR_ON_OFF</name>
-      <description>No description available</description>
-      <baseAddress>0x657B</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>MOTOR_ON_OFF_CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
       <name>RS485_CTS</name>
       <description>No description available</description>
-      <baseAddress>0x6474</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -5902,7 +5860,49 @@
         <register>
           <name>RS485_CTS_CONTROL_REG</name>
           <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x6474</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>FTDI_ENABLE_REG</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>FTDI_ENABLE_REG_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x657A</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>MOTOR_ON_OFF</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>MOTOR_ON_OFF_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x657B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>

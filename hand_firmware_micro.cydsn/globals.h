@@ -56,7 +56,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION                 "SH-PRO v6.1.2 - Master w/Rest position and Haptic Feedback"
+#define VERSION                 "SH-PRO v6.1.3 - Master w/Haptic Feedback management"
 
 #define NUM_OF_MOTORS           2       /*!< Number of motors.*/
 #define NUM_OF_SENSORS          3       /*!< Number of encoders.*/
@@ -328,7 +328,7 @@ extern uint8 first_tension_valid;
 extern uint8 rest_enabled;				/*!< Rest position flag.*/
 extern uint8 forced_open;               /*!< Forced open flag (used in position with rest position control).*/
 extern int32 rest_pos_curr_ref;			/*!< Rest position current reference.*/
-
+extern int32 SH_current_position;       /*!< SoftHand current position (used with proprioception devices).*/
 extern int32 curr_pos_res;
 // -----------------------------------------------------------------------------
 

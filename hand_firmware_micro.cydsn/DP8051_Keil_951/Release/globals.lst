@@ -1,9 +1,9 @@
-C51 COMPILER V9.51   GLOBALS                                                               04/06/2018 15:05:06 PAGE 1   
+C51 COMPILER V9.51   GLOBALS                                                               04/13/2018 12:12:24 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE GLOBALS
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\globals.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -globals.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG) WL(2) PR(.\DP8051_Keil_
                     -951\Release/globals.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\globals.obj)
 
@@ -62,7 +62,7 @@ line level    source
   50          
   51          struct st_ref   g_ref, g_refNew, g_refOld;  // Motor variables.
   52          struct st_meas  g_meas, g_measOld;          // Measurements.
-C51 COMPILER V9.51   GLOBALS                                                               04/06/2018 15:05:06 PAGE 2   
+C51 COMPILER V9.51   GLOBALS                                                               04/13/2018 12:12:24 PAGE 2   
 
   53          struct st_data  g_rx;                       // Income data.
   54          struct st_mem   g_mem, c_mem;               // Memory variables.
@@ -104,13 +104,14 @@ line level    source
   88          uint32 count_tension_valid;
   89          uint8 first_tension_valid;
   90          
-  91          uint8 rest_enabled;                             /*!< Rest position flag.*/
-  92          uint8 forced_open;               /*!< Forced open flag (used in position with rest position control).*/
-  93          int32 rest_pos_curr_ref;                        /*!< Rest position current reference.*/
-  94          int32 curr_pos_res;
-  95          
-  96          /* END OF FILE */
-C51 COMPILER V9.51   GLOBALS                                                               04/06/2018 15:05:06 PAGE 3   
+  91          uint8 rest_enabled;                                 /*!< Rest position flag.*/
+  92          uint8 forced_open;                  /*!< Forced open flag (used in position with rest position control).*/
+  93          int32 rest_pos_curr_ref;                /*!< Rest position current reference.*/
+  94          int32 SH_current_position;          /*!< SoftHand current position (used with proprioception devices).*/
+  95          int32 curr_pos_res;
+  96          
+  97          /* END OF FILE */
+C51 COMPILER V9.51   GLOBALS                                                               04/13/2018 12:12:24 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -120,7 +121,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =   ----    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =    768    ----
+   XDATA SIZE       =    772    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

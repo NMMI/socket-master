@@ -347,14 +347,6 @@ void function_scheduler(void) {
       
     if(master_mode){
         
-        if (c_mem.is_force_fb_present){
-            drive_force_fb(); 
-        }
-        
-        if (c_mem.is_proprio_fb_present){
-            drive_proprio_fb();
-        }
-        
         if (c_mem.is_myo2_master){
             
             // Rest position check (only if Master mode is enabled)
@@ -362,7 +354,13 @@ void function_scheduler(void) {
                 if (counter_calibration == CALIBRATION_DIV) {
                     
                         // Read Measure (valid since this routine is enabled only in Master mode)
-                        curr_pos_res = (int32)commReadMeasFromSH();
+                        if (c_mem.is_force_fb_present || c_mem.is_proprio_fb_present){
+                            curr_pos_res = SH_current_position;
+                        } 
+                        else {
+                            curr_pos_res = (int32)commReadMeasFromSH();
+                        }
+                            
 
                         check_rest_position();
                         counter_calibration = 0;
@@ -376,8 +374,36 @@ void function_scheduler(void) {
                 }
             }
             
-            drive_SH();        
+            drive_SH();  
+            
+            // Check Interrupt     
+            if (interrupt_flag){
+                interrupt_flag = FALSE;
+                interrupt_manager();
+            }
         }
+                
+        if (c_mem.is_force_fb_present){
+            drive_force_fb(); 
+            
+            // Check Interrupt     
+            if (interrupt_flag){
+                interrupt_flag = FALSE;
+                interrupt_manager();
+            }
+            
+        }
+        
+        if (c_mem.is_proprio_fb_present){
+            drive_proprio_fb();
+            
+            // Check Interrupt     
+            if (interrupt_flag){
+                interrupt_flag = FALSE;
+                interrupt_manager();
+            }
+        }
+        
     }
             
     // Check Interrupt 

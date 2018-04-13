@@ -88,9 +88,10 @@ uint8 master_mode;               /*!< Flag used to set/unset master mode to send
 uint32 count_tension_valid;
 uint8 first_tension_valid;
 
-uint8 rest_enabled;				/*!< Rest position flag.*/
-uint8 forced_open;               /*!< Forced open flag (used in position with rest position control).*/
-int32 rest_pos_curr_ref;			/*!< Rest position current reference.*/
+uint8 rest_enabled;				    /*!< Rest position flag.*/
+uint8 forced_open;                  /*!< Forced open flag (used in position with rest position control).*/
+int32 rest_pos_curr_ref;	        /*!< Rest position current reference.*/
+int32 SH_current_position;          /*!< SoftHand current position (used with proprioception devices).*/
 int32 curr_pos_res;
 
 /* END OF FILE */
