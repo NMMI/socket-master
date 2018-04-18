@@ -336,7 +336,7 @@ void check_rest_position(void) {     // 100 Hz frequency.
         first_time = 0;
     }
     
-    curr_pos = (int32)(g_meas.pos[0] >> g_mem.res[0]);
+    curr_pos = (int32)(curr_pos_res >> g_mem.res[0]);
     
     if (c_mem.input_mode == INPUT_MODE_ENCODER3) {
         if (master_mode) {
