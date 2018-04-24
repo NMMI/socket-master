@@ -330,6 +330,7 @@ void check_rest_position(void) {     // 100 Hz frequency.
     int32 curr_pos = 0;
     static int32 rest_error;
     int32 handle_value = 0;
+    float rest_vel_ticks_ms = ((float)g_mem.rest_vel)/1000.0;    //[ticks/s] -> [ticks/ms]
     
     if (first_time){
         count = 0;
@@ -343,10 +344,7 @@ void check_rest_position(void) {     // 100 Hz frequency.
             handle_value = g_meas.pos[0];
         } 
         else {
-            if (c_mem.double_encoder_on_off == 0)
-                handle_value = g_meas.pos[1];
-            else
-                handle_value = g_meas.pos[2];
+            handle_value = 0;
         }
     }
     
@@ -366,18 +364,19 @@ void check_rest_position(void) {     // 100 Hz frequency.
     /********** Velocity closure procedure *************
     * m = error/time
     * m = (g_mem.rest_pos - init_pos)/time
-    * time = g_mem.rest_pos/g_mem.rest_vel (g_mem.rest_vel in ticks/msec)
+    * time = g_mem.rest_pos/rest_vel_ticks_ms (rest_vel_ticks_ms is in [ticks/ms])
     ***************************************************/
     
-    if (count == (uint32)(g_mem.rest_delay/CALIBRATION_DIV)){ //10 seconds 
+    if (count == (uint32)(g_mem.rest_delay/CALIBRATION_DIV)){ 
+        // This routine is executed every 10 firmware cycles -> g_mem.rest_delay must be major than 10 ms
         rest_enabled = 1;
         rest_pos_curr_ref = curr_pos_res;
         
         // Ramp angular coefficient
-        m = ((float)(g_mem.rest_pos - curr_pos_res)/((float)g_mem.rest_pos))*(g_mem.rest_vel);
+        m = ((float)(g_mem.rest_pos - curr_pos_res)/((float)g_mem.rest_pos))*(rest_vel_ticks_ms);
         
-        // Stop condition threshold is related to m coefficient by g_mem.rest_ratio value
-        abs_err_thr = (int32)( (int32)(g_mem.rest_ratio*m*((float)CALIBRATION_DIV)) << g_mem.res[0]);
+        // Stop condition threshold is related to m coefficient by REST_RATIO value
+        abs_err_thr = (int32)( (int32)(((float)REST_POS_ERR_THR_GAIN)*m*((float)CALIBRATION_DIV)) << g_mem.res[0]);
         abs_err_thr = (abs_err_thr>0)?abs_err_thr:(0-abs_err_thr);
         
         rest_error = g_mem.rest_pos - curr_pos_res;    

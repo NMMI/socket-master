@@ -61,18 +61,6 @@
 **/
 CY_ISR_PROTO(ISR_RS485_RX_ExInterrupt);
 
-//====================================================     Watchdog interruption
-/** This interruption sets a flag to let the firmware know that a watchdog
- *	interruption is pending and needs to be handled. The interrpution will be 
- * 	handled in predefined moments during the firmware execution.
- *  When this interruption is handled, it deactivates the board because the 
- *  watchdog timer has expired. 
-**/
-CY_ISR_PROTO(ISR_WATCHDOG_Handler);
-
-/** \} */
-
-
 //=====================================================     functions declarations
 
 /** \name General function scheduler */
@@ -130,11 +118,6 @@ void interrupt_manager();
 **/
 void pwm_limit_search();
 
-//=====================================================     overcurrent_control
-/** This function increases or decreases the pwm value, depending on the current
- * 	absorbed by the motor.
-**/
-void overcurrent_control();
 
 /** \} */
 

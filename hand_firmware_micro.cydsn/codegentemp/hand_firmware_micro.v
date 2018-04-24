@@ -1,6 +1,6 @@
 // ======================================================================
 // hand_firmware_micro.v generated from TopDesign.cysch
-// 04/10/2018 at 15:30
+// 04/20/2018 at 09:52
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1210,92 +1210,8 @@ endmodule
 `include "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\psoc\content\CyComponentLibrary\CyComponentLibrary.cylib\AMuxHw_v1_50\AMuxHw_v1_50.v"
 `endif
 
-// Counter_v3_0(CaptureMode=0, CaptureModeSoftware=0, ClockMode=0, CompareMode=1, CompareModeSoftware=0, CompareStatusEdgeSense=true, CompareValue=3, CONTROL3=1, ControlRegRemoved=0, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, EnableMode=0, FF16=false, FF8=true, FixedFunction=true, FixedFunctionUsed=1, InitCounterValue=0, InterruptOnCapture=false, InterruptOnCompare=false, InterruptOnOverUnderFlow=false, InterruptOnTC=true, Period=127, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, ReloadOnCapture=false, ReloadOnCompare=false, ReloadOnOverUnder=true, ReloadOnReset=true, Resolution=8, RunMode=0, UDB16=false, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=false, UseInterrupt=true, VerilogSectionReplacementString=sC8, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMMENT=, CY_COMPONENT_NAME=Counter_v3_0, CY_CONFIG_TITLE=WATCHDOG_COUNTER, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=WATCHDOG_COUNTER, CY_INSTANCE_SHORT_NAME=WATCHDOG_COUNTER, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=0, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=WATCHDOG_COUNTER, )
-module Counter_v3_0_9 (
-    reset,
-    tc,
-    comp,
-    clock,
-    interrupt,
-    enable,
-    capture,
-    upCnt,
-    downCnt,
-    up_ndown,
-    count);
-    input       reset;
-    output      tc;
-    output      comp;
-    input       clock;
-    output      interrupt;
-    input       enable;
-    input       capture;
-    input       upCnt;
-    input       downCnt;
-    input       up_ndown;
-    input       count;
-
-    parameter CaptureMode = 0;
-    parameter ClockMode = 0;
-    parameter CompareMode = 1;
-    parameter CompareStatusEdgeSense = 1;
-    parameter EnableMode = 0;
-    parameter ReloadOnCapture = 0;
-    parameter ReloadOnCompare = 0;
-    parameter ReloadOnOverUnder = 1;
-    parameter ReloadOnReset = 1;
-    parameter Resolution = 8;
-    parameter RunMode = 0;
-    parameter UseInterrupt = 1;
-
-          wire  Net_54;
-          wire  Net_102;
-          wire  Net_95;
-          wire  Net_82;
-          wire  Net_91;
-          wire  Net_89;
-          wire  Net_49;
-          wire  Net_48;
-          wire  Net_42;
-          wire  Net_43;
-
-    cy_psoc3_timer_v1_0 CounterHW (
-        .timer_reset(reset),
-        .capture(capture),
-        .enable(Net_91),
-        .kill(Net_82),
-        .clock(clock),
-        .tc(Net_48),
-        .compare(Net_54),
-        .interrupt(Net_42));
-
-	// int_vm (cy_virtualmux_v1_0)
-	assign interrupt = Net_42;
-
-	// TC_vm (cy_virtualmux_v1_0)
-	assign tc = Net_48;
-
-    ZeroTerminal ZeroTerminal_1 (
-        .z(Net_82));
-
-	// VirtualMux_1 (cy_virtualmux_v1_0)
-	assign Net_89 = up_ndown;
-
-    ZeroTerminal ZeroTerminal_2 (
-        .z(Net_95));
-
-	// vmEnableMode (cy_virtualmux_v1_0)
-	assign Net_91 = enable;
-
-    OneTerminal OneTerminal_1 (
-        .o(Net_102));
-
-
-
-endmodule
-
 // PWM_v3_30(CaptureMode=0, Clock_CheckTolerance=true, Clock_desired_freq=12, Clock_desired_freq_unit=6, Clock_divisor=1, Clock_FractDividerDenominator=0, Clock_FractDividerNumerator=0, Clock_FractDividerUsed=false, Clock_is_direct=false, Clock_is_divider=false, Clock_is_freq=true, Clock_minus_tolerance=5, Clock_ph_align_clock_id=, Clock_ph_align_clock_name=, Clock_plus_tolerance=5, Clock_source_clock_id=, Clock_source_clock_name=, Compare1_16=false, Compare1_8=true, Compare2_16=false, Compare2_8=false, CompareStatusEdgeSense=true, CompareType1=2, CompareType1Software=0, CompareType2=2, CompareType2Software=0, CompareValue1=128, CompareValue2=0, CONTROL3=0, ControlReg=true, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DeadBand=0, DeadBand2_4=0, DeadBand256=0, DeadBandUsed=0, DeadTime=1, DitherOffset=1, EnableMode=2, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, InterruptOnCMP1=false, InterruptOnCMP2=false, InterruptOnKill=false, InterruptOnTC=false, IntOnCMP1=0, IntOnCMP2=0, IntOnKill=0, IntOnTC=0, KillMode=0, KillModeMinTime=0, MinimumKillTime=1, OneCompare=true, Period=249, PWMMode=0, PWMModeCenterAligned=0, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, Resolution=8, RstStatusReplacementString=sSTSReg_rstSts, RunMode=0, Status=false, TermMode_capture=0, TermMode_clock=0, TermMode_cmp_sel=0, TermMode_enable=0, TermMode_interrupt=0, TermMode_kill=0, TermMode_ph1=0, TermMode_ph2=0, TermMode_pwm=0, TermMode_pwm1=0, TermMode_pwm2=0, TermMode_reset=0, TermMode_tc=0, TermMode_trigger=0, TermVisibility_capture=false, TermVisibility_clock=true, TermVisibility_cmp_sel=false, TermVisibility_enable=true, TermVisibility_interrupt=false, TermVisibility_kill=false, TermVisibility_ph1=false, TermVisibility_ph2=false, TermVisibility_pwm=true, TermVisibility_pwm1=false, TermVisibility_pwm2=false, TermVisibility_reset=true, TermVisibility_tc=true, TermVisibility_trigger=false, TriggerMode=0, UDB16=false, UDB8=true, UseControl=true, UseInterrupt=false, UseStatus=false, VerilogSectionReplacementString=sP8, CY_API_CALLBACK_HEADER_INCLUDE=, CY_COMMENT=, CY_COMPONENT_NAME=PWM_v3_30, CY_CONFIG_TITLE=LED_BLINK, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=LED_BLINK, CY_INSTANCE_SHORT_NAME=LED_BLINK, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=30, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.2, INSTANCE_NAME=LED_BLINK, )
-module PWM_v3_30_10 (
+module PWM_v3_30_9 (
     reset,
     clock,
     tc,
@@ -1423,34 +1339,6 @@ module top ;
           wire  Net_3852;
           wire  Net_3665;
           wire  Net_3664;
-          wire  Net_3596;
-          wire  Net_3595;
-          wire  Net_3594;
-          wire  Net_3593;
-          wire  Net_3592;
-          wire  Net_3591;
-          wire  Net_3590;
-          wire  Net_3589;
-          wire  Net_3588;
-          wire  Net_3587;
-          wire  Net_3586;
-          wire  Net_3585;
-          wire  Net_3584;
-          wire  Net_3583;
-          wire  Net_3582;
-          wire  Net_3581;
-          wire  Net_3580;
-          wire  Net_3579;
-          wire  Net_3578;
-          wire  Net_3577;
-          wire  Net_3576;
-          wire  Net_3575;
-          wire  Net_3574;
-          wire  Net_3573;
-          wire  Net_3572;
-          wire  Net_3571;
-          wire  Net_3570;
-          wire  Net_3663;
           wire  Net_3542;
           wire  Net_3541;
           wire  Net_3537;
@@ -1604,9 +1492,6 @@ module top ;
           wire  Net_6020;
           wire  Net_20;
           wire  Net_124;
-          wire  Net_6183;
-          wire  Net_6322;
-          wire  Net_6285;
           wire  Net_4716;
           wire  Net_5205;
           wire [1:0] Net_4572;
@@ -3569,101 +3454,6 @@ module top ;
 
     assign Net_3542 = Net_5503 & Net_5205;
 
-
-	cy_clock_v1_0
-		#(.id("d2957b83-fe90-4cb8-9cda-579b204409f7"),
-		  .source_clock_id("315365C3-2E3E-4f04-84A2-BB564A173261"),
-		  .divisor(4096),
-		  .period("0"),
-		  .is_direct(0),
-		  .is_digital(1))
-		WATCHDOG_CLK
-		 (.clock_out(Net_6285));
-
-
-
-	cy_isr_v1_0
-		#(.int_type(2'b10))
-		ISR_WATCHDOG
-		 (.int_signal(Net_3570));
-
-
-    Counter_v3_0_9 WATCHDOG_COUNTER (
-        .reset(Net_6183),
-        .tc(Net_3571),
-        .comp(Net_3572),
-        .clock(Net_6285),
-        .interrupt(Net_3570),
-        .enable(1'b0),
-        .capture(1'b0),
-        .upCnt(1'b0),
-        .downCnt(1'b0),
-        .up_ndown(1'b1),
-        .count(1'b0));
-    defparam WATCHDOG_COUNTER.CaptureMode = 0;
-    defparam WATCHDOG_COUNTER.ClockMode = 0;
-    defparam WATCHDOG_COUNTER.CompareMode = 1;
-    defparam WATCHDOG_COUNTER.CompareStatusEdgeSense = 1;
-    defparam WATCHDOG_COUNTER.EnableMode = 0;
-    defparam WATCHDOG_COUNTER.ReloadOnCapture = 0;
-    defparam WATCHDOG_COUNTER.ReloadOnCompare = 0;
-    defparam WATCHDOG_COUNTER.ReloadOnOverUnder = 1;
-    defparam WATCHDOG_COUNTER.ReloadOnReset = 1;
-    defparam WATCHDOG_COUNTER.Resolution = 8;
-    defparam WATCHDOG_COUNTER.RunMode = 0;
-    defparam WATCHDOG_COUNTER.UseInterrupt = 1;
-
-    CyControlReg_v1_80 WATCHDOG_ENABLER (
-        .control_1(Net_3579),
-        .control_2(Net_3580),
-        .control_3(Net_3581),
-        .control_0(Net_6322),
-        .control_4(Net_3582),
-        .control_5(Net_3583),
-        .control_6(Net_3584),
-        .control_7(Net_3585),
-        .clock(1'b0),
-        .reset(1'b0));
-    defparam WATCHDOG_ENABLER.Bit0Mode = 0;
-    defparam WATCHDOG_ENABLER.Bit1Mode = 0;
-    defparam WATCHDOG_ENABLER.Bit2Mode = 0;
-    defparam WATCHDOG_ENABLER.Bit3Mode = 0;
-    defparam WATCHDOG_ENABLER.Bit4Mode = 0;
-    defparam WATCHDOG_ENABLER.Bit5Mode = 0;
-    defparam WATCHDOG_ENABLER.Bit6Mode = 0;
-    defparam WATCHDOG_ENABLER.Bit7Mode = 0;
-    defparam WATCHDOG_ENABLER.BitValue = 0;
-    defparam WATCHDOG_ENABLER.BusDisplay = 0;
-    defparam WATCHDOG_ENABLER.ExtrReset = 0;
-    defparam WATCHDOG_ENABLER.NumOutputs = 1;
-
-
-    assign Net_6183 = Net_3588 | Net_6322;
-
-    CyControlReg_v1_80 WATCHDOG_REFRESH (
-        .control_1(Net_3589),
-        .control_2(Net_3590),
-        .control_3(Net_3591),
-        .control_0(Net_3588),
-        .control_4(Net_3592),
-        .control_5(Net_3593),
-        .control_6(Net_3594),
-        .control_7(Net_3595),
-        .clock(Net_6285),
-        .reset(1'b0));
-    defparam WATCHDOG_REFRESH.Bit0Mode = 3;
-    defparam WATCHDOG_REFRESH.Bit1Mode = 0;
-    defparam WATCHDOG_REFRESH.Bit2Mode = 0;
-    defparam WATCHDOG_REFRESH.Bit3Mode = 0;
-    defparam WATCHDOG_REFRESH.Bit4Mode = 0;
-    defparam WATCHDOG_REFRESH.Bit5Mode = 0;
-    defparam WATCHDOG_REFRESH.Bit6Mode = 0;
-    defparam WATCHDOG_REFRESH.Bit7Mode = 0;
-    defparam WATCHDOG_REFRESH.BitValue = 0;
-    defparam WATCHDOG_REFRESH.BusDisplay = 0;
-    defparam WATCHDOG_REFRESH.ExtrReset = 1;
-    defparam WATCHDOG_REFRESH.NumOutputs = 1;
-
 	wire [0:0] tmpOE__BOARD_LED_net;
 	wire [0:0] tmpFB_0__BOARD_LED_net;
 	wire [0:0] tmpIO_0__BOARD_LED_net;
@@ -3739,7 +3529,7 @@ module top ;
 
 	assign tmpOE__BOARD_LED_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
 
-    PWM_v3_30_10 LED_BLINK (
+    PWM_v3_30_9 LED_BLINK (
         .reset(Net_3665),
         .clock(Net_3852),
         .tc(Net_3853),

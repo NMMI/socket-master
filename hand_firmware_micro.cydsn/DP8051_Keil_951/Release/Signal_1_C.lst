@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   SIGNAL_1_C                                                            04/10/2018 15:30:31 PAGE 1   
+C51 COMPILER V9.51   SIGNAL_1_C                                                            04/20/2018 09:55:07 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE SIGNAL_1_C
@@ -62,7 +62,7 @@ line level    source
   50          * \funcusage
   51          *  \snippet Signal_1_C_SUT.c usage_Signal_1_C_Write
   52          *******************************************************************************/
-C51 COMPILER V9.51   SIGNAL_1_C                                                            04/10/2018 15:30:31 PAGE 2   
+C51 COMPILER V9.51   SIGNAL_1_C                                                            04/20/2018 09:55:07 PAGE 2   
 
   53          void Signal_1_C_Write(uint8 value) 
   54          {
@@ -126,7 +126,7 @@ line level    source
  112   1      }
  113          
  114          
-C51 COMPILER V9.51   SIGNAL_1_C                                                            04/10/2018 15:30:31 PAGE 3   
+C51 COMPILER V9.51   SIGNAL_1_C                                                            04/20/2018 09:55:07 PAGE 3   
 
  115          /*******************************************************************************
  116          * Function Name: Signal_1_C_ReadDataReg
@@ -190,7 +190,7 @@ line level    source
                   * \sideeffect
                   *  It is recommended that the interrupt be disabled before calling this 
                   *  function to avoid unintended interrupt requests. Note that the interrupt
-C51 COMPILER V9.51   SIGNAL_1_C                                                            04/10/2018 15:30:31 PAGE 4   
+C51 COMPILER V9.51   SIGNAL_1_C                                                            04/20/2018 09:55:07 PAGE 4   
 
                   *  type is port wide, and therefore will trigger for any enabled pin on the 
                   *  port.
@@ -237,7 +237,7 @@ line level    source
  219          
  220          
  221          /* [] END OF FILE */
-C51 COMPILER V9.51   SIGNAL_1_C                                                            04/10/2018 15:30:31 PAGE 5   
+C51 COMPILER V9.51   SIGNAL_1_C                                                            04/20/2018 09:55:07 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -301,7 +301,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0012         ?C0003:
 0012 22                RET     
              ; FUNCTION Signal_1_C_Read (END)
-C51 COMPILER V9.51   SIGNAL_1_C                                                            04/10/2018 15:30:31 PAGE 6   
+C51 COMPILER V9.51   SIGNAL_1_C                                                            04/20/2018 09:55:07 PAGE 6   
 
 
              ; FUNCTION Signal_1_C_ReadDataReg (BEGIN)

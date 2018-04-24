@@ -210,16 +210,6 @@ enum qbmove_input_mode
     INPUT_MODE_JOYSTICK         = 6     ///< Joystick input mode
 };
 
-//============================================================     control modes
-
-enum qbmove_control_mode {
-
-    CONTROL_ANGLE           = 0,        ///< Classic position control.
-    CONTROL_PWM             = 1,        ///< Direct PWM value.
-    CONTROL_CURRENT         = 2,        ///< Current control.
-    CURR_AND_POS_CONTROL    = 3         ///< Current and position control.
-};
-
 //======================================================== motor supply voltage values
 
 enum motor_supply_tipe {

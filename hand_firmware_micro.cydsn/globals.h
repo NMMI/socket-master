@@ -56,13 +56,13 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION                 "SH-PRO v6.1.3 - Master w/Haptic Feedback management"
+#define VERSION                 "SH-PRO v6.2 - Master w/Haptic Feedback management"
 
 #define NUM_OF_MOTORS           2       /*!< Number of motors.*/
 #define NUM_OF_SENSORS          3       /*!< Number of encoders.*/
 #define NUM_OF_EMGS             2       /*!< Number of emg channels.*/
 #define NUM_OF_ANALOG_INPUTS    4       /*!< Total number of analogic inputs.*/
-#define NUM_OF_PARAMS           39      /*!< Number of parameters saved in the EEPROM.*/
+#define NUM_OF_PARAMS           34      /*!< Number of parameters saved in the EEPROM.*/
 
 //==============================================================================
 //                                                               SYNCHRONIZATION
@@ -114,7 +114,7 @@
 #define SAMPLES_FOR_MEAN        100     /*!< Number of samples used to mean current values.*/
 
 #define SAMPLES_FOR_EMG_MEAN    1000    /*!< Number of samples used to mean emg values.*/
-
+#define REST_POS_ERR_THR_GAIN   10      /*!< Gain related to stop condition threshold in rest position routine.*/
 #define SAMPLES_FOR_JOYSTICK_MEAN   200
 #define JOYSTICK_SAMPLE_TO_DISCARD  100
     
@@ -125,8 +125,6 @@
 #define CURR_INTEGRAL_SAT_LIMIT 100000      /*!< Anti windup on current control.*/
 
 #define MIN_CURR_SAT_LIMIT      30
-
-#define LOOKUP_DIM              6           /*!< Dimension of the current lookup table.*/
 
 //==============================================================================
 //                                                        structures definitions
@@ -147,7 +145,6 @@ struct st_ref {
 
 struct st_meas {
     int32 pos[NUM_OF_SENSORS];      /*!< Encoder sensor position.*/
-    int32 curr[NUM_OF_MOTORS];      /*!< Motor current and current estimation.*/
     int8 rot[NUM_OF_SENSORS];       /*!< Encoder sensor rotations.*/
 
     int32 emg[NUM_OF_EMGS];         /*!< EMG sensors values.*/
@@ -176,21 +173,9 @@ struct st_mem {
     int32   k_p;                        /*!< Position controller proportional constant.*/                   //4
     int32   k_i;                        /*!< Position controller integrative constant.*/                    //4
     int32   k_d;                        /*!< Position controller derivative constant.*/                     //4
-
-    int32   k_p_c;                      /*!< Current controller proportional constant.*/                    //4
-    int32   k_i_c;                      /*!< Current controller integrative constant.*/                     //4
-    int32   k_d_c;                      /*!< Current controller derivative constant.*/                      //4 26
-
-    int32   k_p_dl;                     /*!< Double loop position controller prop. constant.*/              //4
-    int32   k_i_dl;                     /*!< Double loop position controller integr. constant.*/            //4
-    int32   k_d_dl;                     /*!< Double loop position controller deriv. constant.*/             //4
-    int32   k_p_c_dl;                   /*!< Double loop current controller prop. constant.*/               //4
-    int32   k_i_c_dl;                   /*!< Double loop current controller integr. constant.*/             //4
-    int32   k_d_c_dl;                   /*!< Double loop current controller deriv. constant.*/              //4 24
     
     uint8   activ;                      /*!< Startup activation.*/                                          //1
     uint8   input_mode;                 /*!< Motor Input mode.*/                                            //1
-    uint8   control_mode;               /*!< Motor Control mode.*/                                          //1
 
     uint8   res[NUM_OF_SENSORS];        /*!< Angle resolution.*/                                            //3
     int32   m_off[NUM_OF_SENSORS];      /*!< Measurement offset.*/                                          //12
@@ -203,31 +188,24 @@ struct st_mem {
     int32   max_step_pos;               /*!< Maximum number of steps per cycle for positive positions.*/    //4
     int32   max_step_neg;               /*!< Maximum number of steps per cycle for negative positions.*/    //4 25
 
-    int16   current_limit;              /*!< Limit for absorbed current.*/                                  //2
-
     uint16  emg_threshold[NUM_OF_EMGS]; /*!< Minimum value for activation of EMG control.*/                 //4
 
     uint8   emg_calibration_flag;       /*!< Enable emg calibration on startup.*/                           //1
     uint32  emg_max_value[NUM_OF_EMGS]; /*!< Maximum value for EMG.*/                                       //8
 
     uint8   emg_speed;                  /*!< Maximum closure speed when using EMG.*/                        //1
-
-    uint8   double_encoder_on_off;      /*!< Double encoder ON/OFF.*/                                       //1
-
+    
     int8    motor_handle_ratio;         /*!< Discrete multiplier for handle device.*/                       //1 
 
     uint8   activate_pwm_rescaling;     /*!< Activation of PWM rescaling for 12V motors.*/                  //1 19
-
-    float   curr_lookup[LOOKUP_DIM];    /*!< Table of values to get estimated curr.*/                       //24
-
+    
     uint8   baud_rate;                  /*!< Baud Rate set.*/                                            //1
     uint8   watchdog_period;            /*!< Watchdog period setted, 255 = disable.*/                       //1
     
     uint8   rest_position_flag;         /*!< Enable rest position feature.*/                                        //1    
     int32   rest_pos;                   /*!< Hand rest position while in EMG mode.*/                        //4
-    float   rest_delay;                 /*!< Hand rest position delay while in EMG mode.*/                  //4
-    float   rest_vel;                   /*!< Hand velocity closure for rest position reaching.*/             //4
-    float   rest_ratio;                 /*!< Hand rest ratio between velocity closure and rest position error.*/  //4
+    int32   rest_delay;                 /*!< Hand rest position delay while in EMG mode.*/                  //4
+    int32   rest_vel;                   /*!< Hand velocity closure for rest position reaching.*/             //4
     
     uint8   is_force_fb_present;        /*!< Flag to know if a force feedback device is present */             // 1
     uint8   is_proprio_fb_present;      /*!< Flag to know if a proprioceptive feedback device is present */    // 1
@@ -246,6 +224,7 @@ struct st_mem {
     uint8   SH_ID;
     uint8   ForceF_ID;
     uint8   ProprioF_ID;
+    uint8   F_right_left;
 
     uint16  joystick_closure_speed;     // Joystick - Hand closure speed            2 
     uint16  joystick_gain;              // Joystick measurements gain               4
@@ -310,7 +289,6 @@ extern int32   pow_tension;
 extern CYBIT reset_last_value_flag;                 /*!< This flag is set when the encoders last values must be resetted.*/
 extern CYBIT tension_valid;                         /*!< Tension validation bit.*/
 extern CYBIT interrupt_flag;                        /*!< Interrupt flag enabler.*/
-extern CYBIT watchdog_flag;                         /*!< Watchdog flag enabler.*/
 extern float tau_feedback;                          /*!< Torque feedback.*/
 
 // DMA Buffer

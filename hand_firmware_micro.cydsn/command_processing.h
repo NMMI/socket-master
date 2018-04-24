@@ -155,6 +155,10 @@ void drive_force_fb();
 /* This function is used to drive proprioceptive feedback device */
 void drive_proprio_fb();
 
+//============================================================  drive_force_proprio_fb_device
+/* This function is used to drive force and proprioceptive feedback device */
+void drive_force_proprio_fb();
+
 //=====================================================     deactivate_slaves
 /** This function is used to create a package to deactivate motors on all the other devices.
 **/
@@ -263,30 +267,11 @@ void cmd_set_inputs();
 **/
 void cmd_get_measurements();
 
-//============================================================  cmd_get_curr_and_meas
-/** This function gets the currents and encoders measurements and puts them in the package
-	to be sent.
-**/
-void cmd_get_curr_and_meas();
-
-//============================================================  cmd_get_currents
-/** This function gets the motor current and puts it in the package to 
-	be sent.
-**/
-void cmd_get_currents();
-
 //============================================================  cmd_get_emg
 /** This function gets the electromyographic sensors measurements and puts
 	them in the package to be sent.
 **/
 void cmd_get_emg();
-
-//============================================================  cmd_set_watchdog
-/** This function sets the watchdog timer to the one received from the package.
-	The board automatically deactivate when the time equivalent, to watchdog timer, 
-	has passed.
-**/
-void cmd_set_watchdog();
 
 //============================================================  cmd_get_activate
 /** This function gets the board activation status and puts it in the package

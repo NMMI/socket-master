@@ -108,12 +108,6 @@ int main()
     UART_RS485_ClearTxBuffer();
 
     ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);     // RS485 isr function.
-    
-    // WATCHDOG
-    
-    WATCHDOG_COUNTER_Start();
-    
-    ISR_WATCHDOG_StartEx(ISR_WATCHDOG_Handler);         // WATCHDOG isr function.   
 
     // PWM
 
@@ -224,22 +218,10 @@ int main()
         while(FF_STATUS_Read() == 0){
             // On interrupt from RS485
             if (interrupt_flag){
-                // Reset WDT
-                WATCHDOG_REFRESH_Write(0x01);
                 // Reset flags
                 interrupt_flag = FALSE;
-                watchdog_flag = FALSE;
                 // Manage Interrupt on rs485
                 interrupt_manager();
-            }
-            // On interrupt from WDT
-            else { 
-                if (watchdog_flag){
-                    // Reset WDT
-                    WATCHDOG_REFRESH_Write(0x01);
-                    // Deactivate motors
-                    g_refNew.onoff = 0x00;
-                }
             }
         };
 

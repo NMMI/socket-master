@@ -129,19 +129,6 @@
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\ADC_SOC.h" value="HEADER;;;;;ADC_SOC" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\ADC_SOC.c" value="SOURCE_C;DP8051;;;;ADC_SOC" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\ADC_SOC_PM.c" value="SOURCE_C;DP8051;;;;ADC_SOC" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\WATCHDOG_CLK.c" value="SOURCE_C;DP8051;;;;WATCHDOG_CLK" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\WATCHDOG_CLK.h" value="HEADER;;;;;WATCHDOG_CLK" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\ISR_WATCHDOG.c" value="SOURCE_C;DP8051;;;;ISR_WATCHDOG" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\ISR_WATCHDOG.h" value="HEADER;;;;;ISR_WATCHDOG" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\WATCHDOG_COUNTER.c" value="SOURCE_C;DP8051;;;;WATCHDOG_COUNTER" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\WATCHDOG_COUNTER.h" value="HEADER;;;;;WATCHDOG_COUNTER" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\WATCHDOG_COUNTER_PM.c" value="SOURCE_C;DP8051;;;;WATCHDOG_COUNTER" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\WATCHDOG_ENABLER.h" value="HEADER;;;;;WATCHDOG_ENABLER" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\WATCHDOG_ENABLER.c" value="SOURCE_C;DP8051;;;;WATCHDOG_ENABLER" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\WATCHDOG_ENABLER_PM.c" value="SOURCE_C;DP8051;;;;WATCHDOG_ENABLER" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\WATCHDOG_REFRESH.h" value="HEADER;;;;;WATCHDOG_REFRESH" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\WATCHDOG_REFRESH.c" value="SOURCE_C;DP8051;;;;WATCHDOG_REFRESH" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\WATCHDOG_REFRESH_PM.c" value="SOURCE_C;DP8051;;;;WATCHDOG_REFRESH" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\BOARD_LED.c" value="SOURCE_C;DP8051;;;;BOARD_LED" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\BOARD_LED.h" value="HEADER;;;;;BOARD_LED" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\BOARD_LED_aliases.h" value="HEADER;;;;;BOARD_LED" />

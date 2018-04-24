@@ -2,7 +2,7 @@
 --	Conversion of hand_firmware_micro.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Apr 10 15:30:09 2018
+--	Fri Apr 20 09:52:41 2018
 --
 
 USE cypress.cypress.all;
@@ -2358,70 +2358,6 @@ SIGNAL Net_3541 : bit;
 SIGNAL cy_srff_3 : bit;
 SIGNAL Net_5205 : bit;
 SIGNAL Net_3542 : bit;
-SIGNAL Net_6285 : bit;
-SIGNAL Net_3570 : bit;
-SIGNAL \WATCHDOG_COUNTER:Net_82\ : bit;
-SIGNAL \WATCHDOG_COUNTER:Net_91\ : bit;
-SIGNAL Net_6183 : bit;
-SIGNAL \WATCHDOG_COUNTER:Net_48\ : bit;
-SIGNAL \WATCHDOG_COUNTER:Net_54\ : bit;
-SIGNAL \WATCHDOG_COUNTER:Net_42\ : bit;
-SIGNAL Net_3571 : bit;
-SIGNAL \WATCHDOG_COUNTER:Net_89\ : bit;
-SIGNAL \WATCHDOG_COUNTER:Net_95\ : bit;
-SIGNAL \WATCHDOG_COUNTER:Net_102\ : bit;
-SIGNAL \WATCHDOG_ENABLER:clk\ : bit;
-SIGNAL \WATCHDOG_ENABLER:rst\ : bit;
-SIGNAL Net_6322 : bit;
-SIGNAL \WATCHDOG_ENABLER:control_out_0\ : bit;
-SIGNAL Net_3579 : bit;
-SIGNAL \WATCHDOG_ENABLER:control_out_1\ : bit;
-SIGNAL Net_3580 : bit;
-SIGNAL \WATCHDOG_ENABLER:control_out_2\ : bit;
-SIGNAL Net_3581 : bit;
-SIGNAL \WATCHDOG_ENABLER:control_out_3\ : bit;
-SIGNAL Net_3582 : bit;
-SIGNAL \WATCHDOG_ENABLER:control_out_4\ : bit;
-SIGNAL Net_3583 : bit;
-SIGNAL \WATCHDOG_ENABLER:control_out_5\ : bit;
-SIGNAL Net_3584 : bit;
-SIGNAL \WATCHDOG_ENABLER:control_out_6\ : bit;
-SIGNAL Net_3585 : bit;
-SIGNAL \WATCHDOG_ENABLER:control_out_7\ : bit;
-SIGNAL \WATCHDOG_ENABLER:control_7\ : bit;
-SIGNAL \WATCHDOG_ENABLER:control_6\ : bit;
-SIGNAL \WATCHDOG_ENABLER:control_5\ : bit;
-SIGNAL \WATCHDOG_ENABLER:control_4\ : bit;
-SIGNAL \WATCHDOG_ENABLER:control_3\ : bit;
-SIGNAL \WATCHDOG_ENABLER:control_2\ : bit;
-SIGNAL \WATCHDOG_ENABLER:control_1\ : bit;
-SIGNAL \WATCHDOG_ENABLER:control_0\ : bit;
-SIGNAL Net_3588 : bit;
-SIGNAL \WATCHDOG_REFRESH:clk\ : bit;
-SIGNAL \WATCHDOG_REFRESH:rst\ : bit;
-SIGNAL \WATCHDOG_REFRESH:control_out_0\ : bit;
-SIGNAL Net_3589 : bit;
-SIGNAL \WATCHDOG_REFRESH:control_out_1\ : bit;
-SIGNAL Net_3590 : bit;
-SIGNAL \WATCHDOG_REFRESH:control_out_2\ : bit;
-SIGNAL Net_3591 : bit;
-SIGNAL \WATCHDOG_REFRESH:control_out_3\ : bit;
-SIGNAL Net_3592 : bit;
-SIGNAL \WATCHDOG_REFRESH:control_out_4\ : bit;
-SIGNAL Net_3593 : bit;
-SIGNAL \WATCHDOG_REFRESH:control_out_5\ : bit;
-SIGNAL Net_3594 : bit;
-SIGNAL \WATCHDOG_REFRESH:control_out_6\ : bit;
-SIGNAL Net_3595 : bit;
-SIGNAL \WATCHDOG_REFRESH:control_out_7\ : bit;
-SIGNAL \WATCHDOG_REFRESH:control_7\ : bit;
-SIGNAL \WATCHDOG_REFRESH:control_6\ : bit;
-SIGNAL \WATCHDOG_REFRESH:control_5\ : bit;
-SIGNAL \WATCHDOG_REFRESH:control_4\ : bit;
-SIGNAL \WATCHDOG_REFRESH:control_3\ : bit;
-SIGNAL \WATCHDOG_REFRESH:control_2\ : bit;
-SIGNAL \WATCHDOG_REFRESH:control_1\ : bit;
-SIGNAL \WATCHDOG_REFRESH:control_0\ : bit;
 SIGNAL tmpOE__BOARD_LED_net_0 : bit;
 SIGNAL Net_3664 : bit;
 SIGNAL tmpFB_0__BOARD_LED_net_0 : bit;
@@ -3193,9 +3129,6 @@ cy_srff_3D <= ((not Net_5190_0 and cy_srff_3)
 	OR (not Net_5190_1 and cy_srff_3)
 	OR (not Net_5190_0 and Net_4627)
 	OR (not Net_5190_1 and Net_4627));
-
-Net_6183 <= (Net_3588
-	OR Net_6322);
 
 \LED_BLINK:PWMUDB:runmode_enable\\D\ <= ((\LED_BLINK:PWMUDB:control_7\ and Net_3925));
 
@@ -6360,50 +6293,6 @@ AMuxHw:cy_psoc3_amux_v1_0
 	PORT MAP(clock=>Net_5442,
 		sc_in=>Net_5118,
 		sc_out=>Net_5503);
-WATCHDOG_CLK:cy_clock_v1_0
-	GENERIC MAP(cy_registers=>"",
-		id=>"d2957b83-fe90-4cb8-9cda-579b204409f7",
-		source_clock_id=>"315365C3-2E3E-4f04-84A2-BB564A173261",
-		divisor=>4096,
-		period=>"0",
-		is_direct=>'0',
-		is_digital=>'1')
-	PORT MAP(clock_out=>Net_6285,
-		dig_domain_out=>open);
-ISR_WATCHDOG:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10",
-		is_nmi=>'0')
-	PORT MAP(int_signal=>Net_3570);
-\WATCHDOG_COUNTER:CounterHW\:cy_psoc3_timer_v1_0
-	GENERIC MAP(cy_registers=>"")
-	PORT MAP(clock=>Net_6285,
-		kill=>zero,
-		enable=>zero,
-		capture=>zero,
-		timer_reset=>Net_6183,
-		tc=>\WATCHDOG_COUNTER:Net_48\,
-		compare=>\WATCHDOG_COUNTER:Net_54\,
-		interrupt=>Net_3570);
-\WATCHDOG_ENABLER:Sync:ctrl_reg\:cy_psoc3_control
-	GENERIC MAP(cy_init_value=>"00000000",
-		cy_force_order=>'1',
-		cy_ctrl_mode_1=>"00000000",
-		cy_ctrl_mode_0=>"00000000",
-		cy_ext_reset=>'0')
-	PORT MAP(reset=>zero,
-		clock=>zero,
-		control=>(\WATCHDOG_ENABLER:control_7\, \WATCHDOG_ENABLER:control_6\, \WATCHDOG_ENABLER:control_5\, \WATCHDOG_ENABLER:control_4\,
-			\WATCHDOG_ENABLER:control_3\, \WATCHDOG_ENABLER:control_2\, \WATCHDOG_ENABLER:control_1\, Net_6322));
-\WATCHDOG_REFRESH:Sync:ctrl_reg\:cy_psoc3_control
-	GENERIC MAP(cy_init_value=>"00000000",
-		cy_force_order=>'1',
-		cy_ctrl_mode_1=>"00000001",
-		cy_ctrl_mode_0=>"00000001",
-		cy_ext_reset=>'1')
-	PORT MAP(reset=>zero,
-		clock=>Net_6285,
-		control=>(\WATCHDOG_REFRESH:control_7\, \WATCHDOG_REFRESH:control_6\, \WATCHDOG_REFRESH:control_5\, \WATCHDOG_REFRESH:control_4\,
-			\WATCHDOG_REFRESH:control_3\, \WATCHDOG_REFRESH:control_2\, \WATCHDOG_REFRESH:control_1\, Net_3588));
 BOARD_LED:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"6b7d5781-d234-48db-ba39-484ca31b00a4",
 		drive_mode=>"110",

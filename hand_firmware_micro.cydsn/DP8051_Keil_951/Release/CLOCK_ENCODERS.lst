@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 1   
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE CLOCK_ENCODERS
@@ -62,7 +62,7 @@ line level    source
   49   1              CLOCK_ENCODERS_CLKSTBY |= CLOCK_ENCODERS_CLKSTBY_MASK;
   50   1      }
   51          
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 2   
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 2   
 
   52          
   53          /*******************************************************************************
@@ -126,7 +126,7 @@ line level    source
                       CLK_DIST_AMASK = CLOCK_ENCODERS_CLKEN_MASK;
                       CLK_DIST_DMASK = 0x00u;
               #else
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 3   
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 3   
 
  114   2              CLK_DIST_DMASK = CLOCK_ENCODERS_CLKEN_MASK;
  115   2              CLK_DIST_AMASK = 0x00u;
@@ -190,7 +190,7 @@ line level    source
  173          *
  174          * Summary:
  175          *  Modifies the clock divider and, thus, the frequency. When the clock divider
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 4   
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 4   
 
  176          *  register is set to zero or changed from zero, the clock will be temporarily
  177          *  disabled in order to change the SSS mode bit. If the clock is enabled when
@@ -254,7 +254,7 @@ line level    source
               #else
  236   4                      CLK_DIST_DMASK = CLOCK_ENCODERS_CLKEN_MASK;
  237   4                      CLK_DIST_AMASK = 0x00u;
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 5   
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 5   
 
  238   4      #endif /* CLOCK_ENCODERS__CFG3 */
  239   4                      /* Clear mask of bus clock. */
@@ -318,7 +318,7 @@ line level    source
  297          uint16 CLOCK_ENCODERS_GetDividerRegister(void) 
  298          {
  299   1          return CY_GET_REG16(CLOCK_ENCODERS_DIV_PTR);
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 6   
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 6   
 
  300   1      }
  301          
@@ -382,7 +382,7 @@ line level    source
  359          *                 be enabled for all synchronous clocks.
  360          *   See the Technical Reference Manual for details about setting the mode of
  361          *   the clock. Specifically, see the CLKDIST.DCFG.CFG2 register.
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 7   
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 7   
 
  362          *
  363          * Returns:
@@ -446,7 +446,7 @@ line level    source
  421   1          uint16 currDiv = CLOCK_ENCODERS_GetDividerRegister();
  422   1          uint8 oldSrc = CLOCK_ENCODERS_GetSourceRegister();
  423   1      
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 8   
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 8   
 
  424   1          if (((oldSrc != ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D)) && 
  425   1              (clkSource == ((uint8)CYCLK_SRC_SEL_CLK_SYNC_D))) && (currDiv == 0u))
@@ -510,7 +510,7 @@ line level    source
               *  clkPhase: Amount to delay the phase of the clock, in 1.0ns increments.
               *   clkPhase must be from 1 to 11 inclusive. Other values, including 0,
               *   disable the clock. clkPhase = 1 produces a 0ns delay and clkPhase = 11 
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 9   
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 9   
 
               *   produces a 10ns delay.
               *
@@ -548,7 +548,7 @@ line level    source
  519          
  520          
  521          /* [] END OF FILE */
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 10  
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 10  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -559,12 +559,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 48
 0000 9043A2            MOV     DPTR,#043A2H
 0003 E0                MOVX    A,@DPTR
-0004 4420              ORL     A,#020H
+0004 4410              ORL     A,#010H
 0006 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 49
 0007 9043B2            MOV     DPTR,#043B2H
 000A E0                MOVX    A,@DPTR
-000B 4420              ORL     A,#020H
+000B 4410              ORL     A,#010H
 000D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 50
 000E 22                RET     
@@ -576,12 +576,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 74
 0000 9043A2            MOV     DPTR,#043A2H
 0003 E0                MOVX    A,@DPTR
-0004 54DF              ANL     A,#0DFH
+0004 54EF              ANL     A,#0EFH
 0006 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 75
 0007 9043B2            MOV     DPTR,#043B2H
 000A E0                MOVX    A,@DPTR
-000B 54DF              ANL     A,#0DFH
+000B 54EF              ANL     A,#0EFH
 000D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 76
 000E 22                RET     
@@ -593,7 +593,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 102
 0000 9043A2            MOV     DPTR,#043A2H
 0003 E0                MOVX    A,@DPTR
-0004 5420              ANL     A,#020H
+0004 5410              ANL     A,#010H
 0006 6065              JZ      ?C0006
                                            ; SOURCE LINE # 103
                                            ; SOURCE LINE # 107
@@ -602,7 +602,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000C F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 114
 000D 904010            MOV     DPTR,#04010H
-0010 7420              MOV     A,#020H
+0010 7410              MOV     A,#010H
 0012 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 115
 0013 904014            MOV     DPTR,#04014H
@@ -612,13 +612,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0018 904008            MOV     DPTR,#04008H
 001B E0                MOVX    A,@DPTR
 001C 547F              ANL     A,#07FH
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 11  
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 11  
 
 001E F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 121
 001F 7B02              MOV     R3,#02H
 0021 7A40              MOV     R2,#040H
-0023 7994              MOV     R1,#094H
+0023 7990              MOV     R1,#090H
 0025 120000      E     LCALL   _cyread16_nodpx
 0028 900000      R     MOV     DPTR,#oldDivider
 002B EE                MOV     A,R6
@@ -647,12 +647,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 130
 0049 9043A2            MOV     DPTR,#043A2H
 004C E0                MOVX    A,@DPTR
-004D 54DF              ANL     A,#0DFH
+004D 54EF              ANL     A,#0EFH
 004F F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 131
 0050 9043B2            MOV     DPTR,#043B2H
 0053 E0                MOVX    A,@DPTR
-0054 54DF              ANL     A,#0DFH
+0054 54EF              ANL     A,#0EFH
 0056 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 135
 0057 904001            MOV     DPTR,#04001H
@@ -661,7 +661,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 136
 005C 7B02              MOV     R3,#02H
 005E 7A40              MOV     R2,#040H
-0060 7994              MOV     R1,#094H
+0060 7990              MOV     R1,#090H
 0062 900000      R     MOV     DPTR,#oldDivider
 0065 E0                MOVX    A,@DPTR
 0066 FC                MOV     R4,A
@@ -676,7 +676,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION CLOCK_ENCODERS_StopBlock (END)
 
              ; FUNCTION _CLOCK_ENCODERS_StandbyPower (BEGIN)
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 12  
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 12  
 
                                            ; SOURCE LINE # 157
 ;---- Variable 'state' assigned to Register 'R7' ----
@@ -688,7 +688,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 161
 0003 9043B2            MOV     DPTR,#043B2H
 0006 E0                MOVX    A,@DPTR
-0007 54DF              ANL     A,#0DFH
+0007 54EF              ANL     A,#0EFH
 0009 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 162
 000A 22                RET     
@@ -697,7 +697,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 165
 000B 9043B2            MOV     DPTR,#043B2H
 000E E0                MOVX    A,@DPTR
-000F 4420              ORL     A,#020H
+000F 4410              ORL     A,#010H
 0011 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 166
                                            ; SOURCE LINE # 167
@@ -740,7 +740,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0026 6F                XRL     A,R7
 0027 7002              JNZ     ?C0038
 0029 EC                MOV     A,R4
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 13  
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 13  
 
 002A 6E                XRL     A,R6
 002B         ?C0038:
@@ -750,7 +750,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 203
 0030 9043A2            MOV     DPTR,#043A2H
 0033 E0                MOVX    A,@DPTR
-0034 5420              ANL     A,#020H
+0034 5410              ANL     A,#010H
 0036 900000      R     MOV     DPTR,#enabled
 0039 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 205
@@ -778,10 +778,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 213
 004F 7B02              MOV     R3,#02H
 0051 7A40              MOV     R2,#040H
-0053 7994              MOV     R1,#094H
+0053 7990              MOV     R1,#090H
 0055 120000      E     LCALL   _cywrite16_nodpx
                                            ; SOURCE LINE # 214
-0058 904096            MOV     DPTR,#04096H
+0058 904092            MOV     DPTR,#04092H
 005B E0                MOVX    A,@DPTR
 005C 54BF              ANL     A,#0BFH
 005E F0                MOVX    @DPTR,A
@@ -790,21 +790,21 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0060         ?C0013:
                                            ; SOURCE LINE # 217
                                            ; SOURCE LINE # 220
-0060 904096            MOV     DPTR,#04096H
+0060 904092            MOV     DPTR,#04092H
 0063 E0                MOVX    A,@DPTR
 0064 4440              ORL     A,#040H
 0066 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 221
 0067 7B02              MOV     R3,#02H
 0069 7A40              MOV     R2,#040H
-006B 7994              MOV     R1,#094H
+006B 7990              MOV     R1,#090H
 006D 900000      R     MOV     DPTR,#clkDivider
 0070 E0                MOVX    A,@DPTR
 0071 FC                MOV     R4,A
 0072 A3                INC     DPTR
 0073 E0                MOVX    A,@DPTR
 0074 FD                MOV     R5,A
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 14  
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 14  
 
 0075 120000      E     LCALL   _cywrite16_nodpx
                                            ; SOURCE LINE # 222
@@ -823,7 +823,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0083 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 236
 0084 904010            MOV     DPTR,#04010H
-0087 7420              MOV     A,#020H
+0087 7410              MOV     A,#010H
 0089 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 237
 008A 904014            MOV     DPTR,#04014H
@@ -835,7 +835,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0093 547F              ANL     A,#07FH
 0095 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 243
-0096 904096            MOV     DPTR,#04096H
+0096 904092            MOV     DPTR,#04092H
 0099 E0                MOVX    A,@DPTR
 009A 5408              ANL     A,#08H
 009C 600A              JZ      ?C0018
@@ -868,14 +868,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BF 904001            MOV     DPTR,#04001H
 00C2 E0                MOVX    A,@DPTR
 00C3 5401              ANL     A,#01H
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 15  
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 15  
 
 00C5 70F8              JNZ     ?C0019
 00C7         ?C0020:
                                            ; SOURCE LINE # 253
 00C7 9043A2            MOV     DPTR,#043A2H
 00CA E0                MOVX    A,@DPTR
-00CB 54DF              ANL     A,#0DFH
+00CB 54EF              ANL     A,#0EFH
 00CD F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 257
 00CE 904001            MOV     DPTR,#04001H
@@ -887,7 +887,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 263
 00D3 9043A2            MOV     DPTR,#043A2H
 00D6 E0                MOVX    A,@DPTR
-00D7 5420              ANL     A,#020H
+00D7 5410              ANL     A,#010H
 00D9 602F              JZ      ?C0021
                                            ; SOURCE LINE # 264
                                            ; SOURCE LINE # 266
@@ -929,10 +929,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 274
 010A 7B02              MOV     R3,#02H
 010C 7A40              MOV     R2,#040H
-010E 7994              MOV     R1,#094H
+010E 7990              MOV     R1,#090H
 0110 900000      R     MOV     DPTR,#clkDivider
 0113 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 16  
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 16  
 
 0114 FC                MOV     R4,A
 0115 A3                INC     DPTR
@@ -967,7 +967,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 299
 0000 7B02              MOV     R3,#02H
 0002 7A40              MOV     R2,#040H
-0004 7994              MOV     R1,#094H
+0004 7990              MOV     R1,#090H
 0006 120000      E     LCALL   _cyread16_nodpx
                                            ; SOURCE LINE # 300
 0009         ?C0028:
@@ -979,7 +979,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 ;---- Variable 'modeBitMask' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 333
                                            ; SOURCE LINE # 334
-0000 904096            MOV     DPTR,#04096H
+0000 904092            MOV     DPTR,#04092H
 0003 E0                MOVX    A,@DPTR
 0004 FE                MOV     R6,A
 0005 EF                MOV     A,R7
@@ -996,10 +996,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 367
 ;---- Variable 'modeBitMask' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 368
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 17  
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 17  
 
                                            ; SOURCE LINE # 369
-0000 904096            MOV     DPTR,#04096H
+0000 904092            MOV     DPTR,#04092H
 0003 E0                MOVX    A,@DPTR
 0004 FE                MOV     R6,A
 0005 EF                MOV     A,R7
@@ -1017,7 +1017,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 388
                                            ; SOURCE LINE # 389
                                            ; SOURCE LINE # 390
-0000 904096            MOV     DPTR,#04096H
+0000 904092            MOV     DPTR,#04092H
 0003 E0                MOVX    A,@DPTR
 0004 54F8              ANL     A,#0F8H
 0006 FF                MOV     R7,A
@@ -1059,8 +1059,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0023 700D              JNZ     ?C0032
                                            ; SOURCE LINE # 426
                                            ; SOURCE LINE # 429
-0025 904096            MOV     DPTR,#04096H
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 18  
+0025 904092            MOV     DPTR,#04092H
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 18  
 
 0028 E0                MOVX    A,@DPTR
 0029 4440              ORL     A,#040H
@@ -1089,7 +1089,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0042 700D              JNZ     ?C0034
                                            ; SOURCE LINE # 435
                                            ; SOURCE LINE # 439
-0044 904096            MOV     DPTR,#04096H
+0044 904092            MOV     DPTR,#04092H
 0047 E0                MOVX    A,@DPTR
 0048 54F8              ANL     A,#0F8H
 004A 4F                ORL     A,R7
@@ -1103,14 +1103,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0051         ?C0034:
                                            ; SOURCE LINE # 443
                                            ; SOURCE LINE # 445
-0051 904096            MOV     DPTR,#04096H
+0051 904092            MOV     DPTR,#04092H
 0054 E0                MOVX    A,@DPTR
 0055 54F8              ANL     A,#0F8H
 0057 FF                MOV     R7,A
 0058 900000      R     MOV     DPTR,#clkSource
 005B E0                MOVX    A,@DPTR
 005C 4F                ORL     A,R7
-005D 904096            MOV     DPTR,#04096H
+005D 904092            MOV     DPTR,#04092H
 0060 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 446
                                            ; SOURCE LINE # 447
@@ -1122,9 +1122,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 464
                                            ; SOURCE LINE # 465
                                            ; SOURCE LINE # 466
-0000 904096            MOV     DPTR,#04096H
+0000 904092            MOV     DPTR,#04092H
 0003 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/10/2018 15:30:36 PAGE 19  
+C51 COMPILER V9.51   CLOCK_ENCODERS                                                        04/20/2018 09:55:12 PAGE 19  
 
 0004 5407              ANL     A,#07H
 0006 FF                MOV     R7,A
