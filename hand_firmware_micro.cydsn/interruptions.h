@@ -110,14 +110,6 @@ void analog_read_end();
 void interrupt_manager();
 /** \} */
 
-/** \name Utility functions */
-/** \{ */
-//=====================================================     pwm_limit_search
-/** This function scales the pwm value of the motor, depending on the power 
- * 	supply voltage, in order to not make the motor wind too fast.
-**/
-void pwm_limit_search();
-
 
 /** \} */
 

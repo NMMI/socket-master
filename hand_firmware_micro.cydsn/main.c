@@ -109,14 +109,6 @@ int main()
 
     ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);     // RS485 isr function.
 
-    // PWM
-
-    PWM_MOTORS_Start();
-    PWM_MOTORS_WriteCompare1(0);
-    PWM_MOTORS_WriteCompare2(0);
-    MOTOR_DIR_Write(0);
-    MOTOR_ON_OFF_Write(0x00);
-
 
     // SSI encoder initializations
 
@@ -158,19 +150,6 @@ int main()
     //---------------------------------------------------  Initialize reference structure
     for (i = NUM_OF_MOTORS; i--;) 
         g_ref.pos[i] = 0;
-
-
-    if (c_mem.emg_calibration_flag) {
-        if ((c_mem.input_mode == INPUT_MODE_EMG_PROPORTIONAL) ||
-            (c_mem.input_mode == INPUT_MODE_EMG_INTEGRAL) ||
-            (c_mem.input_mode == INPUT_MODE_EMG_FCFS) ||
-            (c_mem.input_mode == INPUT_MODE_EMG_FCFS_ADV))
-            g_ref.onoff = 0x00;
-        else
-            g_ref.onoff = c_mem.activ;
-    } 
-    else
-        g_ref.onoff = c_mem.activ;
     
     //---------------------------------------------------  Initialize measurement structure
     for (i = NUM_OF_SENSORS; i--;) { 
@@ -179,16 +158,11 @@ int main()
     }
 
     g_refNew = g_ref;                                   // Initialize k+1 measurements structure.
-
-    g_ref.onoff = c_mem.activ;                          // Initalize Activation.
     
     //---------------------------------------------------  Initialize emg structure
     g_meas.emg[0] = 0;
     g_meas.emg[1] = 0;
 
-    MOTOR_ON_OFF_Write(g_ref.onoff);                    // Activating motors.
-
-    dev_pwm_limit = 0;                                  // Init PWM limit.
     pow_tension = 12000;       //12000 mV (12 V)
     tension_valid = FALSE;                              // Init tension_valid BIT.
     first_tension_valid = TRUE;

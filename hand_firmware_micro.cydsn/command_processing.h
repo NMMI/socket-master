@@ -273,12 +273,6 @@ void cmd_get_measurements();
 **/
 void cmd_get_emg();
 
-//============================================================  cmd_get_activate
-/** This function gets the board activation status and puts it in the package
-	to be sent.
-**/
-void cmd_get_activate();
-
 //============================================================  cmd_set_baudrate
 /** This function sets the desired communication baudrate. It is possible to
 	select a value equal to 460800 or 2000000.

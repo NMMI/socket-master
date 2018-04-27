@@ -56,13 +56,13 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION                 "SH-PRO v6.2 - Master w/Haptic Feedback management"
+#define VERSION                 "SH-PRO v6.2.1 - Master w/Haptic Feedback management"
 
 #define NUM_OF_MOTORS           2       /*!< Number of motors.*/
 #define NUM_OF_SENSORS          3       /*!< Number of encoders.*/
 #define NUM_OF_EMGS             2       /*!< Number of emg channels.*/
 #define NUM_OF_ANALOG_INPUTS    4       /*!< Total number of analogic inputs.*/
-#define NUM_OF_PARAMS           34      /*!< Number of parameters saved in the EEPROM.*/
+#define NUM_OF_PARAMS           31      /*!< Number of parameters saved in the EEPROM.*/
 
 //==============================================================================
 //                                                               SYNCHRONIZATION
@@ -136,9 +136,6 @@
 **/
 struct st_ref {
     int32 pos[NUM_OF_MOTORS];       /*!< Motor position reference.*/
-    int32 curr[NUM_OF_MOTORS];      /*!< Motor current reference.*/
-    int32 pwm[NUM_OF_MOTORS];       /*!< Motor direct pwm control.*/
-    uint8 onoff;                    /*!< Motor drivers enable.*/
 };
 
 //=============================================================     measurements
@@ -170,11 +167,6 @@ struct st_mem {
     uint8   flag;                       /*!< If checked the device has been configured.*/                   //1
     uint8   id;                         /*!< Device id.*/                                                   //1
 
-    int32   k_p;                        /*!< Position controller proportional constant.*/                   //4
-    int32   k_i;                        /*!< Position controller integrative constant.*/                    //4
-    int32   k_d;                        /*!< Position controller derivative constant.*/                     //4
-    
-    uint8   activ;                      /*!< Startup activation.*/                                          //1
     uint8   input_mode;                 /*!< Motor Input mode.*/                                            //1
 
     uint8   res[NUM_OF_SENSORS];        /*!< Angle resolution.*/                                            //3
@@ -196,11 +188,8 @@ struct st_mem {
     uint8   emg_speed;                  /*!< Maximum closure speed when using EMG.*/                        //1
     
     int8    motor_handle_ratio;         /*!< Discrete multiplier for handle device.*/                       //1 
-
-    uint8   activate_pwm_rescaling;     /*!< Activation of PWM rescaling for 12V motors.*/                  //1 19
     
     uint8   baud_rate;                  /*!< Baud Rate set.*/                                            //1
-    uint8   watchdog_period;            /*!< Watchdog period setted, 255 = disable.*/                       //1
     
     uint8   rest_position_flag;         /*!< Enable rest position feature.*/                                        //1    
     int32   rest_pos;                   /*!< Hand rest position while in EMG mode.*/                        //4
@@ -230,18 +219,6 @@ struct st_mem {
     uint16  joystick_gain;              // Joystick measurements gain               4
                                                                 //TOT           178 bytes
 };
-
-//=================================================     device related variables
-/** \brief Device related structure
- *
-**/ 
-struct st_dev{
-    int32   tension;                /*!< Power supply tension.*/
-    float   tension_conv_factor;    /*!< Used to calculate input tension.*/
-    int8    pwm_limit;              /*!< Limit on pwm value driven to the motor.*/
-    uint8   tension_valid;          /*!< Flag checked if the power supply has a valid value.*/
-};
-
 
 //==============================================     hand calibration parameters
 /** \brief Hand calibration structure
@@ -280,7 +257,6 @@ extern uint32 timer_value0;                         /*!< Start time of the firmw
 // Device Data
 
 extern int32   dev_tension;                         /*!< Power supply tension.*/
-extern uint8   dev_pwm_limit;                       /*!< Device pwm limit.*/
 extern int32   dev_tension_f;                       /*!< Filtered power supply tension.*/
 extern int32   pow_tension;
 
@@ -289,15 +265,10 @@ extern int32   pow_tension;
 extern CYBIT reset_last_value_flag;                 /*!< This flag is set when the encoders last values must be resetted.*/
 extern CYBIT tension_valid;                         /*!< Tension validation bit.*/
 extern CYBIT interrupt_flag;                        /*!< Interrupt flag enabler.*/
-extern float tau_feedback;                          /*!< Torque feedback.*/
 
 // DMA Buffer
 
 extern int16 ADC_buf[4];                            /*! ADC measurements buffer.*/
-
-// PWM value
-
-extern int8 pwm_sign;                               /*!< Sign of pwm driven. Used to obtain current sign.*/
 
 extern uint8 master_mode;               /*!< Flag used to set/unset master mode to send messages to other boards.*/
 extern uint32 count_tension_valid;

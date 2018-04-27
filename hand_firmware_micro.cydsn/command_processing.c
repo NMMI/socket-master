@@ -109,12 +109,6 @@ void commProcess(void){
             cmd_get_emg();
             break;
             
-//=========================================================     CMD_GET_ACTIVATE
-            
-        case CMD_GET_ACTIVATE:
-            cmd_get_activate();
-            break;
-            
 //=========================================================     CMD_SET_BAUDRATE
             
         case CMD_SET_BAUDRATE:
@@ -262,8 +256,8 @@ void infoGet(uint16 info_type) {
 
 void get_param_list(uint16 index) {
     //Package to be sent variables
-    uint8 packet_data[2201] = "";
-    uint16 packet_lenght = 2201;
+    uint8 packet_data[2051] = "";
+    uint16 packet_lenght = 2051;
 
     //Auxiliary variables
     uint8 CYDATA i;
@@ -273,43 +267,36 @@ void get_param_list(uint16 index) {
 
     //Parameters menu string definitions
     char id_str[15] = "1 - Device ID:";
-    char pos_pid_str[28] = "2 - Position PID [P, I, D]:";
-    char startup_str[28] = "3 - Startup Activation:";
-    char input_str[34] = "4 - Input mode:";
-    char res_str[17] = "5 - Resolutions:";
-    char m_off_str[25] = "6 - Measurement Offsets:";
-    char mult_str[17] = "7 - Multipliers:";
-    char pos_lim_flag_str[27] = "8 - Pos. limit active:";
-    char pos_lim_str[28] = "9 - Pos. limits [inf, sup]:";
-    char max_step_str[27] = "10 - Max steps [neg, pos]:";
-    char emg_flag_str[37] = "11 - EMG calibration on startup:";
-    char emg_thr_str[21] = "12 - EMG thresholds:";
-    char emg_max_val_str[21] = "13 - EMG max values:";
-    char emg_max_speed_str[20] = "14 - EMG max speed:";
-    char handle_ratio_str[25] = "15 - Motor handle ratio:"; 
-    char motor_type_str[24] = "16 - PWM rescaling:";
+    char input_str[34] = "2 - Input mode:";
+    char res_str[17] = "3 - Resolutions:";
+    char m_off_str[25] = "4 - Measurement Offsets:";
+    char mult_str[17] = "5 - Multipliers:";
+    char pos_lim_flag_str[27] = "6 - Pos. limit active:";
+    char pos_lim_str[28] = "7 - Pos. limits [inf, sup]:";
+    char max_step_str[26] = "8 - Max steps [neg, pos]:";
+    char emg_flag_str[36] = "9 - EMG calibration on startup:";
+    char emg_thr_str[21] = "10 - EMG thresholds:";
+    char emg_max_val_str[21] = "11 - EMG max values:";
+    char emg_max_speed_str[20] = "12 - EMG max speed:";
+    char handle_ratio_str[25] = "13 - Motor handle ratio:"; 
+	char joystick_closure_speed_str[29] = "14 - Joystick closure speed:";
+    char joystick_gains_str[20] = "15 - Joystick gain:";
+	char myo2_master_str[36] = "16 - Myoelectric case 2 Master:";
     char rest_pos_flag_str[29] = "17 - Rest position flag:";
     char rest_pos_str[20] = "18 - Rest position:";
     char rest_pos_delay_str[40] = "19 - Rest position time delay (>10 ms):";
     char rest_vel_str[35] = "20 - Rest vel closure (ticks/sec):";
-
-    char myo2_master_str[36] = "21 - Myoelectric case 2 Master:";
-    char master_mode_force_str[35] = "22 - Master with Force device:";
-    char master_mode_proprio_str[39] = "23 - Master with Proprioc. device:";
-    
-    char curr_prop_gain_str[40] = "24 - Current proportional gain (force):";
-    char curr_sat_str[44]       = "25 - Current difference saturation (force):";
-    char curr_dead_zone_str[32] = "26 - Current dead zone (force):";
-    
-    char max_slide_str[35]      = "27 - Max slide movement (proprio):";
-    char max_SH_pos_str[37]     = "28 - Max SoftHand closure (proprio):";
-    char SH_ID_str[18]          = "29 - SoftHand ID:";
-    char FF_ID_str[22]          = "30 - Force device ID:";
-    char PF_ID_str[31]          = "31 - Proprioceptive device ID:";
-    char F_right_left_par_str[21] = "32 - Arm side:";
-
-    char joystick_closure_speed_str[29] = "33 - Joystick closure speed:";
-    char joystick_gains_str[20]         = "34 - Joystick gain:";
+    char curr_prop_gain_str[40] = "21 - Current proportional gain (force):";
+    char curr_sat_str[44]       = "22 - Current difference saturation (force):";
+    char curr_dead_zone_str[32] = "23 - Current dead zone (force):";
+    char max_slide_str[35]      = "24 - Max slide movement (proprio):";
+    char max_SH_pos_str[37]     = "25 - Max SoftHand closure (proprio):";
+    char master_mode_force_str[35] = "26 - Master with Force device:";
+    char master_mode_proprio_str[39] = "27 - Master with Proprioc. device:";
+    char SH_ID_str[18]          = "28 - SoftHand ID:";
+    char FF_ID_str[22]          = "29 - Force device ID:";
+    char PF_ID_str[31]          = "30 - Proprioceptive device ID:";
+    char F_right_left_par_str[21] = "31 - Arm side:";
 
     //Parameters menus
     char input_mode_menu[100] = "0 -> Usb\n1 -> Handle\n2 -> EMG prop.\n3 -> EMG Integ.\n4 -> EMG FCFS\n5 -> EMG FCFS Adv.\n6 -> Joystick\n";
@@ -319,39 +306,32 @@ void get_param_list(uint16 index) {
 
     //Strings lenghts
     uint8 CYDATA id_str_len = strlen(id_str);
-    uint8 CYDATA pos_pid_str_len = strlen(pos_pid_str);
-
     uint8 CYDATA res_str_len = strlen(res_str);
     uint8 CYDATA m_off_str_len = strlen(m_off_str);
     uint8 CYDATA mult_str_len = strlen(mult_str);
-
     uint8 CYDATA pos_lim_str_len = strlen(pos_lim_str);
     uint8 CYDATA max_step_str_len = strlen(max_step_str);
-
     uint8 CYDATA emg_thr_str_len = strlen(emg_thr_str);
     uint8 CYDATA emg_max_val_str_len = strlen(emg_max_val_str);
     uint8 CYDATA emg_max_speed_str_len = strlen(emg_max_speed_str);
-
     uint8 CYDATA handle_ratio_str_len = strlen(handle_ratio_str);
-    uint8 CYDATA input_mode_menu_len = strlen(input_mode_menu);
-    uint8 CYDATA yes_no_menu_len = strlen(yes_no_menu);
+    uint8 CYDATA joystick_closure_speed_str_len = strlen(joystick_closure_speed_str);
+    uint8 CYDATA joystick_gains_str_len = strlen(joystick_gains_str); 
     uint8 CYDATA rest_pos_str_len = strlen(rest_pos_str);
     uint8 CYDATA rest_pos_delay_str_len = strlen(rest_pos_delay_str);
-    uint8 CYDATA rest_vel_str_len = strlen(rest_vel_str);
-    
+    uint8 CYDATA rest_vel_str_len = strlen(rest_vel_str);   
     uint8 CYDATA curr_prop_gain_str_len = strlen(curr_prop_gain_str);
     uint8 CYDATA curr_sat_str_len = strlen(curr_sat_str);
     uint8 CYDATA curr_dead_zone_str_len = strlen(curr_dead_zone_str);
-
     uint8 CYDATA max_slide_str_len = strlen(max_slide_str);
     uint8 CYDATA max_SH_pos_str_len = strlen(max_SH_pos_str);
     uint8 CYDATA SH_ID_str_len = strlen(SH_ID_str);
     uint8 CYDATA FF_ID_str_len = strlen(FF_ID_str);
     uint8 CYDATA PF_ID_str_len = strlen(PF_ID_str);
-    uint8 CYDATA F_right_left_menu_len = strlen(F_right_left_menu);
     
-    uint8 CYDATA joystick_closure_speed_str_len = strlen(joystick_closure_speed_str);
-    uint8 CYDATA joystick_gains_str_len = strlen(joystick_gains_str);
+    uint8 CYDATA input_mode_menu_len = strlen(input_mode_menu);
+    uint8 CYDATA F_right_left_menu_len = strlen(F_right_left_menu);
+    uint8 CYDATA yes_no_menu_len = strlen(yes_no_menu);
     
     packet_data[0] = CMD_GET_PARAM_LIST;
     packet_data[1] = NUM_OF_PARAMS;
@@ -366,40 +346,11 @@ void get_param_list(uint16 index) {
             for(i = id_str_len; i != 0; i--)
                 packet_data[5 + id_str_len - i] = id_str[id_str_len - i];
 
-            /*-------------POSITION PID-----------*/
-
-            packet_data[52] = TYPE_FLOAT;
-            packet_data[53] = 3;
-            *((float *) (packet_data + 54)) = (float) c_mem.k_p / 65536;
-            *((float *) (packet_data + 58)) = (float) c_mem.k_i / 65536;
-            *((float *) (packet_data + 62)) = (float) c_mem.k_d / 65536;
-
-            for(i = pos_pid_str_len; i != 0; i--)
-                packet_data[66 + pos_pid_str_len - i] = pos_pid_str[pos_pid_str_len - i];
-
-            /*----------STARTUP ACTIVATION--------*/
-
-            packet_data[102] = TYPE_FLAG;
-            packet_data[103] = 1;
-            packet_data[104] = c_mem.activ;
-            if(c_mem.activ) {
-                strcat(startup_str, " YES\0");
-                string_lenght = 28;
-            }
-            else {
-                strcat(startup_str, " NO\0");
-                string_lenght = 27;
-            }
-            for(i = string_lenght; i != 0; i--)
-                packet_data[105 + string_lenght - i] = startup_str[string_lenght - i];
-            //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[105 + string_lenght] = 3;
-
             /*--------------INPUT MODE------------*/
             
-            packet_data[152] = TYPE_FLAG;
-            packet_data[153] = 1;
-            packet_data[154] = c_mem.input_mode;
+            packet_data[52] = TYPE_FLAG;
+            packet_data[53] = 1;
+            packet_data[54] = c_mem.input_mode;
             switch(c_mem.input_mode) {
                 case INPUT_MODE_EXTERNAL:
                     strcat(input_str, " Usb\0");
@@ -431,42 +382,42 @@ void get_param_list(uint16 index) {
                 break;                    
             }
             for(i = string_lenght; i != 0; i--)
-                packet_data[155 + string_lenght - i] = input_str[string_lenght - i];
+                packet_data[55 + string_lenght - i] = input_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[155 + string_lenght] = 1;
+            packet_data[55 + string_lenght] = 1;
             
             /*-------------RESOLUTIONS------------*/
             
-            packet_data[202] = TYPE_UINT8;
-            packet_data[203] = 3;
+            packet_data[102] = TYPE_UINT8;
+            packet_data[103] = 3;
             for(i = 0; i < NUM_OF_SENSORS; i++)
-                packet_data[i + 204] = c_mem.res[i];
+                packet_data[i + 104] = c_mem.res[i];
             for(i = res_str_len; i != 0; i--)
-                packet_data[207 + res_str_len - i] = res_str[res_str_len - i];
+                packet_data[107 + res_str_len - i] = res_str[res_str_len - i];
             
             /*----------MEASUREMENT OFFSET--------*/
             
-            packet_data[252] = TYPE_INT16;
-            packet_data[253] = 3;
+            packet_data[152] = TYPE_INT16;
+            packet_data[153] = 3;
             for(i = 0; i < NUM_OF_SENSORS; i++) 
-                *((int16 *) ( packet_data + 254 + (i * 2) )) = (int16) (c_mem.m_off[i] >> c_mem.res[i]);
+                *((int16 *) ( packet_data + 154 + (i * 2) )) = (int16) (c_mem.m_off[i] >> c_mem.res[i]);
             for(i = m_off_str_len; i != 0; i--)
-                packet_data[260 + m_off_str_len - i] = m_off_str[m_off_str_len - i];
+                packet_data[160 + m_off_str_len - i] = m_off_str[m_off_str_len - i];
             
             /*------------MULTIPLIERS-------------*/
             
-            packet_data[302] = TYPE_FLOAT;
-            packet_data[303] = 3;
+            packet_data[202] = TYPE_FLOAT;
+            packet_data[203] = 3;
             for(i = 0; i < NUM_OF_SENSORS; i++)
-                *((float *) ( packet_data + 304 + (i * 4) )) = c_mem.m_mult[i];
+                *((float *) ( packet_data + 204 + (i * 4) )) = c_mem.m_mult[i];
             for(i = mult_str_len; i != 0; i--)
-                packet_data[316 + mult_str_len - i] = mult_str[mult_str_len - i];
+                packet_data[216 + mult_str_len - i] = mult_str[mult_str_len - i];
 
             /*-----------POS LIMIT FLAG-----------*/
             
-            packet_data[352] = TYPE_FLAG;
-            packet_data[353] = 1;
-            packet_data[354] = c_mem.pos_lim_flag;
+            packet_data[252] = TYPE_FLAG;
+            packet_data[253] = 1;
+            packet_data[254] = c_mem.pos_lim_flag;
             if(c_mem.pos_lim_flag) {
                 strcat(pos_lim_flag_str, " YES\0");
                 string_lenght = 27;
@@ -476,100 +427,116 @@ void get_param_list(uint16 index) {
                 string_lenght = 26;
             }
             for(i = string_lenght; i != 0; i--)
-                packet_data[355 + string_lenght - i] = pos_lim_flag_str[string_lenght - i];
+                packet_data[255 + string_lenght - i] = pos_lim_flag_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[355 + string_lenght] = 3;
+            packet_data[255 + string_lenght] = 3;
             
             /*-----------POSITION LIMITS----------*/
             
-            packet_data[402] = TYPE_INT32;
-            packet_data[403] = 2;
+            packet_data[302] = TYPE_INT32;
+            packet_data[303] = 2;
             for (i = 0; i < NUM_OF_MOTORS - 1; i++) {
-                *((int32 *)( packet_data + 404 + (i * 2 * 4) )) = (c_mem.pos_lim_inf[i] >> c_mem.res[i]);
-                *((int32 *)( packet_data + 404 + (i * 2 * 4) + 4)) = (c_mem.pos_lim_sup[i] >> c_mem.res[i]);
+                *((int32 *)( packet_data + 304 + (i * 2 * 4) )) = (c_mem.pos_lim_inf[i] >> c_mem.res[i]);
+                *((int32 *)( packet_data + 304 + (i * 2 * 4) + 4)) = (c_mem.pos_lim_sup[i] >> c_mem.res[i]);
             }
             for(i = pos_lim_str_len; i != 0; i--)
-                packet_data[412 + pos_lim_str_len - i] = pos_lim_str[pos_lim_str_len - i];
+                packet_data[312 + pos_lim_str_len - i] = pos_lim_str[pos_lim_str_len - i];
 
             /*--------------MAX STEPS-------------*/
             
-            packet_data[452] = TYPE_INT32;
-            packet_data[453] = 2;
-            *((int32 *)(packet_data + 454)) = c_mem.max_step_neg;
-            *((int32 *)(packet_data + 458)) = c_mem.max_step_pos;
+            packet_data[352] = TYPE_INT32;
+            packet_data[353] = 2;
+            *((int32 *)(packet_data + 354)) = c_mem.max_step_neg;
+            *((int32 *)(packet_data + 358)) = c_mem.max_step_pos;
             for(i = max_step_str_len; i != 0; i--)
-                packet_data[462 + max_step_str_len - i] = max_step_str[max_step_str_len - i];
+                packet_data[362 + max_step_str_len - i] = max_step_str[max_step_str_len - i];
 
             /*-----------EMG CALIB FLAG-----------*/            
             
-            packet_data[502] = TYPE_FLAG;
-            packet_data[503] = 1;
-            packet_data[504] = c_mem.emg_calibration_flag;
+            packet_data[402] = TYPE_FLAG;
+            packet_data[403] = 1;
+            packet_data[404] = c_mem.emg_calibration_flag;
             if(c_mem.emg_calibration_flag) {
                 strcat(emg_flag_str, " YES\0");
-                string_lenght = 37;
+                string_lenght = 36;
             }
             else {
                 strcat(emg_flag_str, " NO\0");
-                string_lenght = 36;
+                string_lenght = 35;
             }
             for(i = string_lenght; i != 0; i--)
-                packet_data[505 + string_lenght - i] = emg_flag_str[string_lenght - i];
+                packet_data[405 + string_lenght - i] = emg_flag_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[505 + string_lenght] = 3;
+            packet_data[405 + string_lenght] = 3;
             
             /*-----------EMG THRESHOLDS-----------*/
         
-            packet_data[552] = TYPE_UINT16;
-            packet_data[553] = 2;
-            *((uint16 *)(packet_data + 554)) = c_mem.emg_threshold[0];
-            *((uint16 *)(packet_data + 556)) = c_mem.emg_threshold[1];
+            packet_data[452] = TYPE_UINT16;
+            packet_data[453] = 2;
+            *((uint16 *)(packet_data + 454)) = c_mem.emg_threshold[0];
+            *((uint16 *)(packet_data + 456)) = c_mem.emg_threshold[1];
             for(i = emg_thr_str_len; i != 0; i--)
-                packet_data[558 + emg_thr_str_len - i] = emg_thr_str[emg_thr_str_len - i];
+                packet_data[458 + emg_thr_str_len - i] = emg_thr_str[emg_thr_str_len - i];
             
             /*------------EMG MAX VALUE-----------*/
             
-            packet_data[602] = TYPE_UINT32;
-            packet_data[603] = 2;
-            *((uint32 *)(packet_data + 604)) = c_mem.emg_max_value[0];
-            *((uint32 *)(packet_data + 608)) = c_mem.emg_max_value[1];
+            packet_data[502] = TYPE_UINT32;
+            packet_data[503] = 2;
+            *((uint32 *)(packet_data + 504)) = c_mem.emg_max_value[0];
+            *((uint32 *)(packet_data + 508)) = c_mem.emg_max_value[1];
             for(i = emg_max_val_str_len; i != 0; i--)
-                packet_data[612 + emg_max_val_str_len - i] = emg_max_val_str[emg_max_val_str_len - i];
+                packet_data[512 + emg_max_val_str_len - i] = emg_max_val_str[emg_max_val_str_len - i];
 
             /*--------------EMG SPEED-------------*/
             
-            packet_data[652] = TYPE_UINT8;
-            packet_data[653] = 1;
-            packet_data[654] = c_mem.emg_speed;
+            packet_data[552] = TYPE_UINT8;
+            packet_data[553] = 1;
+            packet_data[554] = c_mem.emg_speed;
             for(i = emg_max_speed_str_len; i != 0; i--)
-                packet_data[655 + emg_max_speed_str_len - i] = emg_max_speed_str[emg_max_speed_str_len - i];
+                packet_data[555 + emg_max_speed_str_len - i] = emg_max_speed_str[emg_max_speed_str_len - i];
             
             /*-------------HANDLE RATIO-----------*/
             
-            packet_data[702] = TYPE_INT8;
-            packet_data[703] = 1;
-            *((int8 *)(packet_data + 704)) = c_mem.motor_handle_ratio;
+            packet_data[602] = TYPE_INT8;
+            packet_data[603] = 1;
+            *((int8 *)(packet_data + 604)) = c_mem.motor_handle_ratio;
             for(i = handle_ratio_str_len; i != 0; i--)
-                packet_data[705 + handle_ratio_str_len - i] = handle_ratio_str[handle_ratio_str_len - i];
-            
-            /*-------------MOTOR SUPPLY-----------*/
+                packet_data[605 + handle_ratio_str_len - i] = handle_ratio_str[handle_ratio_str_len - i];
+                           
+            /*-------------JOYSTICK CLOSURE SPEED------------*/
+
+            packet_data[652] = TYPE_UINT16;
+            packet_data[653] = 1;
+            *((uint16 *) (packet_data + 654)) = c_mem.joystick_closure_speed;
+            for(i = joystick_closure_speed_str_len; i != 0; i--)
+                packet_data[656 + joystick_closure_speed_str_len - i] = joystick_closure_speed_str[joystick_closure_speed_str_len - i]; 
+
+            /*------------JOYSTICK GAIN------------*/
+                
+            packet_data[702] = TYPE_UINT16;
+            packet_data[703] = 1;
+            *((uint16 *) (packet_data + 704)) = c_mem.joystick_gain;
+            for(i = joystick_gains_str_len; i != 0; i--)
+                packet_data[706 + joystick_gains_str_len - i] = joystick_gains_str[joystick_gains_str_len - i];
+                                       
+            /*------------MASTER MODE MYO2----------*/
             
             packet_data[752] = TYPE_FLAG;
             packet_data[753] = 1;
-            packet_data[754] = c_mem.activate_pwm_rescaling;
-            if(c_mem.activate_pwm_rescaling) {
-                strcat(motor_type_str, " YES\0");
-                string_lenght = 24;
+            packet_data[754] = c_mem.is_myo2_master;
+            if(c_mem.is_myo2_master) {
+                strcat(myo2_master_str, " YES\0");
+                string_lenght = 36;
             }
             else {
-                strcat(motor_type_str, " NO\0");
-                string_lenght = 23;
+                strcat(myo2_master_str, " NO\0");
+                string_lenght = 35;
             }
             for(i = string_lenght; i != 0; i--)
-                packet_data[755 + string_lenght - i] = motor_type_str[string_lenght - i];
+                packet_data[755 + string_lenght - i] = myo2_master_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
             packet_data[755 + string_lenght] = 3;
-
+            
             /*-----------REST POSITION FLAG-----------*/            
             
             packet_data[802] = TYPE_FLAG;
@@ -610,31 +577,53 @@ void get_param_list(uint16 index) {
             packet_data[953] = 1;
             *((int32 *)( packet_data + 954 )) = c_mem.rest_vel;
             for(i = rest_vel_str_len; i != 0; i--)
-                packet_data[958 + rest_vel_str_len - i] = rest_vel_str[rest_vel_str_len - i];   
-                                        
-            /*------------MASTER MODE MYO2----------*/
-            
-            packet_data[1002] = TYPE_FLAG;
+                packet_data[958 + rest_vel_str_len - i] = rest_vel_str[rest_vel_str_len - i]; 
+                
+            /*-----CURRENT PROPORTIONAL GAIN-----*/
+
+            packet_data[1002] = TYPE_FLOAT;
             packet_data[1003] = 1;
-            packet_data[1004] = c_mem.is_myo2_master;
-            if(c_mem.is_myo2_master) {
-                strcat(myo2_master_str, " YES\0");
-                string_lenght = 36;
-            }
-            else {
-                strcat(myo2_master_str, " NO\0");
-                string_lenght = 35;
-            }
-            for(i = string_lenght; i != 0; i--)
-                packet_data[1005 + string_lenght - i] = myo2_master_str[string_lenght - i];
-            //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[1005 + string_lenght] = 3;
+            *((float *)(packet_data + 1004)) = c_mem.curr_prop_gain;
+            for(i = curr_prop_gain_str_len; i!= 0; i--)
+                packet_data[1008 + curr_prop_gain_str_len - i] = curr_prop_gain_str[curr_prop_gain_str_len - i];
+
+            /*---------CURRENT SATURATION--------*/
+
+            packet_data[1052] = TYPE_INT16;
+            packet_data[1053] = 1;
+            *((int16 *)(packet_data + 1054)) = c_mem.curr_sat;
+            for(i = curr_sat_str_len; i!= 0; i--)
+                packet_data[1056 + curr_sat_str_len - i] = curr_sat_str[curr_sat_str_len - i];
+
+            /*---------CURRENT DEAD ZONE---------*/
+
+            packet_data[1102] = TYPE_INT16;
+            packet_data[1103] = 1;
+            *((int16 *)(packet_data + 1104)) = c_mem.curr_dead_zone;
+            for(i = curr_dead_zone_str_len; i!= 0; i--)
+                packet_data[1106 + curr_dead_zone_str_len - i] = curr_dead_zone_str[curr_dead_zone_str_len - i];
+                
+            /*---------MAX SLIDE---------*/
+
+            packet_data[1152] = TYPE_INT32;
+            packet_data[1153] = 1;
+            *((int32 *)(packet_data + 1154)) = c_mem.max_slide;
+            for(i = max_slide_str_len; i!= 0; i--)
+                packet_data[1158 + max_slide_str_len - i] = max_slide_str[max_slide_str_len - i];
+                
+            /*---------MAX SH POS---------*/
+
+            packet_data[1202] = TYPE_INT32;
+            packet_data[1203] = 1;
+            *((int32 *)(packet_data + 1204)) = c_mem.max_SH_pos;
+            for(i = max_SH_pos_str_len; i!= 0; i--)
+                packet_data[1208 + max_SH_pos_str_len - i] = max_SH_pos_str[max_SH_pos_str_len - i];
             
             /*------------MASTER MODE FORCE----------*/
             
-            packet_data[1052] = TYPE_FLAG;
-            packet_data[1053] = 1;
-            packet_data[1054] = c_mem.is_force_fb_present;
+            packet_data[1252] = TYPE_FLAG;
+            packet_data[1253] = 1;
+            packet_data[1254] = c_mem.is_force_fb_present;
             if(c_mem.is_force_fb_present) {
                 strcat(master_mode_force_str, " YES\0");
                 string_lenght = 35;
@@ -644,15 +633,15 @@ void get_param_list(uint16 index) {
                 string_lenght = 34;
             }
             for(i = string_lenght; i != 0; i--)
-                packet_data[1055 + string_lenght - i] = master_mode_force_str[string_lenght - i];
+                packet_data[1255 + string_lenght - i] = master_mode_force_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[1055 + string_lenght] = 3;
+            packet_data[1255 + string_lenght] = 3;
             
             /*------------MASTER MODE PROPRIO----------*/
             
-            packet_data[1102] = TYPE_FLAG;
-            packet_data[1103] = 1;
-            packet_data[1104] = c_mem.is_proprio_fb_present;
+            packet_data[1302] = TYPE_FLAG;
+            packet_data[1303] = 1;
+            packet_data[1304] = c_mem.is_proprio_fb_present;
             if(c_mem.is_proprio_fb_present) {
                 strcat(master_mode_proprio_str, " YES\0");
                 string_lenght = 39;
@@ -662,79 +651,39 @@ void get_param_list(uint16 index) {
                 string_lenght = 38;
             }
             for(i = string_lenght; i != 0; i--)
-                packet_data[1105 + string_lenght - i] = master_mode_proprio_str[string_lenght - i];
+                packet_data[1305 + string_lenght - i] = master_mode_proprio_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[1105 + string_lenght] = 3;
-            
-             /*-----CURRENT PROPORTIONAL GAIN-----*/
-
-            packet_data[1152] = TYPE_FLOAT;
-            packet_data[1153] = 1;
-            *((float *)(packet_data + 1154)) = c_mem.curr_prop_gain;
-            for(i = curr_prop_gain_str_len; i!= 0; i--)
-                packet_data[1158 + curr_prop_gain_str_len - i] = curr_prop_gain_str[curr_prop_gain_str_len - i];
-
-            /*---------CURRENT SATURATION--------*/
-
-            packet_data[1202] = TYPE_INT16;
-            packet_data[1203] = 1;
-            *((int16 *)(packet_data + 1204)) = c_mem.curr_sat;
-            for(i = curr_sat_str_len; i!= 0; i--)
-                packet_data[1206 + curr_sat_str_len - i] = curr_sat_str[curr_sat_str_len - i];
-
-            /*---------CURRENT DEAD ZONE---------*/
-
-            packet_data[1252] = TYPE_INT16;
-            packet_data[1253] = 1;
-            *((int16 *)(packet_data + 1254)) = c_mem.curr_dead_zone;
-            for(i = curr_dead_zone_str_len; i!= 0; i--)
-                packet_data[1256 + curr_dead_zone_str_len - i] = curr_dead_zone_str[curr_dead_zone_str_len - i];
-                
-            /*---------MAX SLIDE---------*/
-
-            packet_data[1302] = TYPE_INT32;
-            packet_data[1303] = 1;
-            *((int32 *)(packet_data + 1304)) = c_mem.max_slide;
-            for(i = max_slide_str_len; i!= 0; i--)
-                packet_data[1308 + max_slide_str_len - i] = max_slide_str[max_slide_str_len - i];
-                
-            /*---------MAX SH POS---------*/
-
-            packet_data[1352] = TYPE_INT32;
-            packet_data[1353] = 1;
-            *((int32 *)(packet_data + 1354)) = c_mem.max_SH_pos;
-            for(i = max_SH_pos_str_len; i!= 0; i--)
-                packet_data[1358 + max_SH_pos_str_len - i] = max_SH_pos_str[max_SH_pos_str_len - i];
-                
+            packet_data[1305 + string_lenght] = 3;
+           
             /*---------HAND ID---------*/
 
-            packet_data[1402] = TYPE_UINT8;
-            packet_data[1403] = 1;
-            *((uint8 *)(packet_data + 1404)) = c_mem.SH_ID;
+            packet_data[1352] = TYPE_UINT8;
+            packet_data[1353] = 1;
+            *((uint8 *)(packet_data + 1354)) = c_mem.SH_ID;
             for(i = SH_ID_str_len; i!= 0; i--)
-                packet_data[1405 + SH_ID_str_len - i] = SH_ID_str[SH_ID_str_len - i];
+                packet_data[1355 + SH_ID_str_len - i] = SH_ID_str[SH_ID_str_len - i];
                 
             /*---------FORCE FEEDBACK DEVICE ID---------*/
 
-            packet_data[1452] = TYPE_UINT8;
-            packet_data[1453] = 1;
-            *((uint8 *)(packet_data + 1454)) = c_mem.ForceF_ID;
+            packet_data[1402] = TYPE_UINT8;
+            packet_data[1403] = 1;
+            *((uint8 *)(packet_data + 1404)) = c_mem.ForceF_ID;
             for(i = FF_ID_str_len; i!= 0; i--)
-                packet_data[1455 + FF_ID_str_len - i] = FF_ID_str[FF_ID_str_len - i];
+                packet_data[1405 + FF_ID_str_len - i] = FF_ID_str[FF_ID_str_len - i];
                 
             /*---------PROPRIOCEPTIVE FEEDBACK DEVICE ID---------*/
 
-            packet_data[1502] = TYPE_UINT8;
-            packet_data[1503] = 1;
-            *((uint8 *)(packet_data + 1504)) = c_mem.ProprioF_ID;
+            packet_data[1452] = TYPE_UINT8;
+            packet_data[1453] = 1;
+            *((uint8 *)(packet_data + 1454)) = c_mem.ProprioF_ID;
             for(i = PF_ID_str_len; i!= 0; i--)
-                packet_data[1505 + PF_ID_str_len - i] = PF_ID_str[PF_ID_str_len - i];                
+                packet_data[1455 + PF_ID_str_len - i] = PF_ID_str[PF_ID_str_len - i];                
 
             /*--------RIGHT LEFT-------*/
 
-            packet_data[1552] = TYPE_FLAG;
-            packet_data[1553] = 1;
-            packet_data[1554] = c_mem.F_right_left;
+            packet_data[1502] = TYPE_FLAG;
+            packet_data[1503] = 1;
+            packet_data[1504] = c_mem.F_right_left;
             if(c_mem.F_right_left) {
                 strcat(F_right_left_par_str, " Left\0");
                 string_lenght = 20;
@@ -744,36 +693,20 @@ void get_param_list(uint16 index) {
                 string_lenght = 21;
             }
             for(i = string_lenght; i!=0; i--)
-                packet_data[1555 + string_lenght - i] = F_right_left_par_str[string_lenght - i];
+                packet_data[1505 + string_lenght - i] = F_right_left_par_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to sen
-            packet_data[1555 + string_lenght] = 2;
-            
-            /*-------------JOYSTICK CLOSURE SPEED------------*/
-
-            packet_data[1602] = TYPE_UINT16;
-            packet_data[1603] = 1;
-            *((uint16 *) (packet_data + 1604)) = c_mem.joystick_closure_speed;
-            for(i = joystick_closure_speed_str_len; i != 0; i--)
-                packet_data[1606 + joystick_closure_speed_str_len - i] = joystick_closure_speed_str[joystick_closure_speed_str_len - i]; 
-
-            /*------------JOYSTICK GAIN------------*/
-                
-            packet_data[1652] = TYPE_UINT16;
-            packet_data[1653] = 1;
-            *((uint16 *) (packet_data + 1654)) = c_mem.joystick_gain;
-            for(i = joystick_gains_str_len; i != 0; i--)
-                packet_data[1656 + joystick_gains_str_len - i] = joystick_gains_str[joystick_gains_str_len - i];
+            packet_data[1505 + string_lenght] = 2;
 
             /*------------PARAMETERS MENU-----------*/
 
             for(i = input_mode_menu_len; i != 0; i--)
-                packet_data[1702 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
+                packet_data[1552 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
 
             for(i = F_right_left_menu_len; i!= 0; i--)
-                packet_data[1852 + F_right_left_menu_len - i] = F_right_left_menu[F_right_left_menu_len - i];
+                packet_data[1702 + F_right_left_menu_len - i] = F_right_left_menu[F_right_left_menu_len - i];
 
             for(i = yes_no_menu_len; i!= 0; i--)
-                packet_data[2002 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
+                packet_data[1852 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
             
             packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
             commWrite(packet_data, packet_lenght);
@@ -783,36 +716,21 @@ void get_param_list(uint16 index) {
         case 1:         //ID - uint8
             g_mem.id = g_rx.buffer[3];
         break;
-        
-//=======================================================     set_pid_parameters
-        case 2:         //Position PID - float[3]
-            g_mem.k_p = *((float *) &g_rx.buffer[3]) * 65536;
-            g_mem.k_i = *((float *) &g_rx.buffer[3 + 4]) * 65536;
-            g_mem.k_d = *((float *) &g_rx.buffer[3 + 8]) * 65536;
-        break;
-
-//===================================================     set_startup_activation        
-        case 3:         //Startup flag - uint8
-            if(g_rx.buffer[3])
-                g_mem.activ = 0x03;
-            else
-                g_mem.activ = 0x00;
-        break;
 
 //===========================================================     set_input_mode        
-        case 4:         //Input mode - uint8
+        case 2:         //Input mode - uint8
             g_mem.input_mode = *((uint8*) &g_rx.buffer[3]);
         break;
         
 //===========================================================     set_resolution
-        case 5:         //Resolution - uint8[3]
+        case 3:         //Resolution - uint8[3]
             for (i =0; i < NUM_OF_SENSORS; i++) {
                 g_mem.res[i] = g_rx.buffer[i+3];
             }
         break;
         
 //===============================================================     set_offset
-        case 6:         //Measurement Offset - int32[3] 
+        case 4:         //Measurement Offset - int32[3] 
             for(i = 0; i < NUM_OF_SENSORS; ++i) {
                 g_mem.m_off[i] = *((int16 *) &g_rx.buffer[3 + i * 2]);
                 g_mem.m_off[i] = g_mem.m_off[i] << g_mem.res[i];
@@ -823,18 +741,18 @@ void get_param_list(uint16 index) {
         break;
         
 //===========================================================     set_multiplier
-        case 7:         //Multipliers - float[3]
+        case 5:         //Multipliers - float[3]
             for(i = 0; i < NUM_OF_SENSORS; ++i)
                 g_mem.m_mult[i] = *((float *) &g_rx.buffer[3 + i * 4]);
         break;
         
 //=====================================================     set_pos_limit_enable
-        case 8:        //Position limit flag - uint8
+        case 6:        //Position limit flag - uint8
             g_mem.pos_lim_flag = *((uint8 *) &g_rx.buffer[3]);
         break;
 
 //============================================================     set_pos_limit
-        case 9:        //Position limits - int32[4]
+        case 7:        //Position limits - int32[4]
             for (i = 0; i < NUM_OF_MOTORS; i++) {
                 g_mem.pos_lim_inf[i] = *((int32 *) &g_rx.buffer[3 + (i * 2 * 4)]);
                 g_mem.pos_lim_sup[i] = *((int32 *) &g_rx.buffer[3 + (i * 2 * 4) + 4]);
@@ -845,7 +763,7 @@ void get_param_list(uint16 index) {
         break;
 
 //==================================================     set_max_steps_per_cycle
-        case 10:        //Max steps - int32[2]
+        case 8:        //Max steps - int32[2]
             aux_int = *((int32 *) &g_rx.buffer[3]);
             if (aux_int <= 0)
                 g_mem.max_step_neg = aux_int;
@@ -857,36 +775,48 @@ void get_param_list(uint16 index) {
         break;
         
 //=======================================================     set_emg_calib_flag
-        case 11:        //Emg calibration flag - int8
+        case 9:        //Emg calibration flag - int8
             g_mem.emg_calibration_flag = *((uint8*) &g_rx.buffer[3]);
         break;
         
 //========================================================     set_emg_threshold
-        case 12:        //Emg threshold - uint16[2]
+        case 10:        //Emg threshold - uint16[2]
             g_mem.emg_threshold[0] = *((uint16*) &g_rx.buffer[3]);
             g_mem.emg_threshold[1] = *((uint16*) &g_rx.buffer[5]);
         break;
         
 //========================================================     set_emg_max_value
-        case 13:        //Emg max value - uint32[2]
+        case 11:        //Emg max value - uint32[2]
             g_mem.emg_max_value[0] = *((uint32*) &g_rx.buffer[3]);
             g_mem.emg_max_value[1] = *((uint32*) &g_rx.buffer[7]);
         break;
         
 //============================================================     set_emg_speed
-        case 14:        //Emg max speed - uint8
+        case 12:        //Emg max speed - uint8
             g_mem.emg_speed = *((uint8*) &g_rx.buffer[3]);
         break;
         
 //===================================================     set_motor_handle_ratio
-        case 15:        //Motor handle ratio - int8
+        case 13:        //Motor handle ratio - int8
             g_mem.motor_handle_ratio = *((int8*) &g_rx.buffer[3]);
         break;
-        
-//===================================================     set_motor_supply_type
-        case 16:        //Motor type - uint8
-            g_mem.activate_pwm_rescaling = g_rx.buffer[3];
+//===================================================     set_joystick_closure_speed
+        case 14:
+            g_mem.joystick_closure_speed = *((uint16 *) &g_rx.buffer[3]);
         break;
+//===================================================     set_joystick_gain
+        case 15:
+            g_mem.joystick_gain = *((uint16 *) &g_rx.buffer[3]);
+        break;         
+//================================================     set_myo2_master
+        case 16:        //Is Myo2 master present - uint8
+            aux_uchar = *((uint8*) &g_rx.buffer[3]);
+            if (aux_uchar) {
+                g_mem.is_myo2_master = 1;
+            } else {
+                g_mem.is_myo2_master = 0;
+            }
+        break;  
 //=======================================================     set_rest_position_flag
         case 17:        //Rest position flag - int8
             g_mem.rest_position_flag = *((uint8*) &g_rx.buffer[3]);
@@ -904,18 +834,29 @@ void get_param_list(uint16 index) {
 //============================================================     set_rest_vel
         case 20:        //Rest Position Velocity - int32
             g_mem.rest_vel = *((int32 *) &g_rx.buffer[3]);
-        break;                     
-//================================================     set_myo2_master
-        case 21:        //Is Myo2 master present - uint8
-            aux_uchar = *((uint8*) &g_rx.buffer[3]);
-            if (aux_uchar) {
-                g_mem.is_myo2_master = 1;
-            } else {
-                g_mem.is_myo2_master = 0;
-            }
-        break;                 
+        break; 
+//=======================================================     set_curr_prop_gain
+        case 21:
+            g_mem.curr_prop_gain = *((float*) &g_rx.buffer[3]);
+        break;
+//=============================================================     set_curr_sat
+        case 22: 
+            g_mem.curr_sat = *((int16*) &g_rx.buffer[3]);
+        break;
+//=======================================================     set_curr_dead_zone
+        case 23:
+            g_mem.curr_dead_zone = *((int16*) &g_rx.buffer[3]);
+        break;            
+//=============================================================     set_max_slide
+        case 24: 
+            g_mem.max_slide = *((int32*) &g_rx.buffer[3]);
+        break;            
+//=============================================================     set_max_SH_pos
+        case 25: 
+            g_mem.max_SH_pos = *((int32*) &g_rx.buffer[3]);
+        break;              
 //================================================     set_master_mode_force
-        case 22:        //Is force feedback present - uint8
+        case 26:        //Is force feedback present - uint8
             aux_uchar = *((uint8*) &g_rx.buffer[3]);
             if (aux_uchar) {
                 g_mem.is_force_fb_present = 1;
@@ -924,58 +865,30 @@ void get_param_list(uint16 index) {
             }
         break;
 //================================================     set_master_mode_proprio
-        case 23:        //Is proprio feedback present - uint8
+        case 27:        //Is proprio feedback present - uint8
             aux_uchar = *((uint8*) &g_rx.buffer[3]);
             if (aux_uchar) {
                 g_mem.is_proprio_fb_present = 1;
             } else {
                 g_mem.is_proprio_fb_present = 0;
             }
-        break;   
-//=======================================================     set_curr_prop_gain
-        case 24:
-            g_mem.curr_prop_gain = *((float*) &g_rx.buffer[3]);
-        break;
-//=============================================================     set_curr_sat
-        case 25: 
-            g_mem.curr_sat = *((int16*) &g_rx.buffer[3]);
-        break;
-//=======================================================     set_curr_dead_zone
-        case 26:
-            g_mem.curr_dead_zone = *((int16*) &g_rx.buffer[3]);
-        break;            
-//=============================================================     set_max_slide
-        case 27: 
-            g_mem.max_slide = *((int32*) &g_rx.buffer[3]);
-        break;            
-//=============================================================     set_max_SH_pos
-        case 28: 
-            g_mem.max_SH_pos = *((int32*) &g_rx.buffer[3]);
-        break;   
+        break;    
 //=============================================================     set_SH_ID
-        case 29: 
+        case 28: 
             g_mem.SH_ID = *((uint8*) &g_rx.buffer[3]);
         break;   
 //=============================================================     set_FF_ID
-        case 30: 
+        case 29: 
             g_mem.ForceF_ID = *((uint8*) &g_rx.buffer[3]);
         break; 
 //=============================================================     set_PF_ID
-        case 31: 
+        case 30: 
             g_mem.ProprioF_ID = *((uint8*) &g_rx.buffer[3]);
         break;
 //=============================================================     set_F_right_left
-        case 32:
+        case 31:
             g_mem.F_right_left = *((uint8*) & g_rx.buffer[3]);
-        break;             
-//===================================================     set_joystick_closure_speed
-        case 33:
-            g_mem.joystick_closure_speed = *((uint16 *) &g_rx.buffer[3]);
-        break;
-//===================================================     set_joystick_gain
-        case 34:
-            g_mem.joystick_gain = *((uint16 *) &g_rx.buffer[3]);
-        break;             
+        break;                        
     }            
 }
 
@@ -1016,29 +929,6 @@ void infoPrepare(unsigned char *info_string)
         strcat(info_string, "DEVICE INFO\r\n");
         sprintf(str, "ID: %d\r\n", (int) c_mem.id);
         strcat(info_string, str);
-        strcat(info_string, "PWM rescaling activation: ");
-        if(c_mem.activate_pwm_rescaling == MAXON_12V)
-            strcat(info_string, "YES\n");
-        else
-            strcat(info_string, "NO\n");
-        
-        sprintf(str, "PWM Limit: %d\r\n", (int) dev_pwm_limit);
-        strcat(info_string, str);
-        strcat(info_string, "\r\n");
-
-        strcat(info_string, "MOTOR INFO\r\n");
-        strcat(info_string, "Motor reference");
-
-        strcat(info_string,"\r\n");
-        strcat(info_string, "\r\n");
-
-        sprintf(str, "Motor enabled: ");
-        if (g_ref.onoff & 0x03) {
-            strcat(str, "YES\r\n");
-        } else {
-            strcat(str, "NO\r\n");
-        }
-        strcat(info_string, str);
 
         strcat(info_string, "\r\nMEASUREMENTS INFO\r\n");
         strcat(info_string, "Sensor value:\r\n");
@@ -1058,23 +948,6 @@ void infoPrepare(unsigned char *info_string)
         strcat(info_string, "\r\n");
 
         strcat(info_string, "\r\nDEVICE PARAMETERS\r\n");
-
-        strcat(info_string, "PID Controller:\r\n");
-        sprintf(str, "P -> %f  ", ((double) c_mem.k_p / 65536));
-        strcat(info_string, str);
-        sprintf(str, "I -> %f  ", ((double) c_mem.k_i / 65536));
-        strcat(info_string, str);
-        sprintf(str, "D -> %f\r\n", ((double) c_mem.k_d / 65536));
-        strcat(info_string, str);
-
-        strcat(info_string, "\r\n");
-
-
-        if (c_mem.activ == 0x03) {
-            strcat(info_string, "Startup activation: YES\r\n");
-        } else {
-            strcat(info_string, "Startup activation: NO\r\n");
-        }
 
         switch(c_mem.input_mode) {
             case INPUT_MODE_EXTERNAL:
@@ -1596,10 +1469,6 @@ uint8 memStore(int displacement)
     // Disable Interrupt
     ISR_RS485_RX_Disable();
 
-    // Stop motors
-    PWM_MOTORS_WriteCompare1(0);
-    PWM_MOTORS_WriteCompare2(0);
-
     // Retrieve temperature for better writing performance
     CySetTemp();
 
@@ -1675,18 +1544,11 @@ uint8 memInit(void)
     uint8 i;
 
     //initialize memory settings
-    g_mem.id            = 2;
+    g_mem.id            = 1;
 
-    g_mem.k_p           = 0.015 * 65536;
-    g_mem.k_i           =     0 * 65536;
-    g_mem.k_d           = 0.007 * 65536;  //Changed in order to avoid metallic clatter previous value 0.2
-
-    g_mem.activ         = 0x03;;
     g_mem.input_mode    = INPUT_MODE_EXTERNAL;
 
     g_mem.pos_lim_flag = 1;
-
-    g_mem.activate_pwm_rescaling = MAXON_24V;           //rescaling active for 12V motors
 
     g_mem.res[0] = 3;
     g_mem.res[1] = 3;
@@ -1722,6 +1584,8 @@ uint8 memInit(void)
     g_mem.emg_speed = 100;
 
     g_mem.motor_handle_ratio = 22;
+    g_mem.joystick_closure_speed = 150;
+    g_mem.joystick_gain = 1024;
     
     //Initialize rest position parameters        
     g_mem.rest_position_flag = 1;
@@ -1731,21 +1595,19 @@ uint8 memInit(void)
     
     g_mem.is_force_fb_present = 0;
     g_mem.is_proprio_fb_present = 0;
-    g_mem.is_myo2_master = 0;
+    g_mem.is_myo2_master = 1;
     
     g_mem.curr_prop_gain = 0.3;
     g_mem.curr_sat = 1000;
     g_mem.curr_dead_zone = 75;
     g_mem.max_slide = 10000;
-    g_mem.max_SH_pos = (c_mem.pos_lim_sup[0] >> c_mem.res[0]);
+    g_mem.max_SH_pos = (g_mem.pos_lim_sup[0] >> g_mem.res[0]);
     
-    g_mem.SH_ID = 1;
+    g_mem.SH_ID = 2;
     g_mem.ForceF_ID = 3;
     g_mem.ProprioF_ID = 4;
     g_mem.F_right_left = 0;       // RIGHT
 
-    g_mem.joystick_closure_speed = 150;
-    g_mem.joystick_gain = 1024;
     // set the initialized flag to show EEPROM has been populated
     g_mem.flag = TRUE;
     
@@ -1810,33 +1672,9 @@ void cmd_set_inputs(){
 
 void cmd_activate(){
     
-    // Store new value reads
-    g_refNew.onoff = g_rx.buffer[1];
-    
     // Check type of control mode enabled
     g_refNew.pos[0] = g_meas.pos[0];
     g_refNew.pos[1] = g_meas.pos[1];
-
-    // Activate/Disactivate motors
-    MOTOR_ON_OFF_Write(g_refNew.onoff);
-}
-
-void cmd_get_activate(){
-    
-    uint8 packet_data[3];
-
-    // Header        
-    packet_data[0] = CMD_GET_ACTIVATE;
-    
-    // Fill payload
-    packet_data[1] = g_ref.onoff;
-    
-    // Calculate checksum
-    packet_data[2] = LCRChecksum(packet_data, 2);
-    
-    // Send package to UART
-    commWrite(packet_data, 3);
-
 }
 
 void cmd_get_joystick() {

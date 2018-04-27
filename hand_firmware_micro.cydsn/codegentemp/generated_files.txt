@@ -13,15 +13,6 @@
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\cyfitterkeil.inc" value="HEADER;;;;;" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\cyfitter.h" value="HEADER;;;;;" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\cydisabledsheets.h" value="HEADER;;;;;" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_1A.c" value="SOURCE_C;DP8051;;;;MOTOR_1A" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_1A.h" value="HEADER;;;;;MOTOR_1A" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_1A_aliases.h" value="HEADER;;;;;MOTOR_1A" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_EN.c" value="SOURCE_C;DP8051;;;;MOTOR_EN" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_EN.h" value="HEADER;;;;;MOTOR_EN" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_EN_aliases.h" value="HEADER;;;;;MOTOR_EN" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_2A.c" value="SOURCE_C;DP8051;;;;MOTOR_2A" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_2A.h" value="HEADER;;;;;MOTOR_2A" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_2A_aliases.h" value="HEADER;;;;;MOTOR_2A" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\CLOCK_UART.c" value="SOURCE_C;DP8051;;;;CLOCK_UART" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\CLOCK_UART.h" value="HEADER;;;;;CLOCK_UART" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\ISR_RS485_RX.c" value="SOURCE_C;DP8051;;;;ISR_RS485_RX" />
@@ -29,11 +20,6 @@
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\RS_485_EN.c" value="SOURCE_C;DP8051;;;;RS_485_EN" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\RS_485_EN.h" value="HEADER;;;;;RS_485_EN" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\RS_485_EN_aliases.h" value="HEADER;;;;;RS_485_EN" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\PWM_MOTORS.c" value="SOURCE_C;DP8051;;;;PWM_MOTORS" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\PWM_MOTORS.h" value="HEADER;;;;;PWM_MOTORS" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\PWM_MOTORS_PM.c" value="SOURCE_C;DP8051;;;;PWM_MOTORS" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\CLOCK_PWM.c" value="SOURCE_C;DP8051;;;;CLOCK_PWM" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\CLOCK_PWM.h" value="HEADER;;;;;CLOCK_PWM" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\Signal_1_C.c" value="SOURCE_C;DP8051;;;;Signal_1_C" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\Signal_1_C.h" value="HEADER;;;;;Signal_1_C" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\Signal_1_C_aliases.h" value="HEADER;;;;;Signal_1_C" />
@@ -48,15 +34,6 @@
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\UART_RS485_PM.c" value="SOURCE_C;DP8051;;;;UART_RS485" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\UART_RS485_INT.c" value="SOURCE_C;DP8051;;;;UART_RS485" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\UART_RS485_BOOT.c" value="SOURCE_C;DP8051;;;;UART_RS485" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_1B.c" value="SOURCE_C;DP8051;;;;MOTOR_1B" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_1B.h" value="HEADER;;;;;MOTOR_1B" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_1B_aliases.h" value="HEADER;;;;;MOTOR_1B" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_2B.c" value="SOURCE_C;DP8051;;;;MOTOR_2B" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_2B.h" value="HEADER;;;;;MOTOR_2B" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_2B_aliases.h" value="HEADER;;;;;MOTOR_2B" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_DIR.h" value="HEADER;;;;;MOTOR_DIR" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_DIR.c" value="SOURCE_C;DP8051;;;;MOTOR_DIR" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_DIR_PM.c" value="SOURCE_C;DP8051;;;;MOTOR_DIR" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\COUNTER_ENC.c" value="SOURCE_C;DP8051;;;;COUNTER_ENC" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\COUNTER_ENC.h" value="HEADER;;;;;COUNTER_ENC" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\COUNTER_ENC_PM.c" value="SOURCE_C;DP8051;;;;COUNTER_ENC" />
@@ -91,9 +68,6 @@
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\RS485_CTS_PM.c" value="SOURCE_C;DP8051;;;;RS485_CTS" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\Bootloadable.c" value="SOURCE_C;DP8051;;;;Bootloadable" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\Bootloadable.h" value="HEADER;;;;;Bootloadable" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_ON_OFF.h" value="HEADER;;;;;MOTOR_ON_OFF" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_ON_OFF.c" value="SOURCE_C;DP8051;;;;MOTOR_ON_OFF" />
-  <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\MOTOR_ON_OFF_PM.c" value="SOURCE_C;DP8051;;;;MOTOR_ON_OFF" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\FTDI_ENABLE_REG.h" value="HEADER;;;;;FTDI_ENABLE_REG" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\FTDI_ENABLE_REG.c" value="SOURCE_C;DP8051;;;;FTDI_ENABLE_REG" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\codegentemp\FTDI_ENABLE_REG_PM.c" value="SOURCE_C;DP8051;;;;FTDI_ENABLE_REG" />

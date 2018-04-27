@@ -54,8 +54,6 @@ struct st_data  g_rx;                       // Income data.
 struct st_mem   g_mem, c_mem;               // Memory variables.
 struct st_calib calib;						// Calibration variables.
 
-float tau_feedback;
-
 // Timer value for debug field
 
 uint32 timer_value;
@@ -64,7 +62,6 @@ uint32 timer_value0;
 // Device Data
 
 int32   dev_tension;                        /*!< Power supply tension.*/
-uint8   dev_pwm_limit;                      /*!< Device pwm limit. It may change during execution.*/
 int32   dev_tension_f;                      /*!< Filtered power supply tension.*/
 int32   pow_tension;                        /*!< Computed power supply tension.*/
 
@@ -78,10 +75,6 @@ CYBIT watchdog_flag;						/*!< Watchdog flag enabler.*/
 // DMA Buffer
 
 int16 ADC_buf[4];                           /*! ADC measurements buffer.*/
-
-// PWM value
-
-int8 pwm_sign;                               /*!< Sign of pwm driven. Used to obtain current sign.*/
 
 // Master mode
 uint8 master_mode;               /*!< Flag used to set/unset master mode to send messages to other boards.*/

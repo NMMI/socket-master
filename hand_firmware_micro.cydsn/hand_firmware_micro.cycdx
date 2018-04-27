@@ -1,7 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
-  <block name="timer_clock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="or_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ADC_STATUS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="ADC_STATUS_STATUS_REG" address="0x6465" bitWidth="8" desc="" hidden="false" />
+    <register name="ADC_STATUS_MASK_REG" address="0x6485" bitWidth="8" desc="" hidden="false" />
+    <register name="ADC_STATUS_STATUS_AUX_CTL_REG" address="0x6495" bitWidth="8" desc="" hidden="false">
+      <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
+        <value name="ENABLED" value="1" desc="Enable counter" />
+        <value name="DISABLED" value="0" desc="Disable counter" />
+      </field>
+      <field name="INTRENBL" from="4" to="4" access="RW" resetVal="" desc="Enables or disables the Interrupt" hidden="false">
+        <value name="ENABLED" value="1" desc="Interrupt enabled" />
+        <value name="DISABLED" value="0" desc="Interrupt disabled" />
+      </field>
+      <field name="FIFO1LEVEL" from="3" to="3" access="RW" resetVal="" desc="FIFO level" hidden="false">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO0LEVEL" from="2" to="2" access="RW" resetVal="" desc="FIFO level" hidden="false">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO1CLEAR" from="1" to="1" access="RW" resetVal="" desc="FIFO clear" hidden="false">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+      <field name="FIFO0CLEAR" from="0" to="0" access="RW" resetVal="" desc="FIFO clear" hidden="false">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+    </register>
+  </block>
+  <block name="SHIFTREG_ENC_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="bSR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  </block>
+  <block name="RESET_COUNTERS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="RESET_COUNTERS_CONTROL_REG" address="0x647B" bitWidth="8" desc="" hidden="false" />
+  </block>
+  <block name="ADC_SOC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="ADC_SOC_CONTROL_REG" address="0x6577" bitWidth="8" desc="" hidden="false" />
+  </block>
+  <block name="BasicCounter" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ADC_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="DMA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="VOLTAGE_SENSE" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="RESET_FF" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="RESET_FF_CONTROL_REG" address="0x6477" bitWidth="8" desc="" hidden="false" />
+  </block>
+  <block name="FF_STATUS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="FF_STATUS_STATUS_REG" address="0x6567" bitWidth="8" desc="" hidden="false" />
+    <register name="FF_STATUS_MASK_REG" address="0x6587" bitWidth="8" desc="" hidden="false" />
+    <register name="FF_STATUS_STATUS_AUX_CTL_REG" address="0x6597" bitWidth="8" desc="" hidden="false">
+      <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
+        <value name="ENABLED" value="1" desc="Enable counter" />
+        <value name="DISABLED" value="0" desc="Disable counter" />
+      </field>
+      <field name="INTRENBL" from="4" to="4" access="RW" resetVal="" desc="Enables or disables the Interrupt" hidden="false">
+        <value name="ENABLED" value="1" desc="Interrupt enabled" />
+        <value name="DISABLED" value="0" desc="Interrupt disabled" />
+      </field>
+      <field name="FIFO1LEVEL" from="3" to="3" access="RW" resetVal="" desc="FIFO level" hidden="false">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO0LEVEL" from="2" to="2" access="RW" resetVal="" desc="FIFO level" hidden="false">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO1CLEAR" from="1" to="1" access="RW" resetVal="" desc="FIFO clear" hidden="false">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+      <field name="FIFO0CLEAR" from="0" to="0" access="RW" resetVal="" desc="FIFO clear" hidden="false">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+    </register>
+  </block>
+  <block name="ZeroTerminal_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_srff_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ZeroTerminal_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Sync_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="MY_TIMER" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="VirtualMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -51,98 +133,9 @@
       </field>
     </register>
   </block>
-  <block name="RESET_FF" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="RESET_FF_CONTROL_REG" address="0x6476" bitWidth="8" desc="" hidden="false" />
-  </block>
-  <block name="FF_STATUS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="FF_STATUS_STATUS_REG" address="0x6566" bitWidth="8" desc="" hidden="false" />
-    <register name="FF_STATUS_MASK_REG" address="0x6586" bitWidth="8" desc="" hidden="false" />
-    <register name="FF_STATUS_STATUS_AUX_CTL_REG" address="0x6596" bitWidth="8" desc="" hidden="false">
-      <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
-        <value name="ENABLED" value="1" desc="Enable counter" />
-        <value name="DISABLED" value="0" desc="Disable counter" />
-      </field>
-      <field name="INTRENBL" from="4" to="4" access="RW" resetVal="" desc="Enables or disables the Interrupt" hidden="false">
-        <value name="ENABLED" value="1" desc="Interrupt enabled" />
-        <value name="DISABLED" value="0" desc="Interrupt disabled" />
-      </field>
-      <field name="FIFO1LEVEL" from="3" to="3" access="RW" resetVal="" desc="FIFO level" hidden="false">
-        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
-        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
-      </field>
-      <field name="FIFO0LEVEL" from="2" to="2" access="RW" resetVal="" desc="FIFO level" hidden="false">
-        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
-        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
-      </field>
-      <field name="FIFO1CLEAR" from="1" to="1" access="RW" resetVal="" desc="FIFO clear" hidden="false">
-        <value name="ENABLED" value="1" desc="Clear FIFO state" />
-        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
-      </field>
-      <field name="FIFO0CLEAR" from="0" to="0" access="RW" resetVal="" desc="FIFO clear" hidden="false">
-        <value name="ENABLED" value="1" desc="Clear FIFO state" />
-        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
-      </field>
-    </register>
-  </block>
-  <block name="RESET_COUNTERS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="RESET_COUNTERS_CONTROL_REG" address="0x647F" bitWidth="8" desc="" hidden="false" />
-  </block>
-  <block name="or_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SHIFTREG_ENC_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="bSR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  </block>
-  <block name="Sync_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="VOLTAGE_SENSE" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_srff_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="INPUT_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="CURRENT_SENSE_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="FTDI_ENABLE_REG" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="FTDI_ENABLE_REG_CONTROL_REG" address="0x647D" bitWidth="8" desc="" hidden="false" />
-  </block>
-  <block name="and_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="and_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="ZeroTerminal_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="and_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="ADC_STATUS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="ADC_STATUS_STATUS_REG" address="0x6469" bitWidth="8" desc="" hidden="false" />
-    <register name="ADC_STATUS_MASK_REG" address="0x6489" bitWidth="8" desc="" hidden="false" />
-    <register name="ADC_STATUS_STATUS_AUX_CTL_REG" address="0x6499" bitWidth="8" desc="" hidden="false">
-      <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
-        <value name="ENABLED" value="1" desc="Enable counter" />
-        <value name="DISABLED" value="0" desc="Disable counter" />
-      </field>
-      <field name="INTRENBL" from="4" to="4" access="RW" resetVal="" desc="Enables or disables the Interrupt" hidden="false">
-        <value name="ENABLED" value="1" desc="Interrupt enabled" />
-        <value name="DISABLED" value="0" desc="Interrupt disabled" />
-      </field>
-      <field name="FIFO1LEVEL" from="3" to="3" access="RW" resetVal="" desc="FIFO level" hidden="false">
-        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
-        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
-      </field>
-      <field name="FIFO0LEVEL" from="2" to="2" access="RW" resetVal="" desc="FIFO level" hidden="false">
-        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
-        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
-      </field>
-      <field name="FIFO1CLEAR" from="1" to="1" access="RW" resetVal="" desc="FIFO clear" hidden="false">
-        <value name="ENABLED" value="1" desc="Clear FIFO state" />
-        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
-      </field>
-      <field name="FIFO0CLEAR" from="0" to="0" access="RW" resetVal="" desc="FIFO clear" hidden="false">
-        <value name="ENABLED" value="1" desc="Clear FIFO state" />
-        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
-      </field>
-    </register>
-  </block>
-  <block name="LED_CTRL" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="LED_CTRL_CONTROL_REG" address="0x6478" bitWidth="8" desc="" hidden="false" />
-  </block>
+  <block name="timer_clock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="or_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="LED_BLINK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="vmTC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -151,13 +144,13 @@
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="PWMUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="LED_BLINK_COMPARE_Reg_" address="0x6423" bitWidth="8" desc="UDB.D0 - Assigned Compare Value" hidden="false" />
-    <register name="LED_BLINK_Control_Reg" address="0x647C" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+    <register name="LED_BLINK_COMPARE_Reg_" address="0x6524" bitWidth="8" desc="UDB.D0 - Assigned Compare Value" hidden="false" />
+    <register name="LED_BLINK_Control_Reg" address="0x657A" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the PWM" hidden="false" />
       <field name="CTRL_CMPMODE2" from="5" to="3" access="RW" resetVal="" desc="Compare mode 2" hidden="false" />
       <field name="CTRL_CMPMODE1" from="2" to="0" access="RW" resetVal="" desc="Compare mode 1" hidden="false" />
     </register>
-    <register name="LED_BLINK_STATUS_AUX_CTRL" address="0x6493" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
+    <register name="LED_BLINK_STATUS_AUX_CTRL" address="0x6594" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -184,36 +177,78 @@
       </field>
     </register>
   </block>
-  <block name="and_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="BOARD_LED" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="LED_CTRL" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="LED_CTRL_CONTROL_REG" address="0x6575" bitWidth="8" desc="" hidden="false" />
+  </block>
   <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="CLOCK_PWM_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="LED_BLINK_EN" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="LED_BLINK_EN_CONTROL_REG" address="0x647B" bitWidth="8" desc="" hidden="false" />
+    <register name="LED_BLINK_EN_CONTROL_REG" address="0x6574" bitWidth="8" desc="" hidden="false" />
   </block>
-  <block name="or_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="BasicCounter" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="CLOCK_PWM_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="BOARD_LED" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="AMuxHw" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Sync_ADC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="ADC_SOC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="ADC_SOC_CONTROL_REG" address="0x6577" bitWidth="8" desc="" hidden="false" />
-  </block>
-  <block name="ADC_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="DMA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="DigitalComp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="or_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="and_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_srff_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_srff_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Sync_ADC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="DigitalComp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="AMuxHw" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="RS485_RX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="timer_clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="INPUT_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="RS485_TX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Signal_1_C" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="MOTOR_1B" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="MOTOR_2B" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cydff_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="COUNTER_ENC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="TC_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vmEnableMode" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="CounterUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="int_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="COUNTER_ENC_COUNTER" address="0x640B" bitWidth="8" desc="UDB.A0 - Current Counter Value" hidden="false" />
+    <register name="COUNTER_ENC_PERIOD" address="0x642B" bitWidth="8" desc="UDB.D0 - Assigned Period" hidden="false" />
+    <register name="COUNTER_ENC_COMPARE" address="0x643B" bitWidth="8" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
+    <register name="COUNTER_ENC_Control_Reg" address="0x6478" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+      <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable Counter" hidden="false" />
+      <field name="CTRL_CAPMODE" from="4" to="3" access="RW" resetVal="" desc="Capture mode" hidden="false" />
+      <field name="CTRL_CMPMODE" from="2" to="0" access="RW" resetVal="" desc="Compare mode" hidden="false" />
+    </register>
+    <register name="COUNTER_ENC_STATUS_MASK" address="0x648B" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
+      <field name="COUNTER_STS_CMP" from="0" to="0" access="RW" resetVal="" desc="Compare output status" hidden="false" />
+      <field name="COUNTER_STS_A0ZERO" from="1" to="1" access="RW" resetVal="" desc="A0 Zero ouput status" hidden="false" />
+      <field name="COUNTER_STS_OVERFLOW" from="2" to="2" access="RW" resetVal="" desc="Overflow status " hidden="false" />
+      <field name="COUNTER_STS_UNDERFLOW" from="3" to="3" access="RW" resetVal="" desc="Underflow status " hidden="false" />
+      <field name="COUNTER_STS_CAPTURE" from="4" to="4" access="RW" resetVal="" desc="Capture Status" hidden="false" />
+      <field name="COUNTER_STS_FIFO_FULL" from="5" to="5" access="RW" resetVal="" desc="FIFO Full Status " hidden="false" />
+      <field name="COUNTER_STS_FIFO_NEMPTY" from="6" to="6" access="RW" resetVal="" desc="FIFO Not Empty Status " hidden="false" />
+    </register>
+    <register name="COUNTER_ENC_STATUS_AUX_CTRL" address="0x649B" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
+      <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
+        <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
+        <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
+      </field>
+      <field name="FIFO1_CLR" from="1" to="1" access="RW" resetVal="" desc="FIFO1 clear" hidden="false">
+        <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
+        <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
+      </field>
+      <field name="FIFO0_LVL" from="2" to="2" access="RW" resetVal="" desc="FIFO level" hidden="false">
+        <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+        <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+      </field>
+      <field name="FIFO1_LVL" from="3" to="3" access="RW" resetVal="" desc="FIFO level" hidden="false">
+        <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+        <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+      </field>
+      <field name="INT_EN" from="4" to="4" access="RW" resetVal="" desc="" hidden="false">
+        <value name="E_INT_EN0" value="0" desc="Interrupt disabled" />
+        <value name="E_INT_EN1" value="1" desc="Interrupt enabled" />
+      </field>
+      <field name="CNT_START" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
+        <value name="E_CNT_START0" value="0" desc="Disable counter" />
+        <value name="E_CNT_START1" value="1" desc="Enable counter" />
+      </field>
+    </register>
+  </block>
   <block name="PACER_TIMER" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="VirtualMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -275,11 +310,11 @@
     <block name="RXInternalInterrupt" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="BUART" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="RX_UART_RS485_RX_ADDRESS1" address="0x6422" bitWidth="8" desc="RX Address1 Register" hidden="false" />
-    <register name="RX_UART_RS485_RX_ADDRESS2" address="0x6432" bitWidth="8" desc="RX Address2 Register" hidden="false" />
-    <register name="RX_UART_RS485_RX_DATA" address="0x6442" bitWidth="8" desc="RX Data Register" hidden="false" />
-    <register name="TX_UART_RS485_TX_DATA" address="0x644C" bitWidth="8" desc="TX Data Register" hidden="false" />
-    <register name="RX_UART_RS485_RX_STATUS" address="0x6461" bitWidth="8" desc="RX status register" hidden="false">
+    <register name="RX_UART_RS485_RX_ADDRESS1" address="0x6420" bitWidth="8" desc="RX Address1 Register" hidden="false" />
+    <register name="RX_UART_RS485_RX_ADDRESS2" address="0x6430" bitWidth="8" desc="RX Address2 Register" hidden="false" />
+    <register name="RX_UART_RS485_RX_DATA" address="0x6440" bitWidth="8" desc="RX Data Register" hidden="false" />
+    <register name="TX_UART_RS485_TX_DATA" address="0x6447" bitWidth="8" desc="TX Data Register" hidden="false" />
+    <register name="RX_UART_RS485_RX_STATUS" address="0x6463" bitWidth="8" desc="RX status register" hidden="false">
       <field name="UART_RS485_RX_STS_MRKSPC" from="0" to="0" access="R" resetVal="" desc="" hidden="false" />
       <field name="UART_RS485_RX_STS_BREAK" from="1" to="1" access="R" resetVal="" desc="" hidden="false" />
       <field name="UART_RS485_RX_STS_PAR_ERROR" from="2" to="2" access="R" resetVal="" desc="" hidden="false" />
@@ -288,69 +323,35 @@
       <field name="UART_RS485_RX_STS_FIFO_NOTEMPTY" from="5" to="5" access="R" resetVal="" desc="" hidden="false" />
       <field name="UART_RS485_RX_STS_ADDR_MATCH" from="6" to="6" access="R" resetVal="" desc="" hidden="false" />
     </register>
-    <register name="TX_UART_RS485_TX_STATUS" address="0x6463" bitWidth="8" desc="TX status register" hidden="false">
+    <register name="TX_UART_RS485_TX_STATUS" address="0x6467" bitWidth="8" desc="TX status register" hidden="false">
       <field name="UART_RS485_TX_STS_COMPLETE" from="0" to="0" access="R" resetVal="" desc="" hidden="false" />
       <field name="UART_RS485_TX_STS_FIFO_EMPTY" from="1" to="1" access="R" resetVal="" desc="" hidden="false" />
       <field name="UART_RS485_TX_STS_FIFO_FULL" from="2" to="2" access="R" resetVal="" desc="" hidden="false" />
       <field name="UART_RS485_TX_STS_FIFO_NOT_FULL" from="3" to="3" access="R" resetVal="" desc="" hidden="false" />
     </register>
   </block>
-  <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="MOTOR_2A" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="CLOCK_UART" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="and_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="MOTOR_1A" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="MOTOR_EN" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWM_MOTORS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="vmTC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="FFKillMux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="not_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SHIFTREG_ENC_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="PWMUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="PWM_MOTORS__COMPARE1" address="0x642B" bitWidth="8" desc="UDB.D0 - Assigned Compare1 Value" hidden="false" />
-    <register name="PWM_MOTORS__COMPARE2" address="0x643B" bitWidth="8" desc="UDB.D1 - Assigned Compare2 Value" hidden="false" />
-    <register name="PWM_MOTORS_STATUS_AUX_CTRL" address="0x649B" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
-      <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
-        <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
-        <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
-      </field>
-      <field name="FIFO1_CLR" from="1" to="1" access="RW" resetVal="" desc="FIFO1 clear" hidden="false">
-        <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
-        <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
-      </field>
-      <field name="FIFO0_LVL" from="2" to="2" access="RW" resetVal="" desc="FIFO level" hidden="false">
-        <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
-        <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
-      </field>
-      <field name="FIFO1_LVL" from="3" to="3" access="RW" resetVal="" desc="FIFO level" hidden="false">
-        <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
-        <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
-      </field>
-      <field name="INT_EN" from="4" to="4" access="RW" resetVal="" desc="" hidden="false">
-        <value name="E_INT_EN0" value="0" desc="Interrupt disabled" />
-        <value name="E_INT_EN1" value="1" desc="Interrupt enabled" />
-      </field>
-      <field name="CNT_START" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
-        <value name="E_CNT_START0" value="0" desc="Disable counter" />
-        <value name="E_CNT_START1" value="1" desc="Enable counter" />
-      </field>
-    </register>
-    <register name="PWM_MOTORS_Control_Reg" address="0x6579" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
-      <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the PWM" hidden="false" />
-      <field name="CTRL_CMPMODE2" from="5" to="3" access="RW" resetVal="" desc="Compare mode 2" hidden="false" />
-      <field name="CTRL_CMPMODE1" from="2" to="0" access="RW" resetVal="" desc="Compare mode 1" hidden="false" />
-    </register>
+    <block name="bSR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   </block>
-  <block name="CLOCK_PWM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="RS_485_EN" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="ISR_RS485_RX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="CLOCK_ENCODERS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="timer_clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="MOTOR_DIR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="MOTOR_DIR_CONTROL_REG" address="0x6578" bitWidth="8" desc="" hidden="false" />
+  <block name="RS_485_EN" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="CLOCK_UART" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ISR_RS485_RX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="INPUT_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="RS485_RX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="RS485_TX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Signal_1_C" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="not_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="RS485_CTS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="RS485_CTS_CONTROL_REG" address="0x6578" bitWidth="8" desc="" hidden="false" />
   </block>
-  <block name="Signal_1_B" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ADC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="cy_analog_virtualmux_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="cy_analog_noconnect_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1172,89 +1173,25 @@
       </field>
     </register>
   </block>
-  <block name="FTDI_ENABLE" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="EEPROM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="USB_VDD" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Bootloadable" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="MOTOR_ON_OFF" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="MOTOR_ON_OFF_CONTROL_REG" address="0x657A" bitWidth="8" desc="" hidden="false" />
-  </block>
-  <block name="RS485_CTS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="RS485_CTS_CONTROL_REG" address="0x6474" bitWidth="8" desc="" hidden="false" />
-  </block>
   <block name="Signal_1_A" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="INPUT_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="CURRENT_SENSE_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Bootloadable" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="FTDI_ENABLE_REG" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="FTDI_ENABLE_REG_CONTROL_REG" address="0x6479" bitWidth="8" desc="" hidden="false" />
+  </block>
+  <block name="Signal_1_B" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="not_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cydff_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ZeroTerminal_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="USB_VDD" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="FTDI_ENABLE" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SHIFTREG_ENC_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="bSR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   </block>
-  <block name="CLOCK_ENCODERS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SHIFTREG_ENC_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="bSR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  </block>
-  <block name="cydff_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="COUNTER_ENC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="TC_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="vmEnableMode" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="CounterUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="int_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="COUNTER_ENC_COUNTER" address="0x640F" bitWidth="8" desc="UDB.A0 - Current Counter Value" hidden="false" />
-    <register name="COUNTER_ENC_PERIOD" address="0x642F" bitWidth="8" desc="UDB.D0 - Assigned Period" hidden="false" />
-    <register name="COUNTER_ENC_COMPARE" address="0x643F" bitWidth="8" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
-    <register name="COUNTER_ENC_Control_Reg" address="0x647E" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
-      <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable Counter" hidden="false" />
-      <field name="CTRL_CAPMODE" from="4" to="3" access="RW" resetVal="" desc="Capture mode" hidden="false" />
-      <field name="CTRL_CMPMODE" from="2" to="0" access="RW" resetVal="" desc="Compare mode" hidden="false" />
-    </register>
-    <register name="COUNTER_ENC_STATUS_MASK" address="0x648F" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
-      <field name="COUNTER_STS_CMP" from="0" to="0" access="RW" resetVal="" desc="Compare output status" hidden="false" />
-      <field name="COUNTER_STS_A0ZERO" from="1" to="1" access="RW" resetVal="" desc="A0 Zero ouput status" hidden="false" />
-      <field name="COUNTER_STS_OVERFLOW" from="2" to="2" access="RW" resetVal="" desc="Overflow status " hidden="false" />
-      <field name="COUNTER_STS_UNDERFLOW" from="3" to="3" access="RW" resetVal="" desc="Underflow status " hidden="false" />
-      <field name="COUNTER_STS_CAPTURE" from="4" to="4" access="RW" resetVal="" desc="Capture Status" hidden="false" />
-      <field name="COUNTER_STS_FIFO_FULL" from="5" to="5" access="RW" resetVal="" desc="FIFO Full Status " hidden="false" />
-      <field name="COUNTER_STS_FIFO_NEMPTY" from="6" to="6" access="RW" resetVal="" desc="FIFO Not Empty Status " hidden="false" />
-    </register>
-    <register name="COUNTER_ENC_STATUS_AUX_CTRL" address="0x649F" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
-      <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
-        <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
-        <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
-      </field>
-      <field name="FIFO1_CLR" from="1" to="1" access="RW" resetVal="" desc="FIFO1 clear" hidden="false">
-        <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
-        <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
-      </field>
-      <field name="FIFO0_LVL" from="2" to="2" access="RW" resetVal="" desc="FIFO level" hidden="false">
-        <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
-        <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
-      </field>
-      <field name="FIFO1_LVL" from="3" to="3" access="RW" resetVal="" desc="FIFO level" hidden="false">
-        <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
-        <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
-      </field>
-      <field name="INT_EN" from="4" to="4" access="RW" resetVal="" desc="" hidden="false">
-        <value name="E_INT_EN0" value="0" desc="Interrupt disabled" />
-        <value name="E_INT_EN1" value="1" desc="Interrupt enabled" />
-      </field>
-      <field name="CNT_START" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
-        <value name="E_CNT_START0" value="0" desc="Disable counter" />
-        <value name="E_CNT_START1" value="1" desc="Enable counter" />
-      </field>
-    </register>
-  </block>
-  <block name="not_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="ZeroTerminal_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cydff_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="EEPROM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
 </blockRegMap>

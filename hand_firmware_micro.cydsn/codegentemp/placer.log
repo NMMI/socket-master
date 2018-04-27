@@ -6,7 +6,7 @@
 
 #Build Date:         Dec  5 2017 15:35:27
 
-#File Generated:     Apr 20 2018 09:52:42
+#File Generated:     Apr 27 2018 14:39:16
 
 #Purpose:            
 
@@ -44,18 +44,18 @@ Phase 2
 Phase 3
 
 Design Statistics after Packing
-    Number of Combinational MCs 	:	21
-    Number of Sequential MCs    	:	38
-    Number of DPs               	:	18
-    Number of Controls          	:	17
+    Number of Combinational MCs 	:	15
+    Number of Sequential MCs    	:	35
+    Number of DPs               	:	17
+    Number of Controls          	:	14
     Number of Status            	:	9
     Number of SyncCells         	:	4
     Number of count7cells       	:	1
 
 Device Utilization Summary after Packing
-    Macrocells                  :	59/192
-    UDBS                        :	20/24
-    IOs                         :	19/72
+    Macrocells                  :	50/192
+    UDBS                        :	19/24
+    IOs                         :	13/72
 
 
 D2088: Phase 3, elapsed time : 0.0 (sec)
@@ -79,16 +79,15 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 16
+Number of clocks: 15
 Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_theACLK          | Frequency: N/A       | Target:   2.2 MHz
 Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
-Clock: CLOCK_ENCODERS       | Frequency:  33.2 MHz | Target:   0.2 MHz
-Clock: CLOCK_PWM            | Frequency:  76.9 MHz | Target:   2.0 MHz
-Clock: CLOCK_PWM_1          | Frequency:  59.8 MHz | Target:   0.0 MHz
-Clock: CLOCK_UART           | Frequency:  52.3 MHz | Target:  16.0 MHz
-Clock: CyBUS_CLK            | Frequency:  43.3 MHz | Target:  48.0 MHz
+Clock: CLOCK_ENCODERS       | Frequency:  30.0 MHz | Target:   0.2 MHz
+Clock: CLOCK_PWM_1          | Frequency:  76.9 MHz | Target:   0.0 MHz
+Clock: CLOCK_UART           | Frequency:  49.4 MHz | Target:  16.0 MHz
+Clock: CyBUS_CLK            | Frequency:  40.4 MHz | Target:  48.0 MHz
 Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
@@ -107,16 +106,15 @@ Phase 7
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 16
+Number of clocks: 15
 Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_theACLK          | Frequency: N/A       | Target:   2.2 MHz
 Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
-Clock: CLOCK_ENCODERS       | Frequency:   2.2 MHz | Target:   0.2 MHz
-Clock: CLOCK_PWM            | Frequency:  76.9 MHz | Target:   2.0 MHz
-Clock: CLOCK_PWM_1          | Frequency:   7.4 MHz | Target:   0.0 MHz
-Clock: CLOCK_UART           | Frequency:  43.6 MHz | Target:  16.0 MHz
-Clock: CyBUS_CLK            | Frequency:   2.7 MHz | Target:  48.0 MHz
+Clock: CLOCK_ENCODERS       | Frequency:  37.2 MHz | Target:   0.2 MHz
+Clock: CLOCK_PWM_1          | Frequency:  76.9 MHz | Target:   0.0 MHz
+Clock: CLOCK_UART           | Frequency:  45.9 MHz | Target:  16.0 MHz
+Clock: CyBUS_CLK            | Frequency:  54.3 MHz | Target:  48.0 MHz
 Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
@@ -128,21 +126,21 @@ Clock: timer_clock          | Frequency:  38.2 MHz | Target:   1.0 MHz
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 1.5 (sec)
+D2088: Phase 7, elapsed time : 1.1 (sec)
 
 Final Design Statistics
-    Number of Combinational MCs 	:	21
-    Number of Sequential MCs    	:	38
-    Number of DPs               	:	18
-    Number of Controls          	:	17
+    Number of Combinational MCs 	:	15
+    Number of Sequential MCs    	:	35
+    Number of DPs               	:	17
+    Number of Controls          	:	14
     Number of Status            	:	9
     Number of SyncCells         	:	4
     Number of count7cells       	:	1
-    Number of IOs       	:	19
+    Number of IOs       	:	13
 
 Device Utilization Summary
-    Macrocells                  :	59/192
-    IOs                         :	19/72
+    Macrocells                  :	50/192
+    IOs                         :	13/72
 
 
 
@@ -158,15 +156,14 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 16
+Number of clocks: 15
 Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_theACLK          | Frequency: N/A       | Target:   2.2 MHz
 Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
 Clock: CLOCK_ENCODERS       | Frequency:   2.5 MHz | Target:   0.2 MHz
-Clock: CLOCK_PWM            | Frequency:  72.9 MHz | Target:   2.0 MHz
 Clock: CLOCK_PWM_1          | Frequency:   7.4 MHz | Target:   0.0 MHz
-Clock: CLOCK_UART           | Frequency:  45.1 MHz | Target:  16.0 MHz
+Clock: CLOCK_UART           | Frequency:  44.4 MHz | Target:  16.0 MHz
 Clock: CyBUS_CLK            | Frequency:   2.7 MHz | Target:  48.0 MHz
 Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
@@ -185,5 +182,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 2.3 sec.
+I2076: Total run-time: 1.8 sec.
 

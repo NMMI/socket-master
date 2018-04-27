@@ -55,48 +55,12 @@
 //==============================================================================
 // Processing RS-485 data frame:
 //
-// - 0:     Waits for beggining characters
+// - 0:     Waits for beginning characters
 // - 1:     Waits for ID;
 // - 2:     Data length;
 // - 3:     Receive all bytes;
 // - 4:     Wait for another device end of transmission;
 //
-//==============================================================================
-
-// PWM values needed to obtain 11.5 V given a certain input tension
-// Numbers are sperimentally calculated //[index] (millivolts)
-static const uint8 pwm_preload_values[29] = {100,    //0 (11500)
-                                              83,
-                                              78,
-                                              76,
-                                              74,
-                                              72,    //5 (14000)
-                                              70,
-                                              68,
-                                              67,
-                                              65,
-                                              64,    //10 (16500)
-                                              63,
-                                              62,
-                                              61,
-                                              60,
-                                              59,    //15 (19000)
-                                              58,
-                                              57,
-                                              56,
-                                              56,
-                                              55,    //20 (21500)
-                                              54,
-                                              54,
-                                              53,
-                                              52,
-                                              52,    //25 (24000)
-                                              52,
-                                              51,
-                                              51};   //28 (25500)
-
-//==============================================================================
-//                                                            RS485 RX INTERRUPT
 //==============================================================================
 
 CY_ISR(ISR_RS485_RX_ExInterrupt) {
@@ -443,26 +407,12 @@ void function_scheduler(void) {
 
 void motor_control() {
 
-    int32 CYDATA pwm_input = 0;
-
-    int32 CYDATA pos_error;         // position error
     int32 CYDATA handle_value;
 
     int32 CYDATA err_emg_1, err_emg_2;
     float CYDATA joy_perc;
-	
-    int32 CYDATA k_p = c_mem.k_p;  
-    int32 CYDATA k_i = c_mem.k_i; 
-    int32 CYDATA k_d = c_mem.k_d; 
 
     // Static Variables
-
-    static int32 pos_error_sum;     // position error sum for integral
- 
-    static int32 prev_pos_err;      // previous position error for deriv. control
-
-    static CYBIT motor_dir = FALSE;
-
     static uint8 current_emg = 0;   // 0 NONE
                                     // 1 EMG 1
                                     // 2 EMG 2
@@ -635,62 +585,6 @@ void motor_control() {
             }
         }
     }
-    
-    // ============================== POSITION CONTROL =====================
-    pos_error = g_ref.pos[0] - g_meas.pos[0];
-
-    pos_error_sum += pos_error;
-
-    // anti-windup (for integral control)
-    if (pos_error_sum > ANTI_WINDUP) {
-        pos_error_sum = ANTI_WINDUP;
-    } else if (pos_error_sum < -ANTI_WINDUP) {
-        pos_error_sum = -ANTI_WINDUP;
-    }
-
-    // Proportional
-    if (k_p != 0) 
-        pwm_input = (int32)(k_p * pos_error) >> 16;
-    
-
-    // Integral
-    if (k_i != 0) 
-        pwm_input += (int32)(k_i * pos_error_sum) >> 16;
-    
-
-    // Derivative
-    if (k_d != 0) 
-        pwm_input += (int32)(k_d * (pos_error - prev_pos_err)) >> 16;
-    
-
-    // Update measure
-    prev_pos_err = pos_error;
-
-    if (pwm_input > 0)
-        motor_dir = TRUE;
-    else
-        motor_dir = FALSE;
-
-
-    ////////////////////////////////////////////////////////////////////////////
-
-    if(pwm_input >  PWM_MAX_VALUE) 
-        pwm_input =  PWM_MAX_VALUE;
-    if(pwm_input < -PWM_MAX_VALUE) 
-        pwm_input = -PWM_MAX_VALUE;
-
-
-    pwm_input = (((pwm_input << 10) / PWM_MAX_VALUE) * dev_pwm_limit) >> 10;
-    
-
-    pwm_sign = SIGN(pwm_input);
-
-    if (motor_dir)
-        MOTOR_DIR_Write(0x01);
-    else
-        MOTOR_DIR_Write(0x00);
-
-    PWM_MOTORS_WriteCompare1(abs(pwm_input));
 }
 
 //==============================================================================
@@ -714,9 +608,6 @@ void encoder_reading(const uint8 idx) {
     static uint8 error[NUM_OF_SENSORS];
     
     static CYBIT only_first_time = TRUE;
-
-    static uint8 one_time_execute = 0;
-    static CYBIT pos_reconstruct = FALSE;
 
     static int32 v_value[NUM_OF_SENSORS];   //last value for velocity
     static int32 vv_value[NUM_OF_SENSORS];  //last last value for velocity
@@ -854,24 +745,6 @@ void encoder_reading(const uint8 idx) {
     aaa_value[index] = aa_value[index];
     aa_value[index] = a_value[index];
     a_value[index] = speed_encoder;
-
-
-    // wait at least 3 * max_num_of_error (10) + 5 = 35 cycles to reconstruct the right turn
-    if (pos_reconstruct == FALSE){
-        if (one_time_execute < 34) 
-            one_time_execute++;
-        else {
-            //Double encoder translation
-            g_meas.pos[0] += (int32) g_meas.rot[0] << 16;
-
-            // If necessary activate motors
-            g_refNew.pos[0] = g_meas.pos[0];
-
-            MOTOR_ON_OFF_Write(g_ref.onoff);
-            
-            pos_reconstruct = TRUE;
-        }
-    }
 }
 
 //==============================================================================
@@ -967,9 +840,6 @@ void analog_read_end() {
             count2 = count2 + 1;
             dev_tension_f = filter_voltage(dev_tension);
         }
-
-        if(g_mem.activate_pwm_rescaling)        //pwm rescaling is activated
-            pwm_limit_search();                 //only for 12V motors
 
         // Check Interrupt 
     
@@ -1345,8 +1215,6 @@ void analog_read_end() {
                             (c_mem.input_mode == INPUT_MODE_EMG_FCFS_ADV)) {
                             g_ref.pos[0] = g_meas.pos[0];
                             g_ref.pos[1] = g_meas.pos[1];
-                            g_ref.onoff = c_mem.activ;
-                            MOTOR_ON_OFF_Write(g_ref.onoff);
                         }
                             
                         emg_2_status = NORMAL;           // goto normal execution
@@ -1388,8 +1256,6 @@ void analog_read_end() {
                 (c_mem.input_mode == INPUT_MODE_EMG_INTEGRAL) ||
                 (c_mem.input_mode == INPUT_MODE_EMG_FCFS) ||
                 (c_mem.input_mode == INPUT_MODE_EMG_FCFS_ADV)) {
-                g_ref.onoff = 0x00;
-                MOTOR_ON_OFF_Write(g_ref.onoff);
             }
         }
 
@@ -1432,34 +1298,12 @@ void analog_read_end() {
                 
                 master_mode = 0;        // exit from master mode
             }
-            else {
-                g_refNew.onoff = 0x00;
-                MOTOR_ON_OFF_Write(g_refNew.onoff); // Deactivate motors
-            }
         }
     }
         
     if (interrupt_flag){
         interrupt_flag = FALSE;
         interrupt_manager();
-    }
-}
-
-//==============================================================================
-//                                                              PWM_LIMIT_SEARCH
-//==============================================================================
-
-void pwm_limit_search() {
-
-    uint8 CYDATA index;
-
-    if (dev_tension > 25500) {
-        dev_pwm_limit = 0;
-    } else if (dev_tension < 11500) {
-        dev_pwm_limit = 100;
-    } else {
-        index = (uint8)((dev_tension - 11500) >> 9);
-        dev_pwm_limit = pwm_preload_values[index];
     }
 }
 

@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   GLOBALS                                                               04/20/2018 10:00:43 PAGE 1   
+C51 COMPILER V9.51   GLOBALS                                                               04/27/2018 15:24:27 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE GLOBALS
@@ -62,56 +62,49 @@ line level    source
   50          
   51          struct st_ref   g_ref, g_refNew, g_refOld;  // Motor variables.
   52          struct st_meas  g_meas, g_measOld;          // Measurements.
-C51 COMPILER V9.51   GLOBALS                                                               04/20/2018 10:00:43 PAGE 2   
+C51 COMPILER V9.51   GLOBALS                                                               04/27/2018 15:24:27 PAGE 2   
 
   53          struct st_data  g_rx;                       // Income data.
   54          struct st_mem   g_mem, c_mem;               // Memory variables.
   55          struct st_calib calib;                                          // Calibration variables.
   56          
-  57          float tau_feedback;
+  57          // Timer value for debug field
   58          
-  59          // Timer value for debug field
-  60          
-  61          uint32 timer_value;
-  62          uint32 timer_value0;
+  59          uint32 timer_value;
+  60          uint32 timer_value0;
+  61          
+  62          // Device Data
   63          
-  64          // Device Data
-  65          
-  66          int32   dev_tension;                        /*!< Power supply tension.*/
-  67          uint8   dev_pwm_limit;                      /*!< Device pwm limit. It may change during execution.*/
-  68          int32   dev_tension_f;                      /*!< Filtered power supply tension.*/
-  69          int32   pow_tension;                        /*!< Computed power supply tension.*/
-  70          
-  71          // Bit Flag
-  72          
-  73          CYBIT reset_last_value_flag;                /*!< This flag is set when the encoders last values must be re
+  64          int32   dev_tension;                        /*!< Power supply tension.*/
+  65          int32   dev_tension_f;                      /*!< Filtered power supply tension.*/
+  66          int32   pow_tension;                        /*!< Computed power supply tension.*/
+  67          
+  68          // Bit Flag
+  69          
+  70          CYBIT reset_last_value_flag;                /*!< This flag is set when the encoders last values must be re
              -setted.*/
-  74          CYBIT tension_valid;                        /*!< Tension validation bit.*/
-  75          CYBIT interrupt_flag = FALSE;               /*!< Interrupt flag enabler.*/
-  76          CYBIT watchdog_flag;                                            /*!< Watchdog flag enabler.*/
-  77          
-  78          // DMA Buffer
-  79          
-  80          int16 ADC_buf[4];                           /*! ADC measurements buffer.*/
-  81          
-  82          // PWM value
-  83          
-  84          int8 pwm_sign;                               /*!< Sign of pwm driven. Used to obtain current sign.*/
-  85          
-  86          // Master mode
-  87          uint8 master_mode;               /*!< Flag used to set/unset master mode to send messages to other boards.
+  71          CYBIT tension_valid;                        /*!< Tension validation bit.*/
+  72          CYBIT interrupt_flag = FALSE;               /*!< Interrupt flag enabler.*/
+  73          CYBIT watchdog_flag;                                            /*!< Watchdog flag enabler.*/
+  74          
+  75          // DMA Buffer
+  76          
+  77          int16 ADC_buf[4];                           /*! ADC measurements buffer.*/
+  78          
+  79          // Master mode
+  80          uint8 master_mode;               /*!< Flag used to set/unset master mode to send messages to other boards.
              -*/
-  88          uint32 count_tension_valid;
-  89          uint8 first_tension_valid;
-  90          
-  91          uint8 rest_enabled;                                 /*!< Rest position flag.*/
-  92          uint8 forced_open;                  /*!< Forced open flag (used in position with rest position control).*/
-  93          int32 rest_pos_curr_ref;                /*!< Rest position current reference.*/
-  94          int32 SH_current_position;          /*!< SoftHand current position (used with proprioception devices).*/
-  95          int32 curr_pos_res;
-  96          
-  97          /* END OF FILE */
-C51 COMPILER V9.51   GLOBALS                                                               04/20/2018 10:00:43 PAGE 3   
+  81          uint32 count_tension_valid;
+  82          uint8 first_tension_valid;
+  83          
+  84          uint8 rest_enabled;                                 /*!< Rest position flag.*/
+  85          uint8 forced_open;                  /*!< Forced open flag (used in position with rest position control).*/
+  86          int32 rest_pos_curr_ref;                /*!< Rest position current reference.*/
+  87          int32 SH_current_position;          /*!< SoftHand current position (used with proprioception devices).*/
+  88          int32 curr_pos_res;
+  89          
+  90          /* END OF FILE */
+C51 COMPILER V9.51   GLOBALS                                                               04/27/2018 15:24:27 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -121,7 +114,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =   ----    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =    622    ----
+   XDATA SIZE       =    535    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

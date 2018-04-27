@@ -210,13 +210,6 @@ enum qbmove_input_mode
     INPUT_MODE_JOYSTICK         = 6     ///< Joystick input mode
 };
 
-//======================================================== motor supply voltage values
-
-enum motor_supply_tipe {
-    MAXON_24V               = 0,
-    MAXON_12V               = 1
-};
-
 enum acknowledgment_values
 {
     ACK_ERROR           = 0,
