@@ -1159,8 +1159,8 @@ int32 commReadMeasFromSH()
         }
 
         t_end = (uint32) MY_TIMER_ReadCounter();
-        if((t_start - t_end) > 4500000){            // 4.5 s timeout
-            master_mode = 0;                        // exit from master mode
+        if((t_start - t_end) > 10000000){            // 4.5 s timeout
+        //    master_mode = 0;                        // exit from master mode
             break;
         }
     }
@@ -1201,7 +1201,7 @@ int16 commReadResCurrFromSH()
 
         t_end = (uint32) MY_TIMER_ReadCounter();
         if((t_start - t_end) > 10000000){            // 4.5 s timeout
-            master_mode = 0;
+        //    master_mode = 0;
             break;
         }
     }

@@ -376,52 +376,6 @@
 <VisibleNodeIds>
 <v>firmware</v>
 <v>firmware\hand_firmware_micro</v>
-<v>firmware\hand_firmware_micro\DP8051</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug\hand_firmware_micro.cyacd</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug\hand_firmware_micro.elf</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug\hand_firmware_micro.hex</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug\hand_firmware_micro.map</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_AMux.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_Ext_CP_Clk.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_INT.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_IRQ.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_PM.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_SOC.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_SOC_PM.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_STATUS.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_theACLK.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\BOARD_LED.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\Bootloadable.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CLOCK_ENCODERS.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CLOCK_PWM_1.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CLOCK_UART.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\command_processing.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\COUNTER_ENC.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\COUNTER_ENC_PM.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CURRENT_SENSE_1.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\cy_em_eeprom.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CyBootAsmKeil.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CyDmac.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\cyfitter_cfg.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CyFlash.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CyLib.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\cymem.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\cyPm.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\CySpc.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\cyutils.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\DMA_dma.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\EEPROM.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FF_STATUS.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FTDI_ENABLE.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FTDI_ENABLE_REG.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\FTDI_ENABLE_REG_PM.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\globals.lst</v>
-<v>firmware\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\INPUT_1.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -546,7 +500,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="1583, 675" SelectedTabbedMdiWindow="c5030a0e-d0b6-4e17-be48-3b4bfaf2025b"><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\command_processing.c" Guid="c5030a0e-d0b6-4e17-be48-3b4bfaf2025b" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\globals.h" Guid="131738c3-2ed0-4cb1-87a4-00a55910dd37" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\globals.c" Guid="142f66d9-0bd9-425c-9350-4a6010fe27d4" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\interruptions.c" Guid="08c50b26-99cb-42dc-a360-3b3e7ffde2da" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\main.c" Guid="517a1b2f-61a1-4108-9b59-6a01120df1d3" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\utils.c" Guid="9be57a7a-dfba-47c4-aa36-5f67e6d83636" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\command_processing.h" Guid="d0283962-fdf1-4150-8da2-15edf11163a5" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\commands.h" Guid="cdbb2c07-7002-42b3-886b-26eabe5ce80d" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\interruptions.h" Guid="9940bafb-b212-49e9-b27a-55d6562ec798" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\TopDesign\TopDesign.cysch" Guid="bfbadac8-5490-41a4-865b-85f0b09b6ff1" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\hand_firmware_micro.cydwr" Guid="019a819c-e9a5-45c0-ba73-fd8502a5319f" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="1583, 639" SelectedTabbedMdiWindow="9be57a7a-dfba-47c4-aa36-5f67e6d83636"><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\command_processing.c" Guid="c5030a0e-d0b6-4e17-be48-3b4bfaf2025b" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\globals.h" Guid="131738c3-2ed0-4cb1-87a4-00a55910dd37" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\globals.c" Guid="142f66d9-0bd9-425c-9350-4a6010fe27d4" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\interruptions.c" Guid="08c50b26-99cb-42dc-a360-3b3e7ffde2da" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\main.c" Guid="517a1b2f-61a1-4108-9b59-6a01120df1d3" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\utils.c" Guid="9be57a7a-dfba-47c4-aa36-5f67e6d83636" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\command_processing.h" Guid="d0283962-fdf1-4150-8da2-15edf11163a5" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\commands.h" Guid="cdbb2c07-7002-42b3-886b-26eabe5ce80d" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\interruptions.h" Guid="9940bafb-b212-49e9-b27a-55d6562ec798" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\TopDesign\TopDesign.cysch" Guid="bfbadac8-5490-41a4-865b-85f0b09b6ff1" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\hand_firmware_micro.cydwr" Guid="019a819c-e9a5-45c0-ba73-fd8502a5319f" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="Release" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

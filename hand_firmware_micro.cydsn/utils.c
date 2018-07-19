@@ -329,7 +329,6 @@ void check_rest_position(void) {     // 100 Hz frequency.
     static int32 delta_inc = 0;
     int32 curr_pos = 0;
     static int32 rest_error;
-    int32 handle_value = 0;
     float rest_vel_ticks_ms = ((float)g_mem.rest_vel)/1000.0;    //[ticks/s] -> [ticks/ms]
     
     if (first_time){
@@ -339,17 +338,7 @@ void check_rest_position(void) {     // 100 Hz frequency.
     
     curr_pos = (int32)(curr_pos_res >> g_mem.res[0]);
     
-    if (c_mem.input_mode == INPUT_MODE_ENCODER3) {
-        if (master_mode) {
-            handle_value = g_meas.pos[0];
-        } 
-        else {
-            handle_value = 0;
-        }
-    }
-    
     if ( ( (c_mem.input_mode >= 2 && c_mem.input_mode <= 5 && g_meas.emg[0] < 200 && g_meas.emg[1] < 200) || 
-           (c_mem.input_mode == INPUT_MODE_ENCODER3 && handle_value < 50) ||
            (c_mem.input_mode == INPUT_MODE_JOYSTICK && g_meas.joystick[0] < 50 && g_meas.joystick[0] > -50)) && curr_pos < 10000){
         if (flag_count == 1){
             count = count + 1;
