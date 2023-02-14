@@ -4,9 +4,9 @@
 
 #Version:            1.1
 
-#Build Date:         Dec  5 2017 15:35:27
+#Build Date:         Sep  9 2019 11:47:43
 
-#File Generated:     Apr 27 2018 14:39:16
+#File Generated:     Feb 14 2023 09:58:06
 
 #Purpose:            
 
@@ -14,16 +14,16 @@
 
 #***************************************************************************
 
-Executing : C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\bin/sjplacer.exe --proj-name hand_firmware_micro --netlist-vh2 hand_firmware_micro_p.vh2 --arch p35_udb4x6 --arch-file C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\arch/udbdsi_4x6_24.cydata --ip-file C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\psoc3/ip_blocks.cydata --rrg-file C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\psoc3/route_arch-rrg.cydata --irq-file C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\psoc3/irqconn.cydata --drq-file C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\psoc3/dmaconn.cydata --dsi-conn-file C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\psoc3/dsiconn.cydata --pins-file pins_48-SSOP.xml --lib-file hand_firmware_micro_p.lib --sdc-file hand_firmware_micro.sdc --io-pcf hand_firmware_micro.pci --outdir .
+Executing : C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\bin/sjplacer.exe --proj-name hand_firmware_micro --netlist-vh2 hand_firmware_micro_p.vh2 --arch p35_udb4x6 --arch-file C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\arch/udbdsi_4x6_24.cydata --ip-file C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc3/ip_blocks.cydata --rrg-file C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc3/route_arch-rrg.cydata --irq-file C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc3/irqconn.cydata --drq-file C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc3/dmaconn.cydata --dsi-conn-file C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\psoc3/dsiconn.cydata --pins-file pins_48-SSOP.xml --lib-file hand_firmware_micro_p.lib --sdc-file hand_firmware_micro.sdc --io-pcf hand_firmware_micro.pci --outdir .
 
 		Softjin Techologies Placer, Version 1.1
 
-Build Date : Dec  5 2017	15:33:41
+Build Date : Sep  9 2019	11:45:12
 
 D2004: Option and Settings Summary
 =============================================================
 Netlist vh2 file          - hand_firmware_micro_p.vh2
-Architecture file         - C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\arch/udbdsi_4x6_24.cydata
+Architecture file         - C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\arch/udbdsi_4x6_24.cydata
 Package                   - 
 Defparam file             - 
 SDC file                  - hand_firmware_micro.sdc
@@ -34,7 +34,7 @@ IO Placement file         - hand_firmware_micro.pci
 D2050: Starting reading inputs for placer
 =============================================================
 D2065: Reading netlist file : "hand_firmware_micro_p.vh2"
-D2065: Reading arch file : "C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\dev\arch/udbdsi_4x6_24.cydata"
+D2065: Reading arch file : "C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\dev\arch/udbdsi_4x6_24.cydata"
 D2051: Reading of inputs for placer completed successfully
 
 D2053: Starting placement of the design
@@ -44,18 +44,18 @@ Phase 2
 Phase 3
 
 Design Statistics after Packing
-    Number of Combinational MCs 	:	15
-    Number of Sequential MCs    	:	35
-    Number of DPs               	:	17
-    Number of Controls          	:	14
-    Number of Status            	:	9
-    Number of SyncCells         	:	4
+    Number of Combinational MCs 	:	11
+    Number of Sequential MCs    	:	30
+    Number of DPs               	:	7
+    Number of Controls          	:	9
+    Number of Status            	:	5
+    Number of SyncCells         	:	3
     Number of count7cells       	:	1
 
 Device Utilization Summary after Packing
-    Macrocells                  :	50/192
-    UDBS                        :	19/24
-    IOs                         :	13/72
+    Macrocells                  :	41/192
+    UDBS                        :	10/24
+    IOs                         :	14/72
 
 
 D2088: Phase 3, elapsed time : 0.0 (sec)
@@ -79,68 +79,66 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 15
+Number of clocks: 14
 Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_theACLK          | Frequency: N/A       | Target:   2.2 MHz
 Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
-Clock: CLOCK_ENCODERS       | Frequency:  30.0 MHz | Target:   0.2 MHz
 Clock: CLOCK_PWM_1          | Frequency:  76.9 MHz | Target:   0.0 MHz
-Clock: CLOCK_UART           | Frequency:  49.4 MHz | Target:  16.0 MHz
-Clock: CyBUS_CLK            | Frequency:  40.4 MHz | Target:  48.0 MHz
+Clock: CLOCK_UART           | Frequency:  53.8 MHz | Target:  16.0 MHz
+Clock: CyBUS_CLK            | Frequency:  67.6 MHz | Target:  48.0 MHz
 Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  48.0 MHz
 Clock: \ADC:DSM\/dec_clock  | Frequency: N/A       | Target:   0.1 MHz
-Clock: timer_clock          | Frequency:  38.2 MHz | Target:   1.0 MHz
+Clock: timer_clock          | Frequency:  43.5 MHz | Target:   1.0 MHz
 
 ======================================================================
                      End of Clock Summary
 ######################################################################
 
-D2088: Phase 6, elapsed time : 0.1 (sec)
+D2088: Phase 6, elapsed time : 0.0 (sec)
 
 Phase 7
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 15
+Number of clocks: 14
 Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_theACLK          | Frequency: N/A       | Target:   2.2 MHz
 Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
-Clock: CLOCK_ENCODERS       | Frequency:  37.2 MHz | Target:   0.2 MHz
-Clock: CLOCK_PWM_1          | Frequency:  76.9 MHz | Target:   0.0 MHz
-Clock: CLOCK_UART           | Frequency:  45.9 MHz | Target:  16.0 MHz
-Clock: CyBUS_CLK            | Frequency:  54.3 MHz | Target:  48.0 MHz
+Clock: CLOCK_PWM_1          | Frequency:   7.4 MHz | Target:   0.0 MHz
+Clock: CLOCK_UART           | Frequency:  51.5 MHz | Target:  16.0 MHz
+Clock: CyBUS_CLK            | Frequency:   7.4 MHz | Target:  48.0 MHz
 Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  48.0 MHz
 Clock: \ADC:DSM\/dec_clock  | Frequency: N/A       | Target:   0.1 MHz
-Clock: timer_clock          | Frequency:  38.2 MHz | Target:   1.0 MHz
+Clock: timer_clock          | Frequency:  43.5 MHz | Target:   1.0 MHz
 
 ======================================================================
                      End of Clock Summary
 ######################################################################
-D2088: Phase 7, elapsed time : 1.1 (sec)
+D2088: Phase 7, elapsed time : 0.5 (sec)
 
 Final Design Statistics
-    Number of Combinational MCs 	:	15
-    Number of Sequential MCs    	:	35
-    Number of DPs               	:	17
-    Number of Controls          	:	14
-    Number of Status            	:	9
-    Number of SyncCells         	:	4
+    Number of Combinational MCs 	:	11
+    Number of Sequential MCs    	:	30
+    Number of DPs               	:	7
+    Number of Controls          	:	9
+    Number of Status            	:	5
+    Number of SyncCells         	:	3
     Number of count7cells       	:	1
-    Number of IOs       	:	13
+    Number of IOs       	:	14
 
 Device Utilization Summary
-    Macrocells                  :	50/192
-    IOs                         :	13/72
+    Macrocells                  :	41/192
+    IOs                         :	14/72
 
 
 
@@ -156,22 +154,21 @@ analysis after routing.
 ######################################################################
                      Clock Summary 
 ======================================================================
-Number of clocks: 15
+Number of clocks: 14
 Clock: ADC_Ext_CP_Clk       | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_Ext_CP_Clk(routed) | Frequency: N/A       | Target:  48.0 MHz
 Clock: ADC_theACLK          | Frequency: N/A       | Target:   2.2 MHz
 Clock: ADC_theACLK(fixed-function) | Frequency: N/A       | Target:   2.2 MHz
-Clock: CLOCK_ENCODERS       | Frequency:   2.5 MHz | Target:   0.2 MHz
 Clock: CLOCK_PWM_1          | Frequency:   7.4 MHz | Target:   0.0 MHz
-Clock: CLOCK_UART           | Frequency:  44.4 MHz | Target:  16.0 MHz
-Clock: CyBUS_CLK            | Frequency:   2.7 MHz | Target:  48.0 MHz
+Clock: CLOCK_UART           | Frequency:  53.8 MHz | Target:  16.0 MHz
+Clock: CyBUS_CLK            | Frequency:   7.4 MHz | Target:  48.0 MHz
 Clock: CyBUS_CLK(fixed-function) | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyILO                | Frequency: N/A       | Target:   0.1 MHz
 Clock: CyIMO                | Frequency: N/A       | Target:  24.0 MHz
 Clock: CyMASTER_CLK         | Frequency: N/A       | Target:  48.0 MHz
 Clock: CyPLL_OUT            | Frequency: N/A       | Target:  48.0 MHz
 Clock: \ADC:DSM\/dec_clock  | Frequency: N/A       | Target:   0.1 MHz
-Clock: timer_clock          | Frequency:  38.2 MHz | Target:   1.0 MHz
+Clock: timer_clock          | Frequency:  43.5 MHz | Target:   1.0 MHz
 
 ======================================================================
                      End of Clock Summary
@@ -182,5 +179,5 @@ D2088: Phase 8, elapsed time : 0.0 (sec)
 
 D2054: Placement of the design completed successfully
 
-I2076: Total run-time: 1.8 sec.
+I2076: Total run-time: 1.1 sec.
 

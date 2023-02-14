@@ -36,10 +36,10 @@
  * \file        command_processing.h
  *
  * \brief       Received commands processing functions
- * \date        October 01, 2017
- * \author      _Centro "E.Piaggio"_
+ * \date         Feb 14th, 2023
+ * \author       _Centro "E.Piaggio"_
  * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
- * \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
+ * \copyright    (C) 2017-2023 Centro "E.Piaggio". All rights reserved.
  * \details
  *
  *  This file contains all the definitions of the functions used to 
@@ -158,6 +158,10 @@ void drive_proprio_fb();
 //============================================================  drive_force_proprio_fb_device
 /* This function is used to drive force and proprioceptive feedback device */
 void drive_force_proprio_fb();
+
+//============================================================  drive_vibrotactile_fb_device
+/* This function is used to drive vibrotactile feedback device */
+void drive_vibrotactile_fb();
 
 //=====================================================     deactivate_slaves
 /** This function is used to create a package to deactivate motors on all the other devices.

@@ -36,10 +36,10 @@
 * \file         interruptions.c
 *
 * \brief        Interruption handling and firmware core functions
-* \date         October 01, 2017
+* \date         Feb 14th, 2023
 * \author       _Centro "E.Piaggio"_
 * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
-* \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
+* \copyright    (C) 2017-2023 Centro "E.Piaggio". All rights reserved.
 */
 
 
@@ -234,35 +234,6 @@ void function_scheduler(void) {
         interrupt_flag = FALSE;
         interrupt_manager();
     }
-  
-    //---------------------------------- Get Encoders
-
-    encoder_reading(0); 
-    
-    // Check Interrupt     
-    
-    if (interrupt_flag){
-        interrupt_flag = FALSE;
-        interrupt_manager();
-    }   
-    
-    encoder_reading(1);
-    
-    // Check Interrupt 
-    
-    if (interrupt_flag){
-        interrupt_flag = FALSE;
-        interrupt_manager();
-    }
-    
-    encoder_reading(2);
-    
-    // Check Interrupt 
-    
-    if (interrupt_flag){
-        interrupt_flag = FALSE;
-        interrupt_manager();
-    }
 
     //---------------------------------- Control Motor
    
@@ -354,6 +325,18 @@ void function_scheduler(void) {
             }
         }
         
+        if (c_mem.is_vibrotactile_fb_present){
+            
+            if (!(c_mem.is_vibrotactile_fb_present)) {
+                drive_vibrotactile_fb();
+            }
+            
+            // Check Interrupt     
+            if (interrupt_flag){
+                interrupt_flag = FALSE;
+                interrupt_manager();
+            }
+        }
     }
             
     // Check Interrupt 
@@ -585,166 +568,6 @@ void motor_control() {
             }
         }
     }
-}
-
-//==============================================================================
-//                                                                   ENCODER READING
-//==============================================================================
-
-void encoder_reading(const uint8 idx) {
-
-    uint8 CYDATA index = idx;
-    
-    uint8 jj;
-    
-    uint32 data_encoder;
-    int32 value_encoder;
-    int32 speed_encoder;
-    int32 accel_encoder;
-    int32 aux;
-
-    static int32 last_value_encoder[NUM_OF_SENSORS];
-
-    static uint8 error[NUM_OF_SENSORS];
-    
-    static CYBIT only_first_time = TRUE;
-
-    static int32 v_value[NUM_OF_SENSORS];   //last value for velocity
-    static int32 vv_value[NUM_OF_SENSORS];  //last last value for velocity
-    static int32 vvv_value[NUM_OF_SENSORS];  //last last last value for velocity
-    
-    static int32 a_value[NUM_OF_SENSORS];   //last value for acceleration
-    static int32 aa_value[NUM_OF_SENSORS];  //last last value for acceleration
-    static int32 aaa_value[NUM_OF_SENSORS];  //last last last value for acceleration
-
-    if (index >= NUM_OF_SENSORS)
-        return;
-    
-    if (reset_last_value_flag) {
-        for (jj = NUM_OF_SENSORS; jj--;) 
-            last_value_encoder[jj] = 0;
-        
-        reset_last_value_flag = 0;
-    }
-
-    //======================================================     reading sensors
-        // Shift 1 right to erase Dummy bit of chain
-    if (index == 0)
-            data_encoder = (SHIFTREG_ENC_1_ReadData() >> 1) & 0x3FFFF;  //0x0003FFFF reset first 14 bits
-    else {
-        if (index == 1)
-            data_encoder = (SHIFTREG_ENC_2_ReadData() >> 1) & 0x3FFFF;  //0x0003FFFF reset first 14 bits
-        else // index == 2
-            data_encoder = (SHIFTREG_ENC_3_ReadData() >> 1) & 0x3FFFF;  //0x0003FFFF reset first 14 bits
-    }
-       
-
-    if (check_enc_data(&data_encoder)) {
-
-        value_encoder = (int16) (((data_encoder & 0x3FFC0) - 0x20000) >> 2 ) + g_mem.m_off[index];
-                                                    // reset last 6 bit 
-                                                    // -> |:|:|id|dim|CMD|CHK|(data---
-                                                    // subtract half of max value
-                                                    // and shift to have 16 bit val
-
-        // Initialize last_value_encoder
-        if (only_first_time) {
-            last_value_encoder[index] = value_encoder;
-            if (index == 2)
-                only_first_time = 0;
-        }
-
-        // Take care of rotations
-        aux = value_encoder - last_value_encoder[index];
-
-        // ====================== 1 TURN ======================
-        // -32768                    0                    32767 -32768                   0                     32767
-        // |-------------------------|-------------------------|-------------------------|-------------------------|
-        //              |                         |      |           |      |                         |
-        //           -16384                     16383    |           |   -16384                     16383
-        //                                               |           |
-        //                                           24575           -24576
-        //                                               |___________|
-        //                                                   49152
-
-        // if we are in the right interval, take care of rotation
-        // and update the variable only if the difference between
-        // one measure and another is less than 1/4 of turn
-
-        // Considering we are sampling at 1kHz, this means that our shaft needs
-        // to go slower than 1/4 turn every ms -> 1 turn every 4ms
-        // equal to 250 turn/s -> 15000 RPM
-
-        if (aux > 49152)
-            g_meas.rot[index]--;
-        else{ 
-            if (aux < -49152)
-                g_meas.rot[index]++;
-            else{
-                if (abs(aux) > 16384) { // if two measure are too far
-                    error[index]++;
-                    if (error[index] < 10)
-                        // Discard
-                        return;
-                }
-            }
-        }
-
-        error[index] = 0;
-
-        last_value_encoder[index] = value_encoder;
-
-        value_encoder += (int32)g_meas.rot[index] << 16;
-
-        if (c_mem.m_mult[index] != 1.0) {
-            value_encoder *= c_mem.m_mult[index];
-        }
-
-        g_meas.pos[index] = value_encoder;
-    }
-    
-    switch(index) {
-        case 0: {
-            speed_encoder = (int16)filter_vel_1((3*value_encoder + v_value[0] - vv_value[0] - 3*vvv_value[0])*10);
-            break;
-        }
-        case 1: {
-            speed_encoder = (int16)filter_vel_2((3*value_encoder + v_value[1] - vv_value[1] - 3*vvv_value[1])*10);
-            break;
-        }
-        case 2: {
-            speed_encoder = (int16)filter_vel_3((3*value_encoder + v_value[2] - vv_value[2] - 3*vvv_value[2])*10);
-            break;
-        }
-    }
-    //Update current speed
-    g_meas.vel[index] = speed_encoder;
-    
-    //Encoder rotational acceleration calculation
-    switch(index) {
-        case 0:
-            accel_encoder = (int16)filter_acc_1((3*speed_encoder + a_value[0] - aa_value[0] - 3*aaa_value[0])*10);
-            break;
-        
-        case 1:
-            accel_encoder = (int16)filter_acc_2((3*speed_encoder + a_value[1] - aa_value[1] - 3*aaa_value[1])*10);
-            break;
-        
-        case 2:
-            accel_encoder = (int16)filter_acc_3((3*speed_encoder + a_value[2] - aa_value[2] - 3*aaa_value[2])*10);
-            break;
-    }
-    //Update current acceleration
-    g_meas.acc[index] = accel_encoder;
-
-    // update old velocity and acceleration values
-    vvv_value[index] = vv_value[index];
-    vv_value[index] = v_value[index];
-    v_value[index] = value_encoder;
-
-    aaa_value[index] = aa_value[index];
-    aa_value[index] = a_value[index];
-    a_value[index] = speed_encoder;
 }
 
 //==============================================================================

@@ -1,5 +1,5 @@
 # hand_firmware_micro
-# 2018-04-27 12:39:16Z
+# 2023-02-14 08:58:06Z
 
 # IO_2@[IOP=(1)][IoId=(2)] is reserved: XresEnabled
 dont_use_io iocell 1 2
@@ -25,10 +25,11 @@ set_io "INPUT_2(0)" iocell 1 7
 set_io "RS485_RX(0)" iocell 2 5
 set_io "USB_VDD(0)" iocell 2 4
 set_io "FTDI_ENABLE(0)" iocell 2 3
-set_io "Signal_1_B(0)" iocell 15 3
 set_io "Signal_1_A(0)" iocell 12 2
+set_io "Signal_1_B(0)" iocell 15 3
 set_io "INPUT_1(0)" iocell 15 0
 set_io "CURRENT_SENSE_1(0)" iocell 0 6
 set_io "VOLTAGE_SENSE(0)" iocell 0 5
 set_io "BOARD_LED(0)" iocell 12 3
+set_io "Signal_2_A(0)" iocell 15 1
 set_location "\ADC:DSM\" dsmodcell -1 -1 0

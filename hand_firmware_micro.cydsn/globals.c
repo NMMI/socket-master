@@ -36,10 +36,10 @@
 * \file         globals.c
 *
 * \brief        Global variables.
-* \date         October 01, 2017
+* \date         Feb 14th, 2023
 * \author       _Centro "E.Piaggio"_
 * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
-* \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
+* \copyright    (C) 2017-2023 Centro "E.Piaggio". All rights reserved.
 */
 
 //=================================================================     includes

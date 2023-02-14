@@ -36,10 +36,10 @@
 * \file         globals.h
 *
 * \brief        Global definitions and macros are set in this file.
-* \date         October 01, 2017
+* \date         Feb 14th, 2023
 * \author       _Centro "E.Piaggio"_
 * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
-* \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
+* \copyright    (C) 2017-2023 Centro "E.Piaggio". All rights reserved.
 */
 
 #ifndef GLOBALS_H_INCLUDED
@@ -48,21 +48,21 @@
 
 //=================================================================     includes
 #include <device.h>
-#include "stdlib.h"
-#include "math.h"
+#include "STDLIB.H"
+#include "MATH.H"
 #include "commands.h"
 
 //==============================================================================
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION                 "SH-PRO v6.2.1 - Master w/Haptic Feedback management"
+#define VERSION                 "SoftHand v6.3 - Master w/Vibrotactile fb Socket [TOAST]"
 
 #define NUM_OF_MOTORS           2       /*!< Number of motors.*/
 #define NUM_OF_SENSORS          3       /*!< Number of encoders.*/
 #define NUM_OF_EMGS             2       /*!< Number of emg channels.*/
 #define NUM_OF_ANALOG_INPUTS    4       /*!< Total number of analogic inputs.*/
-#define NUM_OF_PARAMS           31      /*!< Number of parameters saved in the EEPROM.*/
+#define NUM_OF_PARAMS           32      /*!< Number of parameters saved in the EEPROM.*/
 
 //==============================================================================
 //                                                               SYNCHRONIZATION
@@ -189,35 +189,36 @@ struct st_mem {
     
     int8    motor_handle_ratio;         /*!< Discrete multiplier for handle device.*/                       //1 
     
-    uint8   baud_rate;                  /*!< Baud Rate set.*/                                            //1
+    uint8   baud_rate;                  /*!< Baud Rate set.*/                                               //1
     
-    uint8   rest_position_flag;         /*!< Enable rest position feature.*/                                        //1    
+    uint8   rest_position_flag;         /*!< Enable rest position feature.*/                                //1    
     int32   rest_pos;                   /*!< Hand rest position while in EMG mode.*/                        //4
     int32   rest_delay;                 /*!< Hand rest position delay while in EMG mode.*/                  //4
-    int32   rest_vel;                   /*!< Hand velocity closure for rest position reaching.*/             //4
+    int32   rest_vel;                   /*!< Hand velocity closure for rest position reaching.*/            //4
     
-    uint8   is_force_fb_present;        /*!< Flag to know if a force feedback device is present */             // 1
-    uint8   is_proprio_fb_present;      /*!< Flag to know if a proprioceptive feedback device is present */    // 1
-    uint8   is_myo2_master;            /*!< Flag to know if Myoelectric case 2 is present */                   // 1
+    uint8   is_force_fb_present;        /*!< Flag to know if a force feedback device is present */          // 1
+    uint8   is_proprio_fb_present;      /*!< Flag to know if a proprioceptive feedback device is present */ // 1
+    uint8   is_vibrotactile_fb_present; /*!< Flag to know if a vibrotactile feedback device is present */   // 1
+    uint8   is_myo2_master;             /*!< Flag to know if Myoelectric case 2 is present */               // 1
     
     // Force feedback device parameters
-    float   curr_prop_gain;             //                                          4
-    int16   curr_sat;                   //                                          2
-    int16   curr_dead_zone;             //                                          2  
+    float   curr_prop_gain;             // 4
+    int16   curr_sat;                   // 2
+    int16   curr_dead_zone;             // 2  
     
     // Proprioceptive device parameters
-    int32   max_slide;
-    int32   max_SH_pos;
+    int32   max_slide;                  // 4
+    int32   max_SH_pos;                 // 4
     
     // Devices IDs
-    uint8   SH_ID;
-    uint8   ForceF_ID;
-    uint8   ProprioF_ID;
-    uint8   F_right_left;
+    uint8   SH_ID;                      // 1
+    uint8   ForceF_ID;                  // 1
+    uint8   ProprioF_ID;                // 1
+    uint8   F_right_left;               // 1
 
     uint16  joystick_closure_speed;     // Joystick - Hand closure speed            2 
     uint16  joystick_gain;              // Joystick measurements gain               4
-                                                                //TOT           178 bytes
+                                                                //TOT           179 bytes
 };
 
 //==============================================     hand calibration parameters

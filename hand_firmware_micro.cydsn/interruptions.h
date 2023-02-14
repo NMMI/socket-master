@@ -36,10 +36,10 @@
 * \file         interruptions.h
 *
 * \brief        Interruptions header file.
-* \date         October 01, 2017
+* \date         Feb 14th, 2023
 * \author       _Centro "E.Piaggio"_
 * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
-* \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
+* \copyright    (C) 2017-2023 Centro "E.Piaggio". All rights reserved.
 */
 
 #ifndef INTERRUPTIONS_H_INCLUDED
@@ -70,17 +70,6 @@ CY_ISR_PROTO(ISR_RS485_RX_ExInterrupt);
  *	controller usage.	
 **/
 void function_scheduler(void);
-/** \} */
-
-
-/** \name Encoder reading function */
-/** \{ */
-//=====================================================     encoder_reading
-/** This functions reads the value from the encoder pointed by index.
- *
- *	\param index 	The number of the encoder that must be read.
-**/
-void encoder_reading(const uint8 index);
 /** \} */
 
 

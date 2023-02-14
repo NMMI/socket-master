@@ -38,10 +38,10 @@
 *
 
 * \brief        Command processing functions.
-* \date         October 01, 2017
+* \date         Feb 14th, 2023
 * \author       _Centro "E.Piaggio"_
 * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
-* \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
+* \copyright    (C) 2017-2023 Centro "E.Piaggio". All rights reserved.
 */
 
 //=================================================================     includes
@@ -224,7 +224,7 @@ void commProcess(void){
 //==============================================================================
 
 void infoSend(void){
-    unsigned char packet_string[1500];
+    unsigned char packet_string[1600];
     infoPrepare(packet_string);
     UART_RS485_PutString(packet_string);
 }
@@ -235,7 +235,7 @@ void infoSend(void){
 //==============================================================================
 
 void infoGet(uint16 info_type) {
-    unsigned char packet_string[1700] = "";
+    unsigned char packet_string[1800] = "";
 
     //==================================     choose info type and prepare string
 
@@ -256,8 +256,8 @@ void infoGet(uint16 info_type) {
 
 void get_param_list(uint16 index) {
     //Package to be sent variables
-    uint8 packet_data[2051] = "";
-    uint16 packet_lenght = 2051;
+    uint8 packet_data[2101] = "";
+    uint16 packet_lenght = 2101;
 
     //Auxiliary variables
     uint8 CYDATA i;
@@ -293,10 +293,11 @@ void get_param_list(uint16 index) {
     char max_SH_pos_str[37]     = "25 - Max SoftHand closure (proprio):";
     char master_mode_force_str[35] = "26 - Master with Force device:";
     char master_mode_proprio_str[39] = "27 - Master with Proprioc. device:";
-    char SH_ID_str[18]          = "28 - SoftHand ID:";
-    char FF_ID_str[22]          = "29 - Force device ID:";
-    char PF_ID_str[31]          = "30 - Proprioceptive device ID:";
-    char F_right_left_par_str[21] = "31 - Arm side:";
+    char master_mode_vibrot_str[36] = "28 - Master with VibroT device:";
+    char SH_ID_str[18]          = "29 - SoftHand ID:";
+    char FF_ID_str[22]          = "30 - Force device ID:";
+    char PF_ID_str[31]          = "31 - Proprioceptive device ID:";
+    char F_right_left_par_str[21] = "32 - Arm side:";
 
     //Parameters menus
     char input_mode_menu[100] = "0 -> Usb\n1 -> Handle\n2 -> EMG prop.\n3 -> EMG Integ.\n4 -> EMG FCFS\n5 -> EMG FCFS Adv.\n6 -> Joystick\n";
@@ -655,35 +656,53 @@ void get_param_list(uint16 index) {
             //The following byte indicates the number of menus at the end of the packet to send
             packet_data[1305 + string_lenght] = 3;
            
-            /*---------HAND ID---------*/
-
-            packet_data[1352] = TYPE_UINT8;
+            /*------------MASTER MODE VIBROTACTILE----------*/
+            
+            packet_data[1352] = TYPE_FLAG;
             packet_data[1353] = 1;
-            *((uint8 *)(packet_data + 1354)) = c_mem.SH_ID;
-            for(i = SH_ID_str_len; i!= 0; i--)
-                packet_data[1355 + SH_ID_str_len - i] = SH_ID_str[SH_ID_str_len - i];
-                
-            /*---------FORCE FEEDBACK DEVICE ID---------*/
+            packet_data[1354] = c_mem.is_vibrotactile_fb_present;
+            if(c_mem.is_vibrotactile_fb_present) {
+                strcat(master_mode_vibrot_str, " YES\0");
+                string_lenght = 36;
+            }
+            else {
+                strcat(master_mode_vibrot_str, " NO\0");
+                string_lenght = 35;
+            }
+            for(i = string_lenght; i != 0; i--)
+                packet_data[1355 + string_lenght - i] = master_mode_vibrot_str[string_lenght - i];
+            //The following byte indicates the number of menus at the end of the packet to send
+            packet_data[1355 + string_lenght] = 3;
+            
+            /*---------HAND ID---------*/
 
             packet_data[1402] = TYPE_UINT8;
             packet_data[1403] = 1;
-            *((uint8 *)(packet_data + 1404)) = c_mem.ForceF_ID;
-            for(i = FF_ID_str_len; i!= 0; i--)
-                packet_data[1405 + FF_ID_str_len - i] = FF_ID_str[FF_ID_str_len - i];
+            *((uint8 *)(packet_data + 1404)) = c_mem.SH_ID;
+            for(i = SH_ID_str_len; i!= 0; i--)
+                packet_data[1405 + SH_ID_str_len - i] = SH_ID_str[SH_ID_str_len - i];
                 
-            /*---------PROPRIOCEPTIVE FEEDBACK DEVICE ID---------*/
+            /*---------FORCE FEEDBACK DEVICE ID---------*/
 
             packet_data[1452] = TYPE_UINT8;
             packet_data[1453] = 1;
-            *((uint8 *)(packet_data + 1454)) = c_mem.ProprioF_ID;
+            *((uint8 *)(packet_data + 1454)) = c_mem.ForceF_ID;
+            for(i = FF_ID_str_len; i!= 0; i--)
+                packet_data[1455 + FF_ID_str_len - i] = FF_ID_str[FF_ID_str_len - i];
+                
+            /*---------PROPRIOCEPTIVE FEEDBACK DEVICE ID---------*/
+
+            packet_data[1502] = TYPE_UINT8;
+            packet_data[1503] = 1;
+            *((uint8 *)(packet_data + 1504)) = c_mem.ProprioF_ID;
             for(i = PF_ID_str_len; i!= 0; i--)
-                packet_data[1455 + PF_ID_str_len - i] = PF_ID_str[PF_ID_str_len - i];                
+                packet_data[1505 + PF_ID_str_len - i] = PF_ID_str[PF_ID_str_len - i];                
 
             /*--------RIGHT LEFT-------*/
 
-            packet_data[1502] = TYPE_FLAG;
-            packet_data[1503] = 1;
-            packet_data[1504] = c_mem.F_right_left;
+            packet_data[1552] = TYPE_FLAG;
+            packet_data[1553] = 1;
+            packet_data[1554] = c_mem.F_right_left;
             if(c_mem.F_right_left) {
                 strcat(F_right_left_par_str, " Left\0");
                 string_lenght = 20;
@@ -693,20 +712,20 @@ void get_param_list(uint16 index) {
                 string_lenght = 21;
             }
             for(i = string_lenght; i!=0; i--)
-                packet_data[1505 + string_lenght - i] = F_right_left_par_str[string_lenght - i];
+                packet_data[1555 + string_lenght - i] = F_right_left_par_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to sen
-            packet_data[1505 + string_lenght] = 2;
+            packet_data[1555 + string_lenght] = 2;
 
             /*------------PARAMETERS MENU-----------*/
 
             for(i = input_mode_menu_len; i != 0; i--)
-                packet_data[1552 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
+                packet_data[1602 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
 
             for(i = F_right_left_menu_len; i!= 0; i--)
-                packet_data[1702 + F_right_left_menu_len - i] = F_right_left_menu[F_right_left_menu_len - i];
+                packet_data[1752 + F_right_left_menu_len - i] = F_right_left_menu[F_right_left_menu_len - i];
 
             for(i = yes_no_menu_len; i!= 0; i--)
-                packet_data[1852 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
+                packet_data[1902 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
             
             packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
             commWrite(packet_data, packet_lenght);
@@ -872,21 +891,30 @@ void get_param_list(uint16 index) {
             } else {
                 g_mem.is_proprio_fb_present = 0;
             }
-        break;    
+        break;
+//================================================     set_master_mode_vibrotactile
+        case 28:        //Is vibrotactile feedback present - uint8
+            aux_uchar = *((uint8*) &g_rx.buffer[3]);
+            if (aux_uchar) {
+                g_mem.is_vibrotactile_fb_present = 1;
+            } else {
+                g_mem.is_vibrotactile_fb_present = 0;
+            }
+        break;            
 //=============================================================     set_SH_ID
-        case 28: 
+        case 29: 
             g_mem.SH_ID = *((uint8*) &g_rx.buffer[3]);
         break;   
 //=============================================================     set_FF_ID
-        case 29: 
+        case 30: 
             g_mem.ForceF_ID = *((uint8*) &g_rx.buffer[3]);
         break; 
 //=============================================================     set_PF_ID
-        case 30: 
+        case 31: 
             g_mem.ProprioF_ID = *((uint8*) &g_rx.buffer[3]);
         break;
 //=============================================================     set_F_right_left
-        case 31:
+        case 32:
             g_mem.F_right_left = *((uint8*) & g_rx.buffer[3]);
         break;                        
     }            
@@ -1071,6 +1099,12 @@ void infoPrepare(unsigned char *info_string)
             strcat(info_string, "Master with Proprioceptive device: YES\r\n");
         } else {
             strcat(info_string, "Master with Proprioceptive device: NO\r\n");
+        }
+        
+        if (g_mem.is_vibrotactile_fb_present) {
+            strcat(info_string, "Master with Vibrotactile device: YES\r\n");
+        } else {
+            strcat(info_string, "Master with Vibrotactile device: NO\r\n");
         }
 
         sprintf(str, "debug: %ld", (uint32)timer_value0 - (uint32)timer_value); //5000001
@@ -1395,6 +1429,15 @@ void drive_force_proprio_fb() {
 }
 
 //==============================================================================
+//                                            DRIVE VIBROTACTILE FEEDBACK DEVICE
+//==============================================================================
+/* Function called when is_vibrotactile_fb_present is set. It asks IMU readings 
+the SoftHand and sets vibrotactile feedback device inputs accordingly.*/
+void drive_vibrotactile_fb(){ 
+   
+}
+
+//==============================================================================
 //                                                             DEACTIVATE SLAVES
 //==============================================================================
  
@@ -1546,7 +1589,7 @@ uint8 memInit(void)
     //initialize memory settings
     g_mem.id            = 1;
 
-    g_mem.input_mode    = INPUT_MODE_EXTERNAL;
+    g_mem.input_mode    = INPUT_MODE_EMG_FCFS;
 
     g_mem.pos_lim_flag = 1;
 
@@ -1556,7 +1599,7 @@ uint8 memInit(void)
 
     for (i = 0; i < NUM_OF_MOTORS; i++) {
         g_mem.pos_lim_inf[i] = 0;
-        g_mem.pos_lim_sup[i] = (int32)19000 << g_mem.res[0];
+        g_mem.pos_lim_sup[i] = (int32)20000 << g_mem.res[0];        // To match SH 2.0.3 default hand attached to socket
     }
 
     for(i = 0; i < NUM_OF_SENSORS; ++i)
@@ -1588,13 +1631,14 @@ uint8 memInit(void)
     g_mem.joystick_gain = 1024;
     
     //Initialize rest position parameters        
-    g_mem.rest_position_flag = 1;
+    g_mem.rest_position_flag = 0;
     g_mem.rest_pos = (int32)7000 << g_mem.res[0]; // 56000
     g_mem.rest_delay = 10;
     g_mem.rest_vel = 10000;
     
     g_mem.is_force_fb_present = 0;
     g_mem.is_proprio_fb_present = 0;
+    g_mem.is_vibrotactile_fb_present = 0;
     g_mem.is_myo2_master = 1;
     
     g_mem.curr_prop_gain = 0.3;

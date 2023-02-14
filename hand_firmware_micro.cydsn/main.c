@@ -37,13 +37,13 @@
 * \file         main.c
 *
 * \brief        Firmware main file.
-* \date         October 01, 2017
+* \date         Feb 14th, 2023
 * \author       _Centro "E.Piaggio"_
 * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
-* \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
+* \copyright    (C) 2017-2023 Centro "E.Piaggio". All rights reserved.
 * \mainpage     Firmware
 * \brief        This is the firmware of the SoftHand Pro board.
-* \version      6.1.1
+* \version      6.3
 *
 * \details      This is the firmware of the SoftHand Pro board in Master configuration. 
 *				It reads EMG connected to socket and control a motor of an attached SoftHand. 
@@ -110,14 +110,6 @@ int main()
     ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);     // RS485 isr function.
 
 
-    // SSI encoder initializations
-
-    COUNTER_ENC_Start();
-
-    SHIFTREG_ENC_1_Start();
-    SHIFTREG_ENC_2_Start();
-    SHIFTREG_ENC_3_Start();
-
     // ADC
 
     ADC_Start();                                        // Start ADC.
@@ -142,10 +134,6 @@ int main()
     CYGlobalIntEnable;                                  // Enable interrupts.
 
 //========================================     initializations - clean variables
-
-    RESET_COUNTERS_Write(0x00);                         // Activate encoder counters.
-
-    CyDelay(10);                                        // Wait for encoders to have a valid value.
 
     //---------------------------------------------------  Initialize reference structure
     for (i = NUM_OF_MOTORS; i--;) 

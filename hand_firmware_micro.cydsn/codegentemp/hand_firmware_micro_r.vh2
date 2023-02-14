@@ -1,6 +1,6 @@
 -- Project:   hand_firmware_micro
--- Generated: 04/27/2018 14:39:18
--- PSoC Creator  4.2
+-- Generated: 02/14/2023 09:58:07
+-- PSoC Creator  4.4
 
 ENTITY hand_firmware_micro IS
     PORT(
@@ -10,9 +10,10 @@ ENTITY hand_firmware_micro IS
         RS485_RX(0)_PAD : IN std_ulogic;
         USB_VDD(0)_PAD : OUT std_ulogic;
         FTDI_ENABLE(0)_PAD : OUT std_ulogic;
-        Signal_1_B(0)_PAD : OUT std_ulogic;
         Signal_1_A(0)_PAD : OUT std_ulogic;
-        BOARD_LED(0)_PAD : OUT std_ulogic);
+        Signal_1_B(0)_PAD : OUT std_ulogic;
+        BOARD_LED(0)_PAD : OUT std_ulogic;
+        Signal_2_A(0)_PAD : IN std_ulogic);
     ATTRIBUTE voltage_VDDOPAMP OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDA OF __DEFAULT__ : ENTITY IS 5e0;
     ATTRIBUTE voltage_VDDD OF __DEFAULT__ : ENTITY IS 5e0;
@@ -25,17 +26,17 @@ END hand_firmware_micro;
 
 ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     SIGNAL AMuxHw_Decoder_old_id_0 : bit;
-    ATTRIBUTE placement_force OF AMuxHw_Decoder_old_id_0 : SIGNAL IS "U(3,0,B)3";
+    ATTRIBUTE placement_force OF AMuxHw_Decoder_old_id_0 : SIGNAL IS "U(3,3,B)1";
     SIGNAL AMuxHw_Decoder_old_id_1 : bit;
-    ATTRIBUTE placement_force OF AMuxHw_Decoder_old_id_1 : SIGNAL IS "U(3,1,A)2";
+    ATTRIBUTE placement_force OF AMuxHw_Decoder_old_id_1 : SIGNAL IS "U(3,3,A)2";
     SIGNAL AMuxHw_Decoder_one_hot_0 : bit;
-    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_0 : SIGNAL IS "U(3,0,A)2";
+    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_0 : SIGNAL IS "U(3,3,B)0";
     SIGNAL AMuxHw_Decoder_one_hot_1 : bit;
-    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_1 : SIGNAL IS "U(3,1,A)3";
+    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_1 : SIGNAL IS "U(3,3,B)2";
     SIGNAL AMuxHw_Decoder_one_hot_2 : bit;
-    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_2 : SIGNAL IS "U(3,1,B)2";
+    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_2 : SIGNAL IS "U(3,3,B)3";
     SIGNAL AMuxHw_Decoder_one_hot_3 : bit;
-    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_3 : SIGNAL IS "U(3,0,B)2";
+    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_3 : SIGNAL IS "U(3,3,A)1";
     SIGNAL BOARD_LED(0)__PA : bit;
     SIGNAL CURRENT_SENSE_1(0)__PA : bit;
     SIGNAL ClockBlock_100k : bit;
@@ -56,53 +57,42 @@ ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     SIGNAL Net_10 : bit;
     ATTRIBUTE udbclken_assigned OF Net_10 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_10 : SIGNAL IS true;
-    SIGNAL Net_1060 : bit;
-    SIGNAL Net_1060_SYNCOUT : bit;
     SIGNAL Net_10_local : bit;
     SIGNAL Net_124 : bit;
     ATTRIBUTE udbclken_assigned OF Net_124 : SIGNAL IS "True";
     ATTRIBUTE global_signal OF Net_124 : SIGNAL IS true;
     SIGNAL Net_124_local : bit;
-    SIGNAL Net_1308 : bit;
-    ATTRIBUTE udbclken_assigned OF Net_1308 : SIGNAL IS "True";
-    ATTRIBUTE global_signal OF Net_1308 : SIGNAL IS true;
-    SIGNAL Net_1308_local : bit;
     SIGNAL Net_20 : bit;
     ATTRIBUTE GROUND OF Net_20 : SIGNAL IS true;
     SIGNAL Net_2627 : bit;
-    ATTRIBUTE placement_force OF Net_2627 : SIGNAL IS "U(2,3,B)1";
+    ATTRIBUTE placement_force OF Net_2627 : SIGNAL IS "U(3,1,A)2";
     SIGNAL Net_3196 : bit;
     SIGNAL Net_3200 : bit;
     SIGNAL Net_3240 : bit;
     SIGNAL Net_3264 : bit;
     SIGNAL Net_3334 : bit;
-    SIGNAL Net_3376 : bit;
-    ATTRIBUTE placement_force OF Net_3376 : SIGNAL IS "U(1,1,B)3";
-    SIGNAL Net_3492 : bit;
-    SIGNAL Net_3505 : bit;
-    SIGNAL Net_3506 : bit;
-    SIGNAL Net_3664 : bit;
-    ATTRIBUTE placement_force OF Net_3664 : SIGNAL IS "U(2,0,B)0";
-    SIGNAL Net_3852 : bit;
-    ATTRIBUTE udbclken_assigned OF Net_3852 : SIGNAL IS "True";
-    ATTRIBUTE global_signal OF Net_3852 : SIGNAL IS true;
-    SIGNAL Net_3852_local : bit;
     SIGNAL Net_3925 : bit;
     SIGNAL Net_3960 : bit;
     ATTRIBUTE placement_force OF Net_3960 : SIGNAL IS "U(2,0,A)0";
     SIGNAL Net_3961 : bit;
+    SIGNAL Net_3984 : bit;
+    ATTRIBUTE placement_force OF Net_3984 : SIGNAL IS "U(2,0,A)2";
     SIGNAL Net_4627 : bit;
+    SIGNAL Net_4688 : bit;
+    ATTRIBUTE udbclken_assigned OF Net_4688 : SIGNAL IS "True";
+    ATTRIBUTE global_signal OF Net_4688 : SIGNAL IS true;
+    SIGNAL Net_4688_local : bit;
     SIGNAL Net_4716 : bit;
     SIGNAL Net_5118 : bit;
     SIGNAL Net_5190_0 : bit;
-    ATTRIBUTE placement_force OF Net_5190_0 : SIGNAL IS "U(2,0,B)1";
+    ATTRIBUTE placement_force OF Net_5190_0 : SIGNAL IS "U(2,3,B)1";
     SIGNAL Net_5190_1 : bit;
-    ATTRIBUTE placement_force OF Net_5190_1 : SIGNAL IS "U(2,1,A)0";
+    ATTRIBUTE placement_force OF Net_5190_1 : SIGNAL IS "U(2,3,B)0";
     SIGNAL Net_5503 : bit;
     SIGNAL Net_5507 : bit;
-    ATTRIBUTE placement_force OF Net_5507 : SIGNAL IS "U(2,1,B)2";
+    ATTRIBUTE placement_force OF Net_5507 : SIGNAL IS "U(3,3,A)3";
     SIGNAL Net_6020 : bit;
-    ATTRIBUTE placement_force OF Net_6020 : SIGNAL IS "U(3,2,B)0";
+    ATTRIBUTE placement_force OF Net_6020 : SIGNAL IS "U(3,0,B)3";
     SIGNAL Net_6117 : bit;
     SIGNAL Net_6196 : bit;
     SIGNAL Net_6196_SYNCOUT : bit;
@@ -112,6 +102,7 @@ ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     SIGNAL Signal_1_A(0)__PA : bit;
     SIGNAL Signal_1_B(0)__PA : bit;
     SIGNAL Signal_1_C(0)__PA : bit;
+    SIGNAL Signal_2_A(0)__PA : bit;
     SIGNAL USB_VDD(0)__PA : bit;
     SIGNAL VOLTAGE_SENSE(0)__PA : bit;
     SIGNAL \ADC:Net_245_0\ : bit;
@@ -143,33 +134,6 @@ ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     SIGNAL \ADC_SOC:control_5\ : bit;
     SIGNAL \ADC_SOC:control_6\ : bit;
     SIGNAL \ADC_SOC:control_7\ : bit;
-    SIGNAL \COUNTER_ENC:CounterUDB:cmp_out_i\ : bit;
-    SIGNAL \COUNTER_ENC:CounterUDB:control_0\ : bit;
-    SIGNAL \COUNTER_ENC:CounterUDB:control_1\ : bit;
-    SIGNAL \COUNTER_ENC:CounterUDB:control_2\ : bit;
-    SIGNAL \COUNTER_ENC:CounterUDB:control_3\ : bit;
-    SIGNAL \COUNTER_ENC:CounterUDB:control_4\ : bit;
-    SIGNAL \COUNTER_ENC:CounterUDB:control_5\ : bit;
-    SIGNAL \COUNTER_ENC:CounterUDB:control_6\ : bit;
-    SIGNAL \COUNTER_ENC:CounterUDB:control_7\ : bit;
-    SIGNAL \COUNTER_ENC:CounterUDB:count_enable\ : bit;
-    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:count_enable\ : SIGNAL IS "U(1,2,B)1";
-    SIGNAL \COUNTER_ENC:CounterUDB:count_stored_i\ : bit;
-    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:count_stored_i\ : SIGNAL IS "U(1,2,A)3";
-    SIGNAL \COUNTER_ENC:CounterUDB:overflow_reg_i\ : bit;
-    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(1,2,B)3";
-    SIGNAL \COUNTER_ENC:CounterUDB:per_equal\ : bit;
-    SIGNAL \COUNTER_ENC:CounterUDB:prevCompare\ : bit;
-    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:prevCompare\ : SIGNAL IS "U(1,3,B)1";
-    SIGNAL \COUNTER_ENC:CounterUDB:reload\ : bit;
-    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:reload\ : SIGNAL IS "U(1,3,B)0";
-    SIGNAL \COUNTER_ENC:CounterUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:status_0\ : SIGNAL IS "U(1,3,A)0";
-    SIGNAL \COUNTER_ENC:CounterUDB:status_1\ : bit;
-    SIGNAL \COUNTER_ENC:CounterUDB:status_2\ : bit;
-    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:status_2\ : SIGNAL IS "U(1,2,A)2";
-    SIGNAL \COUNTER_ENC:CounterUDB:status_5\ : bit;
-    SIGNAL \COUNTER_ENC:CounterUDB:status_6\ : bit;
     SIGNAL \FTDI_ENABLE_REG:control_1\ : bit;
     SIGNAL \FTDI_ENABLE_REG:control_2\ : bit;
     SIGNAL \FTDI_ENABLE_REG:control_3\ : bit;
@@ -214,20 +178,12 @@ ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     SIGNAL \MY_TIMER:TimerUDB:control_7\ : bit;
     SIGNAL \MY_TIMER:TimerUDB:per_zero\ : bit;
     SIGNAL \MY_TIMER:TimerUDB:sT24:timerdp:u1.ce0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.ce0__sig\ : bit;
     SIGNAL \MY_TIMER:TimerUDB:status_2\ : bit;
     SIGNAL \MY_TIMER:TimerUDB:status_3\ : bit;
     SIGNAL \MY_TIMER:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \MY_TIMER:TimerUDB:status_tc\ : SIGNAL IS "U(1,1,B)2";
+    ATTRIBUTE placement_force OF \MY_TIMER:TimerUDB:status_tc\ : SIGNAL IS "U(0,0,A)0";
     SIGNAL \PACER_TIMER:Net_261\ : bit;
     SIGNAL \PACER_TIMER:Net_57\ : bit;
-    SIGNAL \RESET_COUNTERS:control_1\ : bit;
-    SIGNAL \RESET_COUNTERS:control_2\ : bit;
-    SIGNAL \RESET_COUNTERS:control_3\ : bit;
-    SIGNAL \RESET_COUNTERS:control_4\ : bit;
-    SIGNAL \RESET_COUNTERS:control_5\ : bit;
-    SIGNAL \RESET_COUNTERS:control_6\ : bit;
-    SIGNAL \RESET_COUNTERS:control_7\ : bit;
     SIGNAL \RESET_FF:control_1\ : bit;
     SIGNAL \RESET_FF:control_2\ : bit;
     SIGNAL \RESET_FF:control_3\ : bit;
@@ -242,53 +198,12 @@ ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     SIGNAL \RS485_CTS:control_5\ : bit;
     SIGNAL \RS485_CTS:control_6\ : bit;
     SIGNAL \RS485_CTS:control_7\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:control_1\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:control_2\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:control_3\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:control_4\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:control_5\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:control_6\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:control_7\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:ctrl_clk_enable\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.ce0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:status_3\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:status_4\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:status_5\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:status_6\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:control_1\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:control_2\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:control_3\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:control_4\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:control_5\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:control_6\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:control_7\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:ctrl_clk_enable\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.ce0__sig\ : bit;
-    SIGNAL \MY_TIMER:TimerUDB:sT24:timerdp:u0.ce0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:status_3\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:status_4\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:status_5\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:status_6\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:control_1\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:control_2\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:control_3\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:control_4\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:control_5\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:control_6\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:control_7\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:ctrl_clk_enable\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.ce0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.ce0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:status_3\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:status_4\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:status_5\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:status_6\ : bit;
     SIGNAL \UART_RS485:BUART:counter_load_not\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:counter_load_not\ : SIGNAL IS "U(3,3,A)2";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:counter_load_not\ : SIGNAL IS "U(3,1,A)1";
     SIGNAL \UART_RS485:BUART:rx_bitclk_enable\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_bitclk_enable\ : SIGNAL IS "U(2,5,B)3";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_bitclk_enable\ : SIGNAL IS "U(2,2,B)2";
     SIGNAL \UART_RS485:BUART:rx_break_detect\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_break_detect\ : SIGNAL IS "U(3,4,A)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_break_detect\ : SIGNAL IS "U(2,1,A)0";
     SIGNAL \UART_RS485:BUART:rx_count7_tc\ : bit;
     SIGNAL \UART_RS485:BUART:rx_count_0\ : bit;
     SIGNAL \UART_RS485:BUART:rx_count_1\ : bit;
@@ -298,116 +213,66 @@ ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     SIGNAL \UART_RS485:BUART:rx_count_5\ : bit;
     SIGNAL \UART_RS485:BUART:rx_count_6\ : bit;
     SIGNAL \UART_RS485:BUART:rx_counter_load\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_counter_load\ : SIGNAL IS "U(2,5,A)2";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_counter_load\ : SIGNAL IS "U(2,2,B)0";
     SIGNAL \UART_RS485:BUART:rx_fifofull\ : bit;
     SIGNAL \UART_RS485:BUART:rx_fifonotempty\ : bit;
     SIGNAL \UART_RS485:BUART:rx_last\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_last\ : SIGNAL IS "U(2,5,A)3";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_last\ : SIGNAL IS "U(3,2,A)3";
     SIGNAL \UART_RS485:BUART:rx_load_fifo\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_load_fifo\ : SIGNAL IS "U(2,5,A)0";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_load_fifo\ : SIGNAL IS "U(2,2,A)1";
     SIGNAL \UART_RS485:BUART:rx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_0\ : SIGNAL IS "U(3,5,B)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_0\ : SIGNAL IS "U(2,1,B)2";
     SIGNAL \UART_RS485:BUART:rx_state_1\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_1\ : SIGNAL IS "U(3,4,A)3";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_1\ : SIGNAL IS "U(2,1,B)0";
     SIGNAL \UART_RS485:BUART:rx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_2\ : SIGNAL IS "U(2,4,B)0";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_2\ : SIGNAL IS "U(2,2,B)1";
     SIGNAL \UART_RS485:BUART:rx_state_2_split\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_2_split\ : SIGNAL IS "U(2,4,A)0";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_2_split\ : SIGNAL IS "U(2,2,A)0";
     SIGNAL \UART_RS485:BUART:rx_state_3\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_3\ : SIGNAL IS "U(3,5,B)0";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_3\ : SIGNAL IS "U(2,1,A)2";
     SIGNAL \UART_RS485:BUART:rx_state_stop1_reg\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_stop1_reg\ : SIGNAL IS "U(2,4,B)3";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_stop1_reg\ : SIGNAL IS "U(2,3,A)1";
     SIGNAL \UART_RS485:BUART:rx_status_1\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_1\ : SIGNAL IS "U(2,4,B)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_1\ : SIGNAL IS "U(2,1,A)1";
     SIGNAL \UART_RS485:BUART:rx_status_3\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_3\ : SIGNAL IS "U(2,5,A)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_3\ : SIGNAL IS "U(2,1,B)1";
     SIGNAL \UART_RS485:BUART:rx_status_4\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_4\ : SIGNAL IS "U(2,5,B)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_4\ : SIGNAL IS "U(2,2,B)3";
     SIGNAL \UART_RS485:BUART:rx_status_5\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_5\ : SIGNAL IS "U(2,3,A)3";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_5\ : SIGNAL IS "U(2,3,A)2";
     SIGNAL \UART_RS485:BUART:tx_bitclk\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_bitclk\ : SIGNAL IS "U(3,2,A)2";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_bitclk\ : SIGNAL IS "U(3,0,A)3";
     SIGNAL \UART_RS485:BUART:tx_bitclk_enable_pre\ : bit;
     SIGNAL \UART_RS485:BUART:tx_counter_dp\ : bit;
     SIGNAL \UART_RS485:BUART:tx_fifo_empty\ : bit;
     SIGNAL \UART_RS485:BUART:tx_fifo_notfull\ : bit;
     SIGNAL \UART_RS485:BUART:tx_shift_out\ : bit;
     SIGNAL \UART_RS485:BUART:tx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_state_0\ : SIGNAL IS "U(2,2,A)0";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_state_0\ : SIGNAL IS "U(3,0,B)0";
     SIGNAL \UART_RS485:BUART:tx_state_1\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_state_1\ : SIGNAL IS "U(2,3,B)2";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_state_1\ : SIGNAL IS "U(3,0,A)2";
     SIGNAL \UART_RS485:BUART:tx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_state_2\ : SIGNAL IS "U(3,3,B)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_state_2\ : SIGNAL IS "U(3,0,A)0";
     SIGNAL \UART_RS485:BUART:tx_status_0\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_status_0\ : SIGNAL IS "U(2,2,B)0";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_status_0\ : SIGNAL IS "U(3,0,A)1";
     SIGNAL \UART_RS485:BUART:tx_status_2\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_status_2\ : SIGNAL IS "U(2,2,A)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_status_2\ : SIGNAL IS "U(3,0,B)2";
     SIGNAL \UART_RS485:BUART:txn\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:txn\ : SIGNAL IS "U(2,3,A)0";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:txn\ : SIGNAL IS "U(3,1,A)0";
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(3,4,B)3";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(2,0,B)1";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
     SIGNAL cy_srff_1 : bit;
-    ATTRIBUTE placement_force OF cy_srff_1 : SIGNAL IS "U(2,1,B)3";
+    ATTRIBUTE placement_force OF cy_srff_1 : SIGNAL IS "U(3,2,B)1";
     SIGNAL cy_srff_3 : bit;
-    ATTRIBUTE placement_force OF cy_srff_3 : SIGNAL IS "U(2,1,B)0";
-    SIGNAL cydff_2 : bit;
-    ATTRIBUTE placement_force OF cydff_2 : SIGNAL IS "U(1,1,A)3";
+    ATTRIBUTE placement_force OF cy_srff_3 : SIGNAL IS "U(3,3,A)0";
     SIGNAL tmpOE__RS_485_EN_net_0 : bit;
     ATTRIBUTE POWER OF tmpOE__RS_485_EN_net_0 : SIGNAL IS true;
     SIGNAL \ClockBlock.clk_bus_glb_ff__sig\ : bit;
     SIGNAL \ClockBlock.aclk_glb_ff_0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.ce0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.cl0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.z0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.ff0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.ce1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.cl1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.z1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.ff1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.co_msb__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.sol_msb__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.cfbo__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.sor__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.cmsbo__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.cl0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.z0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.ff0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.ce1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.cl1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.z1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.ff1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.co_msb__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.sol_msb__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.cfbo__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u2.sor__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u2.cmsbo__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.cl0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.z0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.ff0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.ce1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.cl1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.z1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.ff1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.co_msb__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.sol_msb__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.cfbo__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.sor__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.cmsbo__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.cl0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.z0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.ff0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.ce1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.cl1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.z1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.ff1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.co_msb__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.sol_msb__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.cfbo__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u2.sor__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u2.cmsbo__sig\ : bit;
+    SIGNAL \MY_TIMER:TimerUDB:sT24:timerdp:u0.ce0__sig\ : bit;
     SIGNAL \MY_TIMER:TimerUDB:sT24:timerdp:u0.cl0__sig\ : bit;
     SIGNAL \MY_TIMER:TimerUDB:sT24:timerdp:u0.z0__sig\ : bit;
     SIGNAL \MY_TIMER:TimerUDB:sT24:timerdp:u0.ff0__sig\ : bit;
@@ -432,30 +297,8 @@ ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     SIGNAL \MY_TIMER:TimerUDB:sT24:timerdp:u1.cfbo__sig\ : bit;
     SIGNAL \MY_TIMER:TimerUDB:sT24:timerdp:u2.sor__sig\ : bit;
     SIGNAL \MY_TIMER:TimerUDB:sT24:timerdp:u2.cmsbo__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.cl0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.z0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.ff0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.ce1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.cl1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.z1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.ff1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.co_msb__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.sol_msb__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.cfbo__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.sor__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.cmsbo__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.cl0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.z0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.ff0__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.ce1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.cl1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.z1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.ff1__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.co_msb__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.sol_msb__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.cfbo__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u2.sor__sig\ : bit;
-    SIGNAL \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u2.cmsbo__sig\ : bit;
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_2_split\ : LABEL IS "macrocell1";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_2_split\ : LABEL IS "U(2,2)";
     ATTRIBUTE Location OF ClockBlock : LABEL IS "F(Clock,0)";
     ATTRIBUTE lib_model OF RS_485_EN(0) : LABEL IS "iocell1";
     ATTRIBUTE Location OF RS_485_EN(0) : LABEL IS "P2[6]";
@@ -471,10 +314,10 @@ ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     ATTRIBUTE Location OF USB_VDD(0) : LABEL IS "P2[4]";
     ATTRIBUTE lib_model OF FTDI_ENABLE(0) : LABEL IS "iocell7";
     ATTRIBUTE Location OF FTDI_ENABLE(0) : LABEL IS "P2[3]";
-    ATTRIBUTE lib_model OF Signal_1_B(0) : LABEL IS "iocell8";
-    ATTRIBUTE Location OF Signal_1_B(0) : LABEL IS "P15[3]";
-    ATTRIBUTE lib_model OF Signal_1_A(0) : LABEL IS "iocell9";
+    ATTRIBUTE lib_model OF Signal_1_A(0) : LABEL IS "iocell8";
     ATTRIBUTE Location OF Signal_1_A(0) : LABEL IS "P12[2]";
+    ATTRIBUTE lib_model OF Signal_1_B(0) : LABEL IS "iocell9";
+    ATTRIBUTE Location OF Signal_1_B(0) : LABEL IS "P15[3]";
     ATTRIBUTE lib_model OF INPUT_1(0) : LABEL IS "iocell10";
     ATTRIBUTE Location OF INPUT_1(0) : LABEL IS "P15[0]";
     ATTRIBUTE lib_model OF CURRENT_SENSE_1(0) : LABEL IS "iocell11";
@@ -483,196 +326,139 @@ ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     ATTRIBUTE Location OF VOLTAGE_SENSE(0) : LABEL IS "P0[5]";
     ATTRIBUTE lib_model OF BOARD_LED(0) : LABEL IS "iocell13";
     ATTRIBUTE Location OF BOARD_LED(0) : LABEL IS "P12[3]";
-    ATTRIBUTE lib_model OF Net_2627 : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF Net_2627 : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:counter_load_not\ : LABEL IS "macrocell2";
-    ATTRIBUTE Location OF \UART_RS485:BUART:counter_load_not\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_status_0\ : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF \UART_RS485:BUART:tx_status_0\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_status_2\ : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF \UART_RS485:BUART:tx_status_2\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_counter_load\ : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_counter_load\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_status_4\ : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_4\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_status_5\ : LABEL IS "macrocell7";
+    ATTRIBUTE lib_model OF Signal_2_A(0) : LABEL IS "iocell14";
+    ATTRIBUTE Location OF Signal_2_A(0) : LABEL IS "P15[1]";
+    ATTRIBUTE lib_model OF Net_2627 : LABEL IS "macrocell2";
+    ATTRIBUTE Location OF Net_2627 : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:counter_load_not\ : LABEL IS "macrocell3";
+    ATTRIBUTE Location OF \UART_RS485:BUART:counter_load_not\ : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_status_0\ : LABEL IS "macrocell4";
+    ATTRIBUTE Location OF \UART_RS485:BUART:tx_status_0\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_status_2\ : LABEL IS "macrocell5";
+    ATTRIBUTE Location OF \UART_RS485:BUART:tx_status_2\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_counter_load\ : LABEL IS "macrocell6";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_counter_load\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_status_4\ : LABEL IS "macrocell7";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_4\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_status_5\ : LABEL IS "macrocell8";
     ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_5\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:reload\ : LABEL IS "macrocell8";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:reload\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:status_0\ : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:status_0\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:status_2\ : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:status_2\ : LABEL IS "U(1,2)";
-    ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:count_enable\ : LABEL IS "macrocell11";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:count_enable\ : LABEL IS "U(1,2)";
-    ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:status_tc\ : LABEL IS "U(1,1)";
-    ATTRIBUTE Location OF RS485_RX(0)_SYNC : LABEL IS "U(3,4)";
-    ATTRIBUTE Location OF Signal_1_C(0)_SYNC : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF Net_3664 : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF Net_3664 : LABEL IS "U(2,0)";
+    ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell9";
+    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:status_tc\ : LABEL IS "U(0,0)";
+    ATTRIBUTE lib_model OF Net_3984 : LABEL IS "macrocell10";
+    ATTRIBUTE Location OF Net_3984 : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF RS485_RX(0)_SYNC : LABEL IS "U(2,0)";
     ATTRIBUTE Location OF ISR_RS485_RX : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
     ATTRIBUTE Location OF \PACER_TIMER:TimerHW\ : LABEL IS "F(Timer,0)";
-    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(3,4)";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell11";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(2,0)";
     ATTRIBUTE Location OF \UART_RS485:RXInternalInterrupt\ : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sTX:TxShifter:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \UART_RS485:BUART:sTX:TxShifter:u0\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:sTX:TxShifter:u0\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "datapathcell2";
-    ATTRIBUTE Location OF \UART_RS485:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sTX:TxSts\ : LABEL IS "statusicell1";
-    ATTRIBUTE Location OF \UART_RS485:BUART:sTX:TxSts\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:sTX:TxSts\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sRX:RxShifter:u0\ : LABEL IS "datapathcell3";
-    ATTRIBUTE Location OF \UART_RS485:BUART:sRX:RxShifter:u0\ : LABEL IS "U(2,5)";
-    ATTRIBUTE Location OF \UART_RS485:BUART:sRX:RxBitCounter\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:sRX:RxShifter:u0\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:sRX:RxBitCounter\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sRX:RxSts\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \UART_RS485:BUART:sRX:RxSts\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "U(1,2)";
-    ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:sSTSReg:stsreg\ : LABEL IS "statusicell3";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:sSTSReg:stsreg\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:sC8:counterdp:u0\ : LABEL IS "datapathcell4";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:sC8:counterdp:u0\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_3:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell2";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:SyncCtl:CtrlReg\ : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_3:bSR:StsReg\ : LABEL IS "statusicell4";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:StsReg\ : LABEL IS "U(0,3)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "datapathcell5";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "U(1,2)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "datapathcell6";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "datapathcell7";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "U(0,3)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_2:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell3";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:SyncCtl:CtrlReg\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_2:bSR:StsReg\ : LABEL IS "statusicell5";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:StsReg\ : LABEL IS "U(1,0)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "datapathcell8";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "U(0,1)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "datapathcell9";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "datapathcell10";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:sRX:RxSts\ : LABEL IS "U(2,1)";
     ATTRIBUTE Location OF \ADC:DSM\ : LABEL IS "F(DSM,0)";
     ATTRIBUTE Location OF \ADC:IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(29)]";
     ATTRIBUTE Location OF \ADC:DEC\ : LABEL IS "F(Decimator,0)";
-    ATTRIBUTE lib_model OF \RS485_CTS:Sync:ctrl_reg\ : LABEL IS "controlcell4";
-    ATTRIBUTE Location OF \RS485_CTS:Sync:ctrl_reg\ : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF \FTDI_ENABLE_REG:Sync:ctrl_reg\ : LABEL IS "controlcell5";
-    ATTRIBUTE Location OF \FTDI_ENABLE_REG:Sync:ctrl_reg\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF \RESET_FF:Sync:ctrl_reg\ : LABEL IS "controlcell6";
-    ATTRIBUTE Location OF \RESET_FF:Sync:ctrl_reg\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \RS485_CTS:Sync:ctrl_reg\ : LABEL IS "controlcell1";
+    ATTRIBUTE Location OF \RS485_CTS:Sync:ctrl_reg\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \FTDI_ENABLE_REG:Sync:ctrl_reg\ : LABEL IS "controlcell2";
+    ATTRIBUTE Location OF \FTDI_ENABLE_REG:Sync:ctrl_reg\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF \RESET_FF:Sync:ctrl_reg\ : LABEL IS "controlcell3";
+    ATTRIBUTE Location OF \RESET_FF:Sync:ctrl_reg\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \FF_STATUS:sts:sts_reg\ : LABEL IS "statuscell1";
-    ATTRIBUTE Location OF \FF_STATUS:sts:sts_reg\ : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell7";
-    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell6";
-    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:sT24:timerdp:u0\ : LABEL IS "datapathcell11";
-    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sT24:timerdp:u0\ : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:sT24:timerdp:u1\ : LABEL IS "datapathcell12";
-    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sT24:timerdp:u1\ : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:sT24:timerdp:u2\ : LABEL IS "datapathcell13";
-    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sT24:timerdp:u2\ : LABEL IS "U(1,1)";
-    ATTRIBUTE Location OF \Sync_1:genblk1[0]:INST\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_1:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell8";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:SyncCtl:CtrlReg\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_1:bSR:StsReg\ : LABEL IS "statusicell7";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:StsReg\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "datapathcell14";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "datapathcell15";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "datapathcell16";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \RESET_COUNTERS:Sync:ctrl_reg\ : LABEL IS "controlcell9";
-    ATTRIBUTE Location OF \RESET_COUNTERS:Sync:ctrl_reg\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \FF_STATUS:sts:sts_reg\ : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell4";
+    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell3";
+    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "U(0,0)";
+    ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:sT24:timerdp:u0\ : LABEL IS "datapathcell4";
+    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sT24:timerdp:u0\ : LABEL IS "U(1,1)";
+    ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:sT24:timerdp:u1\ : LABEL IS "datapathcell5";
+    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sT24:timerdp:u1\ : LABEL IS "U(0,1)";
+    ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:sT24:timerdp:u2\ : LABEL IS "datapathcell6";
+    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sT24:timerdp:u2\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \Sync_1:genblk1[0]:INST\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \ADC_STATUS:sts:sts_reg\ : LABEL IS "statuscell2";
-    ATTRIBUTE Location OF \ADC_STATUS:sts:sts_reg\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \ADC_STATUS:sts:sts_reg\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF DMA : LABEL IS "drqcell1";
     ATTRIBUTE Location OF DMA : LABEL IS "[DrqContainer=(0)][DrqId=(10)]";
-    ATTRIBUTE lib_model OF \ADC_SOC:Sync:ctrl_reg\ : LABEL IS "controlcell10";
-    ATTRIBUTE Location OF \ADC_SOC:Sync:ctrl_reg\ : LABEL IS "U(2,1)";
-    ATTRIBUTE Location OF \Sync_ADC:genblk1[0]:INST\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF \LED_BLINK:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell11";
-    ATTRIBUTE Location OF \LED_BLINK:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(0,0)";
-    ATTRIBUTE lib_model OF \LED_BLINK:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "datapathcell17";
-    ATTRIBUTE Location OF \LED_BLINK:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF \LED_CTRL:Sync:ctrl_reg\ : LABEL IS "controlcell12";
-    ATTRIBUTE Location OF \LED_CTRL:Sync:ctrl_reg\ : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF \LED_BLINK_EN:Sync:ctrl_reg\ : LABEL IS "controlcell13";
+    ATTRIBUTE lib_model OF \ADC_SOC:Sync:ctrl_reg\ : LABEL IS "controlcell5";
+    ATTRIBUTE Location OF \ADC_SOC:Sync:ctrl_reg\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \Sync_ADC:genblk1[0]:INST\ : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF \LED_BLINK_EN:Sync:ctrl_reg\ : LABEL IS "controlcell6";
     ATTRIBUTE Location OF \LED_BLINK_EN:Sync:ctrl_reg\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF Net_6020 : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF Net_6020 : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:txn\ : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF \UART_RS485:BUART:txn\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_state_1\ : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF \UART_RS485:BUART:tx_state_1\ : LABEL IS "U(2,3)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_state_0\ : LABEL IS "macrocell18";
-    ATTRIBUTE Location OF \UART_RS485:BUART:tx_state_0\ : LABEL IS "U(2,2)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_state_2\ : LABEL IS "macrocell19";
-    ATTRIBUTE Location OF \UART_RS485:BUART:tx_state_2\ : LABEL IS "U(3,3)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_bitclk\ : LABEL IS "macrocell20";
-    ATTRIBUTE Location OF \UART_RS485:BUART:tx_bitclk\ : LABEL IS "U(3,2)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_1\ : LABEL IS "macrocell21";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_1\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_0\ : LABEL IS "macrocell22";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_0\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_load_fifo\ : LABEL IS "macrocell23";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_load_fifo\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_3\ : LABEL IS "macrocell24";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_3\ : LABEL IS "U(3,5)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_2\ : LABEL IS "macrocell25";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_2\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_bitclk_enable\ : LABEL IS "macrocell26";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_bitclk_enable\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell27";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_stop1_reg\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_status_1\ : LABEL IS "macrocell28";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_1\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_status_3\ : LABEL IS "macrocell29";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_3\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_break_detect\ : LABEL IS "macrocell30";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_break_detect\ : LABEL IS "U(3,4)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_last\ : LABEL IS "macrocell31";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_last\ : LABEL IS "U(2,5)";
-    ATTRIBUTE lib_model OF cydff_2 : LABEL IS "macrocell32";
-    ATTRIBUTE Location OF cydff_2 : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell33";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:overflow_reg_i\ : LABEL IS "U(1,2)";
-    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_2_split\ : LABEL IS "macrocell34";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_2_split\ : LABEL IS "U(2,4)";
-    ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:prevCompare\ : LABEL IS "macrocell35";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:prevCompare\ : LABEL IS "U(1,3)";
-    ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:count_stored_i\ : LABEL IS "macrocell36";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:count_stored_i\ : LABEL IS "U(1,2)";
-    ATTRIBUTE lib_model OF Net_3376 : LABEL IS "macrocell37";
-    ATTRIBUTE Location OF Net_3376 : LABEL IS "U(1,1)";
-    ATTRIBUTE lib_model OF cy_srff_1 : LABEL IS "macrocell38";
-    ATTRIBUTE Location OF cy_srff_1 : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF Net_5190_1 : LABEL IS "macrocell39";
-    ATTRIBUTE Location OF Net_5190_1 : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF Net_5190_0 : LABEL IS "macrocell40";
-    ATTRIBUTE Location OF Net_5190_0 : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF AMuxHw_Decoder_old_id_1 : LABEL IS "macrocell41";
-    ATTRIBUTE Location OF AMuxHw_Decoder_old_id_1 : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF AMuxHw_Decoder_old_id_0 : LABEL IS "macrocell42";
-    ATTRIBUTE Location OF AMuxHw_Decoder_old_id_0 : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF AMuxHw_Decoder_one_hot_0 : LABEL IS "macrocell43";
-    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_0 : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF AMuxHw_Decoder_one_hot_1 : LABEL IS "macrocell44";
-    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_1 : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF AMuxHw_Decoder_one_hot_2 : LABEL IS "macrocell45";
-    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_2 : LABEL IS "U(3,1)";
-    ATTRIBUTE lib_model OF AMuxHw_Decoder_one_hot_3 : LABEL IS "macrocell46";
-    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_3 : LABEL IS "U(3,0)";
-    ATTRIBUTE lib_model OF Net_5507 : LABEL IS "macrocell47";
-    ATTRIBUTE Location OF Net_5507 : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF cy_srff_3 : LABEL IS "macrocell48";
-    ATTRIBUTE Location OF cy_srff_3 : LABEL IS "U(2,1)";
-    ATTRIBUTE lib_model OF \LED_BLINK:PWMUDB:runmode_enable\ : LABEL IS "macrocell49";
+    ATTRIBUTE lib_model OF \LED_CTRL:Sync:ctrl_reg\ : LABEL IS "controlcell7";
+    ATTRIBUTE Location OF \LED_CTRL:Sync:ctrl_reg\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \LED_BLINK:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell8";
+    ATTRIBUTE Location OF \LED_BLINK:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \LED_BLINK:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "datapathcell7";
+    ATTRIBUTE Location OF \LED_BLINK:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "U(2,0)";
+    ATTRIBUTE lib_model OF Net_6020 : LABEL IS "macrocell12";
+    ATTRIBUTE Location OF Net_6020 : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:txn\ : LABEL IS "macrocell13";
+    ATTRIBUTE Location OF \UART_RS485:BUART:txn\ : LABEL IS "U(3,1)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_state_1\ : LABEL IS "macrocell14";
+    ATTRIBUTE Location OF \UART_RS485:BUART:tx_state_1\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_state_0\ : LABEL IS "macrocell15";
+    ATTRIBUTE Location OF \UART_RS485:BUART:tx_state_0\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_state_2\ : LABEL IS "macrocell16";
+    ATTRIBUTE Location OF \UART_RS485:BUART:tx_state_2\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_bitclk\ : LABEL IS "macrocell17";
+    ATTRIBUTE Location OF \UART_RS485:BUART:tx_bitclk\ : LABEL IS "U(3,0)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_1\ : LABEL IS "macrocell18";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_1\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_0\ : LABEL IS "macrocell19";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_0\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_load_fifo\ : LABEL IS "macrocell20";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_load_fifo\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_3\ : LABEL IS "macrocell21";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_3\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_2\ : LABEL IS "macrocell22";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_2\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_bitclk_enable\ : LABEL IS "macrocell23";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_bitclk_enable\ : LABEL IS "U(2,2)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell24";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_stop1_reg\ : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_status_1\ : LABEL IS "macrocell25";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_1\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_status_3\ : LABEL IS "macrocell26";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_3\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_break_detect\ : LABEL IS "macrocell27";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_break_detect\ : LABEL IS "U(2,1)";
+    ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_last\ : LABEL IS "macrocell28";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_last\ : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF cy_srff_1 : LABEL IS "macrocell29";
+    ATTRIBUTE Location OF cy_srff_1 : LABEL IS "U(3,2)";
+    ATTRIBUTE lib_model OF Net_5190_1 : LABEL IS "macrocell30";
+    ATTRIBUTE Location OF Net_5190_1 : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF Net_5190_0 : LABEL IS "macrocell31";
+    ATTRIBUTE Location OF Net_5190_0 : LABEL IS "U(2,3)";
+    ATTRIBUTE lib_model OF AMuxHw_Decoder_old_id_1 : LABEL IS "macrocell32";
+    ATTRIBUTE Location OF AMuxHw_Decoder_old_id_1 : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF AMuxHw_Decoder_old_id_0 : LABEL IS "macrocell33";
+    ATTRIBUTE Location OF AMuxHw_Decoder_old_id_0 : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF AMuxHw_Decoder_one_hot_0 : LABEL IS "macrocell34";
+    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_0 : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF AMuxHw_Decoder_one_hot_1 : LABEL IS "macrocell35";
+    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_1 : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF AMuxHw_Decoder_one_hot_2 : LABEL IS "macrocell36";
+    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_2 : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF AMuxHw_Decoder_one_hot_3 : LABEL IS "macrocell37";
+    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_3 : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF Net_5507 : LABEL IS "macrocell38";
+    ATTRIBUTE Location OF Net_5507 : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF cy_srff_3 : LABEL IS "macrocell39";
+    ATTRIBUTE Location OF cy_srff_3 : LABEL IS "U(3,3)";
+    ATTRIBUTE lib_model OF \LED_BLINK:PWMUDB:runmode_enable\ : LABEL IS "macrocell40";
     ATTRIBUTE Location OF \LED_BLINK:PWMUDB:runmode_enable\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF Net_3960 : LABEL IS "macrocell50";
+    ATTRIBUTE lib_model OF Net_3960 : LABEL IS "macrocell41";
     ATTRIBUTE Location OF Net_3960 : LABEL IS "U(2,0)";
     COMPONENT clockblockcell
         PORT (
@@ -1054,6 +840,26 @@ ARCHITECTURE __DEFAULT__ OF hand_firmware_micro IS
     END COMPONENT;
 BEGIN
 
+    \UART_RS485:BUART:rx_state_2_split\:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * !main_4) + (!main_0 * !main_1 * main_2 * main_4 * main_9) + (!main_0 * !main_1 * main_2 * main_4 * main_11) + (!main_0 * !main_1 * !main_3 * !main_4 * main_10 * !main_11) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7 * !main_8) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_9) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_11)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => \UART_RS485:BUART:rx_state_2_split\,
+            main_0 => \UART_RS485:BUART:rx_state_1\,
+            main_1 => \UART_RS485:BUART:rx_state_0\,
+            main_2 => \UART_RS485:BUART:rx_bitclk_enable\,
+            main_3 => \UART_RS485:BUART:rx_state_3\,
+            main_4 => \UART_RS485:BUART:rx_state_2\,
+            main_5 => \UART_RS485:BUART:rx_count_6\,
+            main_6 => \UART_RS485:BUART:rx_count_5\,
+            main_7 => \UART_RS485:BUART:rx_count_4\,
+            main_8 => \UART_RS485:BUART:rx_count_3\,
+            main_9 => \UART_RS485:BUART:rx_break_detect\,
+            main_10 => \UART_RS485:BUART:rx_last\,
+            main_11 => Net_6196_SYNCOUT);
+
     ClockBlock:clockblockcell
         PORT MAP(
             imo => ClockBlock_IMO,
@@ -1079,10 +885,8 @@ BEGIN
             clk_a_dig_0 => \ADC:Net_488_adig_local\,
             dclk_glb_2 => Net_10,
             dclk_2 => Net_10_local,
-            dclk_glb_3 => Net_1308,
-            dclk_3 => Net_1308_local,
-            dclk_glb_4 => Net_3852,
-            dclk_4 => Net_3852_local,
+            dclk_glb_3 => Net_4688,
+            dclk_3 => Net_4688_local,
             clk_bus_glb_ff => \ClockBlock.clk_bus_glb_ff__sig\,
             aclk_glb_ff_0 => \ClockBlock.aclk_glb_ff_0__sig\);
 
@@ -1344,7 +1148,7 @@ BEGIN
 
     Signal_1_C(0):iocell
         GENERIC MAP(
-            in_sync_mode => 0,
+            in_sync_mode => 2,
             out_sync_mode => 0,
             oe_sync_mode => 0,
             logicalport => "Signal_1_C",
@@ -1353,7 +1157,6 @@ BEGIN
         PORT MAP(
             pa_out => Signal_1_C(0)__PA,
             oe => open,
-            fb => Net_1060,
             pad_in => Signal_1_C(0)_PAD,
             in_clock => ClockBlock_BUS_CLK,
             in_clock_en => '1',
@@ -1728,98 +1531,6 @@ BEGIN
             out_clock_en => '1',
             out_reset => '0');
 
-    Signal_1_B:logicalport
-        GENERIC MAP(
-            drive_mode => "110",
-            ibuf_enabled => "1",
-            id => "cc3bcd7e-5dc0-48ea-9bf6-6aa082be1ada",
-            init_dr_st => "0",
-            input_buffer_sel => "00",
-            input_clk_en => 0,
-            input_sync => "1",
-            input_sync_mode => "0",
-            intr_mode => "00",
-            invert_in_clock => 0,
-            invert_in_clock_en => 0,
-            invert_in_reset => 0,
-            invert_out_clock => 0,
-            invert_out_clock_en => 0,
-            invert_out_reset => 0,
-            io_voltage => "",
-            layout_mode => "NONCONTIGUOUS",
-            oe_conn => "0",
-            oe_reset => 0,
-            oe_sync => "0",
-            output_clk_en => 0,
-            output_clock_mode => "0",
-            output_conn => "1",
-            output_mode => "0",
-            output_reset => 0,
-            output_sync => "0",
-            ovt_hyst_trim => "0",
-            ovt_needed => "0",
-            ovt_slew_control => "00",
-            pa_in_clock => -1,
-            pa_in_clock_en => -1,
-            pa_in_reset => -1,
-            pa_out_clock => -1,
-            pa_out_clock_en => -1,
-            pa_out_reset => -1,
-            pin_aliases => "",
-            pin_mode => "O",
-            por_state => 4,
-            port_alias_group => "",
-            port_alias_required => 0,
-            sio_group_cnt => 0,
-            sio_hifreq => "00000000",
-            sio_hyst => "1",
-            sio_ibuf => "00000000",
-            sio_info => "00",
-            sio_obuf => "00000000",
-            sio_refsel => "00000000",
-            sio_vohsel => "00000000",
-            sio_vtrip => "00000000",
-            slew_rate => "0",
-            spanning => 1,
-            sw_only => 0,
-            use_annotation => "0",
-            vtrip => "10",
-            width => 1,
-            in_clk_inv => 0,
-            in_clken_inv => 0,
-            in_clken_mode => 1,
-            in_rst_inv => 0,
-            out_clk_inv => 0,
-            out_clken_inv => 0,
-            out_clken_mode => 1,
-            out_rst_inv => 0)
-        PORT MAP(
-            in_clock_en => open,
-            in_reset => open,
-            out_clock_en => open,
-            out_reset => open);
-
-    Signal_1_B(0):iocell
-        GENERIC MAP(
-            in_sync_mode => 0,
-            out_sync_mode => 0,
-            oe_sync_mode => 0,
-            logicalport => "Signal_1_B",
-            logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
-        PORT MAP(
-            pa_out => Signal_1_B(0)__PA,
-            oe => open,
-            pin_input => Net_3376,
-            pad_out => Signal_1_B(0)_PAD,
-            pad_in => Signal_1_B(0)_PAD,
-            in_clock => open,
-            in_clock_en => '1',
-            in_reset => '0',
-            out_clock => open,
-            out_clock_en => '1',
-            out_reset => '0');
-
     Signal_1_A:logicalport
         GENERIC MAP(
             drive_mode => "110",
@@ -1844,7 +1555,7 @@ BEGIN
             oe_sync => "0",
             output_clk_en => 0,
             output_clock_mode => "0",
-            output_conn => "1",
+            output_conn => "0",
             output_mode => "0",
             output_reset => 0,
             output_sync => "0",
@@ -1898,13 +1609,101 @@ BEGIN
             oe_sync_mode => 0,
             logicalport => "Signal_1_A",
             logicalport_pin_id => 0,
-            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
         PORT MAP(
             pa_out => Signal_1_A(0)__PA,
             oe => open,
-            pin_input => cydff_2,
-            pad_out => Signal_1_A(0)_PAD,
             pad_in => Signal_1_A(0)_PAD,
+            in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    Signal_1_B:logicalport
+        GENERIC MAP(
+            drive_mode => "110",
+            ibuf_enabled => "1",
+            id => "cc3bcd7e-5dc0-48ea-9bf6-6aa082be1ada",
+            init_dr_st => "0",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "NONCONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "O",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 1,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "10",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open);
+
+    Signal_1_B(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 0,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Signal_1_B",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000001")
+        PORT MAP(
+            pa_out => Signal_1_B(0)__PA,
+            oe => open,
+            pad_in => Signal_1_B(0)_PAD,
             in_clock => open,
             in_clock_en => '1',
             in_reset => '0',
@@ -2264,10 +2063,101 @@ BEGIN
         PORT MAP(
             pa_out => BOARD_LED(0)__PA,
             oe => open,
-            pin_input => Net_3664,
+            pin_input => Net_3984,
             pad_out => BOARD_LED(0)_PAD,
             pad_in => BOARD_LED(0)_PAD,
             in_clock => open,
+            in_clock_en => '1',
+            in_reset => '0',
+            out_clock => open,
+            out_clock_en => '1',
+            out_reset => '0');
+
+    Signal_2_A:logicalport
+        GENERIC MAP(
+            drive_mode => "010",
+            ibuf_enabled => "1",
+            id => "08b05f5c-411e-42b2-9a6a-ea7506d26d71",
+            init_dr_st => "1",
+            input_buffer_sel => "00",
+            input_clk_en => 0,
+            input_sync => "1",
+            input_sync_mode => "0",
+            intr_mode => "00",
+            invert_in_clock => 0,
+            invert_in_clock_en => 0,
+            invert_in_reset => 0,
+            invert_out_clock => 0,
+            invert_out_clock_en => 0,
+            invert_out_reset => 0,
+            io_voltage => "",
+            layout_mode => "CONTIGUOUS",
+            oe_conn => "0",
+            oe_reset => 0,
+            oe_sync => "0",
+            output_clk_en => 0,
+            output_clock_mode => "0",
+            output_conn => "0",
+            output_mode => "0",
+            output_reset => 0,
+            output_sync => "0",
+            ovt_hyst_trim => "0",
+            ovt_needed => "0",
+            ovt_slew_control => "00",
+            pa_in_clock => -1,
+            pa_in_clock_en => -1,
+            pa_in_reset => -1,
+            pa_out_clock => -1,
+            pa_out_clock_en => -1,
+            pa_out_reset => -1,
+            pin_aliases => "",
+            pin_mode => "I",
+            por_state => 4,
+            port_alias_group => "",
+            port_alias_required => 0,
+            sio_group_cnt => 0,
+            sio_hifreq => "00000000",
+            sio_hyst => "1",
+            sio_ibuf => "00000000",
+            sio_info => "00",
+            sio_obuf => "00000000",
+            sio_refsel => "00000000",
+            sio_vohsel => "00000000",
+            sio_vtrip => "00000000",
+            slew_rate => "0",
+            spanning => 0,
+            sw_only => 0,
+            use_annotation => "0",
+            vtrip => "00",
+            width => 1,
+            in_clk_inv => 0,
+            in_clken_inv => 0,
+            in_clken_mode => 1,
+            in_rst_inv => 0,
+            out_clk_inv => 0,
+            out_clken_inv => 0,
+            out_clken_mode => 1,
+            out_rst_inv => 0)
+        PORT MAP(
+            in_clock_en => open,
+            in_reset => open,
+            out_clock_en => open,
+            out_reset => open,
+            in_clock => open);
+
+    Signal_2_A(0):iocell
+        GENERIC MAP(
+            in_sync_mode => 2,
+            out_sync_mode => 0,
+            oe_sync_mode => 0,
+            logicalport => "Signal_2_A",
+            logicalport_pin_id => 0,
+            io_capabilities => "0000000000000000000000000000000000000000000000000000000000000101")
+        PORT MAP(
+            pa_out => Signal_2_A(0)__PA,
+            oe => open,
+            pad_in => Signal_2_A(0)_PAD,
+            in_clock => ClockBlock_BUS_CLK,
             in_clock_en => '1',
             in_reset => '0',
             out_clock => open,
@@ -2349,47 +2239,6 @@ BEGIN
             main_0 => \UART_RS485:BUART:rx_fifonotempty\,
             main_1 => \UART_RS485:BUART:rx_state_stop1_reg\);
 
-    \COUNTER_ENC:CounterUDB:reload\:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => \COUNTER_ENC:CounterUDB:reload\,
-            main_0 => Net_3492,
-            main_1 => \COUNTER_ENC:CounterUDB:per_equal\);
-
-    \COUNTER_ENC:CounterUDB:status_0\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * !main_1)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => \COUNTER_ENC:CounterUDB:status_0\,
-            main_0 => \COUNTER_ENC:CounterUDB:cmp_out_i\,
-            main_1 => \COUNTER_ENC:CounterUDB:prevCompare\);
-
-    \COUNTER_ENC:CounterUDB:status_2\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * !main_1)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => \COUNTER_ENC:CounterUDB:status_2\,
-            main_0 => \COUNTER_ENC:CounterUDB:per_equal\,
-            main_1 => \COUNTER_ENC:CounterUDB:overflow_reg_i\);
-
-    \COUNTER_ENC:CounterUDB:count_enable\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0 * !main_1 * main_2)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => \COUNTER_ENC:CounterUDB:count_enable\,
-            main_0 => \COUNTER_ENC:CounterUDB:control_7\,
-            main_1 => \COUNTER_ENC:CounterUDB:count_stored_i\,
-            main_2 => Net_3376);
-
     \MY_TIMER:TimerUDB:status_tc\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
@@ -2400,6 +2249,16 @@ BEGIN
             main_0 => \MY_TIMER:TimerUDB:control_7\,
             main_1 => \MY_TIMER:TimerUDB:per_zero\);
 
+    Net_3984:macrocell
+        GENERIC MAP(
+            eqn_main => "(!main_0 * !main_1)",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => Net_3984,
+            main_0 => Net_3960,
+            main_1 => Net_3961);
+
     RS485_RX(0)_SYNC:synccell
         GENERIC MAP(
             clk_inv => '0',
@@ -2408,25 +2267,6 @@ BEGIN
             in => Net_6196,
             out => Net_6196_SYNCOUT,
             clock => ClockBlock_BUS_CLK);
-
-    Signal_1_C(0)_SYNC:synccell
-        GENERIC MAP(
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            in => Net_1060,
-            out => Net_1060_SYNCOUT,
-            clock => ClockBlock_BUS_CLK);
-
-    Net_3664:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_3664,
-            main_0 => Net_3960,
-            main_1 => Net_3961);
 
     ISR_RS485_RX:interrupt
         GENERIC MAP(
@@ -2636,499 +2476,6 @@ BEGIN
             status_1 => \UART_RS485:BUART:rx_status_1\,
             status_0 => open,
             interrupt => Net_6117);
-
-    \COUNTER_ENC:CounterUDB:sCTRLReg:ctrlreg\:controlcell
-        GENERIC MAP(
-            cy_ctrl_mode_0 => "11111111",
-            cy_ctrl_mode_1 => "00000000",
-            cy_ext_reset => 0,
-            cy_force_order => 1,
-            cy_init_value => "00000000",
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            clock => Net_1308,
-            control_7 => \COUNTER_ENC:CounterUDB:control_7\,
-            control_6 => \COUNTER_ENC:CounterUDB:control_6\,
-            control_5 => \COUNTER_ENC:CounterUDB:control_5\,
-            control_4 => \COUNTER_ENC:CounterUDB:control_4\,
-            control_3 => \COUNTER_ENC:CounterUDB:control_3\,
-            control_2 => \COUNTER_ENC:CounterUDB:control_2\,
-            control_1 => \COUNTER_ENC:CounterUDB:control_1\,
-            control_0 => \COUNTER_ENC:CounterUDB:control_0\,
-            busclk => ClockBlock_BUS_CLK);
-
-    \COUNTER_ENC:CounterUDB:sSTSReg:stsreg\:statusicell
-        GENERIC MAP(
-            cy_force_order => 1,
-            cy_int_mask => "1111111",
-            cy_md_select => "0011111",
-            clk_inv => '0',
-            clken_mode => 1,
-            reset_inv => '0')
-        PORT MAP(
-            reset => Net_3492,
-            clock => Net_1308,
-            status_6 => \COUNTER_ENC:CounterUDB:status_6\,
-            status_5 => \COUNTER_ENC:CounterUDB:status_5\,
-            status_4 => open,
-            status_3 => open,
-            status_2 => \COUNTER_ENC:CounterUDB:status_2\,
-            status_1 => \COUNTER_ENC:CounterUDB:status_1\,
-            status_0 => \COUNTER_ENC:CounterUDB:status_0\);
-
-    \COUNTER_ENC:CounterUDB:sC8:counterdp:u0\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000000001000000000000001000000001000000010000000000000010000000000000000100000010101000010100000010000001000000101010000101000011111111000000001111111111111111101000000000000000000001000000000000000000011000",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            clock => Net_1308,
-            cs_addr_2 => __ONE__,
-            cs_addr_1 => \COUNTER_ENC:CounterUDB:count_enable\,
-            cs_addr_0 => \COUNTER_ENC:CounterUDB:reload\,
-            ce0_comb => \COUNTER_ENC:CounterUDB:per_equal\,
-            z0_comb => \COUNTER_ENC:CounterUDB:status_1\,
-            ce1_comb => \COUNTER_ENC:CounterUDB:cmp_out_i\,
-            f0_bus_stat_comb => \COUNTER_ENC:CounterUDB:status_6\,
-            f0_blk_stat_comb => \COUNTER_ENC:CounterUDB:status_5\,
-            busclk => ClockBlock_BUS_CLK);
-
-    \SHIFTREG_ENC_3:bSR:SyncCtl:CtrlReg\:controlcell
-        GENERIC MAP(
-            cy_ctrl_mode_0 => "00000001",
-            cy_ctrl_mode_1 => "00000000",
-            cy_ext_reset => 0,
-            cy_force_order => 1,
-            cy_init_value => "00000000",
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            control_7 => \SHIFTREG_ENC_3:bSR:control_7\,
-            control_6 => \SHIFTREG_ENC_3:bSR:control_6\,
-            control_5 => \SHIFTREG_ENC_3:bSR:control_5\,
-            control_4 => \SHIFTREG_ENC_3:bSR:control_4\,
-            control_3 => \SHIFTREG_ENC_3:bSR:control_3\,
-            control_2 => \SHIFTREG_ENC_3:bSR:control_2\,
-            control_1 => \SHIFTREG_ENC_3:bSR:control_1\,
-            control_0 => \SHIFTREG_ENC_3:bSR:ctrl_clk_enable\,
-            clk_en => Net_3376,
-            busclk => ClockBlock_BUS_CLK);
-
-    \SHIFTREG_ENC_3:bSR:StsReg\:statusicell
-        GENERIC MAP(
-            cy_force_order => 1,
-            cy_int_mask => "0000111",
-            cy_md_select => "0000111",
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            status_6 => \SHIFTREG_ENC_3:bSR:status_6\,
-            status_5 => \SHIFTREG_ENC_3:bSR:status_5\,
-            status_4 => \SHIFTREG_ENC_3:bSR:status_4\,
-            status_3 => \SHIFTREG_ENC_3:bSR:status_3\,
-            status_2 => open,
-            status_1 => cydff_2,
-            status_0 => open,
-            clk_en => Net_3376);
-
-    \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010010101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110101000001000001000000000000000011100",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            cs_addr_2 => \SHIFTREG_ENC_3:bSR:ctrl_clk_enable\,
-            route_si => Net_1060_SYNCOUT,
-            f1_load => cydff_2,
-            clk_en => Net_3376,
-            busclk => ClockBlock_BUS_CLK,
-            ce0 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.ce0__sig\,
-            cl0 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.cl0__sig\,
-            z0 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.z0__sig\,
-            ff0 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.ff0__sig\,
-            ce1 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.ce1__sig\,
-            cl1 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.cl1__sig\,
-            z1 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.z1__sig\,
-            ff1 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.ff1__sig\,
-            co_msb => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.co_msb__sig\,
-            sol_msb => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.sol_msb__sig\,
-            cfbo => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.cfbo__sig\,
-            sil => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.sor__sig\,
-            cmsbi => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.cmsbo__sig\);
-
-    \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010010101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110111100001000001000100000000000011100",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            cs_addr_2 => \SHIFTREG_ENC_3:bSR:ctrl_clk_enable\,
-            route_si => Net_1060_SYNCOUT,
-            f1_load => cydff_2,
-            busclk => ClockBlock_BUS_CLK,
-            clk_en => Net_3376,
-            ce0i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.ce0__sig\,
-            cl0i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.cl0__sig\,
-            z0i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.z0__sig\,
-            ff0i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.ff0__sig\,
-            ce1i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.ce1__sig\,
-            cl1i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.cl1__sig\,
-            z1i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.z1__sig\,
-            ff1i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.ff1__sig\,
-            ci => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.co_msb__sig\,
-            sir => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.sol_msb__sig\,
-            cfbi => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0.cfbo__sig\,
-            sor => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.sor__sig\,
-            cmsbo => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.cmsbo__sig\,
-            ce0 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.ce0__sig\,
-            cl0 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.cl0__sig\,
-            z0 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.z0__sig\,
-            ff0 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.ff0__sig\,
-            ce1 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.ce1__sig\,
-            cl1 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.cl1__sig\,
-            z1 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.z1__sig\,
-            ff1 => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.ff1__sig\,
-            co_msb => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.co_msb__sig\,
-            sol_msb => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.sol_msb__sig\,
-            cfbo => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.cfbo__sig\,
-            sil => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u2.sor__sig\,
-            cmsbi => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u2.cmsbo__sig\);
-
-    \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u2\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010010101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110111100001000101000100000000000011100",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            cs_addr_2 => \SHIFTREG_ENC_3:bSR:ctrl_clk_enable\,
-            route_si => Net_1060_SYNCOUT,
-            f1_load => cydff_2,
-            so_comb => Net_3506,
-            f0_bus_stat_comb => \SHIFTREG_ENC_3:bSR:status_4\,
-            f0_blk_stat_comb => \SHIFTREG_ENC_3:bSR:status_3\,
-            f1_bus_stat_comb => \SHIFTREG_ENC_3:bSR:status_6\,
-            f1_blk_stat_comb => \SHIFTREG_ENC_3:bSR:status_5\,
-            busclk => ClockBlock_BUS_CLK,
-            clk_en => Net_3376,
-            ce0i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.ce0__sig\,
-            cl0i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.cl0__sig\,
-            z0i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.z0__sig\,
-            ff0i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.ff0__sig\,
-            ce1i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.ce1__sig\,
-            cl1i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.cl1__sig\,
-            z1i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.z1__sig\,
-            ff1i => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.ff1__sig\,
-            ci => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.co_msb__sig\,
-            sir => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.sol_msb__sig\,
-            cfbi => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1.cfbo__sig\,
-            sor => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u2.sor__sig\,
-            cmsbo => \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u2.cmsbo__sig\);
-
-    \SHIFTREG_ENC_2:bSR:SyncCtl:CtrlReg\:controlcell
-        GENERIC MAP(
-            cy_ctrl_mode_0 => "00000001",
-            cy_ctrl_mode_1 => "00000000",
-            cy_ext_reset => 0,
-            cy_force_order => 1,
-            cy_init_value => "00000000",
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            control_7 => \SHIFTREG_ENC_2:bSR:control_7\,
-            control_6 => \SHIFTREG_ENC_2:bSR:control_6\,
-            control_5 => \SHIFTREG_ENC_2:bSR:control_5\,
-            control_4 => \SHIFTREG_ENC_2:bSR:control_4\,
-            control_3 => \SHIFTREG_ENC_2:bSR:control_3\,
-            control_2 => \SHIFTREG_ENC_2:bSR:control_2\,
-            control_1 => \SHIFTREG_ENC_2:bSR:control_1\,
-            control_0 => \SHIFTREG_ENC_2:bSR:ctrl_clk_enable\,
-            clk_en => Net_3376,
-            busclk => ClockBlock_BUS_CLK);
-
-    \SHIFTREG_ENC_2:bSR:StsReg\:statusicell
-        GENERIC MAP(
-            cy_force_order => 1,
-            cy_int_mask => "0000111",
-            cy_md_select => "0000111",
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            status_6 => \SHIFTREG_ENC_2:bSR:status_6\,
-            status_5 => \SHIFTREG_ENC_2:bSR:status_5\,
-            status_4 => \SHIFTREG_ENC_2:bSR:status_4\,
-            status_3 => \SHIFTREG_ENC_2:bSR:status_3\,
-            status_2 => open,
-            status_1 => cydff_2,
-            status_0 => open,
-            clk_en => Net_3376);
-
-    \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010010101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110101000001000001000000000000000011100",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            cs_addr_2 => \SHIFTREG_ENC_2:bSR:ctrl_clk_enable\,
-            route_si => Net_3506,
-            f1_load => cydff_2,
-            clk_en => Net_3376,
-            busclk => ClockBlock_BUS_CLK,
-            ce0 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.ce0__sig\,
-            cl0 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.cl0__sig\,
-            z0 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.z0__sig\,
-            ff0 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.ff0__sig\,
-            ce1 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.ce1__sig\,
-            cl1 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.cl1__sig\,
-            z1 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.z1__sig\,
-            ff1 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.ff1__sig\,
-            co_msb => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.co_msb__sig\,
-            sol_msb => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.sol_msb__sig\,
-            cfbo => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.cfbo__sig\,
-            sil => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.sor__sig\,
-            cmsbi => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.cmsbo__sig\);
-
-    \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010010101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110111100001000001000100000000000011100",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            cs_addr_2 => \SHIFTREG_ENC_2:bSR:ctrl_clk_enable\,
-            route_si => Net_3506,
-            f1_load => cydff_2,
-            busclk => ClockBlock_BUS_CLK,
-            clk_en => Net_3376,
-            ce0i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.ce0__sig\,
-            cl0i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.cl0__sig\,
-            z0i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.z0__sig\,
-            ff0i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.ff0__sig\,
-            ce1i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.ce1__sig\,
-            cl1i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.cl1__sig\,
-            z1i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.z1__sig\,
-            ff1i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.ff1__sig\,
-            ci => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.co_msb__sig\,
-            sir => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.sol_msb__sig\,
-            cfbi => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0.cfbo__sig\,
-            sor => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.sor__sig\,
-            cmsbo => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.cmsbo__sig\,
-            ce0 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.ce0__sig\,
-            cl0 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.cl0__sig\,
-            z0 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.z0__sig\,
-            ff0 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.ff0__sig\,
-            ce1 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.ce1__sig\,
-            cl1 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.cl1__sig\,
-            z1 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.z1__sig\,
-            ff1 => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.ff1__sig\,
-            co_msb => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.co_msb__sig\,
-            sol_msb => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.sol_msb__sig\,
-            cfbo => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.cfbo__sig\,
-            sil => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u2.sor__sig\,
-            cmsbi => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u2.cmsbo__sig\);
-
-    \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u2\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010010101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110111100001000101000100000000000011100",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            cs_addr_2 => \SHIFTREG_ENC_2:bSR:ctrl_clk_enable\,
-            route_si => Net_3506,
-            f1_load => cydff_2,
-            so_comb => Net_3505,
-            f0_bus_stat_comb => \SHIFTREG_ENC_2:bSR:status_4\,
-            f0_blk_stat_comb => \SHIFTREG_ENC_2:bSR:status_3\,
-            f1_bus_stat_comb => \SHIFTREG_ENC_2:bSR:status_6\,
-            f1_blk_stat_comb => \SHIFTREG_ENC_2:bSR:status_5\,
-            busclk => ClockBlock_BUS_CLK,
-            clk_en => Net_3376,
-            ce0i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.ce0__sig\,
-            cl0i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.cl0__sig\,
-            z0i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.z0__sig\,
-            ff0i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.ff0__sig\,
-            ce1i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.ce1__sig\,
-            cl1i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.cl1__sig\,
-            z1i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.z1__sig\,
-            ff1i => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.ff1__sig\,
-            ci => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.co_msb__sig\,
-            sir => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.sol_msb__sig\,
-            cfbi => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1.cfbo__sig\,
-            sor => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u2.sor__sig\,
-            cmsbo => \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u2.cmsbo__sig\);
 
     \ADC:DSM\:dsmodcell
         GENERIC MAP(
@@ -3449,231 +2796,6 @@ BEGIN
             in => Net_3264,
             out => Net_3240);
 
-    \SHIFTREG_ENC_1:bSR:SyncCtl:CtrlReg\:controlcell
-        GENERIC MAP(
-            cy_ctrl_mode_0 => "00000001",
-            cy_ctrl_mode_1 => "00000000",
-            cy_ext_reset => 0,
-            cy_force_order => 1,
-            cy_init_value => "00000000",
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            control_7 => \SHIFTREG_ENC_1:bSR:control_7\,
-            control_6 => \SHIFTREG_ENC_1:bSR:control_6\,
-            control_5 => \SHIFTREG_ENC_1:bSR:control_5\,
-            control_4 => \SHIFTREG_ENC_1:bSR:control_4\,
-            control_3 => \SHIFTREG_ENC_1:bSR:control_3\,
-            control_2 => \SHIFTREG_ENC_1:bSR:control_2\,
-            control_1 => \SHIFTREG_ENC_1:bSR:control_1\,
-            control_0 => \SHIFTREG_ENC_1:bSR:ctrl_clk_enable\,
-            clk_en => Net_3376,
-            busclk => ClockBlock_BUS_CLK);
-
-    \SHIFTREG_ENC_1:bSR:StsReg\:statusicell
-        GENERIC MAP(
-            cy_force_order => 1,
-            cy_int_mask => "0000111",
-            cy_md_select => "0000111",
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            status_6 => \SHIFTREG_ENC_1:bSR:status_6\,
-            status_5 => \SHIFTREG_ENC_1:bSR:status_5\,
-            status_4 => \SHIFTREG_ENC_1:bSR:status_4\,
-            status_3 => \SHIFTREG_ENC_1:bSR:status_3\,
-            status_2 => open,
-            status_1 => cydff_2,
-            status_0 => open,
-            clk_en => Net_3376);
-
-    \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010010101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110101000001000001000000000000000011100",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            cs_addr_2 => \SHIFTREG_ENC_1:bSR:ctrl_clk_enable\,
-            route_si => Net_3505,
-            f1_load => cydff_2,
-            clk_en => Net_3376,
-            busclk => ClockBlock_BUS_CLK,
-            ce0 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.ce0__sig\,
-            cl0 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.cl0__sig\,
-            z0 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.z0__sig\,
-            ff0 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.ff0__sig\,
-            ce1 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.ce1__sig\,
-            cl1 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.cl1__sig\,
-            z1 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.z1__sig\,
-            ff1 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.ff1__sig\,
-            co_msb => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.co_msb__sig\,
-            sol_msb => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.sol_msb__sig\,
-            cfbo => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.cfbo__sig\,
-            sil => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.sor__sig\,
-            cmsbi => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.cmsbo__sig\);
-
-    \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010010101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110111100001000001000100000000000011100",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            cs_addr_2 => \SHIFTREG_ENC_1:bSR:ctrl_clk_enable\,
-            route_si => Net_3505,
-            f1_load => cydff_2,
-            busclk => ClockBlock_BUS_CLK,
-            clk_en => Net_3376,
-            ce0i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.ce0__sig\,
-            cl0i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.cl0__sig\,
-            z0i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.z0__sig\,
-            ff0i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.ff0__sig\,
-            ce1i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.ce1__sig\,
-            cl1i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.cl1__sig\,
-            z1i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.z1__sig\,
-            ff1i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.ff1__sig\,
-            ci => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.co_msb__sig\,
-            sir => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.sol_msb__sig\,
-            cfbi => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0.cfbo__sig\,
-            sor => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.sor__sig\,
-            cmsbo => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.cmsbo__sig\,
-            ce0 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.ce0__sig\,
-            cl0 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.cl0__sig\,
-            z0 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.z0__sig\,
-            ff0 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.ff0__sig\,
-            ce1 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.ce1__sig\,
-            cl1 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.cl1__sig\,
-            z1 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.z1__sig\,
-            ff1 => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.ff1__sig\,
-            co_msb => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.co_msb__sig\,
-            sol_msb => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.sol_msb__sig\,
-            cfbo => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.cfbo__sig\,
-            sil => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u2.sor__sig\,
-            cmsbi => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u2.cmsbo__sig\);
-
-    \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u2\:datapathcell
-        GENERIC MAP(
-            a0_init => "00000000",
-            a1_init => "00000000",
-            ce0_sync => 1,
-            ce1_sync => 1,
-            cl0_sync => 1,
-            cl1_sync => 1,
-            cmsb_sync => 1,
-            co_msb_sync => 1,
-            cy_dpconfig => "0000100000000000000010000000000000001000000000000000100000000000000010010101000010101000010000000000000011000000101010000100000011111111000000001111111111111111010101011110111100001000101000100000000000011100",
-            d0_init => "00000000",
-            d1_init => "00000000",
-            f0_blk_sync => 1,
-            f0_bus_sync => 1,
-            f1_blk_sync => 1,
-            f1_bus_sync => 1,
-            ff0_sync => 1,
-            ff1_sync => 1,
-            ov_msb_sync => 1,
-            so_sync => 1,
-            z0_sync => 1,
-            z1_sync => 1,
-            uses_p_in => '0',
-            uses_p_out => '0',
-            clk_inv => '1',
-            clken_inv => '0',
-            clken_mode => 2)
-        PORT MAP(
-            clock => Net_1308,
-            cs_addr_2 => \SHIFTREG_ENC_1:bSR:ctrl_clk_enable\,
-            route_si => Net_3505,
-            f1_load => cydff_2,
-            f0_bus_stat_comb => \SHIFTREG_ENC_1:bSR:status_4\,
-            f0_blk_stat_comb => \SHIFTREG_ENC_1:bSR:status_3\,
-            f1_bus_stat_comb => \SHIFTREG_ENC_1:bSR:status_6\,
-            f1_blk_stat_comb => \SHIFTREG_ENC_1:bSR:status_5\,
-            busclk => ClockBlock_BUS_CLK,
-            clk_en => Net_3376,
-            ce0i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.ce0__sig\,
-            cl0i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.cl0__sig\,
-            z0i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.z0__sig\,
-            ff0i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.ff0__sig\,
-            ce1i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.ce1__sig\,
-            cl1i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.cl1__sig\,
-            z1i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.z1__sig\,
-            ff1i => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.ff1__sig\,
-            ci => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.co_msb__sig\,
-            sir => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.sol_msb__sig\,
-            cfbi => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1.cfbo__sig\,
-            sor => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u2.sor__sig\,
-            cmsbo => \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u2.cmsbo__sig\);
-
-    \RESET_COUNTERS:Sync:ctrl_reg\:controlcell
-        GENERIC MAP(
-            cy_ctrl_mode_0 => "00000000",
-            cy_ctrl_mode_1 => "00000000",
-            cy_ext_reset => 0,
-            cy_force_order => 1,
-            cy_init_value => "00000001",
-            clken_mode => 1)
-        PORT MAP(
-            control_7 => \RESET_COUNTERS:control_7\,
-            control_6 => \RESET_COUNTERS:control_6\,
-            control_5 => \RESET_COUNTERS:control_5\,
-            control_4 => \RESET_COUNTERS:control_4\,
-            control_3 => \RESET_COUNTERS:control_3\,
-            control_2 => \RESET_COUNTERS:control_2\,
-            control_1 => \RESET_COUNTERS:control_1\,
-            control_0 => Net_3492,
-            busclk => ClockBlock_BUS_CLK);
-
     \ADC_STATUS:sts:sts_reg\:statuscell
         GENERIC MAP(
             cy_force_order => 1,
@@ -3729,6 +2851,44 @@ BEGIN
             in => Net_5118,
             out => Net_5503);
 
+    \LED_BLINK_EN:Sync:ctrl_reg\:controlcell
+        GENERIC MAP(
+            cy_ctrl_mode_0 => "00000000",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000",
+            clken_mode => 1)
+        PORT MAP(
+            control_7 => \LED_BLINK_EN:control_7\,
+            control_6 => \LED_BLINK_EN:control_6\,
+            control_5 => \LED_BLINK_EN:control_5\,
+            control_4 => \LED_BLINK_EN:control_4\,
+            control_3 => \LED_BLINK_EN:control_3\,
+            control_2 => \LED_BLINK_EN:control_2\,
+            control_1 => \LED_BLINK_EN:control_1\,
+            control_0 => Net_3925,
+            busclk => ClockBlock_BUS_CLK);
+
+    \LED_CTRL:Sync:ctrl_reg\:controlcell
+        GENERIC MAP(
+            cy_ctrl_mode_0 => "00000000",
+            cy_ctrl_mode_1 => "00000000",
+            cy_ext_reset => 0,
+            cy_force_order => 1,
+            cy_init_value => "00000000",
+            clken_mode => 1)
+        PORT MAP(
+            control_7 => \LED_CTRL:control_7\,
+            control_6 => \LED_CTRL:control_6\,
+            control_5 => \LED_CTRL:control_5\,
+            control_4 => \LED_CTRL:control_4\,
+            control_3 => \LED_CTRL:control_3\,
+            control_2 => \LED_CTRL:control_2\,
+            control_1 => \LED_CTRL:control_1\,
+            control_0 => Net_3961,
+            busclk => ClockBlock_BUS_CLK);
+
     \LED_BLINK:PWMUDB:genblk1:ctrlreg\:controlcell
         GENERIC MAP(
             cy_ctrl_mode_0 => "11111111",
@@ -3739,7 +2899,7 @@ BEGIN
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            clock => Net_3852,
+            clock => Net_4688,
             control_7 => \LED_BLINK:PWMUDB:control_7\,
             control_6 => \LED_BLINK:PWMUDB:control_6\,
             control_5 => \LED_BLINK:PWMUDB:control_5\,
@@ -3778,50 +2938,12 @@ BEGIN
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
-            clock => Net_3852,
+            clock => Net_4688,
             cs_addr_2 => \LED_BLINK:PWMUDB:tc_i\,
             cs_addr_1 => \LED_BLINK:PWMUDB:runmode_enable\,
             ce0_comb => \LED_BLINK:PWMUDB:cmp1_eq\,
             cl0_comb => \LED_BLINK:PWMUDB:cmp1_less\,
             z0_comb => \LED_BLINK:PWMUDB:tc_i\,
-            busclk => ClockBlock_BUS_CLK);
-
-    \LED_CTRL:Sync:ctrl_reg\:controlcell
-        GENERIC MAP(
-            cy_ctrl_mode_0 => "00000000",
-            cy_ctrl_mode_1 => "00000000",
-            cy_ext_reset => 0,
-            cy_force_order => 1,
-            cy_init_value => "00000000",
-            clken_mode => 1)
-        PORT MAP(
-            control_7 => \LED_CTRL:control_7\,
-            control_6 => \LED_CTRL:control_6\,
-            control_5 => \LED_CTRL:control_5\,
-            control_4 => \LED_CTRL:control_4\,
-            control_3 => \LED_CTRL:control_3\,
-            control_2 => \LED_CTRL:control_2\,
-            control_1 => \LED_CTRL:control_1\,
-            control_0 => Net_3961,
-            busclk => ClockBlock_BUS_CLK);
-
-    \LED_BLINK_EN:Sync:ctrl_reg\:controlcell
-        GENERIC MAP(
-            cy_ctrl_mode_0 => "00000000",
-            cy_ctrl_mode_1 => "00000000",
-            cy_ext_reset => 0,
-            cy_force_order => 1,
-            cy_init_value => "00000000",
-            clken_mode => 1)
-        PORT MAP(
-            control_7 => \LED_BLINK_EN:control_7\,
-            control_6 => \LED_BLINK_EN:control_6\,
-            control_5 => \LED_BLINK_EN:control_5\,
-            control_4 => \LED_BLINK_EN:control_4\,
-            control_3 => \LED_BLINK_EN:control_3\,
-            control_2 => \LED_BLINK_EN:control_2\,
-            control_1 => \LED_BLINK_EN:control_1\,
-            control_0 => Net_3925,
             busclk => ClockBlock_BUS_CLK);
 
     Net_6020:macrocell
@@ -4103,81 +3225,6 @@ BEGIN
             clock_0 => Net_124,
             main_0 => Net_6196_SYNCOUT);
 
-    cydff_2:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1)",
-            regmode => 1,
-            clk_inv => '1',
-            clken_mode => 1)
-        PORT MAP(
-            q => cydff_2,
-            clock_0 => Net_1308,
-            main_0 => \COUNTER_ENC:CounterUDB:overflow_reg_i\,
-            main_1 => \COUNTER_ENC:CounterUDB:prevCompare\);
-
-    \COUNTER_ENC:CounterUDB:overflow_reg_i\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0)",
-            regmode => 1,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \COUNTER_ENC:CounterUDB:overflow_reg_i\,
-            clock_0 => Net_1308,
-            main_0 => \COUNTER_ENC:CounterUDB:per_equal\);
-
-    \UART_RS485:BUART:rx_state_2_split\:macrocell
-        GENERIC MAP(
-            eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * !main_4) + (!main_0 * !main_1 * main_2 * main_4 * main_9) + (!main_0 * !main_1 * main_2 * main_4 * main_11) + (!main_0 * !main_1 * !main_3 * !main_4 * main_10 * !main_11) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7 * !main_8) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_9) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_11)",
-            regmode => 0,
-            clken_mode => 1)
-        PORT MAP(
-            q => \UART_RS485:BUART:rx_state_2_split\,
-            main_0 => \UART_RS485:BUART:rx_state_1\,
-            main_1 => \UART_RS485:BUART:rx_state_0\,
-            main_2 => \UART_RS485:BUART:rx_bitclk_enable\,
-            main_3 => \UART_RS485:BUART:rx_state_3\,
-            main_4 => \UART_RS485:BUART:rx_state_2\,
-            main_5 => \UART_RS485:BUART:rx_count_6\,
-            main_6 => \UART_RS485:BUART:rx_count_5\,
-            main_7 => \UART_RS485:BUART:rx_count_4\,
-            main_8 => \UART_RS485:BUART:rx_count_3\,
-            main_9 => \UART_RS485:BUART:rx_break_detect\,
-            main_10 => \UART_RS485:BUART:rx_last\,
-            main_11 => Net_6196_SYNCOUT);
-
-    \COUNTER_ENC:CounterUDB:prevCompare\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0)",
-            regmode => 1,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \COUNTER_ENC:CounterUDB:prevCompare\,
-            clock_0 => Net_1308,
-            main_0 => \COUNTER_ENC:CounterUDB:cmp_out_i\);
-
-    \COUNTER_ENC:CounterUDB:count_stored_i\:macrocell
-        GENERIC MAP(
-            eqn_main => "(main_0)",
-            regmode => 1,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => \COUNTER_ENC:CounterUDB:count_stored_i\,
-            clock_0 => Net_1308,
-            main_0 => Net_3376);
-
-    Net_3376:macrocell
-        GENERIC MAP(
-            eqn_main => "1'b0",
-            regmode => 2,
-            clk_inv => '0',
-            clken_mode => 1)
-        PORT MAP(
-            q => Net_3376,
-            clock_0 => Net_1308);
-
     cy_srff_1:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_2) + (main_1 * !main_2)",
@@ -4334,9 +3381,9 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => \LED_BLINK:PWMUDB:runmode_enable\,
-            clock_0 => Net_3852,
-            main_0 => \LED_BLINK:PWMUDB:control_7\,
-            main_1 => Net_3925);
+            clock_0 => Net_4688,
+            main_0 => Net_3925,
+            main_1 => \LED_BLINK:PWMUDB:control_7\);
 
     Net_3960:macrocell
         GENERIC MAP(
@@ -4346,7 +3393,7 @@ BEGIN
             clken_mode => 1)
         PORT MAP(
             q => Net_3960,
-            clock_0 => Net_3852,
+            clock_0 => Net_4688,
             main_0 => \LED_BLINK:PWMUDB:runmode_enable\,
             main_1 => \LED_BLINK:PWMUDB:cmp1_eq\,
             main_2 => \LED_BLINK:PWMUDB:cmp1_less\);

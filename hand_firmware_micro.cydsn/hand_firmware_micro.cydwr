@@ -290,9 +290,9 @@
   </Group>
   <Group key="Component">
     <Group key="v1">
-      <Data key="cy_boot" value="cy_boot_v5_60" />
-      <Data key="Em_EEPROM_Dynamic" value="Em_EEPROM_Dynamic_v2_0" />
-      <Data key="LIN_Dynamic" value="LIN_Dynamic_v4_0" />
+      <Data key="cy_boot" value="cy_boot_v6_10" />
+      <Data key="Em_EEPROM_Dynamic" value="Em_EEPROM_Dynamic_v2_20" />
+      <Data key="LIN_Dynamic" value="LIN_Dynamic_v6_0" />
     </Group>
   </Group>
   <Data key="DataVersionKey" value="1" />
@@ -336,6 +336,7 @@
       <Data key="7bc8296e-0925-4c45-bc42-d5d2c24c1efd" value="CURRENT_SENSE_1" />
       <Data key="7f5128c2-8b04-49a4-82ae-5630ad58100f" value="TTL_TX" />
       <Data key="8a6af1ca-be46-44f4-a2c4-d857f01dbe9b" value="MOTOR_B_DIR" />
+      <Data key="08b05f5c-411e-42b2-9a6a-ea7506d26d71" value="Signal_2_A" />
       <Data key="8f51153c-453f-487d-a569-1096d5f0e97c" value="USB_VDD" />
       <Data key="9bd59c24-f776-4e08-b150-84ec2bbea26d" value="ENC_CLK" />
       <Data key="9daa53b6-dd70-483b-a374-714a714f3fda" value="MOTOR_B_EN" />
@@ -360,7 +361,7 @@
       <Data key="9381434d-ab9e-46b9-8147-fd3f5c4d8b7d" value="Signal_1_C" />
       <Data key="83854415-373b-4d18-90a9-de80917a9bb7" value="Signal_3_C" />
       <Data key="a6a1e256-76f1-4efc-b320-7c7b3d802ef3" value="ADC_POT_4" />
-      <Data key="a014e3ff-1a80-46b9-bbcb-22ceb5400b46" value="EMG_2" />
+      <Data key="a014e3ff-1a80-46b9-bbcb-22ceb5400b46" value="INPUT_2" />
       <Data key="aa82e918-037b-4f7d-b1c3-19a361211947" value="MOTOR_DIR" />
       <Data key="ad7d0272-69e3-48f8-8de7-762247336ae7" value="Signal_3_A" />
       <Data key="ad761765-9042-4aac-a55f-9f906674f1cd" value="Signal_A" />
@@ -370,7 +371,7 @@
       <Data key="c7e51901-7389-4e2c-b83a-1c550fbe7c38" value="CURRENT_SENSE_2" />
       <Data key="cc3bcd7e-5dc0-48ea-9bf6-6aa082be1ada" value="Signal_1_B" />
       <Data key="cea1691b-2d95-4f67-acf4-1371ae63b3cb" value="asd" />
-      <Data key="d2b73a47-2288-411e-8c5b-d740ba0840ec" value="EMG_1" />
+      <Data key="d2b73a47-2288-411e-8c5b-d740ba0840ec" value="INPUT_1" />
       <Data key="d3b97eba-17be-4498-809f-79bb4aeb63ad" value="USB_VDD" />
       <Data key="d4ebbb4a-9361-4f60-ab03-0a342935d673" value="Signal_4_A" />
       <Data key="d5a0e4a7-1f9c-4b60-a1af-168d8495643c" value="LED" />
@@ -870,6 +871,11 @@
     <Group key="8a6af1ca-be46-44f4-a2c4-d857f01dbe9b">
       <Group key="0">
         <Data key="Port Format" value="12,2" />
+      </Group>
+    </Group>
+    <Group key="08b05f5c-411e-42b2-9a6a-ea7506d26d71">
+      <Group key="0">
+        <Data key="Port Format" value="15,1" />
       </Group>
     </Group>
     <Group key="8f51153c-453f-487d-a569-1096d5f0e97c">

@@ -1,0 +1,13 @@
+Last Modified Date & Time: 02/14/2023 09:48:53
+
+hand_firmware_micro: hand_firmware_micro.cydwr
+	cy_boot [v5.60] to [v6.10]
+	Em_EEPROM_Dynamic [v2.0] to [v2.20]
+	LIN_Dynamic [v4.0] to [v6.0]
+
+hand_firmware_micro: TopDesign.cysch
+	ADC [v3.20] to [v3.30]
+	Bootloadable [v1.40] to [v1.60]
+	ISR_RS485_RX [v1.70] to [v1.71]
+
+

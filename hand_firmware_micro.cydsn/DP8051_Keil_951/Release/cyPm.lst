@@ -1,9 +1,9 @@
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 1   
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE CYPM
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\cyPm.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -Generated_Source\PSoC3\cyPm.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG) WL(
                     -2) PR(.\DP8051_Keil_951\Release/cyPm.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\cyPm.obj)
 
@@ -12,7 +12,7 @@ line level    source
 *** MESSAGE C286 IN LINE 0 OF (null): license limits optimization to level 5
    1          /***************************************************************************//**
    2          * \file cyPm.c
-   3          * \version 5.60
+   3          * \version 6.10
    4          *
    5          * \brief Provides an API for the power management.
    6          *
@@ -21,7 +21,7 @@ line level    source
    9          *
   10          ********************************************************************************
   11          * \copyright
-  12          * Copyright 2008-2017, Cypress Semiconductor Corporation.  All rights reserved.
+  12          * Copyright 2008-2021, Cypress Semiconductor Corporation.  All rights reserved.
   13          * You may use this file only in accordance with the license, terms, conditions,
   14          * disclaimers, and limitations in the end user license agreement accompanying
   15          * the software package with which this file was provided.
@@ -62,7 +62,7 @@ line level    source
   50          ****************************************************************************//**
   51          *
   52          *  This function is called in preparation for entering sleep or hibernate low
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 2   
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 2   
 
   53          *  power modes. Saves all the states of the clocking system that do not persist
   54          *  during sleep/hibernate or that need to be altered in preparation for
@@ -126,7 +126,7 @@ line level    source
  112   3      
  113   3              case CY_PM_CLKDIST_PLL_SRC_XTAL:
  114   3                  CyMasterClk_SetSource(CY_MASTER_SOURCE_XTAL);
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 3   
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 3   
 
  115   3                  break;
  116   3      
@@ -190,7 +190,7 @@ line level    source
  173   2              /* IMO */
  174   2              cyPmClockBackup.imoClkSrc = CY_IMO_SOURCE_IMO;
  175   2          }
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 4   
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 4   
 
  176   1      
  177   1          /* Save clk_imo source */
@@ -254,7 +254,7 @@ line level    source
  235   1          * be restored on wakeup.
  236   1          ***************************************************************************/
  237   1          if(0u != (CY_PM_CLKDIST_DELAY_REG & CY_PM_CLKDIST_DELAY_EN))
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 5   
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 5   
 
  238   1          {
  239   2              cyPmClockBackup.clkDistDelay = CY_PM_ENABLED;
@@ -318,7 +318,7 @@ line level    source
  297   2              * So, the XTAL wait procedure is implemented with a software delay.
  298   2              ***********************************************************************/
  299   2      
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 6   
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 6   
 
  300   2              /* Enable XMHZ XTAL with no wait */
  301   2              (void) CyXTAL_Start(CY_PM_XTAL_MHZ_NO_WAIT);
@@ -382,7 +382,7 @@ line level    source
  359   2              /* Restore IMO frequency (24 MHz) and trim it for USB */
  360   2              CyIMO_SetFreq(CY_IMO_FREQ_USB);
  361   2          }
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 7   
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 7   
 
  362   1          else
  363   1          {
@@ -446,7 +446,7 @@ line level    source
  421   2              for(i = 171u; i > 0u; i--)
  422   2              {
  423   3                  CyDelayUs((uint32)1u);
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 8   
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 8   
 
  424   3      
  425   3                  /* Accept PLL is OK after two consecutive polls indicate PLL lock */
@@ -510,7 +510,7 @@ line level    source
  483   1          /* Digital and analog clocks - restore state */
  484   1          CY_PM_ACT_CFG1_REG = cyPmClockBackup.enClkA;
  485   1          CY_PM_ACT_CFG2_REG = cyPmClockBackup.enClkD;
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 9   
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 9   
 
  486   1      }
  487          
@@ -574,7 +574,7 @@ line level    source
  545          *  source and also generates an interrupt. If just the wakeup event occurs then
  546          *  the device will be in Active mode, but the CPU will remain halted waiting for
  547          *  an interrupt. If an interrupt occurs from something other than a wakeup
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 10  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 10  
 
  548          *  source, then the CPU will restart with the device in Alternate Active mode
  549          *  until a wakeup event occurs.
@@ -638,7 +638,7 @@ line level    source
  607          *  \param MyComp the value to OR into the mask is: MyComp_ctComp__CMP_MASK.
  608          *
  609          *  When CTW, FTW or One PPS is used as a wakeup source, the CyPmReadStatus()
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 11  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 11  
 
  610          *  function must be called upon wakeup with a corresponding parameter. Please
  611          *  refer to the CyPmReadStatus() API in the System Reference Guide for more
@@ -702,7 +702,7 @@ line level    source
  669   2              }
  670   1      
  671   1          #endif /* (CY_PSOC3) */
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 12  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 12  
 
  672   1      
  673   1      
@@ -766,7 +766,7 @@ line level    source
  730          *  of the values specified in the wakeupSource and any timer specified in the
  731          *  wakeupTime argument.  Once the wakeup condition is satisfied, then all saved
  732          *  state is restored and the function returns in the Active state.
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 13  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 13  
 
  733          *
  734          *  Note that if the wakeupTime is made with a different value, the period before
@@ -830,7 +830,7 @@ line level    source
  792          *  should be used that will track with the specific comparator that the instance
  793          *  is placed into. As an example for a Comparator instance named MyComp the
  794          *  \param value to OR into the mask is: MyComp_ctComp__CMP_MASK.
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 14  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 14  
 
  795          *
  796          *  When CTW or One PPS is used as a wakeup source, the CyPmReadStatus()
@@ -894,7 +894,7 @@ line level    source
  854   1          /***********************************************************************
  855   1          * PSoC3 < TO6:
  856   1          * - Hardware buzz must be disabled before the sleep mode entry.
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 15  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 15  
 
  857   1          * - Voltage supervision (HVI/LVI) requires hardware buzz, so they must
  858   1          *   be also disabled.
@@ -958,7 +958,7 @@ line level    source
               
                   #endif /* (CY_PSOC5) */
  918   1      
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 16  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 16  
 
  919   1      
  920   1          CyPmHibSlpSaveSet();
@@ -1022,7 +1022,7 @@ line level    source
  978   2              /* IMO frequency is 12 MHz */
  979   2              cyPmBackup.imoActFreq12Mhz = CY_PM_ENABLED;
  980   2          }
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 17  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 17  
 
  981   1          else
  982   1          {
@@ -1086,7 +1086,7 @@ line level    source
 1039   2                  {
 1040   3                      if (CY_PM_DISABLED == cyPmBackup.hardwareBuzz)
 1041   3                      {
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 18  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 18  
 
 1042   4                          CY_PM_PWRSYS_WAKE_TR2_REG &= (uint8)(~CY_PM_PWRSYS_WAKE_TR2_EN_BUZZ);
 1043   4                      }
@@ -1150,7 +1150,7 @@ line level    source
 1101          /*******************************************************************************
 1102          * Function Name: CyPmHibernateEx
 1103          ****************************************************************************//**
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 19  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 19  
 
 1104          *
 1105          *  Puts the part into the Hibernate state.
@@ -1214,7 +1214,7 @@ line level    source
 1163   1              /***********************************************************************
 1164   1              * The Hibernate/Sleep regulator has a settling time after a reset.
 1165   1              * During this time, the system ignores requests to enter the Sleep and
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 20  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 20  
 
 1166   1              * Hibernate modes. The holdoff delay is measured using the rising edges of
 1167   1              * the 1 kHz ILO.
@@ -1278,7 +1278,7 @@ line level    source
 1224   1          (void) CY_PM_MODE_CSR_REG;
 1225   1      
 1226   1          /* Two recommended NOPs to get into mode. */
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 21  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 21  
 
 1227   1          CY_NOP;
 1228   1          CY_NOP;
@@ -1342,7 +1342,7 @@ line level    source
 1285          uint8 CyPmReadStatus(uint8 mask) 
 1286          {
 1287   1          static uint8 interruptStatus;
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 22  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 22  
 
 1288   1          uint8 interruptState;
 1289   1          uint8 tmpStatus;
@@ -1406,7 +1406,7 @@ line level    source
 1347   1          cyPmBackup.ilo1kEnable = (0u == (CY_PM_SLOWCLK_ILO_CR0_REG & CY_PM_ILO_CR0_EN_1K)) ?
 1348   1                                      CY_PM_DISABLED : CY_PM_ENABLED;
 1349   1      
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 23  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 23  
 
 1350   1          /* Save current 100kHz ILO enable state. Disabled automatically. */
 1351   1          cyPmBackup.ilo100kEnable = (0u == (CY_PM_SLOWCLK_ILO_CR0_REG & CY_PM_ILO_CR0_EN_100K)) ?
@@ -1445,495 +1445,507 @@ line level    source
 1384   1          ***************************************************************************/
 1385   1          cyPmBackup.wakeupTrim0 = CY_PM_PWRSYS_WAKE_TR0_REG;
 1386   1          cyPmBackup.wakeupTrim1 = CY_PM_PWRSYS_WAKE_TR1_REG;
-1387   1      
-1388   1          CY_PM_PWRSYS_WAKE_TR0_REG = CY_PM_PWRSYS_WAKE_TR0;
-1389   1          CY_PM_PWRSYS_WAKE_TR1_REG = CY_PM_PWRSYS_WAKE_TR1;
-1390   1      }
-1391          
-1392          
-1393          /*******************************************************************************
-1394          * Function Name: CyPmHibRestore
-1395          ****************************************************************************//**
-1396          *
-1397          *  Restores the device for the proper Hibernate mode exit:
-1398          *  - Restores LVI/HVI configuration - calsl CyPmHviLviRestore()
-1399          *  - CyPmHibSlpSaveRestore() function is called
-1400          *  - Restores ILO power down mode state and enables it
-1401          *  - Restores the state of 1 kHz and 100 kHz ILO and disables them
-1402          *  - Restores the sleep regulator settings
-1403          *
-1404          *******************************************************************************/
-1405          static void CyPmHibRestore(void) 
-1406          {
-1407   1          /* Restore LVI/HVI configuration */
-1408   1          CyPmHviLviRestore();
-1409   1      
-1410   1          /* Restore the same configuration for Hibernate and Sleep modes */
-1411   1          CyPmHibSlpRestore();
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 24  
+1387   1          
+1388   1          #if(CY_PSOC5)
+                      cyPmBackup.wakeupTrim3 = CY_PM_PWRSYS_WAKE_TR3_REG;
+                  #endif  /* (CY_PSOC5) */    
+1391   1      
+1392   1          CY_PM_PWRSYS_WAKE_TR0_REG = CY_PM_PWRSYS_WAKE_TR0;
+1393   1          CY_PM_PWRSYS_WAKE_TR1_REG = CY_PM_PWRSYS_WAKE_TR1;
+1394   1          
+1395   1          #if(CY_PSOC5)
+                      CY_PM_PWRSYS_WAKE_TR3_REG = CY_PM_PWRSYS_WAKE_TR3;
+                  #endif  /* (CY_PSOC5) */    
+1398   1      }
+1399          
+1400          
+1401          /*******************************************************************************
+1402          * Function Name: CyPmHibRestore
+1403          ****************************************************************************//**
+1404          *
+1405          *  Restores the device for the proper Hibernate mode exit:
+1406          *  - Restores LVI/HVI configuration - calsl CyPmHviLviRestore()
+1407          *  - CyPmHibSlpSaveRestore() function is called
+1408          *  - Restores ILO power down mode state and enables it
+1409          *  - Restores the state of 1 kHz and 100 kHz ILO and disables them
+1410          *  - Restores the sleep regulator settings
+1411          *
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 24  
 
-1412   1      
-1413   1          /* Restore 1kHz ILO enable state */
-1414   1          if(CY_PM_ENABLED == cyPmBackup.ilo1kEnable)
-1415   1          {
-1416   2              /* Enable 1kHz ILO */
-1417   2              CyILO_Start1K();
-1418   2          }
-1419   1      
-1420   1          /* Restore 100kHz ILO enable state */
-1421   1          if(CY_PM_ENABLED == cyPmBackup.ilo100kEnable)
-1422   1          {
-1423   2              /* Enable 100kHz ILO */
-1424   2              CyILO_Start100K();
-1425   2          }
-1426   1      
-1427   1          /* Restore ILO power mode */
-1428   1          (void) CyILO_SetPowerMode(cyPmBackup.iloPowerMode);
-1429   1      
-1430   1      
-1431   1          if(CY_PM_DISABLED == cyPmBackup.slpTrBypass)
-1432   1          {
-1433   2              /* Enable the sleep regulator */
-1434   2              CY_PM_PWRSYS_SLP_TR_REG &= ((uint8)(~CY_PM_PWRSYS_SLP_TR_BYPASS));
-1435   2          }
-1436   1      
+1412          *******************************************************************************/
+1413          static void CyPmHibRestore(void) 
+1414          {
+1415   1          /* Restore LVI/HVI configuration */
+1416   1          CyPmHviLviRestore();
+1417   1      
+1418   1          /* Restore the same configuration for Hibernate and Sleep modes */
+1419   1          CyPmHibSlpRestore();
+1420   1      
+1421   1          /* Restore 1kHz ILO enable state */
+1422   1          if(CY_PM_ENABLED == cyPmBackup.ilo1kEnable)
+1423   1          {
+1424   2              /* Enable 1kHz ILO */
+1425   2              CyILO_Start1K();
+1426   2          }
+1427   1      
+1428   1          /* Restore 100kHz ILO enable state */
+1429   1          if(CY_PM_ENABLED == cyPmBackup.ilo100kEnable)
+1430   1          {
+1431   2              /* Enable 100kHz ILO */
+1432   2              CyILO_Start100K();
+1433   2          }
+1434   1      
+1435   1          /* Restore ILO power mode */
+1436   1          (void) CyILO_SetPowerMode(cyPmBackup.iloPowerMode);
 1437   1      
-1438   1          /***************************************************************************
-1439   1          * Restore the power mode wakeup trim registers
-1440   1          ***************************************************************************/
-1441   1          CY_PM_PWRSYS_WAKE_TR0_REG = cyPmBackup.wakeupTrim0;
-1442   1          CY_PM_PWRSYS_WAKE_TR1_REG = cyPmBackup.wakeupTrim1;
-1443   1      }
-1444          
-1445          
-1446          /*******************************************************************************
-1447          * Function Name: CyPmCtwSetInterval
-1448          ****************************************************************************//**
-1449          *
-1450          *  Performs the CTW configuration:
-1451          *  - Disables the CTW interrupt
-1452          *  - Enables 1 kHz ILO
-1453          *  - Sets a new CTW interval
-1454          *
-1455          *  \param ctwInterval: the CTW interval to be set.
-1456          *
-1457          * \sideeffect
-1458          *  Enables ILO 1 KHz clock and leaves it enabled.
-1459          *
-1460          *******************************************************************************/
-1461          void CyPmCtwSetInterval(uint8 ctwInterval) 
-1462          {
-1463   1          /* Disable CTW interrupt enable */
-1464   1          CY_PM_TW_CFG2_REG &= ((uint8)(~CY_PM_CTW_IE));
-1465   1      
-1466   1          /* Enable 1kHz ILO (required for CTW operation) */
-1467   1          CyILO_Start1K();
-1468   1      
-1469   1          /* Interval could be set only while CTW is disabled */
-1470   1          if(0u != (CY_PM_TW_CFG2_REG & CY_PM_CTW_EN))
-1471   1          {
-1472   2              /* Set CTW interval if needed */
-1473   2              if(CY_PM_TW_CFG1_REG != ctwInterval)
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 25  
+1438   1      
+1439   1          if(CY_PM_DISABLED == cyPmBackup.slpTrBypass)
+1440   1          {
+1441   2              /* Enable the sleep regulator */
+1442   2              CY_PM_PWRSYS_SLP_TR_REG &= ((uint8)(~CY_PM_PWRSYS_SLP_TR_BYPASS));
+1443   2          }
+1444   1      
+1445   1      
+1446   1          /***************************************************************************
+1447   1          * Restore the power mode wakeup trim registers
+1448   1          ***************************************************************************/
+1449   1          CY_PM_PWRSYS_WAKE_TR0_REG = cyPmBackup.wakeupTrim0;
+1450   1          CY_PM_PWRSYS_WAKE_TR1_REG = cyPmBackup.wakeupTrim1;
+1451   1      
+1452   1          #if(CY_PSOC5)
+                      CY_PM_PWRSYS_WAKE_TR3_REG = cyPmBackup.wakeupTrim3;
+                  #endif  /* (CY_PSOC5) */    
+1455   1      }
+1456          
+1457          
+1458          /*******************************************************************************
+1459          * Function Name: CyPmCtwSetInterval
+1460          ****************************************************************************//**
+1461          *
+1462          *  Performs the CTW configuration:
+1463          *  - Disables the CTW interrupt
+1464          *  - Enables 1 kHz ILO
+1465          *  - Sets a new CTW interval
+1466          *
+1467          *  \param ctwInterval: the CTW interval to be set.
+1468          *
+1469          * \sideeffect
+1470          *  Enables ILO 1 KHz clock and leaves it enabled.
+1471          *
+1472          *******************************************************************************/
+1473          void CyPmCtwSetInterval(uint8 ctwInterval) 
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 25  
 
-1474   2              {
-1475   3                  /* Disable the CTW, set new CTW interval and enable it again */
-1476   3                  CY_PM_TW_CFG2_REG &= ((uint8)(~CY_PM_CTW_EN));
-1477   3                  CY_PM_TW_CFG1_REG = ctwInterval;
-1478   3                  CY_PM_TW_CFG2_REG |= CY_PM_CTW_EN;
-1479   3              }   /* Required interval is already set */
-1480   2          }
-1481   1          else
-1482   1          {
-1483   2              /* Set CTW interval if needed */
-1484   2              if(CY_PM_TW_CFG1_REG != ctwInterval)
-1485   2              {
-1486   3                  /* Set new CTW interval. Could be changed if CTW is disabled */
-1487   3                  CY_PM_TW_CFG1_REG = ctwInterval;
-1488   3              }   /* Required interval is already set */
-1489   2      
-1490   2              /* Enable CTW */
-1491   2              CY_PM_TW_CFG2_REG |= CY_PM_CTW_EN;
+1474          {
+1475   1          /* Disable CTW interrupt enable */
+1476   1          CY_PM_TW_CFG2_REG &= ((uint8)(~CY_PM_CTW_IE));
+1477   1      
+1478   1          /* Enable 1kHz ILO (required for CTW operation) */
+1479   1          CyILO_Start1K();
+1480   1      
+1481   1          /* Interval could be set only while CTW is disabled */
+1482   1          if(0u != (CY_PM_TW_CFG2_REG & CY_PM_CTW_EN))
+1483   1          {
+1484   2              /* Set CTW interval if needed */
+1485   2              if(CY_PM_TW_CFG1_REG != ctwInterval)
+1486   2              {
+1487   3                  /* Disable the CTW, set new CTW interval and enable it again */
+1488   3                  CY_PM_TW_CFG2_REG &= ((uint8)(~CY_PM_CTW_EN));
+1489   3                  CY_PM_TW_CFG1_REG = ctwInterval;
+1490   3                  CY_PM_TW_CFG2_REG |= CY_PM_CTW_EN;
+1491   3              }   /* Required interval is already set */
 1492   2          }
-1493   1      }
-1494          
-1495          
-1496          /*******************************************************************************
-1497          * Function Name: CyPmOppsSet
-1498          ****************************************************************************//**
-1499          *
-1500          *  Performs 1PPS configuration:
-1501          *  - Starts 32 KHz XTAL
-1502          *  - Disables 1PPS interrupts
-1503          *  - Enables 1PPS
-1504          *
-1505          *******************************************************************************/
-1506          void CyPmOppsSet(void) 
-1507          {
-1508   1          /* Enable 32kHz XTAL if needed */
-1509   1          if(0u == (CY_PM_SLOWCLK_X32_CR_REG & CY_PM_X32_CR_X32EN))
-1510   1          {
-1511   2              /* Enable 32kHz XTAL */
-1512   2              CyXTAL_32KHZ_Start();
-1513   2          }
-1514   1      
-1515   1          /* Disable 1PPS interrupt enable */
-1516   1          CY_PM_TW_CFG2_REG &= ((uint8)(~CY_PM_1PPS_IE));
-1517   1      
-1518   1          /* Enable 1PPS operation */
-1519   1          CY_PM_TW_CFG2_REG |= CY_PM_1PPS_EN;
-1520   1      }
-1521          
-1522          
-1523          /*******************************************************************************
-1524          * Function Name: CyPmFtwSetInterval
-1525          ****************************************************************************//**
-1526          *
-1527          *  Performs the FTW configuration:
-1528          *  - Disables the FTW interrupt
-1529          *  - Enables 100 kHz ILO
-1530          *  - Sets a new FTW interval.
-1531          *
-1532          *  \param ftwInterval The FTW counter interval.
-1533          *
-1534          * \sideeffect
-1535          *  Enables the ILO 100 KHz clock and leaves it enabled.
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 26  
+1493   1          else
+1494   1          {
+1495   2              /* Set CTW interval if needed */
+1496   2              if(CY_PM_TW_CFG1_REG != ctwInterval)
+1497   2              {
+1498   3                  /* Set new CTW interval. Could be changed if CTW is disabled */
+1499   3                  CY_PM_TW_CFG1_REG = ctwInterval;
+1500   3              }   /* Required interval is already set */
+1501   2      
+1502   2              /* Enable CTW */
+1503   2              CY_PM_TW_CFG2_REG |= CY_PM_CTW_EN;
+1504   2          }
+1505   1      }
+1506          
+1507          
+1508          /*******************************************************************************
+1509          * Function Name: CyPmOppsSet
+1510          ****************************************************************************//**
+1511          *
+1512          *  Performs 1PPS configuration:
+1513          *  - Starts 32 KHz XTAL
+1514          *  - Disables 1PPS interrupts
+1515          *  - Enables 1PPS
+1516          *
+1517          *******************************************************************************/
+1518          void CyPmOppsSet(void) 
+1519          {
+1520   1          /* Enable 32kHz XTAL if needed */
+1521   1          if(0u == (CY_PM_SLOWCLK_X32_CR_REG & CY_PM_X32_CR_X32EN))
+1522   1          {
+1523   2              /* Enable 32kHz XTAL */
+1524   2              CyXTAL_32KHZ_Start();
+1525   2          }
+1526   1      
+1527   1          /* Disable 1PPS interrupt enable */
+1528   1          CY_PM_TW_CFG2_REG &= ((uint8)(~CY_PM_1PPS_IE));
+1529   1      
+1530   1          /* Enable 1PPS operation */
+1531   1          CY_PM_TW_CFG2_REG |= CY_PM_1PPS_EN;
+1532   1      }
+1533          
+1534          
+1535          /*******************************************************************************
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 26  
 
-1536          *
-1537          *******************************************************************************/
-1538          void CyPmFtwSetInterval(uint8 ftwInterval) 
-1539          {
-1540   1          /* Disable FTW interrupt enable */
-1541   1          CY_PM_TW_CFG2_REG &= ((uint8)(~CY_PM_FTW_IE));
-1542   1      
-1543   1          /* Enable 100kHz ILO */
-1544   1          CyILO_Start100K();
-1545   1      
-1546   1          /* Interval could be set only while FTW is disabled */
-1547   1          if(0u != (CY_PM_TW_CFG2_REG & CY_PM_FTW_EN))
-1548   1          {
-1549   2              /* Disable FTW, set new FTW interval if needed and enable it again */
-1550   2              if(CY_PM_TW_CFG0_REG != ftwInterval)
-1551   2              {
-1552   3                  /* Disable CTW, set new CTW interval and enable it again */
-1553   3                  CY_PM_TW_CFG2_REG &= ((uint8)(~CY_PM_FTW_EN));
-1554   3                  CY_PM_TW_CFG0_REG = ftwInterval;
-1555   3                  CY_PM_TW_CFG2_REG |= CY_PM_FTW_EN;
-1556   3              }   /* Required interval is already set */
-1557   2          }
-1558   1          else
-1559   1          {
-1560   2              /* Set new FTW counter interval if needed. FTW is disabled. */
-1561   2              if(CY_PM_TW_CFG0_REG != ftwInterval)
-1562   2              {
-1563   3                  /* Set new CTW interval. Could be changed if CTW is disabled */
-1564   3                  CY_PM_TW_CFG0_REG = ftwInterval;
-1565   3              }   /* Required interval is already set */
-1566   2      
-1567   2              /* Enable FTW */
-1568   2              CY_PM_TW_CFG2_REG |= CY_PM_FTW_EN;
+1536          * Function Name: CyPmFtwSetInterval
+1537          ****************************************************************************//**
+1538          *
+1539          *  Performs the FTW configuration:
+1540          *  - Disables the FTW interrupt
+1541          *  - Enables 100 kHz ILO
+1542          *  - Sets a new FTW interval.
+1543          *
+1544          *  \param ftwInterval The FTW counter interval.
+1545          *
+1546          * \sideeffect
+1547          *  Enables the ILO 100 KHz clock and leaves it enabled.
+1548          *
+1549          *******************************************************************************/
+1550          void CyPmFtwSetInterval(uint8 ftwInterval) 
+1551          {
+1552   1          /* Disable FTW interrupt enable */
+1553   1          CY_PM_TW_CFG2_REG &= ((uint8)(~CY_PM_FTW_IE));
+1554   1      
+1555   1          /* Enable 100kHz ILO */
+1556   1          CyILO_Start100K();
+1557   1      
+1558   1          /* Interval could be set only while FTW is disabled */
+1559   1          if(0u != (CY_PM_TW_CFG2_REG & CY_PM_FTW_EN))
+1560   1          {
+1561   2              /* Disable FTW, set new FTW interval if needed and enable it again */
+1562   2              if(CY_PM_TW_CFG0_REG != ftwInterval)
+1563   2              {
+1564   3                  /* Disable CTW, set new CTW interval and enable it again */
+1565   3                  CY_PM_TW_CFG2_REG &= ((uint8)(~CY_PM_FTW_EN));
+1566   3                  CY_PM_TW_CFG0_REG = ftwInterval;
+1567   3                  CY_PM_TW_CFG2_REG |= CY_PM_FTW_EN;
+1568   3              }   /* Required interval is already set */
 1569   2          }
-1570   1      }
-1571          
-1572          
-1573          /*******************************************************************************
-1574          * Function Name: CyPmHibSlpSaveSet
-1575          ****************************************************************************//**
-1576          *
-1577          *  This API is used for preparing the device for the Sleep and Hibernate low
-1578          *  power modes entry:
-1579          *  - Saves the COMP, VIDAC, DSM, and SAR routing connections (PSoC 5)
-1580          *  - Saves the SC/CT routing connections (PSoC 3/5/5LP)
-1581          *  - Disables the Serial Wire Viewer (SWV) (PSoC 3)
-1582          *  - Saves the boost reference selection and sets it to internal
-1583          *
-1584          * Reentrant:
-1585          *  No
-1586          *
-1587          *******************************************************************************/
-1588          static void CyPmHibSlpSaveSet(void) 
-1589          {
-1590   1          /* Save SC/CT routing registers */
-1591   1          cyPmBackup.scctData[0u]   = CY_GET_REG8(CYREG_SC0_SW0 );
-1592   1          cyPmBackup.scctData[1u]   = CY_GET_REG8(CYREG_SC0_SW2 );
-1593   1          cyPmBackup.scctData[2u]   = CY_GET_REG8(CYREG_SC0_SW3 );
-1594   1          cyPmBackup.scctData[3u]   = CY_GET_REG8(CYREG_SC0_SW4 );
-1595   1          cyPmBackup.scctData[4u]   = CY_GET_REG8(CYREG_SC0_SW6 );
-1596   1          cyPmBackup.scctData[5u]   = CY_GET_REG8(CYREG_SC0_SW8 );
-1597   1          cyPmBackup.scctData[6u]   = CY_GET_REG8(CYREG_SC0_SW10);
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 27  
+1570   1          else
+1571   1          {
+1572   2              /* Set new FTW counter interval if needed. FTW is disabled. */
+1573   2              if(CY_PM_TW_CFG0_REG != ftwInterval)
+1574   2              {
+1575   3                  /* Set new CTW interval. Could be changed if CTW is disabled */
+1576   3                  CY_PM_TW_CFG0_REG = ftwInterval;
+1577   3              }   /* Required interval is already set */
+1578   2      
+1579   2              /* Enable FTW */
+1580   2              CY_PM_TW_CFG2_REG |= CY_PM_FTW_EN;
+1581   2          }
+1582   1      }
+1583          
+1584          
+1585          /*******************************************************************************
+1586          * Function Name: CyPmHibSlpSaveSet
+1587          ****************************************************************************//**
+1588          *
+1589          *  This API is used for preparing the device for the Sleep and Hibernate low
+1590          *  power modes entry:
+1591          *  - Saves the COMP, VIDAC, DSM, and SAR routing connections (PSoC 5)
+1592          *  - Saves the SC/CT routing connections (PSoC 3/5/5LP)
+1593          *  - Disables the Serial Wire Viewer (SWV) (PSoC 3)
+1594          *  - Saves the boost reference selection and sets it to internal
+1595          *
+1596          * Reentrant:
+1597          *  No
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 27  
 
-1598   1      
-1599   1          cyPmBackup.scctData[7u]   = CY_GET_REG8(CYREG_SC1_SW0 );
-1600   1          cyPmBackup.scctData[8u]   = CY_GET_REG8(CYREG_SC1_SW2 );
-1601   1          cyPmBackup.scctData[9u]   = CY_GET_REG8(CYREG_SC1_SW3 );
-1602   1          cyPmBackup.scctData[10u]  = CY_GET_REG8(CYREG_SC1_SW4 );
-1603   1          cyPmBackup.scctData[11u]  = CY_GET_REG8(CYREG_SC1_SW6 );
-1604   1          cyPmBackup.scctData[12u]  = CY_GET_REG8(CYREG_SC1_SW8 );
-1605   1          cyPmBackup.scctData[13u]  = CY_GET_REG8(CYREG_SC1_SW10);
-1606   1      
-1607   1          cyPmBackup.scctData[14u]  = CY_GET_REG8(CYREG_SC2_SW0 );
-1608   1          cyPmBackup.scctData[15u]  = CY_GET_REG8(CYREG_SC2_SW2 );
-1609   1          cyPmBackup.scctData[16u]  = CY_GET_REG8(CYREG_SC2_SW3 );
-1610   1          cyPmBackup.scctData[17u]  = CY_GET_REG8(CYREG_SC2_SW4 );
-1611   1          cyPmBackup.scctData[18u]  = CY_GET_REG8(CYREG_SC2_SW6 );
-1612   1          cyPmBackup.scctData[19u]  = CY_GET_REG8(CYREG_SC2_SW8 );
-1613   1          cyPmBackup.scctData[20u]  = CY_GET_REG8(CYREG_SC2_SW10);
-1614   1      
-1615   1          cyPmBackup.scctData[21u]  = CY_GET_REG8(CYREG_SC3_SW0 );
-1616   1          cyPmBackup.scctData[22u]  = CY_GET_REG8(CYREG_SC3_SW2 );
-1617   1          cyPmBackup.scctData[23u]  = CY_GET_REG8(CYREG_SC3_SW3 );
-1618   1          cyPmBackup.scctData[24u]  = CY_GET_REG8(CYREG_SC3_SW4 );
-1619   1          cyPmBackup.scctData[25u]  = CY_GET_REG8(CYREG_SC3_SW6 );
-1620   1          cyPmBackup.scctData[26u]  = CY_GET_REG8(CYREG_SC3_SW8 );
-1621   1          cyPmBackup.scctData[27u]  = CY_GET_REG8(CYREG_SC3_SW10);
-1622   1      
-1623   1          CY_SET_REG8(CYREG_SC0_SW0 , 0u);
-1624   1          CY_SET_REG8(CYREG_SC0_SW2 , 0u);
-1625   1          CY_SET_REG8(CYREG_SC0_SW3 , 0u);
-1626   1          CY_SET_REG8(CYREG_SC0_SW4 , 0u);
-1627   1          CY_SET_REG8(CYREG_SC0_SW6 , 0u);
-1628   1          CY_SET_REG8(CYREG_SC0_SW8 , 0u);
-1629   1          CY_SET_REG8(CYREG_SC0_SW10, 0u);
-1630   1      
-1631   1          CY_SET_REG8(CYREG_SC1_SW0 , 0u);
-1632   1          CY_SET_REG8(CYREG_SC1_SW2 , 0u);
-1633   1          CY_SET_REG8(CYREG_SC1_SW3 , 0u);
-1634   1          CY_SET_REG8(CYREG_SC1_SW4 , 0u);
-1635   1          CY_SET_REG8(CYREG_SC1_SW6 , 0u);
-1636   1          CY_SET_REG8(CYREG_SC1_SW8 , 0u);
-1637   1          CY_SET_REG8(CYREG_SC1_SW10, 0u);
-1638   1      
-1639   1          CY_SET_REG8(CYREG_SC2_SW0 , 0u);
-1640   1          CY_SET_REG8(CYREG_SC2_SW2 , 0u);
-1641   1          CY_SET_REG8(CYREG_SC2_SW3 , 0u);
-1642   1          CY_SET_REG8(CYREG_SC2_SW4 , 0u);
-1643   1          CY_SET_REG8(CYREG_SC2_SW6 , 0u);
-1644   1          CY_SET_REG8(CYREG_SC2_SW8 , 0u);
-1645   1          CY_SET_REG8(CYREG_SC2_SW10, 0u);
-1646   1      
-1647   1          CY_SET_REG8(CYREG_SC3_SW0 , 0u);
-1648   1          CY_SET_REG8(CYREG_SC3_SW2 , 0u);
-1649   1          CY_SET_REG8(CYREG_SC3_SW3 , 0u);
-1650   1          CY_SET_REG8(CYREG_SC3_SW4 , 0u);
-1651   1          CY_SET_REG8(CYREG_SC3_SW6 , 0u);
-1652   1          CY_SET_REG8(CYREG_SC3_SW8 , 0u);
-1653   1          CY_SET_REG8(CYREG_SC3_SW10, 0u);
-1654   1      
-1655   1      
-1656   1          #if(CY_PSOC3)
-1657   1      
-1658   1              /* Serial Wire Viewer (SWV) workaround */
-1659   1      
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 28  
+1598          *
+1599          *******************************************************************************/
+1600          static void CyPmHibSlpSaveSet(void) 
+1601          {
+1602   1          /* Save SC/CT routing registers */
+1603   1          cyPmBackup.scctData[0u]   = CY_GET_REG8(CYREG_SC0_SW0 );
+1604   1          cyPmBackup.scctData[1u]   = CY_GET_REG8(CYREG_SC0_SW2 );
+1605   1          cyPmBackup.scctData[2u]   = CY_GET_REG8(CYREG_SC0_SW3 );
+1606   1          cyPmBackup.scctData[3u]   = CY_GET_REG8(CYREG_SC0_SW4 );
+1607   1          cyPmBackup.scctData[4u]   = CY_GET_REG8(CYREG_SC0_SW6 );
+1608   1          cyPmBackup.scctData[5u]   = CY_GET_REG8(CYREG_SC0_SW8 );
+1609   1          cyPmBackup.scctData[6u]   = CY_GET_REG8(CYREG_SC0_SW10);
+1610   1      
+1611   1          cyPmBackup.scctData[7u]   = CY_GET_REG8(CYREG_SC1_SW0 );
+1612   1          cyPmBackup.scctData[8u]   = CY_GET_REG8(CYREG_SC1_SW2 );
+1613   1          cyPmBackup.scctData[9u]   = CY_GET_REG8(CYREG_SC1_SW3 );
+1614   1          cyPmBackup.scctData[10u]  = CY_GET_REG8(CYREG_SC1_SW4 );
+1615   1          cyPmBackup.scctData[11u]  = CY_GET_REG8(CYREG_SC1_SW6 );
+1616   1          cyPmBackup.scctData[12u]  = CY_GET_REG8(CYREG_SC1_SW8 );
+1617   1          cyPmBackup.scctData[13u]  = CY_GET_REG8(CYREG_SC1_SW10);
+1618   1      
+1619   1          cyPmBackup.scctData[14u]  = CY_GET_REG8(CYREG_SC2_SW0 );
+1620   1          cyPmBackup.scctData[15u]  = CY_GET_REG8(CYREG_SC2_SW2 );
+1621   1          cyPmBackup.scctData[16u]  = CY_GET_REG8(CYREG_SC2_SW3 );
+1622   1          cyPmBackup.scctData[17u]  = CY_GET_REG8(CYREG_SC2_SW4 );
+1623   1          cyPmBackup.scctData[18u]  = CY_GET_REG8(CYREG_SC2_SW6 );
+1624   1          cyPmBackup.scctData[19u]  = CY_GET_REG8(CYREG_SC2_SW8 );
+1625   1          cyPmBackup.scctData[20u]  = CY_GET_REG8(CYREG_SC2_SW10);
+1626   1      
+1627   1          cyPmBackup.scctData[21u]  = CY_GET_REG8(CYREG_SC3_SW0 );
+1628   1          cyPmBackup.scctData[22u]  = CY_GET_REG8(CYREG_SC3_SW2 );
+1629   1          cyPmBackup.scctData[23u]  = CY_GET_REG8(CYREG_SC3_SW3 );
+1630   1          cyPmBackup.scctData[24u]  = CY_GET_REG8(CYREG_SC3_SW4 );
+1631   1          cyPmBackup.scctData[25u]  = CY_GET_REG8(CYREG_SC3_SW6 );
+1632   1          cyPmBackup.scctData[26u]  = CY_GET_REG8(CYREG_SC3_SW8 );
+1633   1          cyPmBackup.scctData[27u]  = CY_GET_REG8(CYREG_SC3_SW10);
+1634   1      
+1635   1          CY_SET_REG8(CYREG_SC0_SW0 , 0u);
+1636   1          CY_SET_REG8(CYREG_SC0_SW2 , 0u);
+1637   1          CY_SET_REG8(CYREG_SC0_SW3 , 0u);
+1638   1          CY_SET_REG8(CYREG_SC0_SW4 , 0u);
+1639   1          CY_SET_REG8(CYREG_SC0_SW6 , 0u);
+1640   1          CY_SET_REG8(CYREG_SC0_SW8 , 0u);
+1641   1          CY_SET_REG8(CYREG_SC0_SW10, 0u);
+1642   1      
+1643   1          CY_SET_REG8(CYREG_SC1_SW0 , 0u);
+1644   1          CY_SET_REG8(CYREG_SC1_SW2 , 0u);
+1645   1          CY_SET_REG8(CYREG_SC1_SW3 , 0u);
+1646   1          CY_SET_REG8(CYREG_SC1_SW4 , 0u);
+1647   1          CY_SET_REG8(CYREG_SC1_SW6 , 0u);
+1648   1          CY_SET_REG8(CYREG_SC1_SW8 , 0u);
+1649   1          CY_SET_REG8(CYREG_SC1_SW10, 0u);
+1650   1      
+1651   1          CY_SET_REG8(CYREG_SC2_SW0 , 0u);
+1652   1          CY_SET_REG8(CYREG_SC2_SW2 , 0u);
+1653   1          CY_SET_REG8(CYREG_SC2_SW3 , 0u);
+1654   1          CY_SET_REG8(CYREG_SC2_SW4 , 0u);
+1655   1          CY_SET_REG8(CYREG_SC2_SW6 , 0u);
+1656   1          CY_SET_REG8(CYREG_SC2_SW8 , 0u);
+1657   1          CY_SET_REG8(CYREG_SC2_SW10, 0u);
+1658   1      
+1659   1          CY_SET_REG8(CYREG_SC3_SW0 , 0u);
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 28  
 
-1660   1              /* Disable SWV before entering low power mode */
-1661   1              if(0u != (CY_PM_MLOGIC_DBG_REG & CY_PM_MLOGIC_DBG_SWV_CLK_EN))
-1662   1              {
-1663   2                  /* Save SWV clock enabled state */
-1664   2                  cyPmBackup.swvClkEnabled = CY_PM_ENABLED;
-1665   2      
-1666   2                  /* Save current ports drive mode settings */
-1667   2                  cyPmBackup.prt1Dm = CY_PM_PRT1_PC3_REG & ((uint8)(~CY_PM_PRT1_PC3_DM_MASK));
-1668   2      
-1669   2                  /* Set drive mode to strong output */
-1670   2                  CY_PM_PRT1_PC3_REG = (CY_PM_PRT1_PC3_REG & CY_PM_PRT1_PC3_DM_MASK) |
-1671   2                                      CY_PM_PRT1_PC3_DM_STRONG;
-1672   2      
-1673   2                  /* Disable SWV clocks */
-1674   2                  CY_PM_MLOGIC_DBG_REG &= ((uint8)(~CY_PM_MLOGIC_DBG_SWV_CLK_EN));
-1675   2              }
-1676   1              else
-1677   1              {
-1678   2                  /* Save SWV clock disabled state */
-1679   2                  cyPmBackup.swvClkEnabled = CY_PM_DISABLED;
-1680   2              }
-1681   1      
-1682   1          #endif  /* (CY_PSOC3) */
-1683   1      
-1684   1      
-1685   1          /***************************************************************************
-1686   1          * Save boost reference and set it to boost's internal by clearing the bit.
-1687   1          * External (chip bandgap) reference is not available in Sleep and Hibernate.
-1688   1          ***************************************************************************/
-1689   1          if(0u != (CY_PM_BOOST_CR2_REG & CY_PM_BOOST_CR2_EREFSEL_EXT))
-1690   1          {
-1691   2              cyPmBackup.boostRefExt = CY_PM_ENABLED;
-1692   2              CY_PM_BOOST_CR2_REG &= ((uint8)(~CY_PM_BOOST_CR2_EREFSEL_EXT));
-1693   2          }
-1694   1          else
-1695   1          {
-1696   2              cyPmBackup.boostRefExt = CY_PM_DISABLED;
-1697   2          }
-1698   1      }
-1699          
-1700          
-1701          /*******************************************************************************
-1702          * Function Name: CyPmHibSlpRestore
-1703          ****************************************************************************//**
-1704          *
-1705          *  This API is used for restoring the device configurations after wakeup from
-1706          *  the Sleep and Hibernate low power modes:
-1707          *  - Restores the SC/CT routing connections
-1708          *  - Restores the enable state of the Serial Wire Viewer (SWV) (PSoC 3)
-1709          *  - Restores the  boost reference selection
-1710          *
-1711          *******************************************************************************/
-1712          static void CyPmHibSlpRestore(void) 
-1713          {
-1714   1          /* Restore SC/CT routing registers */
-1715   1          CY_SET_REG8(CYREG_SC0_SW0 , cyPmBackup.scctData[0u] );
-1716   1          CY_SET_REG8(CYREG_SC0_SW2 , cyPmBackup.scctData[1u] );
-1717   1          CY_SET_REG8(CYREG_SC0_SW3 , cyPmBackup.scctData[2u] );
-1718   1          CY_SET_REG8(CYREG_SC0_SW4 , cyPmBackup.scctData[3u] );
-1719   1          CY_SET_REG8(CYREG_SC0_SW6 , cyPmBackup.scctData[4u] );
-1720   1          CY_SET_REG8(CYREG_SC0_SW8 , cyPmBackup.scctData[5u] );
-1721   1          CY_SET_REG8(CYREG_SC0_SW10, cyPmBackup.scctData[6u] );
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 29  
+1660   1          CY_SET_REG8(CYREG_SC3_SW2 , 0u);
+1661   1          CY_SET_REG8(CYREG_SC3_SW3 , 0u);
+1662   1          CY_SET_REG8(CYREG_SC3_SW4 , 0u);
+1663   1          CY_SET_REG8(CYREG_SC3_SW6 , 0u);
+1664   1          CY_SET_REG8(CYREG_SC3_SW8 , 0u);
+1665   1          CY_SET_REG8(CYREG_SC3_SW10, 0u);
+1666   1      
+1667   1      
+1668   1          #if(CY_PSOC3)
+1669   1      
+1670   1              /* Serial Wire Viewer (SWV) workaround */
+1671   1      
+1672   1              /* Disable SWV before entering low power mode */
+1673   1              if(0u != (CY_PM_MLOGIC_DBG_REG & CY_PM_MLOGIC_DBG_SWV_CLK_EN))
+1674   1              {
+1675   2                  /* Save SWV clock enabled state */
+1676   2                  cyPmBackup.swvClkEnabled = CY_PM_ENABLED;
+1677   2      
+1678   2                  /* Save current ports drive mode settings */
+1679   2                  cyPmBackup.prt1Dm = CY_PM_PRT1_PC3_REG & ((uint8)(~CY_PM_PRT1_PC3_DM_MASK));
+1680   2      
+1681   2                  /* Set drive mode to strong output */
+1682   2                  CY_PM_PRT1_PC3_REG = (CY_PM_PRT1_PC3_REG & CY_PM_PRT1_PC3_DM_MASK) |
+1683   2                                      CY_PM_PRT1_PC3_DM_STRONG;
+1684   2      
+1685   2                  /* Disable SWV clocks */
+1686   2                  CY_PM_MLOGIC_DBG_REG &= ((uint8)(~CY_PM_MLOGIC_DBG_SWV_CLK_EN));
+1687   2              }
+1688   1              else
+1689   1              {
+1690   2                  /* Save SWV clock disabled state */
+1691   2                  cyPmBackup.swvClkEnabled = CY_PM_DISABLED;
+1692   2              }
+1693   1      
+1694   1          #endif  /* (CY_PSOC3) */
+1695   1      
+1696   1      
+1697   1          /***************************************************************************
+1698   1          * Save boost reference and set it to boost's internal by clearing the bit.
+1699   1          * External (chip bandgap) reference is not available in Sleep and Hibernate.
+1700   1          ***************************************************************************/
+1701   1          if(0u != (CY_PM_BOOST_CR2_REG & CY_PM_BOOST_CR2_EREFSEL_EXT))
+1702   1          {
+1703   2              cyPmBackup.boostRefExt = CY_PM_ENABLED;
+1704   2              CY_PM_BOOST_CR2_REG &= ((uint8)(~CY_PM_BOOST_CR2_EREFSEL_EXT));
+1705   2          }
+1706   1          else
+1707   1          {
+1708   2              cyPmBackup.boostRefExt = CY_PM_DISABLED;
+1709   2          }
+1710   1      }
+1711          
+1712          
+1713          /*******************************************************************************
+1714          * Function Name: CyPmHibSlpRestore
+1715          ****************************************************************************//**
+1716          *
+1717          *  This API is used for restoring the device configurations after wakeup from
+1718          *  the Sleep and Hibernate low power modes:
+1719          *  - Restores the SC/CT routing connections
+1720          *  - Restores the enable state of the Serial Wire Viewer (SWV) (PSoC 3)
+1721          *  - Restores the  boost reference selection
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 29  
 
-1722   1      
-1723   1          CY_SET_REG8(CYREG_SC1_SW0 , cyPmBackup.scctData[7u] );
-1724   1          CY_SET_REG8(CYREG_SC1_SW2 , cyPmBackup.scctData[8u] );
-1725   1          CY_SET_REG8(CYREG_SC1_SW3 , cyPmBackup.scctData[9u] );
-1726   1          CY_SET_REG8(CYREG_SC1_SW4 , cyPmBackup.scctData[10u]);
-1727   1          CY_SET_REG8(CYREG_SC1_SW6 , cyPmBackup.scctData[11u]);
-1728   1          CY_SET_REG8(CYREG_SC1_SW8 , cyPmBackup.scctData[12u]);
-1729   1          CY_SET_REG8(CYREG_SC1_SW10, cyPmBackup.scctData[13u]);
-1730   1      
-1731   1          CY_SET_REG8(CYREG_SC2_SW0 , cyPmBackup.scctData[14u]);
-1732   1          CY_SET_REG8(CYREG_SC2_SW2 , cyPmBackup.scctData[15u]);
-1733   1          CY_SET_REG8(CYREG_SC2_SW3 , cyPmBackup.scctData[16u]);
-1734   1          CY_SET_REG8(CYREG_SC2_SW4 , cyPmBackup.scctData[17u]);
-1735   1          CY_SET_REG8(CYREG_SC2_SW6 , cyPmBackup.scctData[18u]);
-1736   1          CY_SET_REG8(CYREG_SC2_SW8 , cyPmBackup.scctData[19u]);
-1737   1          CY_SET_REG8(CYREG_SC2_SW10, cyPmBackup.scctData[20u]);
-1738   1      
-1739   1          CY_SET_REG8(CYREG_SC3_SW0 , cyPmBackup.scctData[21u]);
-1740   1          CY_SET_REG8(CYREG_SC3_SW2 , cyPmBackup.scctData[22u]);
-1741   1          CY_SET_REG8(CYREG_SC3_SW3 , cyPmBackup.scctData[23u]);
-1742   1          CY_SET_REG8(CYREG_SC3_SW4 , cyPmBackup.scctData[24u]);
-1743   1          CY_SET_REG8(CYREG_SC3_SW6 , cyPmBackup.scctData[25u]);
-1744   1          CY_SET_REG8(CYREG_SC3_SW8 , cyPmBackup.scctData[26u]);
-1745   1          CY_SET_REG8(CYREG_SC3_SW10, cyPmBackup.scctData[27u]);
-1746   1      
-1747   1      
-1748   1          #if(CY_PSOC3)
-1749   1      
-1750   1              /* Serial Wire Viewer (SWV) workaround */
-1751   1              if(CY_PM_ENABLED == cyPmBackup.swvClkEnabled)
-1752   1              {
-1753   2                  /* Restore ports drive mode */
-1754   2                  CY_PM_PRT1_PC3_REG = (CY_PM_PRT1_PC3_REG & CY_PM_PRT1_PC3_DM_MASK) |
-1755   2                                          cyPmBackup.prt1Dm;
-1756   2      
-1757   2                  /* Enable SWV clocks */
-1758   2                  CY_PM_MLOGIC_DBG_REG |= CY_PM_MLOGIC_DBG_SWV_CLK_EN;
-1759   2              }
-1760   1      
-1761   1          #endif /* (CY_PSOC3) */
-1762   1      
-1763   1      
-1764   1          /* Restore boost reference */
-1765   1          if(CY_PM_ENABLED == cyPmBackup.boostRefExt)
-1766   1          {
-1767   2              CY_PM_BOOST_CR2_REG |= CY_PM_BOOST_CR2_EREFSEL_EXT;
-1768   2          }
-1769   1      }
-1770          
-1771          
-1772          /*******************************************************************************
-1773          * Function Name: CyPmHviLviSaveDisable
-1774          ****************************************************************************//**
-1775          *
-1776          *  Saves analog and digital LVI and HVI configuration and disables them.
-1777          *
-1778          * Reentrant:
-1779          *  No
-1780          *
-1781          *******************************************************************************/
-1782          static void CyPmHviLviSaveDisable(void) 
-1783          {
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 30  
+1722          *
+1723          *******************************************************************************/
+1724          static void CyPmHibSlpRestore(void) 
+1725          {
+1726   1          /* Restore SC/CT routing registers */
+1727   1          CY_SET_REG8(CYREG_SC0_SW0 , cyPmBackup.scctData[0u] );
+1728   1          CY_SET_REG8(CYREG_SC0_SW2 , cyPmBackup.scctData[1u] );
+1729   1          CY_SET_REG8(CYREG_SC0_SW3 , cyPmBackup.scctData[2u] );
+1730   1          CY_SET_REG8(CYREG_SC0_SW4 , cyPmBackup.scctData[3u] );
+1731   1          CY_SET_REG8(CYREG_SC0_SW6 , cyPmBackup.scctData[4u] );
+1732   1          CY_SET_REG8(CYREG_SC0_SW8 , cyPmBackup.scctData[5u] );
+1733   1          CY_SET_REG8(CYREG_SC0_SW10, cyPmBackup.scctData[6u] );
+1734   1      
+1735   1          CY_SET_REG8(CYREG_SC1_SW0 , cyPmBackup.scctData[7u] );
+1736   1          CY_SET_REG8(CYREG_SC1_SW2 , cyPmBackup.scctData[8u] );
+1737   1          CY_SET_REG8(CYREG_SC1_SW3 , cyPmBackup.scctData[9u] );
+1738   1          CY_SET_REG8(CYREG_SC1_SW4 , cyPmBackup.scctData[10u]);
+1739   1          CY_SET_REG8(CYREG_SC1_SW6 , cyPmBackup.scctData[11u]);
+1740   1          CY_SET_REG8(CYREG_SC1_SW8 , cyPmBackup.scctData[12u]);
+1741   1          CY_SET_REG8(CYREG_SC1_SW10, cyPmBackup.scctData[13u]);
+1742   1      
+1743   1          CY_SET_REG8(CYREG_SC2_SW0 , cyPmBackup.scctData[14u]);
+1744   1          CY_SET_REG8(CYREG_SC2_SW2 , cyPmBackup.scctData[15u]);
+1745   1          CY_SET_REG8(CYREG_SC2_SW3 , cyPmBackup.scctData[16u]);
+1746   1          CY_SET_REG8(CYREG_SC2_SW4 , cyPmBackup.scctData[17u]);
+1747   1          CY_SET_REG8(CYREG_SC2_SW6 , cyPmBackup.scctData[18u]);
+1748   1          CY_SET_REG8(CYREG_SC2_SW8 , cyPmBackup.scctData[19u]);
+1749   1          CY_SET_REG8(CYREG_SC2_SW10, cyPmBackup.scctData[20u]);
+1750   1      
+1751   1          CY_SET_REG8(CYREG_SC3_SW0 , cyPmBackup.scctData[21u]);
+1752   1          CY_SET_REG8(CYREG_SC3_SW2 , cyPmBackup.scctData[22u]);
+1753   1          CY_SET_REG8(CYREG_SC3_SW3 , cyPmBackup.scctData[23u]);
+1754   1          CY_SET_REG8(CYREG_SC3_SW4 , cyPmBackup.scctData[24u]);
+1755   1          CY_SET_REG8(CYREG_SC3_SW6 , cyPmBackup.scctData[25u]);
+1756   1          CY_SET_REG8(CYREG_SC3_SW8 , cyPmBackup.scctData[26u]);
+1757   1          CY_SET_REG8(CYREG_SC3_SW10, cyPmBackup.scctData[27u]);
+1758   1      
+1759   1      
+1760   1          #if(CY_PSOC3)
+1761   1      
+1762   1              /* Serial Wire Viewer (SWV) workaround */
+1763   1              if(CY_PM_ENABLED == cyPmBackup.swvClkEnabled)
+1764   1              {
+1765   2                  /* Restore ports drive mode */
+1766   2                  CY_PM_PRT1_PC3_REG = (CY_PM_PRT1_PC3_REG & CY_PM_PRT1_PC3_DM_MASK) |
+1767   2                                          cyPmBackup.prt1Dm;
+1768   2      
+1769   2                  /* Enable SWV clocks */
+1770   2                  CY_PM_MLOGIC_DBG_REG |= CY_PM_MLOGIC_DBG_SWV_CLK_EN;
+1771   2              }
+1772   1      
+1773   1          #endif /* (CY_PSOC3) */
+1774   1      
+1775   1      
+1776   1          /* Restore boost reference */
+1777   1          if(CY_PM_ENABLED == cyPmBackup.boostRefExt)
+1778   1          {
+1779   2              CY_PM_BOOST_CR2_REG |= CY_PM_BOOST_CR2_EREFSEL_EXT;
+1780   2          }
+1781   1      }
+1782          
+1783          
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 30  
 
-1784   1          if(0u != (CY_VD_LVI_HVI_CONTROL_REG & CY_VD_LVID_EN))
-1785   1          {
-1786   2              cyPmBackup.lvidEn = CY_PM_ENABLED;
-1787   2              cyPmBackup.lvidTrip = CY_VD_LVI_TRIP_REG & CY_VD_LVI_TRIP_LVID_MASK;
-1788   2      
-1789   2              /* Save state of reset device at specified Vddd threshold */
-1790   2              cyPmBackup.lvidRst = (0u == (CY_VD_PRES_CONTROL_REG & CY_VD_PRESD_EN)) ? \
-1791   2                                   CY_PM_DISABLED : CY_PM_ENABLED;
-1792   2      
-1793   2              CyVdLvDigitDisable();
-1794   2          }
-1795   1          else
-1796   1          {
-1797   2              cyPmBackup.lvidEn = CY_PM_DISABLED;
-1798   2          }
-1799   1      
-1800   1          if(0u != (CY_VD_LVI_HVI_CONTROL_REG & CY_VD_LVIA_EN))
-1801   1          {
-1802   2              cyPmBackup.lviaEn = CY_PM_ENABLED;
-1803   2              cyPmBackup.lviaTrip = CY_VD_LVI_TRIP_REG >> 4u;
+1784          /*******************************************************************************
+1785          * Function Name: CyPmHviLviSaveDisable
+1786          ****************************************************************************//**
+1787          *
+1788          *  Saves analog and digital LVI and HVI configuration and disables them.
+1789          *
+1790          * Reentrant:
+1791          *  No
+1792          *
+1793          *******************************************************************************/
+1794          static void CyPmHviLviSaveDisable(void) 
+1795          {
+1796   1          if(0u != (CY_VD_LVI_HVI_CONTROL_REG & CY_VD_LVID_EN))
+1797   1          {
+1798   2              cyPmBackup.lvidEn = CY_PM_ENABLED;
+1799   2              cyPmBackup.lvidTrip = CY_VD_LVI_TRIP_REG & CY_VD_LVI_TRIP_LVID_MASK;
+1800   2      
+1801   2              /* Save state of reset device at specified Vddd threshold */
+1802   2              cyPmBackup.lvidRst = (0u == (CY_VD_PRES_CONTROL_REG & CY_VD_PRESD_EN)) ? \
+1803   2                                   CY_PM_DISABLED : CY_PM_ENABLED;
 1804   2      
-1805   2              /* Save state of reset device at specified Vdda threshold */
-1806   2              cyPmBackup.lviaRst = (0u == (CY_VD_PRES_CONTROL_REG & CY_VD_PRESA_EN)) ? \
-1807   2                                   CY_PM_DISABLED : CY_PM_ENABLED;
-1808   2      
-1809   2              CyVdLvAnalogDisable();
+1805   2              CyVdLvDigitDisable();
+1806   2          }
+1807   1          else
+1808   1          {
+1809   2              cyPmBackup.lvidEn = CY_PM_DISABLED;
 1810   2          }
-1811   1          else
-1812   1          {
-1813   2              cyPmBackup.lviaEn = CY_PM_DISABLED;
-1814   2          }
-1815   1      
-1816   1          if(0u != (CY_VD_LVI_HVI_CONTROL_REG & CY_VD_HVIA_EN))
-1817   1          {
-1818   2              cyPmBackup.hviaEn = CY_PM_ENABLED;
-1819   2              CyVdHvAnalogDisable();
-1820   2          }
-1821   1          else
-1822   1          {
-1823   2              cyPmBackup.hviaEn = CY_PM_DISABLED;
-1824   2          }
-1825   1      }
-1826          
-1827          
-1828          /*******************************************************************************
-1829          * Function Name: CyPmHviLviRestore
-1830          ****************************************************************************//**
-1831          *
-1832          *  Restores the analog and digital LVI and HVI configuration.
-1833          *
-1834          * Reentrant:
-1835          *  No
-1836          *
-1837          *******************************************************************************/
-1838          static void CyPmHviLviRestore(void) 
-1839          {
-1840   1          /* Restore LVI/HVI configuration */
-1841   1          if(CY_PM_ENABLED == cyPmBackup.lvidEn)
-1842   1          {
-1843   2              CyVdLvDigitEnable(cyPmBackup.lvidRst, cyPmBackup.lvidTrip);
-1844   2          }
-1845   1      
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 31  
+1811   1      
+1812   1          if(0u != (CY_VD_LVI_HVI_CONTROL_REG & CY_VD_LVIA_EN))
+1813   1          {
+1814   2              cyPmBackup.lviaEn = CY_PM_ENABLED;
+1815   2              cyPmBackup.lviaTrip = CY_VD_LVI_TRIP_REG >> 4u;
+1816   2      
+1817   2              /* Save state of reset device at specified Vdda threshold */
+1818   2              cyPmBackup.lviaRst = (0u == (CY_VD_PRES_CONTROL_REG & CY_VD_PRESA_EN)) ? \
+1819   2                                   CY_PM_DISABLED : CY_PM_ENABLED;
+1820   2      
+1821   2              CyVdLvAnalogDisable();
+1822   2          }
+1823   1          else
+1824   1          {
+1825   2              cyPmBackup.lviaEn = CY_PM_DISABLED;
+1826   2          }
+1827   1      
+1828   1          if(0u != (CY_VD_LVI_HVI_CONTROL_REG & CY_VD_HVIA_EN))
+1829   1          {
+1830   2              cyPmBackup.hviaEn = CY_PM_ENABLED;
+1831   2              CyVdHvAnalogDisable();
+1832   2          }
+1833   1          else
+1834   1          {
+1835   2              cyPmBackup.hviaEn = CY_PM_DISABLED;
+1836   2          }
+1837   1      }
+1838          
+1839          
+1840          /*******************************************************************************
+1841          * Function Name: CyPmHviLviRestore
+1842          ****************************************************************************//**
+1843          *
+1844          *  Restores the analog and digital LVI and HVI configuration.
+1845          *
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 31  
 
-1846   1          if(CY_PM_ENABLED == cyPmBackup.lviaEn)
-1847   1          {
-1848   2              CyVdLvAnalogEnable(cyPmBackup.lviaRst, cyPmBackup.lviaTrip);
-1849   2          }
-1850   1      
-1851   1          if(CY_PM_ENABLED == cyPmBackup.hviaEn)
-1852   1          {
-1853   2              CyVdHvAnalogEnable();
-1854   2          }
-1855   1      }
-1856          
-1857          
-1858          /* [] END OF FILE */
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 32  
+1846          * Reentrant:
+1847          *  No
+1848          *
+1849          *******************************************************************************/
+1850          static void CyPmHviLviRestore(void) 
+1851          {
+1852   1          /* Restore LVI/HVI configuration */
+1853   1          if(CY_PM_ENABLED == cyPmBackup.lvidEn)
+1854   1          {
+1855   2              CyVdLvDigitEnable(cyPmBackup.lvidRst, cyPmBackup.lvidTrip);
+1856   2          }
+1857   1      
+1858   1          if(CY_PM_ENABLED == cyPmBackup.lviaEn)
+1859   1          {
+1860   2              CyVdLvAnalogEnable(cyPmBackup.lviaRst, cyPmBackup.lviaTrip);
+1861   2          }
+1862   1      
+1863   1          if(CY_PM_ENABLED == cyPmBackup.hviaEn)
+1864   1          {
+1865   2              CyVdHvAnalogEnable();
+1866   2          }
+1867   1      }
+1868          
+1869          
+1870          /* [] END OF FILE */
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 32  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -1997,7 +2009,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004E 8005              SJMP    ?C0002
 0050         ?C0001:
                                            ; SOURCE LINE # 96
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 33  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 33  
 
                                            ; SOURCE LINE # 98
 0050 E4                CLR     A
@@ -2061,7 +2073,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 131
 008E 900000      R     MOV     DPTR,#cyPmClockBackup+0DH
 0091 7401              MOV     A,#01H
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 34  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 34  
 
 0093 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 132
@@ -2125,7 +2137,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00D9 900000      R     MOV     DPTR,#cyPmClockBackup+07H
 00DC EF                MOV     A,R7
 00DD F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 35  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 35  
 
                                            ; SOURCE LINE # 169
 00DE E4                CLR     A
@@ -2189,7 +2201,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 011D 6005              JZ      ?C0020
                                            ; SOURCE LINE # 203
                                            ; SOURCE LINE # 204
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 36  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 36  
 
 011F E4                CLR     A
 0120 FF                MOV     R7,A
@@ -2253,7 +2265,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0164 FA                MOV     R2,A
 0165 F9                MOV     R1,A
 0166 F8                MOV     R0,A
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 37  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 37  
 
 0167 904200            MOV     DPTR,#04200H
 016A E0                MOVX    A,@DPTR
@@ -2317,7 +2329,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 268
                                            ; SOURCE LINE # 269
                                            ; SOURCE LINE # 270
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 38  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 38  
 
 0000 900000      R     MOV     DPTR,#status
 0003 7410              MOV     A,#010H
@@ -2381,7 +2393,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0051 6401              XRL     A,#01H
 0053 7077              JNZ     ?C0028
                                            ; SOURCE LINE # 292
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 39  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 39  
 
                                            ; SOURCE LINE # 301
 0055 FF                MOV     R7,A
@@ -2445,7 +2457,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A5 FA                MOV     R2,A
 00A6 F9                MOV     R1,A
 00A7 F8                MOV     R0,A
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 40  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 40  
 
 00A8 120000      E     LCALL   ?C?LMUL
 00AB 120000      E     LCALL   _CyDelayCycles
@@ -2509,7 +2521,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00F0 E0                MOVX    A,@DPTR
 00F1 FF                MOV     R7,A
 00F2 120000      E     LCALL   _CyMasterClk_SetSource
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 41  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 41  
 
                                            ; SOURCE LINE # 353
 00F5         ?C0034:
@@ -2573,7 +2585,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 382
 0142 FF                MOV     R7,A
 0143 120000      E     LCALL   _CyIMO_Start
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 42  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 42  
 
                                            ; SOURCE LINE # 383
 0146         ?C0041:
@@ -2637,7 +2649,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 018E 904225            MOV     DPTR,#04225H
 0191 E0                MOVX    A,@DPTR
 0192 FF                MOV     R7,A
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 43  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 43  
 
                                            ; SOURCE LINE # 421
 0193 900000      R     MOV     DPTR,#i
@@ -2701,7 +2713,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01DD B40117            CJNE    A,#01H,?C0050
 01E0         ?C0051:
                                            ; SOURCE LINE # 453
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 44  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 44  
 
                                            ; SOURCE LINE # 455
 01E0 900000      R     MOV     DPTR,#cyPmClockBackup+0AH
@@ -2765,7 +2777,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0226 6003              JZ      ?C0054
                                            ; SOURCE LINE # 475
                                            ; SOURCE LINE # 476
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 45  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 45  
 
 0228 120000      E     LCALL   _CyBusClk_SetDivider
                                            ; SOURCE LINE # 477
@@ -2829,7 +2841,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 644
                                            ; SOURCE LINE # 645
 0028 EF                MOV     A,R7
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 46  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 46  
 
 0029 24F2              ADD     A,#0F2H
 002B FF                MOV     R7,A
@@ -2893,7 +2905,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 668
 0071 900000      R     MOV     DPTR,#wakeupSource
 0074 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 47  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 47  
 
 0075 4408              ORL     A,#08H
 0077 F0                MOVX    @DPTR,A
@@ -2957,7 +2969,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 693
 00C2 E0                MOVX    A,@DPTR
 00C3 FF                MOV     R7,A
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 48  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 48  
 
                                            ; SOURCE LINE # 696
 00C4 00                NOP     
@@ -3021,7 +3033,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0027 E0                MOVX    A,@DPTR
 0028 FF                MOV     R7,A
 0029 120000      E     LCALL   _CyExitCriticalSection
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 49  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 49  
 
 002C 22                RET     
                                            ; SOURCE LINE # 851
@@ -3085,7 +3097,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0067 9402              SUBB    A,#02H
 0069 4016              JC      ?C0069
 006B EF                MOV     A,R7
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 50  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 50  
 
 006C D3                SETB    C
 006D 940D              SUBB    A,#0DH
@@ -3149,7 +3161,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00B4 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 955
 00B5 A3                INC     DPTR
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 51  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 51  
 
 00B6 E0                MOVX    A,@DPTR
 00B7 900000      R     MOV     DPTR,#cyPmBackup+08H
@@ -3213,7 +3225,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0102 FF                MOV     R7,A
                                            ; SOURCE LINE # 1000
 0103 00                NOP     
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 52  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 52  
 
                                            ; SOURCE LINE # 1001
 0104 00                NOP     
@@ -3277,7 +3289,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 014B 904399            MOV     DPTR,#04399H
 014E F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1053
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 53  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 53  
 
 014F 900000      R     MOV     DPTR,#cyPmBackup+09H
 0152 E0                MOVX    A,@DPTR
@@ -3341,7 +3353,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0029 22                RET     
                                            ; SOURCE LINE # 1182
 002A         ?C0079:
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 54  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 54  
 
                                            ; SOURCE LINE # 1184
 002A 120000      R     LCALL   CyPmHibSaveSet
@@ -3405,7 +3417,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1208
                                            ; SOURCE LINE # 1210
 0076 E4                CLR     A
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 55  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 55  
 
 0077 900000      R     MOV     DPTR,#cyPmBackup+030H
 007A F0                MOVX    @DPTR,A
@@ -3469,7 +3481,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00C4 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1251
 00C5 900000      R     MOV     DPTR,#cyPmBackup+09H
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 56  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 56  
 
 00C8 E0                MOVX    A,@DPTR
 00C9 90439A            MOV     DPTR,#0439AH
@@ -3533,7 +3545,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION _CyPmReadStatus (END)
 
              ; FUNCTION CyPmHibSaveSet (BEGIN)
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 57  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 57  
 
                                            ; SOURCE LINE # 1322
                                            ; SOURCE LINE # 1323
@@ -3597,7 +3609,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004C F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1361
 004D 8006              SJMP    ?C0091
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 58  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 58  
 
 004F         ?C0090:
                                            ; SOURCE LINE # 1363
@@ -3621,96 +3633,96 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0066 E0                MOVX    A,@DPTR
 0067 900000      R     MOV     DPTR,#cyPmBackup+0BH
 006A F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1388
+                                           ; SOURCE LINE # 1392
 006B 904685            MOV     DPTR,#04685H
 006E 74FF              MOV     A,#0FFH
 0070 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1389
+                                           ; SOURCE LINE # 1393
 0071 A3                INC     DPTR
 0072 7490              MOV     A,#090H
 0074 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1390
+                                           ; SOURCE LINE # 1398
 0075 22                RET     
              ; FUNCTION CyPmHibSaveSet (END)
 
              ; FUNCTION CyPmHibRestore (BEGIN)
-                                           ; SOURCE LINE # 1405
-                                           ; SOURCE LINE # 1406
-                                           ; SOURCE LINE # 1408
-0000 120000      R     LCALL   CyPmHviLviRestore
-                                           ; SOURCE LINE # 1411
-0003 120000      R     LCALL   CyPmHibSlpRestore
+                                           ; SOURCE LINE # 1413
                                            ; SOURCE LINE # 1414
+                                           ; SOURCE LINE # 1416
+0000 120000      R     LCALL   CyPmHviLviRestore
+                                           ; SOURCE LINE # 1419
+0003 120000      R     LCALL   CyPmHibSlpRestore
+                                           ; SOURCE LINE # 1422
 0006 900000      R     MOV     DPTR,#cyPmBackup+01H
 0009 E0                MOVX    A,@DPTR
 000A B40103            CJNE    A,#01H,?C0093
-                                           ; SOURCE LINE # 1415
-                                           ; SOURCE LINE # 1417
+                                           ; SOURCE LINE # 1423
+                                           ; SOURCE LINE # 1425
 000D 120000      E     LCALL   CyILO_Start1K
-                                           ; SOURCE LINE # 1418
+                                           ; SOURCE LINE # 1426
 0010         ?C0093:
-                                           ; SOURCE LINE # 1421
+                                           ; SOURCE LINE # 1429
 0010 900000      R     MOV     DPTR,#cyPmBackup+02H
 0013 E0                MOVX    A,@DPTR
 0014 B40103            CJNE    A,#01H,?C0094
-                                           ; SOURCE LINE # 1422
-                                           ; SOURCE LINE # 1424
+                                           ; SOURCE LINE # 1430
+                                           ; SOURCE LINE # 1432
 0017 120000      E     LCALL   CyILO_Start100K
-                                           ; SOURCE LINE # 1425
+                                           ; SOURCE LINE # 1433
 001A         ?C0094:
-                                           ; SOURCE LINE # 1428
+                                           ; SOURCE LINE # 1436
 001A 900000      R     MOV     DPTR,#cyPmBackup
 001D E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 59  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 59  
 
 001E FF                MOV     R7,A
 001F 120000      E     LCALL   _CyILO_SetPowerMode
-                                           ; SOURCE LINE # 1431
+                                           ; SOURCE LINE # 1439
 0022 900000      R     MOV     DPTR,#cyPmBackup+03H
 0025 E0                MOVX    A,@DPTR
 0026 7007              JNZ     ?C0095
-                                           ; SOURCE LINE # 1432
-                                           ; SOURCE LINE # 1434
+                                           ; SOURCE LINE # 1440
+                                           ; SOURCE LINE # 1442
 0028 904683            MOV     DPTR,#04683H
 002B E0                MOVX    A,@DPTR
 002C 54EF              ANL     A,#0EFH
 002E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1435
+                                           ; SOURCE LINE # 1443
 002F         ?C0095:
-                                           ; SOURCE LINE # 1441
+                                           ; SOURCE LINE # 1449
 002F 900000      R     MOV     DPTR,#cyPmBackup+0AH
 0032 E0                MOVX    A,@DPTR
 0033 904685            MOV     DPTR,#04685H
 0036 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1442
+                                           ; SOURCE LINE # 1450
 0037 900000      R     MOV     DPTR,#cyPmBackup+0BH
 003A E0                MOVX    A,@DPTR
 003B 904686            MOV     DPTR,#04686H
 003E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1443
+                                           ; SOURCE LINE # 1455
 003F 22                RET     
              ; FUNCTION CyPmHibRestore (END)
 
              ; FUNCTION _CyPmCtwSetInterval (BEGIN)
-                                           ; SOURCE LINE # 1461
+                                           ; SOURCE LINE # 1473
 0000 900000      R     MOV     DPTR,#ctwInterval
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1462
-                                           ; SOURCE LINE # 1464
+                                           ; SOURCE LINE # 1474
+                                           ; SOURCE LINE # 1476
 0005 904382            MOV     DPTR,#04382H
 0008 E0                MOVX    A,@DPTR
 0009 54F7              ANL     A,#0F7H
 000B F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1467
+                                           ; SOURCE LINE # 1479
 000C 120000      E     LCALL   CyILO_Start1K
-                                           ; SOURCE LINE # 1470
+                                           ; SOURCE LINE # 1482
 000F 904382            MOV     DPTR,#04382H
 0012 E0                MOVX    A,@DPTR
 0013 5404              ANL     A,#04H
 0015 601C              JZ      ?C0097
-                                           ; SOURCE LINE # 1471
-                                           ; SOURCE LINE # 1473
+                                           ; SOURCE LINE # 1483
+                                           ; SOURCE LINE # 1485
 0017 900000      R     MOV     DPTR,#ctwInterval
 001A E0                MOVX    A,@DPTR
 001B FF                MOV     R7,A
@@ -3718,29 +3730,29 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001F E0                MOVX    A,@DPTR
 0020 6F                XRL     A,R7
 0021 6025              JZ      ?C0101
-                                           ; SOURCE LINE # 1474
-                                           ; SOURCE LINE # 1476
+                                           ; SOURCE LINE # 1486
+                                           ; SOURCE LINE # 1488
 0023 A3                INC     DPTR
 0024 E0                MOVX    A,@DPTR
 0025 54FB              ANL     A,#0FBH
 0027 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1477
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 60  
+                                           ; SOURCE LINE # 1489
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 60  
 
 0028 904381            MOV     DPTR,#04381H
 002B EF                MOV     A,R7
 002C F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1478
+                                           ; SOURCE LINE # 1490
 002D A3                INC     DPTR
 002E E0                MOVX    A,@DPTR
 002F 4404              ORL     A,#04H
 0031 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1479
-                                           ; SOURCE LINE # 1480
+                                           ; SOURCE LINE # 1491
+                                           ; SOURCE LINE # 1492
 0032 22                RET     
 0033         ?C0097:
-                                           ; SOURCE LINE # 1482
-                                           ; SOURCE LINE # 1484
+                                           ; SOURCE LINE # 1494
+                                           ; SOURCE LINE # 1496
 0033 900000      R     MOV     DPTR,#ctwInterval
 0036 E0                MOVX    A,@DPTR
 0037 FF                MOV     R7,A
@@ -3748,71 +3760,71 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003B E0                MOVX    A,@DPTR
 003C 6F                XRL     A,R7
 003D 6002              JZ      ?C0100
-                                           ; SOURCE LINE # 1485
-                                           ; SOURCE LINE # 1487
+                                           ; SOURCE LINE # 1497
+                                           ; SOURCE LINE # 1499
 003F EF                MOV     A,R7
 0040 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1488
+                                           ; SOURCE LINE # 1500
 0041         ?C0100:
-                                           ; SOURCE LINE # 1491
+                                           ; SOURCE LINE # 1503
 0041 904382            MOV     DPTR,#04382H
 0044 E0                MOVX    A,@DPTR
 0045 4404              ORL     A,#04H
 0047 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1492
-                                           ; SOURCE LINE # 1493
+                                           ; SOURCE LINE # 1504
+                                           ; SOURCE LINE # 1505
 0048         ?C0101:
 0048 22                RET     
              ; FUNCTION _CyPmCtwSetInterval (END)
 
              ; FUNCTION CyPmOppsSet (BEGIN)
-                                           ; SOURCE LINE # 1506
-                                           ; SOURCE LINE # 1507
-                                           ; SOURCE LINE # 1509
+                                           ; SOURCE LINE # 1518
+                                           ; SOURCE LINE # 1519
+                                           ; SOURCE LINE # 1521
 0000 904308            MOV     DPTR,#04308H
 0003 E0                MOVX    A,@DPTR
 0004 5401              ANL     A,#01H
 0006 7003              JNZ     ?C0102
-                                           ; SOURCE LINE # 1510
-                                           ; SOURCE LINE # 1512
+                                           ; SOURCE LINE # 1522
+                                           ; SOURCE LINE # 1524
 0008 120000      E     LCALL   CyXTAL_32KHZ_Start
-                                           ; SOURCE LINE # 1513
+                                           ; SOURCE LINE # 1525
 000B         ?C0102:
-                                           ; SOURCE LINE # 1516
+                                           ; SOURCE LINE # 1528
 000B 904382            MOV     DPTR,#04382H
 000E E0                MOVX    A,@DPTR
 000F 54DF              ANL     A,#0DFH
 0011 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1519
+                                           ; SOURCE LINE # 1531
 0012 E0                MOVX    A,@DPTR
 0013 4410              ORL     A,#010H
 0015 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1520
+                                           ; SOURCE LINE # 1532
 0016 22                RET     
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 61  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 61  
 
              ; FUNCTION CyPmOppsSet (END)
 
              ; FUNCTION _CyPmFtwSetInterval (BEGIN)
-                                           ; SOURCE LINE # 1538
+                                           ; SOURCE LINE # 1550
 0000 900000      R     MOV     DPTR,#ftwInterval
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1539
-                                           ; SOURCE LINE # 1541
+                                           ; SOURCE LINE # 1551
+                                           ; SOURCE LINE # 1553
 0005 904382            MOV     DPTR,#04382H
 0008 E0                MOVX    A,@DPTR
 0009 54FD              ANL     A,#0FDH
 000B F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1544
+                                           ; SOURCE LINE # 1556
 000C 120000      E     LCALL   CyILO_Start100K
-                                           ; SOURCE LINE # 1547
+                                           ; SOURCE LINE # 1559
 000F 904382            MOV     DPTR,#04382H
 0012 E0                MOVX    A,@DPTR
 0013 5401              ANL     A,#01H
 0015 6020              JZ      ?C0104
-                                           ; SOURCE LINE # 1548
-                                           ; SOURCE LINE # 1550
+                                           ; SOURCE LINE # 1560
+                                           ; SOURCE LINE # 1562
 0017 900000      R     MOV     DPTR,#ftwInterval
 001A E0                MOVX    A,@DPTR
 001B FF                MOV     R7,A
@@ -3820,27 +3832,27 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001F E0                MOVX    A,@DPTR
 0020 6F                XRL     A,R7
 0021 6029              JZ      ?C0108
-                                           ; SOURCE LINE # 1551
-                                           ; SOURCE LINE # 1553
+                                           ; SOURCE LINE # 1563
+                                           ; SOURCE LINE # 1565
 0023 904382            MOV     DPTR,#04382H
 0026 E0                MOVX    A,@DPTR
 0027 54FE              ANL     A,#0FEH
 0029 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1554
+                                           ; SOURCE LINE # 1566
 002A 904380            MOV     DPTR,#04380H
 002D EF                MOV     A,R7
 002E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1555
+                                           ; SOURCE LINE # 1567
 002F 904382            MOV     DPTR,#04382H
 0032 E0                MOVX    A,@DPTR
 0033 4401              ORL     A,#01H
 0035 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1556
-                                           ; SOURCE LINE # 1557
+                                           ; SOURCE LINE # 1568
+                                           ; SOURCE LINE # 1569
 0036 22                RET     
 0037         ?C0104:
-                                           ; SOURCE LINE # 1559
-                                           ; SOURCE LINE # 1561
+                                           ; SOURCE LINE # 1571
+                                           ; SOURCE LINE # 1573
 0037 900000      R     MOV     DPTR,#ftwInterval
 003A E0                MOVX    A,@DPTR
 003B FF                MOV     R7,A
@@ -3848,482 +3860,482 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003F E0                MOVX    A,@DPTR
 0040 6F                XRL     A,R7
 0041 6002              JZ      ?C0107
-                                           ; SOURCE LINE # 1562
-                                           ; SOURCE LINE # 1564
+                                           ; SOURCE LINE # 1574
+                                           ; SOURCE LINE # 1576
 0043 EF                MOV     A,R7
 0044 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1565
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 62  
+                                           ; SOURCE LINE # 1577
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 62  
 
 0045         ?C0107:
-                                           ; SOURCE LINE # 1568
+                                           ; SOURCE LINE # 1580
 0045 904382            MOV     DPTR,#04382H
 0048 E0                MOVX    A,@DPTR
 0049 4401              ORL     A,#01H
 004B F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1569
-                                           ; SOURCE LINE # 1570
+                                           ; SOURCE LINE # 1581
+                                           ; SOURCE LINE # 1582
 004C         ?C0108:
 004C 22                RET     
              ; FUNCTION _CyPmFtwSetInterval (END)
 
              ; FUNCTION CyPmHibSlpSaveSet (BEGIN)
-                                           ; SOURCE LINE # 1588
-                                           ; SOURCE LINE # 1589
-                                           ; SOURCE LINE # 1591
+                                           ; SOURCE LINE # 1600
+                                           ; SOURCE LINE # 1601
+                                           ; SOURCE LINE # 1603
 0000 905A00            MOV     DPTR,#05A00H
 0003 E0                MOVX    A,@DPTR
 0004 900000      R     MOV     DPTR,#cyPmBackup+0CH
 0007 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1592
+                                           ; SOURCE LINE # 1604
 0008 905A02            MOV     DPTR,#05A02H
 000B E0                MOVX    A,@DPTR
 000C 900000      R     MOV     DPTR,#cyPmBackup+0DH
 000F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1593
+                                           ; SOURCE LINE # 1605
 0010 905A03            MOV     DPTR,#05A03H
 0013 E0                MOVX    A,@DPTR
 0014 900000      R     MOV     DPTR,#cyPmBackup+0EH
 0017 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1594
+                                           ; SOURCE LINE # 1606
 0018 905A04            MOV     DPTR,#05A04H
 001B E0                MOVX    A,@DPTR
 001C 900000      R     MOV     DPTR,#cyPmBackup+0FH
 001F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1595
+                                           ; SOURCE LINE # 1607
 0020 905A06            MOV     DPTR,#05A06H
 0023 E0                MOVX    A,@DPTR
 0024 900000      R     MOV     DPTR,#cyPmBackup+010H
 0027 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1596
+                                           ; SOURCE LINE # 1608
 0028 905A08            MOV     DPTR,#05A08H
 002B E0                MOVX    A,@DPTR
 002C 900000      R     MOV     DPTR,#cyPmBackup+011H
 002F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1597
+                                           ; SOURCE LINE # 1609
 0030 905A0A            MOV     DPTR,#05A0AH
 0033 E0                MOVX    A,@DPTR
 0034 900000      R     MOV     DPTR,#cyPmBackup+012H
 0037 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1599
+                                           ; SOURCE LINE # 1611
 0038 905A10            MOV     DPTR,#05A10H
 003B E0                MOVX    A,@DPTR
 003C 900000      R     MOV     DPTR,#cyPmBackup+013H
 003F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1600
+                                           ; SOURCE LINE # 1612
 0040 905A12            MOV     DPTR,#05A12H
 0043 E0                MOVX    A,@DPTR
 0044 900000      R     MOV     DPTR,#cyPmBackup+014H
 0047 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1601
+                                           ; SOURCE LINE # 1613
 0048 905A13            MOV     DPTR,#05A13H
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 63  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 63  
 
 004B E0                MOVX    A,@DPTR
 004C 900000      R     MOV     DPTR,#cyPmBackup+015H
 004F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1602
+                                           ; SOURCE LINE # 1614
 0050 905A14            MOV     DPTR,#05A14H
 0053 E0                MOVX    A,@DPTR
 0054 900000      R     MOV     DPTR,#cyPmBackup+016H
 0057 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1603
+                                           ; SOURCE LINE # 1615
 0058 905A16            MOV     DPTR,#05A16H
 005B E0                MOVX    A,@DPTR
 005C 900000      R     MOV     DPTR,#cyPmBackup+017H
 005F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1604
+                                           ; SOURCE LINE # 1616
 0060 905A18            MOV     DPTR,#05A18H
 0063 E0                MOVX    A,@DPTR
 0064 900000      R     MOV     DPTR,#cyPmBackup+018H
 0067 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1605
+                                           ; SOURCE LINE # 1617
 0068 905A1A            MOV     DPTR,#05A1AH
 006B E0                MOVX    A,@DPTR
 006C 900000      R     MOV     DPTR,#cyPmBackup+019H
 006F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1607
+                                           ; SOURCE LINE # 1619
 0070 905A20            MOV     DPTR,#05A20H
 0073 E0                MOVX    A,@DPTR
 0074 900000      R     MOV     DPTR,#cyPmBackup+01AH
 0077 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1608
+                                           ; SOURCE LINE # 1620
 0078 905A22            MOV     DPTR,#05A22H
 007B E0                MOVX    A,@DPTR
 007C 900000      R     MOV     DPTR,#cyPmBackup+01BH
 007F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1609
+                                           ; SOURCE LINE # 1621
 0080 905A23            MOV     DPTR,#05A23H
 0083 E0                MOVX    A,@DPTR
 0084 900000      R     MOV     DPTR,#cyPmBackup+01CH
 0087 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1610
+                                           ; SOURCE LINE # 1622
 0088 905A24            MOV     DPTR,#05A24H
 008B E0                MOVX    A,@DPTR
 008C 900000      R     MOV     DPTR,#cyPmBackup+01DH
 008F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1611
+                                           ; SOURCE LINE # 1623
 0090 905A26            MOV     DPTR,#05A26H
 0093 E0                MOVX    A,@DPTR
 0094 900000      R     MOV     DPTR,#cyPmBackup+01EH
 0097 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1612
+                                           ; SOURCE LINE # 1624
 0098 905A28            MOV     DPTR,#05A28H
 009B E0                MOVX    A,@DPTR
 009C 900000      R     MOV     DPTR,#cyPmBackup+01FH
 009F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1613
+                                           ; SOURCE LINE # 1625
 00A0 905A2A            MOV     DPTR,#05A2AH
 00A3 E0                MOVX    A,@DPTR
 00A4 900000      R     MOV     DPTR,#cyPmBackup+020H
 00A7 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1615
+                                           ; SOURCE LINE # 1627
 00A8 905A30            MOV     DPTR,#05A30H
 00AB E0                MOVX    A,@DPTR
 00AC 900000      R     MOV     DPTR,#cyPmBackup+021H
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 64  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 64  
 
 00AF F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1616
+                                           ; SOURCE LINE # 1628
 00B0 905A32            MOV     DPTR,#05A32H
 00B3 E0                MOVX    A,@DPTR
 00B4 900000      R     MOV     DPTR,#cyPmBackup+022H
 00B7 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1617
+                                           ; SOURCE LINE # 1629
 00B8 905A33            MOV     DPTR,#05A33H
 00BB E0                MOVX    A,@DPTR
 00BC 900000      R     MOV     DPTR,#cyPmBackup+023H
 00BF F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1618
+                                           ; SOURCE LINE # 1630
 00C0 905A34            MOV     DPTR,#05A34H
 00C3 E0                MOVX    A,@DPTR
 00C4 900000      R     MOV     DPTR,#cyPmBackup+024H
 00C7 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1619
+                                           ; SOURCE LINE # 1631
 00C8 905A36            MOV     DPTR,#05A36H
 00CB E0                MOVX    A,@DPTR
 00CC 900000      R     MOV     DPTR,#cyPmBackup+025H
 00CF F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1620
+                                           ; SOURCE LINE # 1632
 00D0 905A38            MOV     DPTR,#05A38H
 00D3 E0                MOVX    A,@DPTR
 00D4 900000      R     MOV     DPTR,#cyPmBackup+026H
 00D7 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1621
+                                           ; SOURCE LINE # 1633
 00D8 905A3A            MOV     DPTR,#05A3AH
 00DB E0                MOVX    A,@DPTR
 00DC 900000      R     MOV     DPTR,#cyPmBackup+027H
 00DF F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1623
+                                           ; SOURCE LINE # 1635
 00E0 905A00            MOV     DPTR,#05A00H
 00E3 E4                CLR     A
 00E4 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1624
+                                           ; SOURCE LINE # 1636
 00E5 905A02            MOV     DPTR,#05A02H
 00E8 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1625
+                                           ; SOURCE LINE # 1637
 00E9 A3                INC     DPTR
 00EA F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1626
+                                           ; SOURCE LINE # 1638
 00EB A3                INC     DPTR
 00EC F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1627
+                                           ; SOURCE LINE # 1639
 00ED 905A06            MOV     DPTR,#05A06H
 00F0 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1628
+                                           ; SOURCE LINE # 1640
 00F1 905A08            MOV     DPTR,#05A08H
 00F4 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1629
+                                           ; SOURCE LINE # 1641
 00F5 905A0A            MOV     DPTR,#05A0AH
 00F8 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1631
+                                           ; SOURCE LINE # 1643
 00F9 905A10            MOV     DPTR,#05A10H
 00FC F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1632
+                                           ; SOURCE LINE # 1644
 00FD 905A12            MOV     DPTR,#05A12H
 0100 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1633
+                                           ; SOURCE LINE # 1645
 0101 A3                INC     DPTR
 0102 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 65  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 65  
 
-                                           ; SOURCE LINE # 1634
+                                           ; SOURCE LINE # 1646
 0103 A3                INC     DPTR
 0104 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1635
+                                           ; SOURCE LINE # 1647
 0105 905A16            MOV     DPTR,#05A16H
 0108 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1636
+                                           ; SOURCE LINE # 1648
 0109 905A18            MOV     DPTR,#05A18H
 010C F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1637
+                                           ; SOURCE LINE # 1649
 010D 905A1A            MOV     DPTR,#05A1AH
 0110 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1639
+                                           ; SOURCE LINE # 1651
 0111 905A20            MOV     DPTR,#05A20H
 0114 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1640
+                                           ; SOURCE LINE # 1652
 0115 905A22            MOV     DPTR,#05A22H
 0118 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1641
+                                           ; SOURCE LINE # 1653
 0119 A3                INC     DPTR
 011A F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1642
+                                           ; SOURCE LINE # 1654
 011B A3                INC     DPTR
 011C F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1643
+                                           ; SOURCE LINE # 1655
 011D 905A26            MOV     DPTR,#05A26H
 0120 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1644
+                                           ; SOURCE LINE # 1656
 0121 905A28            MOV     DPTR,#05A28H
 0124 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1645
+                                           ; SOURCE LINE # 1657
 0125 905A2A            MOV     DPTR,#05A2AH
 0128 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1647
+                                           ; SOURCE LINE # 1659
 0129 905A30            MOV     DPTR,#05A30H
 012C F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1648
+                                           ; SOURCE LINE # 1660
 012D 905A32            MOV     DPTR,#05A32H
 0130 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1649
+                                           ; SOURCE LINE # 1661
 0131 A3                INC     DPTR
 0132 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1650
+                                           ; SOURCE LINE # 1662
 0133 A3                INC     DPTR
 0134 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1651
+                                           ; SOURCE LINE # 1663
 0135 905A36            MOV     DPTR,#05A36H
 0138 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1652
+                                           ; SOURCE LINE # 1664
 0139 905A38            MOV     DPTR,#05A38H
 013C F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1653
+                                           ; SOURCE LINE # 1665
 013D 905A3A            MOV     DPTR,#05A3AH
 0140 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1661
+                                           ; SOURCE LINE # 1673
 0141 9046E8            MOV     DPTR,#046E8H
 0144 E0                MOVX    A,@DPTR
 0145 5404              ANL     A,#04H
 0147 6022              JZ      ?C0109
-                                           ; SOURCE LINE # 1662
-                                           ; SOURCE LINE # 1664
+                                           ; SOURCE LINE # 1674
+                                           ; SOURCE LINE # 1676
 0149 900000      R     MOV     DPTR,#cyPmBackup+04H
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 66  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 66  
 
 014C 7401              MOV     A,#01H
 014E F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1667
+                                           ; SOURCE LINE # 1679
 014F 90500B            MOV     DPTR,#0500BH
 0152 E0                MOVX    A,@DPTR
 0153 540E              ANL     A,#0EH
 0155 900000      R     MOV     DPTR,#cyPmBackup+05H
 0158 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1670
+                                           ; SOURCE LINE # 1682
 0159 90500B            MOV     DPTR,#0500BH
 015C E0                MOVX    A,@DPTR
 015D 54F1              ANL     A,#0F1H
 015F 440C              ORL     A,#0CH
 0161 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1674
+                                           ; SOURCE LINE # 1686
 0162 9046E8            MOV     DPTR,#046E8H
 0165 E0                MOVX    A,@DPTR
 0166 54FB              ANL     A,#0FBH
 0168 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1675
+                                           ; SOURCE LINE # 1687
 0169 8005              SJMP    ?C0110
 016B         ?C0109:
-                                           ; SOURCE LINE # 1677
-                                           ; SOURCE LINE # 1679
+                                           ; SOURCE LINE # 1689
+                                           ; SOURCE LINE # 1691
 016B E4                CLR     A
 016C 900000      R     MOV     DPTR,#cyPmBackup+04H
 016F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1680
+                                           ; SOURCE LINE # 1692
 0170         ?C0110:
-                                           ; SOURCE LINE # 1689
+                                           ; SOURCE LINE # 1701
 0170 904322            MOV     DPTR,#04322H
 0173 E0                MOVX    A,@DPTR
 0174 5408              ANL     A,#08H
 0176 600E              JZ      ?C0111
-                                           ; SOURCE LINE # 1690
-                                           ; SOURCE LINE # 1691
+                                           ; SOURCE LINE # 1702
+                                           ; SOURCE LINE # 1703
 0178 900000      R     MOV     DPTR,#cyPmBackup+031H
 017B 7401              MOV     A,#01H
 017D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1692
+                                           ; SOURCE LINE # 1704
 017E 904322            MOV     DPTR,#04322H
 0181 E0                MOVX    A,@DPTR
 0182 54F7              ANL     A,#0F7H
 0184 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1693
+                                           ; SOURCE LINE # 1705
 0185 22                RET     
 0186         ?C0111:
-                                           ; SOURCE LINE # 1695
-                                           ; SOURCE LINE # 1696
+                                           ; SOURCE LINE # 1707
+                                           ; SOURCE LINE # 1708
 0186 E4                CLR     A
 0187 900000      R     MOV     DPTR,#cyPmBackup+031H
 018A F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1697
-                                           ; SOURCE LINE # 1698
+                                           ; SOURCE LINE # 1709
+                                           ; SOURCE LINE # 1710
 018B         ?C0113:
 018B 22                RET     
              ; FUNCTION CyPmHibSlpSaveSet (END)
 
              ; FUNCTION CyPmHibSlpRestore (BEGIN)
-                                           ; SOURCE LINE # 1712
-                                           ; SOURCE LINE # 1713
-                                           ; SOURCE LINE # 1715
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 67  
+                                           ; SOURCE LINE # 1724
+                                           ; SOURCE LINE # 1725
+                                           ; SOURCE LINE # 1727
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 67  
 
 0000 900000      R     MOV     DPTR,#cyPmBackup+0CH
 0003 E0                MOVX    A,@DPTR
 0004 905A00            MOV     DPTR,#05A00H
 0007 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1716
+                                           ; SOURCE LINE # 1728
 0008 900000      R     MOV     DPTR,#cyPmBackup+0DH
 000B E0                MOVX    A,@DPTR
 000C 905A02            MOV     DPTR,#05A02H
 000F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1717
+                                           ; SOURCE LINE # 1729
 0010 900000      R     MOV     DPTR,#cyPmBackup+0EH
 0013 E0                MOVX    A,@DPTR
 0014 905A03            MOV     DPTR,#05A03H
 0017 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1718
+                                           ; SOURCE LINE # 1730
 0018 900000      R     MOV     DPTR,#cyPmBackup+0FH
 001B E0                MOVX    A,@DPTR
 001C 905A04            MOV     DPTR,#05A04H
 001F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1719
+                                           ; SOURCE LINE # 1731
 0020 900000      R     MOV     DPTR,#cyPmBackup+010H
 0023 E0                MOVX    A,@DPTR
 0024 905A06            MOV     DPTR,#05A06H
 0027 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1720
+                                           ; SOURCE LINE # 1732
 0028 900000      R     MOV     DPTR,#cyPmBackup+011H
 002B E0                MOVX    A,@DPTR
 002C 905A08            MOV     DPTR,#05A08H
 002F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1721
+                                           ; SOURCE LINE # 1733
 0030 900000      R     MOV     DPTR,#cyPmBackup+012H
 0033 E0                MOVX    A,@DPTR
 0034 905A0A            MOV     DPTR,#05A0AH
 0037 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1723
+                                           ; SOURCE LINE # 1735
 0038 900000      R     MOV     DPTR,#cyPmBackup+013H
 003B E0                MOVX    A,@DPTR
 003C 905A10            MOV     DPTR,#05A10H
 003F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1724
+                                           ; SOURCE LINE # 1736
 0040 900000      R     MOV     DPTR,#cyPmBackup+014H
 0043 E0                MOVX    A,@DPTR
 0044 905A12            MOV     DPTR,#05A12H
 0047 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1725
+                                           ; SOURCE LINE # 1737
 0048 900000      R     MOV     DPTR,#cyPmBackup+015H
 004B E0                MOVX    A,@DPTR
 004C 905A13            MOV     DPTR,#05A13H
 004F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1726
+                                           ; SOURCE LINE # 1738
 0050 900000      R     MOV     DPTR,#cyPmBackup+016H
 0053 E0                MOVX    A,@DPTR
 0054 905A14            MOV     DPTR,#05A14H
 0057 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1727
+                                           ; SOURCE LINE # 1739
 0058 900000      R     MOV     DPTR,#cyPmBackup+017H
 005B E0                MOVX    A,@DPTR
 005C 905A16            MOV     DPTR,#05A16H
 005F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1728
+                                           ; SOURCE LINE # 1740
 0060 900000      R     MOV     DPTR,#cyPmBackup+018H
 0063 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 68  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 68  
 
 0064 905A18            MOV     DPTR,#05A18H
 0067 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1729
+                                           ; SOURCE LINE # 1741
 0068 900000      R     MOV     DPTR,#cyPmBackup+019H
 006B E0                MOVX    A,@DPTR
 006C 905A1A            MOV     DPTR,#05A1AH
 006F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1731
+                                           ; SOURCE LINE # 1743
 0070 900000      R     MOV     DPTR,#cyPmBackup+01AH
 0073 E0                MOVX    A,@DPTR
 0074 905A20            MOV     DPTR,#05A20H
 0077 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1732
+                                           ; SOURCE LINE # 1744
 0078 900000      R     MOV     DPTR,#cyPmBackup+01BH
 007B E0                MOVX    A,@DPTR
 007C 905A22            MOV     DPTR,#05A22H
 007F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1733
+                                           ; SOURCE LINE # 1745
 0080 900000      R     MOV     DPTR,#cyPmBackup+01CH
 0083 E0                MOVX    A,@DPTR
 0084 905A23            MOV     DPTR,#05A23H
 0087 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1734
+                                           ; SOURCE LINE # 1746
 0088 900000      R     MOV     DPTR,#cyPmBackup+01DH
 008B E0                MOVX    A,@DPTR
 008C 905A24            MOV     DPTR,#05A24H
 008F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1735
+                                           ; SOURCE LINE # 1747
 0090 900000      R     MOV     DPTR,#cyPmBackup+01EH
 0093 E0                MOVX    A,@DPTR
 0094 905A26            MOV     DPTR,#05A26H
 0097 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1736
+                                           ; SOURCE LINE # 1748
 0098 900000      R     MOV     DPTR,#cyPmBackup+01FH
 009B E0                MOVX    A,@DPTR
 009C 905A28            MOV     DPTR,#05A28H
 009F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1737
+                                           ; SOURCE LINE # 1749
 00A0 900000      R     MOV     DPTR,#cyPmBackup+020H
 00A3 E0                MOVX    A,@DPTR
 00A4 905A2A            MOV     DPTR,#05A2AH
 00A7 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1739
+                                           ; SOURCE LINE # 1751
 00A8 900000      R     MOV     DPTR,#cyPmBackup+021H
 00AB E0                MOVX    A,@DPTR
 00AC 905A30            MOV     DPTR,#05A30H
 00AF F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1740
+                                           ; SOURCE LINE # 1752
 00B0 900000      R     MOV     DPTR,#cyPmBackup+022H
 00B3 E0                MOVX    A,@DPTR
 00B4 905A32            MOV     DPTR,#05A32H
 00B7 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1741
+                                           ; SOURCE LINE # 1753
 00B8 900000      R     MOV     DPTR,#cyPmBackup+023H
 00BB E0                MOVX    A,@DPTR
 00BC 905A33            MOV     DPTR,#05A33H
 00BF F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1742
+                                           ; SOURCE LINE # 1754
 00C0 900000      R     MOV     DPTR,#cyPmBackup+024H
 00C3 E0                MOVX    A,@DPTR
 00C4 905A34            MOV     DPTR,#05A34H
 00C7 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 69  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 69  
 
-                                           ; SOURCE LINE # 1743
+                                           ; SOURCE LINE # 1755
 00C8 900000      R     MOV     DPTR,#cyPmBackup+025H
 00CB E0                MOVX    A,@DPTR
 00CC 905A36            MOV     DPTR,#05A36H
 00CF F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1744
+                                           ; SOURCE LINE # 1756
 00D0 900000      R     MOV     DPTR,#cyPmBackup+026H
 00D3 E0                MOVX    A,@DPTR
 00D4 905A38            MOV     DPTR,#05A38H
 00D7 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1745
+                                           ; SOURCE LINE # 1757
 00D8 900000      R     MOV     DPTR,#cyPmBackup+027H
 00DB E0                MOVX    A,@DPTR
 00DC 905A3A            MOV     DPTR,#05A3AH
 00DF F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1751
+                                           ; SOURCE LINE # 1763
 00E0 900000      R     MOV     DPTR,#cyPmBackup+04H
 00E3 E0                MOVX    A,@DPTR
 00E4 B40117            CJNE    A,#01H,?C0114
-                                           ; SOURCE LINE # 1752
-                                           ; SOURCE LINE # 1754
+                                           ; SOURCE LINE # 1764
+                                           ; SOURCE LINE # 1766
 00E7 90500B            MOV     DPTR,#0500BH
 00EA E0                MOVX    A,@DPTR
 00EB 54F1              ANL     A,#0F1H
@@ -4333,51 +4345,51 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00F2 4F                ORL     A,R7
 00F3 90500B            MOV     DPTR,#0500BH
 00F6 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1758
+                                           ; SOURCE LINE # 1770
 00F7 9046E8            MOV     DPTR,#046E8H
 00FA E0                MOVX    A,@DPTR
 00FB 4404              ORL     A,#04H
 00FD F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1759
+                                           ; SOURCE LINE # 1771
 00FE         ?C0114:
-                                           ; SOURCE LINE # 1765
+                                           ; SOURCE LINE # 1777
 00FE 900000      R     MOV     DPTR,#cyPmBackup+031H
 0101 E0                MOVX    A,@DPTR
 0102 B40107            CJNE    A,#01H,?C0116
-                                           ; SOURCE LINE # 1766
-                                           ; SOURCE LINE # 1767
+                                           ; SOURCE LINE # 1778
+                                           ; SOURCE LINE # 1779
 0105 904322            MOV     DPTR,#04322H
 0108 E0                MOVX    A,@DPTR
 0109 4408              ORL     A,#08H
 010B F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1768
-                                           ; SOURCE LINE # 1769
+                                           ; SOURCE LINE # 1780
+                                           ; SOURCE LINE # 1781
 010C         ?C0116:
 010C 22                RET     
              ; FUNCTION CyPmHibSlpRestore (END)
 
              ; FUNCTION CyPmHviLviSaveDisable (BEGIN)
-                                           ; SOURCE LINE # 1782
-                                           ; SOURCE LINE # 1783
-                                           ; SOURCE LINE # 1784
+                                           ; SOURCE LINE # 1794
+                                           ; SOURCE LINE # 1795
+                                           ; SOURCE LINE # 1796
 0000 9046F5            MOV     DPTR,#046F5H
 0003 E0                MOVX    A,@DPTR
 0004 5401              ANL     A,#01H
 0006 6027              JZ      ?C0117
-                                           ; SOURCE LINE # 1785
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 70  
+                                           ; SOURCE LINE # 1797
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 70  
 
-                                           ; SOURCE LINE # 1786
+                                           ; SOURCE LINE # 1798
 0008 900000      R     MOV     DPTR,#cyPmBackup+028H
 000B 7401              MOV     A,#01H
 000D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1787
+                                           ; SOURCE LINE # 1799
 000E 9046F4            MOV     DPTR,#046F4H
 0011 E0                MOVX    A,@DPTR
 0012 540F              ANL     A,#0FH
 0014 900000      R     MOV     DPTR,#cyPmBackup+029H
 0017 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1790
+                                           ; SOURCE LINE # 1802
 0018 9046F7            MOV     DPTR,#046F7H
 001B E0                MOVX    A,@DPTR
 001C 5440              ANL     A,#040H
@@ -4390,29 +4402,29 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0025 900000      R     MOV     DPTR,#cyPmBackup+02DH
 0028 EF                MOV     A,R7
 0029 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1793
+                                           ; SOURCE LINE # 1805
 002A 120000      E     LCALL   CyVdLvDigitDisable
-                                           ; SOURCE LINE # 1794
+                                           ; SOURCE LINE # 1806
 002D 8005              SJMP    ?C0120
 002F         ?C0117:
-                                           ; SOURCE LINE # 1796
-                                           ; SOURCE LINE # 1797
+                                           ; SOURCE LINE # 1808
+                                           ; SOURCE LINE # 1809
 002F E4                CLR     A
 0030 900000      R     MOV     DPTR,#cyPmBackup+028H
 0033 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1798
+                                           ; SOURCE LINE # 1810
 0034         ?C0120:
-                                           ; SOURCE LINE # 1800
+                                           ; SOURCE LINE # 1812
 0034 9046F5            MOV     DPTR,#046F5H
 0037 E0                MOVX    A,@DPTR
 0038 5402              ANL     A,#02H
 003A 6029              JZ      ?C0121
-                                           ; SOURCE LINE # 1801
-                                           ; SOURCE LINE # 1802
+                                           ; SOURCE LINE # 1813
+                                           ; SOURCE LINE # 1814
 003C 900000      R     MOV     DPTR,#cyPmBackup+02AH
 003F 7401              MOV     A,#01H
 0041 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1803
+                                           ; SOURCE LINE # 1815
 0042 9046F4            MOV     DPTR,#046F4H
 0045 E0                MOVX    A,@DPTR
 0046 FF                MOV     R7,A
@@ -4420,7 +4432,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0048 540F              ANL     A,#0FH
 004A 900000      R     MOV     DPTR,#cyPmBackup+02BH
 004D F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1806
+                                           ; SOURCE LINE # 1818
 004E 9046F7            MOV     DPTR,#046F7H
 0051 E0                MOVX    A,@DPTR
 0052 5480              ANL     A,#080H
@@ -4429,59 +4441,59 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0057 8002              SJMP    ?C0123
 0059         ?C0122:
 0059 7F01              MOV     R7,#01H
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 71  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 71  
 
 005B         ?C0123:
 005B 900000      R     MOV     DPTR,#cyPmBackup+02EH
 005E EF                MOV     A,R7
 005F F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1809
+                                           ; SOURCE LINE # 1821
 0060 120000      E     LCALL   CyVdLvAnalogDisable
-                                           ; SOURCE LINE # 1810
+                                           ; SOURCE LINE # 1822
 0063 8005              SJMP    ?C0124
 0065         ?C0121:
-                                           ; SOURCE LINE # 1812
-                                           ; SOURCE LINE # 1813
+                                           ; SOURCE LINE # 1824
+                                           ; SOURCE LINE # 1825
 0065 E4                CLR     A
 0066 900000      R     MOV     DPTR,#cyPmBackup+02AH
 0069 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1814
+                                           ; SOURCE LINE # 1826
 006A         ?C0124:
-                                           ; SOURCE LINE # 1816
+                                           ; SOURCE LINE # 1828
 006A 9046F5            MOV     DPTR,#046F5H
 006D E0                MOVX    A,@DPTR
 006E 5404              ANL     A,#04H
 0070 600A              JZ      ?C0125
-                                           ; SOURCE LINE # 1817
-                                           ; SOURCE LINE # 1818
+                                           ; SOURCE LINE # 1829
+                                           ; SOURCE LINE # 1830
 0072 900000      R     MOV     DPTR,#cyPmBackup+02CH
 0075 7401              MOV     A,#01H
 0077 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1819
+                                           ; SOURCE LINE # 1831
 0078 120000      E     LCALL   CyVdHvAnalogDisable
-                                           ; SOURCE LINE # 1820
+                                           ; SOURCE LINE # 1832
 007B 22                RET     
 007C         ?C0125:
-                                           ; SOURCE LINE # 1822
-                                           ; SOURCE LINE # 1823
+                                           ; SOURCE LINE # 1834
+                                           ; SOURCE LINE # 1835
 007C E4                CLR     A
 007D 900000      R     MOV     DPTR,#cyPmBackup+02CH
 0080 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1824
-                                           ; SOURCE LINE # 1825
+                                           ; SOURCE LINE # 1836
+                                           ; SOURCE LINE # 1837
 0081         ?C0127:
 0081 22                RET     
              ; FUNCTION CyPmHviLviSaveDisable (END)
 
              ; FUNCTION CyPmHviLviRestore (BEGIN)
-                                           ; SOURCE LINE # 1838
-                                           ; SOURCE LINE # 1839
-                                           ; SOURCE LINE # 1841
+                                           ; SOURCE LINE # 1850
+                                           ; SOURCE LINE # 1851
+                                           ; SOURCE LINE # 1853
 0000 900000      R     MOV     DPTR,#cyPmBackup+028H
 0003 E0                MOVX    A,@DPTR
 0004 B4010D            CJNE    A,#01H,?C0128
-                                           ; SOURCE LINE # 1842
-                                           ; SOURCE LINE # 1843
+                                           ; SOURCE LINE # 1854
+                                           ; SOURCE LINE # 1855
 0007 900000      R     MOV     DPTR,#cyPmBackup+02DH
 000A E0                MOVX    A,@DPTR
 000B FF                MOV     R7,A
@@ -4489,16 +4501,16 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000F E0                MOVX    A,@DPTR
 0010 FD                MOV     R5,A
 0011 120000      E     LCALL   _CyVdLvDigitEnable
-                                           ; SOURCE LINE # 1844
+                                           ; SOURCE LINE # 1856
 0014         ?C0128:
-                                           ; SOURCE LINE # 1846
+                                           ; SOURCE LINE # 1858
 0014 900000      R     MOV     DPTR,#cyPmBackup+02AH
-C51 COMPILER V9.51   CYPM                                                                  04/27/2018 14:43:24 PAGE 72  
+C51 COMPILER V9.51   CYPM                                                                  02/14/2023 10:00:03 PAGE 72  
 
 0017 E0                MOVX    A,@DPTR
 0018 B4010D            CJNE    A,#01H,?C0129
-                                           ; SOURCE LINE # 1847
-                                           ; SOURCE LINE # 1848
+                                           ; SOURCE LINE # 1859
+                                           ; SOURCE LINE # 1860
 001B 900000      R     MOV     DPTR,#cyPmBackup+02EH
 001E E0                MOVX    A,@DPTR
 001F FF                MOV     R7,A
@@ -4506,17 +4518,17 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0023 E0                MOVX    A,@DPTR
 0024 FD                MOV     R5,A
 0025 120000      E     LCALL   _CyVdLvAnalogEnable
-                                           ; SOURCE LINE # 1849
+                                           ; SOURCE LINE # 1861
 0028         ?C0129:
-                                           ; SOURCE LINE # 1851
+                                           ; SOURCE LINE # 1863
 0028 900000      R     MOV     DPTR,#cyPmBackup+02CH
 002B E0                MOVX    A,@DPTR
 002C B40103            CJNE    A,#01H,?C0131
-                                           ; SOURCE LINE # 1852
-                                           ; SOURCE LINE # 1853
+                                           ; SOURCE LINE # 1864
+                                           ; SOURCE LINE # 1865
 002F 120000      E     LCALL   CyVdHvAnalogEnable
-                                           ; SOURCE LINE # 1854
-                                           ; SOURCE LINE # 1855
+                                           ; SOURCE LINE # 1866
+                                           ; SOURCE LINE # 1867
 0032         ?C0131:
 0032 22                RET     
              ; FUNCTION CyPmHviLviRestore (END)
