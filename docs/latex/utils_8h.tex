@@ -1,5 +1,5 @@
-\section{utils.\+h File Reference}
-\label{utils_8h}\index{utils.\+h@{utils.\+h}}
+\doxysection{utils.\+h File Reference}
+\label{utils_8h}\index{utils.h@{utils.h}}
 
 
 Utility functions declaration.  
@@ -14,38 +14,39 @@ Include dependency graph for utils.\+h\+:
 \includegraphics[width=350pt]{utils_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{utils_8h__dep__incl}
 \end{center}
 \end{figure}
-\subsection*{Macros}
+\doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\label{utils_8h_a05ec5d63e2ba7621d706137124efca7d}} 
-\#define {\bfseries T\+I\+M\+E\+R\+\_\+\+C\+L\+O\+CK}~10000
+\#define {\bfseries TIMER\+\_\+\+CLOCK}~10000
 \item 
 \mbox{\label{utils_8h_af5abd28c44c29b7397c84f1fec4b1d84}} 
-\#define \textbf{ A\+L\+P\+HA}~32
+\#define {\bfseries ALPHA}~32
 \begin{DoxyCompactList}\small\item\em Voltage and current filters constant. \end{DoxyCompactList}\item 
 \mbox{\label{utils_8h_a1b996515309fc3c03449912bb33046e3}} 
-\#define \textbf{ B\+E\+TA}~50
+\#define {\bfseries BETA}~50
 \begin{DoxyCompactList}\small\item\em Emg filters constant. \end{DoxyCompactList}\item 
 \mbox{\label{utils_8h_a8659b9de3e544ff142b153b076f30fd5}} 
-\#define \textbf{ G\+A\+M\+MA}~32
+\#define {\bfseries GAMMA}~32
 \begin{DoxyCompactList}\small\item\em Velocity filters constant. \end{DoxyCompactList}\item 
 \mbox{\label{utils_8h_a3fd2b1bcd7ddcf506237987ad780f495}} 
-\#define \textbf{ D\+E\+L\+TA}~32
+\#define {\bfseries DELTA}~32
 \begin{DoxyCompactList}\small\item\em Acceleration filters constant. \end{DoxyCompactList}\item 
 \mbox{\label{utils_8h_a002b2f4894492820fe708b1b7e7c5e70}} 
-\#define \textbf{ E\+P\+S\+I\+L\+ON}~8
+\#define {\bfseries EPSILON}~8
 \begin{DoxyCompactList}\small\item\em Voltage readings filter. \end{DoxyCompactList}\item 
 \mbox{\label{utils_8h_a8c7db0cde6d591a5abad279ba92ef021}} 
-\#define \textbf{ S\+I\+GN}(A)~(((A) $>$=0) ? (1) \+: (-\/1))
+\#define {\bfseries SIGN}(A)~(((A) $>$=0) ? (1) \+: (-\/1))
 \begin{DoxyCompactList}\small\item\em Sign calculation function. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 int32 \textbf{ filter\+\_\+voltage} (int32 value)
@@ -74,14 +75,6 @@ int32 \textbf{ filter\+\_\+acc\+\_\+2} (int32 value)
 int32 \textbf{ filter\+\_\+acc\+\_\+3} (int32 value)
 \end{DoxyCompactItemize}
 \end{Indent}
-\begin{Indent}\textbf{ Estimating current and difference}\par
-\begin{DoxyCompactItemize}
-\item 
-int32 \textbf{ curr\+\_\+estim} (int32 pos, int32 vel, int32 accel)
-\item 
-int32 \textbf{ filter\+\_\+curr\+\_\+diff} (int32 curr\+\_\+diff)
-\end{DoxyCompactItemize}
-\end{Indent}
 \begin{Indent}\textbf{ Utility functions}\par
 \begin{DoxyCompactItemize}
 \item 
@@ -89,7 +82,7 @@ int \textbf{ my\+\_\+round} (const double x)
 \item 
 uint32 \textbf{ my\+\_\+mod} (int32 val, int32 divisor)
 \item 
-C\+Y\+B\+IT \textbf{ check\+\_\+enc\+\_\+data} (const uint32 $\ast$value)
+CYBIT \textbf{ check\+\_\+enc\+\_\+data} (const uint32 $\ast$value)
 \item 
 int \textbf{ calc\+\_\+turns\+\_\+fcn} (const int32 pos1, const int32 pos2)
 \item 
@@ -100,7 +93,7 @@ void \textbf{ check\+\_\+rest\+\_\+position} ()
 \end{Indent}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 Utility functions declaration. 
 
 \begin{DoxyDate}{Date}
@@ -116,11 +109,11 @@ October 01, 2017
 \end{DoxyCopyright}
 
 
-\subsection{Function Documentation}
+\doxysubsection{Function Documentation}
 \mbox{\label{utils_8h_afa68f255d25478e463690f63d529c29d}} 
-\index{utils.\+h@{utils.\+h}!calc\+\_\+turns\+\_\+fcn@{calc\+\_\+turns\+\_\+fcn}}
-\index{calc\+\_\+turns\+\_\+fcn@{calc\+\_\+turns\+\_\+fcn}!utils.\+h@{utils.\+h}}
-\subsubsection{calc\+\_\+turns\+\_\+fcn()}
+\index{utils.h@{utils.h}!calc\_turns\_fcn@{calc\_turns\_fcn}}
+\index{calc\_turns\_fcn@{calc\_turns\_fcn}!utils.h@{utils.h}}
+\doxysubsubsection{calc\_turns\_fcn()}
 {\footnotesize\ttfamily int calc\+\_\+turns\+\_\+fcn (\begin{DoxyParamCaption}\item[{const int32}]{pos1,  }\item[{const int32}]{pos2 }\end{DoxyParamCaption})}
 
 This function is used at startup to reconstruct the correct turn of the shaft connected to the motor. It need two encoders to work.
@@ -136,16 +129,16 @@ This function is used at startup to reconstruct the correct turn of the shaft co
 Returns the number of turns of motor pulley at startup 
 \end{DoxyReturn}
 \mbox{\label{utils_8h_a6d9dc88d64cd1f74a30fd0e404a3bb31}} 
-\index{utils.\+h@{utils.\+h}!calibration@{calibration}}
-\index{calibration@{calibration}!utils.\+h@{utils.\+h}}
-\subsubsection{calibration()}
+\index{utils.h@{utils.h}!calibration@{calibration}}
+\index{calibration@{calibration}!utils.h@{utils.h}}
+\doxysubsubsection{calibration()}
 {\footnotesize\ttfamily void calibration (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 This function counts a series of hand opening and closing used to execute a calibration of the device. \mbox{\label{utils_8h_ae7faec5b3a1d000c90f70abfc1dfca92}} 
-\index{utils.\+h@{utils.\+h}!check\+\_\+enc\+\_\+data@{check\+\_\+enc\+\_\+data}}
-\index{check\+\_\+enc\+\_\+data@{check\+\_\+enc\+\_\+data}!utils.\+h@{utils.\+h}}
-\subsubsection{check\+\_\+enc\+\_\+data()}
-{\footnotesize\ttfamily C\+Y\+B\+IT check\+\_\+enc\+\_\+data (\begin{DoxyParamCaption}\item[{const uint32 $\ast$}]{value }\end{DoxyParamCaption})}
+\index{utils.h@{utils.h}!check\_enc\_data@{check\_enc\_data}}
+\index{check\_enc\_data@{check\_enc\_data}!utils.h@{utils.h}}
+\doxysubsubsection{check\_enc\_data()}
+{\footnotesize\ttfamily CYBIT check\+\_\+enc\+\_\+data (\begin{DoxyParamCaption}\item[{const uint32 $\ast$}]{value }\end{DoxyParamCaption})}
 
 This function controls if the read encoder data is correct or not.
 
@@ -155,38 +148,19 @@ This function controls if the read encoder data is correct or not.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Returns 1 if the read data is correct, 0 otherwise 
+Returns 1 if the read data is correct, 0 otherwise ~\newline
+ 
 \end{DoxyReturn}
 \mbox{\label{utils_8h_a2cb024aea0170c085d18670f5a851df8}} 
-\index{utils.\+h@{utils.\+h}!check\+\_\+rest\+\_\+position@{check\+\_\+rest\+\_\+position}}
-\index{check\+\_\+rest\+\_\+position@{check\+\_\+rest\+\_\+position}!utils.\+h@{utils.\+h}}
-\subsubsection{check\+\_\+rest\+\_\+position()}
+\index{utils.h@{utils.h}!check\_rest\_position@{check\_rest\_position}}
+\index{check\_rest\_position@{check\_rest\_position}!utils.h@{utils.h}}
+\doxysubsubsection{check\_rest\_position()}
 {\footnotesize\ttfamily void check\+\_\+rest\+\_\+position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-This function checks for rest position and, in case, gives a position reference to the hand. \mbox{\label{utils_8h_a26a940f426cb9610d30c90d8378a9bcf}} 
-\index{utils.\+h@{utils.\+h}!curr\+\_\+estim@{curr\+\_\+estim}}
-\index{curr\+\_\+estim@{curr\+\_\+estim}!utils.\+h@{utils.\+h}}
-\subsubsection{curr\+\_\+estim()}
-{\footnotesize\ttfamily int32 curr\+\_\+estim (\begin{DoxyParamCaption}\item[{int32}]{pos,  }\item[{int32}]{vel,  }\item[{int32}]{accel }\end{DoxyParamCaption})}
-
-Function used to obtain current estimation through current lookup table.
-
-
-\begin{DoxyParams}{Parameters}
-{\em pos} & Position of the encoder in ticks. \\
-\hline
-{\em vel} & Speed of the encoder. \\
-\hline
-{\em accel} & Acceleration of the encoder\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Returns an estimation of the motor current, depending on its position, velocity and acceleration. 
-\end{DoxyReturn}
-\mbox{\label{utils_8h_aa0b718d41f3067c06d7d2bbc482a2060}} 
-\index{utils.\+h@{utils.\+h}!filter\+\_\+acc\+\_\+1@{filter\+\_\+acc\+\_\+1}}
-\index{filter\+\_\+acc\+\_\+1@{filter\+\_\+acc\+\_\+1}!utils.\+h@{utils.\+h}}
-\subsubsection{filter\+\_\+acc\+\_\+1()}
+This function checks for rest position and, in case, gives a position reference to the hand. \mbox{\label{utils_8h_aa0b718d41f3067c06d7d2bbc482a2060}} 
+\index{utils.h@{utils.h}!filter\_acc\_1@{filter\_acc\_1}}
+\index{filter\_acc\_1@{filter\_acc\_1}!utils.h@{utils.h}}
+\doxysubsubsection{filter\_acc\_1()}
 {\footnotesize\ttfamily int32 filter\+\_\+acc\+\_\+1 (\begin{DoxyParamCaption}\item[{int32}]{value }\end{DoxyParamCaption})}
 
 Filter on first encoder rotational acceleration. The weighted average between the old value and the new one is executed.
@@ -200,9 +174,9 @@ Filter on first encoder rotational acceleration. The weighted average between th
 Returns the filtered first encoder rotational acceleration value 
 \end{DoxyReturn}
 \mbox{\label{utils_8h_a47c5270ae245e7a5bbdcb0d47d3c58aa}} 
-\index{utils.\+h@{utils.\+h}!filter\+\_\+acc\+\_\+2@{filter\+\_\+acc\+\_\+2}}
-\index{filter\+\_\+acc\+\_\+2@{filter\+\_\+acc\+\_\+2}!utils.\+h@{utils.\+h}}
-\subsubsection{filter\+\_\+acc\+\_\+2()}
+\index{utils.h@{utils.h}!filter\_acc\_2@{filter\_acc\_2}}
+\index{filter\_acc\_2@{filter\_acc\_2}!utils.h@{utils.h}}
+\doxysubsubsection{filter\_acc\_2()}
 {\footnotesize\ttfamily int32 filter\+\_\+acc\+\_\+2 (\begin{DoxyParamCaption}\item[{int32}]{value }\end{DoxyParamCaption})}
 
 Filter on second encoder rotation acceleration (if present). The weighted average between the old value and the new one is executed.
@@ -216,9 +190,9 @@ Filter on second encoder rotation acceleration (if present). The weighted averag
 Returns the filtered second encoder rotational acceleration value 
 \end{DoxyReturn}
 \mbox{\label{utils_8h_a5124047254c64be63f96ae68d2e28149}} 
-\index{utils.\+h@{utils.\+h}!filter\+\_\+acc\+\_\+3@{filter\+\_\+acc\+\_\+3}}
-\index{filter\+\_\+acc\+\_\+3@{filter\+\_\+acc\+\_\+3}!utils.\+h@{utils.\+h}}
-\subsubsection{filter\+\_\+acc\+\_\+3()}
+\index{utils.h@{utils.h}!filter\_acc\_3@{filter\_acc\_3}}
+\index{filter\_acc\_3@{filter\_acc\_3}!utils.h@{utils.h}}
+\doxysubsubsection{filter\_acc\_3()}
 {\footnotesize\ttfamily int32 filter\+\_\+acc\+\_\+3 (\begin{DoxyParamCaption}\item[{int32}]{value }\end{DoxyParamCaption})}
 
 Filter on third encoder rotation acceleration (if present). The weighted average between the old value and the new one is executed.
@@ -232,12 +206,12 @@ Filter on third encoder rotation acceleration (if present). The weighted average
 Returns the filtered third encoder rotational acceleration value 
 \end{DoxyReturn}
 \mbox{\label{utils_8h_ae143e439a41178d1cf10da4920488f86}} 
-\index{utils.\+h@{utils.\+h}!filter\+\_\+ch1@{filter\+\_\+ch1}}
-\index{filter\+\_\+ch1@{filter\+\_\+ch1}!utils.\+h@{utils.\+h}}
-\subsubsection{filter\+\_\+ch1()}
+\index{utils.h@{utils.h}!filter\_ch1@{filter\_ch1}}
+\index{filter\_ch1@{filter\_ch1}!utils.h@{utils.h}}
+\doxysubsubsection{filter\_ch1()}
 {\footnotesize\ttfamily int32 filter\+\_\+ch1 (\begin{DoxyParamCaption}\item[{int32}]{value }\end{DoxyParamCaption})}
 
-Filter on the first E\+MG sensor converted value. The weighted average between the old value and the new one is executed.
+Filter on the first EMG sensor converted value. The weighted average between the old value and the new one is executed.
 
 
 \begin{DoxyParams}{Parameters}
@@ -248,12 +222,12 @@ Filter on the first E\+MG sensor converted value. The weighted average between t
 Returns the filtered emg sensor value 
 \end{DoxyReturn}
 \mbox{\label{utils_8h_a45f7702bcbea56e0d255f6a615e6b8ae}} 
-\index{utils.\+h@{utils.\+h}!filter\+\_\+ch2@{filter\+\_\+ch2}}
-\index{filter\+\_\+ch2@{filter\+\_\+ch2}!utils.\+h@{utils.\+h}}
-\subsubsection{filter\+\_\+ch2()}
+\index{utils.h@{utils.h}!filter\_ch2@{filter\_ch2}}
+\index{filter\_ch2@{filter\_ch2}!utils.h@{utils.h}}
+\doxysubsubsection{filter\_ch2()}
 {\footnotesize\ttfamily int32 filter\+\_\+ch2 (\begin{DoxyParamCaption}\item[{int32}]{value }\end{DoxyParamCaption})}
 
-Filter on the second E\+MG sensor converted value. The weighted average between the old value and the new one is executed.
+Filter on the second EMG sensor converted value. The weighted average between the old value and the new one is executed.
 
 
 \begin{DoxyParams}{Parameters}
@@ -263,26 +237,10 @@ Filter on the second E\+MG sensor converted value. The weighted average between 
 \begin{DoxyReturn}{Returns}
 Returns the filtered emg sensor value 
 \end{DoxyReturn}
-\mbox{\label{utils_8h_a72883337efd7b70b783e426c47ecf689}} 
-\index{utils.\+h@{utils.\+h}!filter\+\_\+curr\+\_\+diff@{filter\+\_\+curr\+\_\+diff}}
-\index{filter\+\_\+curr\+\_\+diff@{filter\+\_\+curr\+\_\+diff}!utils.\+h@{utils.\+h}}
-\subsubsection{filter\+\_\+curr\+\_\+diff()}
-{\footnotesize\ttfamily int32 filter\+\_\+curr\+\_\+diff (\begin{DoxyParamCaption}\item[{int32}]{curr\+\_\+diff }\end{DoxyParamCaption})}
-
-Low pass filter on current difference between measured and estimated current
-
-
-\begin{DoxyParams}{Parameters}
-{\em curr\+\_\+diff} & Difference between the measured current and the estimated one.\\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Returns the filtered current difference value 
-\end{DoxyReturn}
 \mbox{\label{utils_8h_a3588bc1aa14c6ea245387dda7eb7ffbe}} 
-\index{utils.\+h@{utils.\+h}!filter\+\_\+i1@{filter\+\_\+i1}}
-\index{filter\+\_\+i1@{filter\+\_\+i1}!utils.\+h@{utils.\+h}}
-\subsubsection{filter\+\_\+i1()}
+\index{utils.h@{utils.h}!filter\_i1@{filter\_i1}}
+\index{filter\_i1@{filter\_i1}!utils.h@{utils.h}}
+\doxysubsubsection{filter\_i1()}
 {\footnotesize\ttfamily int32 filter\+\_\+i1 (\begin{DoxyParamCaption}\item[{int32}]{value }\end{DoxyParamCaption})}
 
 Filter on the motor current converted value. The weighted average between the old value and the new one is executed.
@@ -296,9 +254,9 @@ Filter on the motor current converted value. The weighted average between the ol
 Returns the filtered current value 
 \end{DoxyReturn}
 \mbox{\label{utils_8h_af034fe9aa479d4adfc6e75e20b2f7ff3}} 
-\index{utils.\+h@{utils.\+h}!filter\+\_\+v@{filter\+\_\+v}}
-\index{filter\+\_\+v@{filter\+\_\+v}!utils.\+h@{utils.\+h}}
-\subsubsection{filter\+\_\+v()}
+\index{utils.h@{utils.h}!filter\_v@{filter\_v}}
+\index{filter\_v@{filter\_v}!utils.h@{utils.h}}
+\doxysubsubsection{filter\_v()}
 {\footnotesize\ttfamily int32 filter\+\_\+v (\begin{DoxyParamCaption}\item[{int32}]{new\+\_\+value }\end{DoxyParamCaption})}
 
 Filter on the converted voltage value. The weighted average between the old value and the new one is executed.
@@ -312,9 +270,9 @@ Filter on the converted voltage value. The weighted average between the old valu
 Returns the filtered voltage value 
 \end{DoxyReturn}
 \mbox{\label{utils_8h_ad378840ee71c2d41d2d4f1a84465c7f3}} 
-\index{utils.\+h@{utils.\+h}!filter\+\_\+vel\+\_\+1@{filter\+\_\+vel\+\_\+1}}
-\index{filter\+\_\+vel\+\_\+1@{filter\+\_\+vel\+\_\+1}!utils.\+h@{utils.\+h}}
-\subsubsection{filter\+\_\+vel\+\_\+1()}
+\index{utils.h@{utils.h}!filter\_vel\_1@{filter\_vel\_1}}
+\index{filter\_vel\_1@{filter\_vel\_1}!utils.h@{utils.h}}
+\doxysubsubsection{filter\_vel\_1()}
 {\footnotesize\ttfamily int32 filter\+\_\+vel\+\_\+1 (\begin{DoxyParamCaption}\item[{int32}]{value }\end{DoxyParamCaption})}
 
 Filter on first encoder rotational speed. The weighted average between the old value and the new one is executed.
@@ -328,9 +286,9 @@ Filter on first encoder rotational speed. The weighted average between the old v
 Returns the filtered first encoder rotational speed value 
 \end{DoxyReturn}
 \mbox{\label{utils_8h_abda54d76e676bb1cb27b5577bd0fe099}} 
-\index{utils.\+h@{utils.\+h}!filter\+\_\+vel\+\_\+2@{filter\+\_\+vel\+\_\+2}}
-\index{filter\+\_\+vel\+\_\+2@{filter\+\_\+vel\+\_\+2}!utils.\+h@{utils.\+h}}
-\subsubsection{filter\+\_\+vel\+\_\+2()}
+\index{utils.h@{utils.h}!filter\_vel\_2@{filter\_vel\_2}}
+\index{filter\_vel\_2@{filter\_vel\_2}!utils.h@{utils.h}}
+\doxysubsubsection{filter\_vel\_2()}
 {\footnotesize\ttfamily int32 filter\+\_\+vel\+\_\+2 (\begin{DoxyParamCaption}\item[{int32}]{value }\end{DoxyParamCaption})}
 
 Filter on second encoder rotational speed (if present). The weighted average between the old value and the new one is executed.
@@ -344,9 +302,9 @@ Filter on second encoder rotational speed (if present). The weighted average bet
 Returns the filtered second encoder rotational speed value 
 \end{DoxyReturn}
 \mbox{\label{utils_8h_a70430ee90ed28e4c9fca0c4ca3d6583e}} 
-\index{utils.\+h@{utils.\+h}!filter\+\_\+vel\+\_\+3@{filter\+\_\+vel\+\_\+3}}
-\index{filter\+\_\+vel\+\_\+3@{filter\+\_\+vel\+\_\+3}!utils.\+h@{utils.\+h}}
-\subsubsection{filter\+\_\+vel\+\_\+3()}
+\index{utils.h@{utils.h}!filter\_vel\_3@{filter\_vel\_3}}
+\index{filter\_vel\_3@{filter\_vel\_3}!utils.h@{utils.h}}
+\doxysubsubsection{filter\_vel\_3()}
 {\footnotesize\ttfamily int32 filter\+\_\+vel\+\_\+3 (\begin{DoxyParamCaption}\item[{int32}]{value }\end{DoxyParamCaption})}
 
 Filter on third encoder rotational speed (if present). The weighted average between the old value and the new one is executed.
@@ -360,9 +318,9 @@ Filter on third encoder rotational speed (if present). The weighted average betw
 Returns the filtered third encoder rotational speed value 
 \end{DoxyReturn}
 \mbox{\label{utils_8h_a31121e24e34f0c17ecd9d048577dd710}} 
-\index{utils.\+h@{utils.\+h}!filter\+\_\+voltage@{filter\+\_\+voltage}}
-\index{filter\+\_\+voltage@{filter\+\_\+voltage}!utils.\+h@{utils.\+h}}
-\subsubsection{filter\+\_\+voltage()}
+\index{utils.h@{utils.h}!filter\_voltage@{filter\_voltage}}
+\index{filter\_voltage@{filter\_voltage}!utils.h@{utils.h}}
+\doxysubsubsection{filter\_voltage()}
 {\footnotesize\ttfamily int32 filter\+\_\+voltage (\begin{DoxyParamCaption}\item[{int32}]{value }\end{DoxyParamCaption})}
 
 Filter on voltage readings. The weighted average between the old value and the new one is executed.
@@ -376,9 +334,9 @@ Filter on voltage readings. The weighted average between the old value and the n
 Returns the filtered voltage value 
 \end{DoxyReturn}
 \mbox{\label{utils_8h_a01d3bb6c1fd469a6c530fb296e4fe0fe}} 
-\index{utils.\+h@{utils.\+h}!my\+\_\+mod@{my\+\_\+mod}}
-\index{my\+\_\+mod@{my\+\_\+mod}!utils.\+h@{utils.\+h}}
-\subsubsection{my\+\_\+mod()}
+\index{utils.h@{utils.h}!my\_mod@{my\_mod}}
+\index{my\_mod@{my\_mod}!utils.h@{utils.h}}
+\doxysubsubsection{my\_mod()}
 {\footnotesize\ttfamily uint32 my\+\_\+mod (\begin{DoxyParamCaption}\item[{int32}]{val,  }\item[{int32}]{divisor }\end{DoxyParamCaption})}
 
 This function computes the module function, returning positive values regardless of wheter the value passed is negative
@@ -391,9 +349,9 @@ This function computes the module function, returning positive values regardless
 \hline
 \end{DoxyParams}
 \mbox{\label{utils_8h_a1ea4108a2c530470624ce2678e65dcef}} 
-\index{utils.\+h@{utils.\+h}!my\+\_\+round@{my\+\_\+round}}
-\index{my\+\_\+round@{my\+\_\+round}!utils.\+h@{utils.\+h}}
-\subsubsection{my\+\_\+round()}
+\index{utils.h@{utils.h}!my\_round@{my\_round}}
+\index{my\_round@{my\_round}!utils.h@{utils.h}}
+\doxysubsubsection{my\_round()}
 {\footnotesize\ttfamily int my\+\_\+round (\begin{DoxyParamCaption}\item[{const double}]{x }\end{DoxyParamCaption})}
 
 This functions approximates the value passed to the nearest integer

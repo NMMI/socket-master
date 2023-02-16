@@ -1,0 +1,257 @@
+\doxysection{globals.\+h}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{// BSD 3-\/Clause License}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{// Copyright (c) 2016, qbrobotics}}
+\DoxyCodeLine{5 \textcolor{comment}{// Copyright (c) 2017, Centro "{}E.Piaggio"{}}}
+\DoxyCodeLine{6 \textcolor{comment}{// All rights reserved.}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{comment}{// Redistribution and use in source and binary forms, with or without}}
+\DoxyCodeLine{9 \textcolor{comment}{// modification, are permitted provided that the following conditions are met:}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// * Redistributions of source code must retain the above copyright notice, this}}
+\DoxyCodeLine{12 \textcolor{comment}{//   list of conditions and the following disclaimer.}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{// * Redistributions in binary form must reproduce the above copyright notice,}}
+\DoxyCodeLine{15 \textcolor{comment}{//   this list of conditions and the following disclaimer in the documentation}}
+\DoxyCodeLine{16 \textcolor{comment}{//   and/or other materials provided with the distribution.}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{// * Neither the name of the copyright holder nor the names of its}}
+\DoxyCodeLine{19 \textcolor{comment}{//   contributors may be used to endorse or promote products derived from}}
+\DoxyCodeLine{20 \textcolor{comment}{//   this software without specific prior written permission.}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "{}AS IS"{}}}
+\DoxyCodeLine{23 \textcolor{comment}{// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE}}
+\DoxyCodeLine{24 \textcolor{comment}{// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}}
+\DoxyCodeLine{25 \textcolor{comment}{// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE}}
+\DoxyCodeLine{26 \textcolor{comment}{// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL}}
+\DoxyCodeLine{27 \textcolor{comment}{// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR}}
+\DoxyCodeLine{28 \textcolor{comment}{// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER}}
+\DoxyCodeLine{29 \textcolor{comment}{// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,}}
+\DoxyCodeLine{30 \textcolor{comment}{// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE}}
+\DoxyCodeLine{31 \textcolor{comment}{// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{32 \textcolor{comment}{// POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{33 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#ifndef GLOBALS\_H\_INCLUDED}}
+\DoxyCodeLine{46 \textcolor{preprocessor}{\#define GLOBALS\_H\_INCLUDED}}
+\DoxyCodeLine{47 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{comment}{//=================================================================     includes}}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#include <device.h>}}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#include "{}STDLIB.H"{}}}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#include "{}MATH.H"{}}}
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#include "{}commands.h"{}}}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{56 \textcolor{comment}{//                                                                        DEVICE}}
+\DoxyCodeLine{57 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#define VERSION                 "{}SoftHand v6.3 -\/ Master w/Vibrotactile fb Socket [TOAST]"{}}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#define NUM\_OF\_MOTORS           2       }}
+\DoxyCodeLine{62 \textcolor{preprocessor}{\#define NUM\_OF\_SENSORS          3       }}
+\DoxyCodeLine{63 \textcolor{preprocessor}{\#define NUM\_OF\_EMGS             2       }}
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#define NUM\_OF\_ANALOG\_INPUTS    4       }}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#define NUM\_OF\_PARAMS           32      }}
+\DoxyCodeLine{67 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{68 \textcolor{comment}{//                                                               SYNCHRONIZATION}}
+\DoxyCodeLine{69 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71 \textcolor{comment}{//Main frequency 1000 Hz}}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define CALIBRATION\_DIV         10      }}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#define DIV\_INIT\_VALUE          1       }}
+\DoxyCodeLine{76 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{77 \textcolor{comment}{//                                                                           DMA}}
+\DoxyCodeLine{78 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{79     }
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#define DMA\_BYTES\_PER\_BURST 2}}
+\DoxyCodeLine{81 \textcolor{preprocessor}{\#define DMA\_REQUEST\_PER\_BURST 1}}
+\DoxyCodeLine{82 \textcolor{preprocessor}{\#define DMA\_SRC\_BASE (CYDEV\_PERIPH\_BASE)}}
+\DoxyCodeLine{83 \textcolor{preprocessor}{\#define DMA\_DST\_BASE (CYDEV\_SRAM\_BASE)}}
+\DoxyCodeLine{84     }
+\DoxyCodeLine{85 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{86 \textcolor{comment}{//                                                                     INTERRUPT}}
+\DoxyCodeLine{87 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#define    WAIT\_START   0               }}
+\DoxyCodeLine{90 \textcolor{preprocessor}{\#define    WAIT\_ID      1               }}
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#define    WAIT\_LENGTH  2               }}
+\DoxyCodeLine{92 \textcolor{preprocessor}{\#define    RECEIVE      3               }}
+\DoxyCodeLine{93 \textcolor{preprocessor}{\#define    UNLOAD       4               }}
+\DoxyCodeLine{95 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{96 \textcolor{comment}{//                                                                         OTHER}}
+\DoxyCodeLine{97 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99 \textcolor{preprocessor}{\#define FALSE                   0}}
+\DoxyCodeLine{100 \textcolor{preprocessor}{\#define TRUE                    1}}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102 \textcolor{preprocessor}{\#define DEFAULT\_EEPROM\_DISPLACEMENT 50   }}
+\DoxyCodeLine{104 \textcolor{preprocessor}{\#define MAX\_WATCHDOG\_TIMER      250     }}
+\DoxyCodeLine{106 \textcolor{preprocessor}{\#define PWM\_MAX\_VALUE           100     }}
+\DoxyCodeLine{108 \textcolor{preprocessor}{\#define ANTI\_WINDUP             1000    }}
+\DoxyCodeLine{109 \textcolor{preprocessor}{\#define DEFAULT\_CURRENT\_LIMIT   1000    }}
+\DoxyCodeLine{111 \textcolor{preprocessor}{\#define CURRENT\_HYSTERESIS      10      }}
+\DoxyCodeLine{113 \textcolor{preprocessor}{\#define EMG\_SAMPLE\_TO\_DISCARD   500     }}
+\DoxyCodeLine{114 \textcolor{preprocessor}{\#define SAMPLES\_FOR\_MEAN        100     }}
+\DoxyCodeLine{116 \textcolor{preprocessor}{\#define SAMPLES\_FOR\_EMG\_MEAN    1000    }}
+\DoxyCodeLine{117 \textcolor{preprocessor}{\#define REST\_POS\_ERR\_THR\_GAIN   10      }}
+\DoxyCodeLine{118 \textcolor{preprocessor}{\#define SAMPLES\_FOR\_JOYSTICK\_MEAN   200}}
+\DoxyCodeLine{119 \textcolor{preprocessor}{\#define JOYSTICK\_SAMPLE\_TO\_DISCARD  100}}
+\DoxyCodeLine{120     }
+\DoxyCodeLine{121 \textcolor{preprocessor}{\#define CALIB\_DECIMATION        1}}
+\DoxyCodeLine{122 \textcolor{preprocessor}{\#define NUM\_OF\_CLOSURES         5}}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124 \textcolor{preprocessor}{\#define POS\_INTEGRAL\_SAT\_LIMIT  50000000    }}
+\DoxyCodeLine{125 \textcolor{preprocessor}{\#define CURR\_INTEGRAL\_SAT\_LIMIT 100000      }}
+\DoxyCodeLine{127 \textcolor{preprocessor}{\#define MIN\_CURR\_SAT\_LIMIT      30}}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{130 \textcolor{comment}{//                                                        structures definitions}}
+\DoxyCodeLine{131 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133 \textcolor{comment}{//=========================================================     motor references}}
+\DoxyCodeLine{137 \textcolor{comment}{}\textcolor{keyword}{struct }st\_ref \{}
+\DoxyCodeLine{138     int32 pos[NUM\_OF\_MOTORS];       }
+\DoxyCodeLine{139 \};}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141 \textcolor{comment}{//=============================================================     measurements}}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143 \textcolor{keyword}{struct }st\_meas \{}
+\DoxyCodeLine{144     int32 pos[NUM\_OF\_SENSORS];      }
+\DoxyCodeLine{145     int8 rot[NUM\_OF\_SENSORS];       }
+\DoxyCodeLine{147     int32 emg[NUM\_OF\_EMGS];         }
+\DoxyCodeLine{148     int32 vel[NUM\_OF\_SENSORS];      }
+\DoxyCodeLine{149     int32 acc[NUM\_OF\_SENSORS];      }
+\DoxyCodeLine{150     int16 joystick[NUM\_OF\_MOTORS];  }
+\DoxyCodeLine{151 \};}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153 \textcolor{comment}{//==============================================================     data packet}}
+\DoxyCodeLine{157 \textcolor{comment}{}\textcolor{keyword}{struct }st\_data \{}
+\DoxyCodeLine{158     uint8   buffer[128];            }
+\DoxyCodeLine{159     int16   length;                 }
+\DoxyCodeLine{160     int16   ind;                    }
+\DoxyCodeLine{161     uint8   ready;                  }
+\DoxyCodeLine{162 \};}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164 \textcolor{comment}{//============================================     settings stored on the memory}}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166 \textcolor{keyword}{struct }st\_mem \{}
+\DoxyCodeLine{167     uint8   flag;                                          \textcolor{comment}{//1}}
+\DoxyCodeLine{168     uint8   id;                                                                            \textcolor{comment}{//1}}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170     uint8   input\_mode;                                                             \textcolor{comment}{//1}}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172     uint8   res[NUM\_OF\_SENSORS];                                                    \textcolor{comment}{//3}}
+\DoxyCodeLine{173     int32   m\_off[NUM\_OF\_SENSORS];                                                \textcolor{comment}{//12}}
+\DoxyCodeLine{174     \textcolor{keywordtype}{float}   m\_mult[NUM\_OF\_SENSORS];                                           \textcolor{comment}{//12 30}}
+\DoxyCodeLine{175 }
+\DoxyCodeLine{176     uint8   pos\_lim\_flag;                                             \textcolor{comment}{//1}}
+\DoxyCodeLine{177     int32   pos\_lim\_inf[NUM\_OF\_MOTORS];                           \textcolor{comment}{//8}}
+\DoxyCodeLine{178     int32   pos\_lim\_sup[NUM\_OF\_MOTORS];                           \textcolor{comment}{//8}}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180     int32   max\_step\_pos;                   \textcolor{comment}{//4}}
+\DoxyCodeLine{181     int32   max\_step\_neg;                   \textcolor{comment}{//4 25}}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183     uint16  emg\_threshold[NUM\_OF\_EMGS];                  \textcolor{comment}{//4}}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185     uint8   emg\_calibration\_flag;                                  \textcolor{comment}{//1}}
+\DoxyCodeLine{186     uint32  emg\_max\_value[NUM\_OF\_EMGS];                                        \textcolor{comment}{//8}}
+\DoxyCodeLine{187 }
+\DoxyCodeLine{188     uint8   emg\_speed;                                          \textcolor{comment}{//1}}
+\DoxyCodeLine{189     }
+\DoxyCodeLine{190     int8    motor\_handle\_ratio;                                \textcolor{comment}{//1 }}
+\DoxyCodeLine{191     }
+\DoxyCodeLine{192     uint8   baud\_rate;                                                                 \textcolor{comment}{//1}}
+\DoxyCodeLine{193     }
+\DoxyCodeLine{194     uint8   rest\_position\_flag;                                         \textcolor{comment}{//1    }}
+\DoxyCodeLine{195     int32   rest\_pos;                                           \textcolor{comment}{//4}}
+\DoxyCodeLine{196     int32   rest\_delay;                                   \textcolor{comment}{//4}}
+\DoxyCodeLine{197     int32   rest\_vel;                               \textcolor{comment}{//4}}
+\DoxyCodeLine{198     }
+\DoxyCodeLine{199     uint8   is\_force\_fb\_present;                  \textcolor{comment}{// 1}}
+\DoxyCodeLine{200     uint8   is\_proprio\_fb\_present;       \textcolor{comment}{// 1}}
+\DoxyCodeLine{201     uint8   is\_vibrotactile\_fb\_present;    \textcolor{comment}{// 1}}
+\DoxyCodeLine{202     uint8   is\_myo2\_master;                            \textcolor{comment}{// 1}}
+\DoxyCodeLine{203     }
+\DoxyCodeLine{204     \textcolor{comment}{// Force feedback device parameters}}
+\DoxyCodeLine{205     \textcolor{keywordtype}{float}   curr\_prop\_gain;             \textcolor{comment}{// 4}}
+\DoxyCodeLine{206     int16   curr\_sat;                   \textcolor{comment}{// 2}}
+\DoxyCodeLine{207     int16   curr\_dead\_zone;             \textcolor{comment}{// 2  }}
+\DoxyCodeLine{208     }
+\DoxyCodeLine{209     \textcolor{comment}{// Proprioceptive device parameters}}
+\DoxyCodeLine{210     int32   max\_slide;                  \textcolor{comment}{// 4}}
+\DoxyCodeLine{211     int32   max\_SH\_pos;                 \textcolor{comment}{// 4}}
+\DoxyCodeLine{212     }
+\DoxyCodeLine{213     \textcolor{comment}{// Devices IDs}}
+\DoxyCodeLine{214     uint8   SH\_ID;                      \textcolor{comment}{// 1}}
+\DoxyCodeLine{215     uint8   ForceF\_ID;                  \textcolor{comment}{// 1}}
+\DoxyCodeLine{216     uint8   ProprioF\_ID;                \textcolor{comment}{// 1}}
+\DoxyCodeLine{217     uint8   F\_right\_left;               \textcolor{comment}{// 1}}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219     uint16  joystick\_closure\_speed;     \textcolor{comment}{// Joystick -\/ Hand closure speed            2 }}
+\DoxyCodeLine{220     uint16  joystick\_gain;              \textcolor{comment}{// Joystick measurements gain               4}}
+\DoxyCodeLine{221                                                                 \textcolor{comment}{//TOT           179 bytes}}
+\DoxyCodeLine{222 \};}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224 \textcolor{comment}{//==============================================     hand calibration parameters}}
+\DoxyCodeLine{228 \textcolor{comment}{}\textcolor{keyword}{struct }st\_calib \{}
+\DoxyCodeLine{229     uint8   enabled;                }
+\DoxyCodeLine{230     uint8   direction;              }
+\DoxyCodeLine{231     int16   speed;                  }
+\DoxyCodeLine{232     int16   repetitions;            }
+\DoxyCodeLine{233 \};}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235 \textcolor{comment}{//=================================================     emg status}}
+\DoxyCodeLine{236 \textcolor{keyword}{typedef} \textcolor{keyword}{enum} \{}
+\DoxyCodeLine{237 }
+\DoxyCodeLine{238     NORMAL        = 0,              }
+\DoxyCodeLine{239     RESET         = 1,              }
+\DoxyCodeLine{240     DISCARD       = 2,              }
+\DoxyCodeLine{241     SUM\_AND\_MEAN  = 3,              }
+\DoxyCodeLine{242     WAIT          = 4,               }
+\DoxyCodeLine{243     WAIT\_EoC      = 5               }
+\DoxyCodeLine{245 \} emg\_status, joystick\_status;                       }
+\DoxyCodeLine{247 \textcolor{comment}{//====================================      external global variables definition}}
+\DoxyCodeLine{248 }
+\DoxyCodeLine{249 \textcolor{keyword}{extern} \textcolor{keyword}{struct }st\_ref    g\_ref, g\_refNew, g\_refOld;  }
+\DoxyCodeLine{250 \textcolor{keyword}{extern} \textcolor{keyword}{struct }st\_meas   g\_meas, g\_measOld;          }
+\DoxyCodeLine{251 \textcolor{keyword}{extern} \textcolor{keyword}{struct }st\_data   g\_rx;                       }
+\DoxyCodeLine{252 \textcolor{keyword}{extern} \textcolor{keyword}{struct }st\_mem    g\_mem, c\_mem;               }
+\DoxyCodeLine{253 \textcolor{keyword}{extern} \textcolor{keyword}{struct }st\_calib  calib;}
+\DoxyCodeLine{254 }
+\DoxyCodeLine{255 \textcolor{keyword}{extern} uint32 timer\_value;                          }
+\DoxyCodeLine{256 \textcolor{keyword}{extern} uint32 timer\_value0;                         }
+\DoxyCodeLine{258 \textcolor{comment}{// Device Data}}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{260 \textcolor{keyword}{extern} int32   dev\_tension;                         }
+\DoxyCodeLine{261 \textcolor{keyword}{extern} int32   dev\_tension\_f;                       }
+\DoxyCodeLine{262 \textcolor{keyword}{extern} int32   pow\_tension;}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264 \textcolor{comment}{// Bit Flag}}
+\DoxyCodeLine{265 }
+\DoxyCodeLine{266 \textcolor{keyword}{extern} CYBIT reset\_last\_value\_flag;                 }
+\DoxyCodeLine{267 \textcolor{keyword}{extern} CYBIT tension\_valid;                         }
+\DoxyCodeLine{268 \textcolor{keyword}{extern} CYBIT interrupt\_flag;                        }
+\DoxyCodeLine{270 \textcolor{comment}{// DMA Buffer}}
+\DoxyCodeLine{271 }
+\DoxyCodeLine{272 \textcolor{keyword}{extern} int16 ADC\_buf[4];                            }
+\DoxyCodeLine{274 \textcolor{keyword}{extern} uint8 master\_mode;               }
+\DoxyCodeLine{275 \textcolor{keyword}{extern} uint32 count\_tension\_valid;}
+\DoxyCodeLine{276 \textcolor{keyword}{extern} uint8 first\_tension\_valid;}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{278 \textcolor{keyword}{extern} uint8 rest\_enabled;              }
+\DoxyCodeLine{279 \textcolor{keyword}{extern} uint8 forced\_open;               }
+\DoxyCodeLine{280 \textcolor{keyword}{extern} int32 rest\_pos\_curr\_ref;            }
+\DoxyCodeLine{281 \textcolor{keyword}{extern} int32 SH\_current\_position;       }
+\DoxyCodeLine{282 \textcolor{keyword}{extern} int32 curr\_pos\_res;}
+\DoxyCodeLine{283 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{284 }
+\DoxyCodeLine{285 }
+\DoxyCodeLine{286 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{287 }
+\DoxyCodeLine{288 \textcolor{comment}{//[] END OF FILE}}
+
+\end{DoxyCode}

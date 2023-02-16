@@ -1,5 +1,5 @@
-\section{interruptions.\+c File Reference}
-\label{interruptions_8c}\index{interruptions.\+c@{interruptions.\+c}}
+\doxysection{interruptions.\+c File Reference}
+\label{interruptions_8c}\index{interruptions.c@{interruptions.c}}
 
 
 Interruption handling and firmware core functions.  
@@ -17,14 +17,11 @@ Include dependency graph for interruptions.\+c\+:
 \includegraphics[width=350pt]{interruptions_8c__incl}
 \end{center}
 \end{figure}
-\subsection*{Functions}
+\doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\label{interruptions_8c_aba74df0c62c62434ebccf8124c5d5fef}} 
-{\bfseries C\+Y\+\_\+\+I\+SR} (I\+S\+R\+\_\+\+W\+A\+T\+C\+H\+D\+O\+G\+\_\+\+Handler)
-\item 
 \mbox{\label{interruptions_8c_a7692d8c3185943c5bdfaa6de0a172ad3}} 
-{\bfseries C\+Y\+\_\+\+I\+SR} (I\+S\+R\+\_\+\+R\+S485\+\_\+\+R\+X\+\_\+\+Ex\+Interrupt)
+{\bfseries CY\+\_\+\+ISR} (ISR\+\_\+\+RS485\+\_\+\+RX\+\_\+\+Ex\+Interrupt)
 \item 
 void \textbf{ interrupt\+\_\+manager} ()
 \item 
@@ -32,30 +29,15 @@ void \textbf{ function\+\_\+scheduler} (void)
 \item 
 void \textbf{ motor\+\_\+control} ()
 \item 
-void \textbf{ encoder\+\_\+reading} (const uint8 idx)
-\item 
 void \textbf{ analog\+\_\+read\+\_\+end} ()
-\item 
-void \textbf{ overcurrent\+\_\+control} ()
-\item 
-void \textbf{ pwm\+\_\+limit\+\_\+search} ()
-\item 
-void \textbf{ command\+\_\+slave} ()
-\item 
-void \textbf{ deactivate\+\_\+slave} ()
-\end{DoxyCompactItemize}
-\subsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-static const uint8 {\bfseries pwm\+\_\+preload\+\_\+values} [29]
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 Interruption handling and firmware core functions. 
 
 \begin{DoxyDate}{Date}
-October 01, 2017 
+Feb 14th, 2023 
 \end{DoxyDate}
 \begin{DoxyAuthor}{Author}
 {\itshape Centro \char`\"{}\+E.\+Piaggio\char`\"{}} 
@@ -63,110 +45,34 @@ October 01, 2017
 \begin{DoxyCopyright}{Copyright}
 (C) 2012-\/2016 qbrobotics. All rights reserved. 
 
-(C) 2017 Centro \char`\"{}\+E.\+Piaggio\char`\"{}. All rights reserved. 
+(C) 2017-\/2023 Centro \char`\"{}\+E.\+Piaggio\char`\"{}. All rights reserved. 
 \end{DoxyCopyright}
 
 
-\subsection{Function Documentation}
+\doxysubsection{Function Documentation}
 \mbox{\label{interruptions_8c_a00a8d34962a63161405e5d7785b9625e}} 
-\index{interruptions.\+c@{interruptions.\+c}!analog\+\_\+read\+\_\+end@{analog\+\_\+read\+\_\+end}}
-\index{analog\+\_\+read\+\_\+end@{analog\+\_\+read\+\_\+end}!interruptions.\+c@{interruptions.\+c}}
-\subsubsection{analog\+\_\+read\+\_\+end()}
+\index{interruptions.c@{interruptions.c}!analog\_read\_end@{analog\_read\_end}}
+\index{analog\_read\_end@{analog\_read\_end}!interruptions.c@{interruptions.c}}
+\doxysubsubsection{analog\_read\_end()}
 {\footnotesize\ttfamily void analog\+\_\+read\+\_\+end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-This function executes and terminates the analog readings. \mbox{\label{interruptions_8c_a8e10d86a40e34fc094b817f8e40b30e0}} 
-\index{interruptions.\+c@{interruptions.\+c}!command\+\_\+slave@{command\+\_\+slave}}
-\index{command\+\_\+slave@{command\+\_\+slave}!interruptions.\+c@{interruptions.\+c}}
-\subsubsection{command\+\_\+slave()}
-{\footnotesize\ttfamily void command\+\_\+slave (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-This function is used to create a package and send it to another device, only if the actual board is in master mode. \mbox{\label{interruptions_8c_a71cb50f2e34246bbedd5918da1b6ef5e}} 
-\index{interruptions.\+c@{interruptions.\+c}!deactivate\+\_\+slave@{deactivate\+\_\+slave}}
-\index{deactivate\+\_\+slave@{deactivate\+\_\+slave}!interruptions.\+c@{interruptions.\+c}}
-\subsubsection{deactivate\+\_\+slave()}
-{\footnotesize\ttfamily void deactivate\+\_\+slave (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-This function is used to create a package to deactivate motors on another device, only if the actual board is in master mode. \mbox{\label{interruptions_8c_af8d2e8be60bb142650c4fcf4b782fb14}} 
-\index{interruptions.\+c@{interruptions.\+c}!encoder\+\_\+reading@{encoder\+\_\+reading}}
-\index{encoder\+\_\+reading@{encoder\+\_\+reading}!interruptions.\+c@{interruptions.\+c}}
-\subsubsection{encoder\+\_\+reading()}
-{\footnotesize\ttfamily void encoder\+\_\+reading (\begin{DoxyParamCaption}\item[{const uint8}]{index }\end{DoxyParamCaption})}
-
-This functions reads the value from the encoder pointed by index.
-
-
-\begin{DoxyParams}{Parameters}
-{\em index} & The number of the encoder that must be read. \\
-\hline
-\end{DoxyParams}
-\mbox{\label{interruptions_8c_a39df971c4e9f194be50c54dfd7aeabfe}} 
-\index{interruptions.\+c@{interruptions.\+c}!function\+\_\+scheduler@{function\+\_\+scheduler}}
-\index{function\+\_\+scheduler@{function\+\_\+scheduler}!interruptions.\+c@{interruptions.\+c}}
-\subsubsection{function\+\_\+scheduler()}
+This function executes and terminates the analog readings. \mbox{\label{interruptions_8c_a39df971c4e9f194be50c54dfd7aeabfe}} 
+\index{interruptions.c@{interruptions.c}!function\_scheduler@{function\_scheduler}}
+\index{function\_scheduler@{function\_scheduler}!interruptions.c@{interruptions.c}}
+\doxysubsubsection{function\_scheduler()}
 {\footnotesize\ttfamily void function\+\_\+scheduler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-This function schedules the other functions in an order that optimizes the controller usage. \mbox{\label{interruptions_8c_a9790811526002d99b25a814afd02cbae}} 
-\index{interruptions.\+c@{interruptions.\+c}!interrupt\+\_\+manager@{interrupt\+\_\+manager}}
-\index{interrupt\+\_\+manager@{interrupt\+\_\+manager}!interruptions.\+c@{interruptions.\+c}}
-\subsubsection{interrupt\+\_\+manager()}
+This function schedules the other functions in an order that optimizes the controller usage. ~\newline
+ \mbox{\label{interruptions_8c_a9790811526002d99b25a814afd02cbae}} 
+\index{interruptions.c@{interruptions.c}!interrupt\_manager@{interrupt\_manager}}
+\index{interrupt\_manager@{interrupt\_manager}!interruptions.c@{interruptions.c}}
+\doxysubsubsection{interrupt\_manager()}
 {\footnotesize\ttfamily void interrupt\+\_\+manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 This function is called in predefinited moments during firmware execution in order to unpack the received package. \mbox{\label{interruptions_8c_a8c7c487a5a127331b0de53443e3ca964}} 
-\index{interruptions.\+c@{interruptions.\+c}!motor\+\_\+control@{motor\+\_\+control}}
-\index{motor\+\_\+control@{motor\+\_\+control}!interruptions.\+c@{interruptions.\+c}}
-\subsubsection{motor\+\_\+control()}
+\index{interruptions.c@{interruptions.c}!motor\_control@{motor\_control}}
+\index{motor\_control@{motor\_control}!interruptions.c@{interruptions.c}}
+\doxysubsubsection{motor\_control()}
 {\footnotesize\ttfamily void motor\+\_\+control (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-This function controls the motor direction and velocity, depending on the input and control modality set. \mbox{\label{interruptions_8c_a4e92908805632dc8cab2936d89bb3ba1}} 
-\index{interruptions.\+c@{interruptions.\+c}!overcurrent\+\_\+control@{overcurrent\+\_\+control}}
-\index{overcurrent\+\_\+control@{overcurrent\+\_\+control}!interruptions.\+c@{interruptions.\+c}}
-\subsubsection{overcurrent\+\_\+control()}
-{\footnotesize\ttfamily void overcurrent\+\_\+control (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-This function increases or decreases the pwm value, depending on the current absorbed by the motor. \mbox{\label{interruptions_8c_ab7b287cf5df2ea548297b951be2f20d4}} 
-\index{interruptions.\+c@{interruptions.\+c}!pwm\+\_\+limit\+\_\+search@{pwm\+\_\+limit\+\_\+search}}
-\index{pwm\+\_\+limit\+\_\+search@{pwm\+\_\+limit\+\_\+search}!interruptions.\+c@{interruptions.\+c}}
-\subsubsection{pwm\+\_\+limit\+\_\+search()}
-{\footnotesize\ttfamily void pwm\+\_\+limit\+\_\+search (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-This function scales the pwm value of the motor, depending on the power supply voltage, in order to not make the motor wind too fast. 
-
-\subsection{Variable Documentation}
-\mbox{\label{interruptions_8c_aee1865719263cf20251f918e8825703d}} 
-\index{interruptions.\+c@{interruptions.\+c}!pwm\+\_\+preload\+\_\+values@{pwm\+\_\+preload\+\_\+values}}
-\index{pwm\+\_\+preload\+\_\+values@{pwm\+\_\+preload\+\_\+values}!interruptions.\+c@{interruptions.\+c}}
-\subsubsection{pwm\+\_\+preload\+\_\+values}
-{\footnotesize\ttfamily const uint8 pwm\+\_\+preload\+\_\+values[29]\hspace{0.3cm}{\ttfamily [static]}}
-
-{\bfseries Initial value\+:}
-\begin{DoxyCode}
-= \{100,    
-                                              83,
-                                              78,
-                                              76,
-                                              74,
-                                              72,    
-                                              70,
-                                              68,
-                                              67,
-                                              65,
-                                              64,    
-                                              63,
-                                              62,
-                                              61,
-                                              60,
-                                              59,    
-                                              58,
-                                              57,
-                                              56,
-                                              56,
-                                              55,    
-                                              54,
-                                              54,
-                                              53,
-                                              52,
-                                              52,    
-                                              52,
-                                              51,
-                                              51\}
-\end{DoxyCode}
+This function controls the motor direction and velocity, depending on the input and control modality set. 

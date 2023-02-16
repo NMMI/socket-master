@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   GLOBALS                                                               02/14/2023 11:08:54 PAGE 1   
+C51 COMPILER V9.51   GLOBALS                                                               02/16/2023 11:05:25 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE GLOBALS
@@ -62,7 +62,7 @@ line level    source
   50          
   51          struct st_ref   g_ref, g_refNew, g_refOld;  // Motor variables.
   52          struct st_meas  g_meas, g_measOld;          // Measurements.
-C51 COMPILER V9.51   GLOBALS                                                               02/14/2023 11:08:54 PAGE 2   
+C51 COMPILER V9.51   GLOBALS                                                               02/16/2023 11:05:25 PAGE 2   
 
   53          struct st_data  g_rx;                       // Income data.
   54          struct st_mem   g_mem, c_mem;               // Memory variables.
@@ -103,8 +103,10 @@ line level    source
   87          int32 SH_current_position;          /*!< SoftHand current position (used with proprioception devices).*/
   88          int32 curr_pos_res;
   89          
-  90          /* END OF FILE */
-C51 COMPILER V9.51   GLOBALS                                                               02/14/2023 11:08:54 PAGE 3   
+  90          float imu_values[3*N_IMU_SH];
+  91          
+  92          /* END OF FILE */
+C51 COMPILER V9.51   GLOBALS                                                               02/16/2023 11:05:25 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -114,7 +116,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =   ----    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =    537    ----
+   XDATA SIZE       =    561    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

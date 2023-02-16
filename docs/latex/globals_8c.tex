@@ -1,5 +1,5 @@
-\section{globals.\+c File Reference}
-\label{globals_8c}\index{globals.\+c@{globals.\+c}}
+\doxysection{globals.\+c File Reference}
+\label{globals_8c}\index{globals.c@{globals.c}}
 
 
 Global variables.  
@@ -14,7 +14,7 @@ Include dependency graph for globals.\+c\+:
 \includegraphics[width=350pt]{globals_8c__incl}
 \end{center}
 \end{figure}
-\subsection*{Variables}
+\doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 struct \textbf{ st\+\_\+ref} g\+\_\+ref g\+\_\+ref\+New \textbf{ g\+\_\+ref\+Old}
@@ -28,34 +28,34 @@ struct \textbf{ st\+\_\+mem} g\+\_\+mem \textbf{ c\+\_\+mem}
 \mbox{\label{globals_8c_aed96fdd8308fe2c4fc07c3b5db1c7bbb}} 
 struct \textbf{ st\+\_\+calib} {\bfseries calib}
 \item 
-float \textbf{ tau\+\_\+feedback}
-\item 
 uint32 \textbf{ timer\+\_\+value}
 \item 
 uint32 \textbf{ timer\+\_\+value0}
 \item 
 int32 \textbf{ dev\+\_\+tension}
 \item 
-uint8 \textbf{ dev\+\_\+pwm\+\_\+limit}
-\item 
 int32 \textbf{ dev\+\_\+tension\+\_\+f}
 \item 
 int32 \textbf{ pow\+\_\+tension}
 \item 
-C\+Y\+B\+IT \textbf{ reset\+\_\+last\+\_\+value\+\_\+flag}
+CYBIT \textbf{ reset\+\_\+last\+\_\+value\+\_\+flag}
 \item 
-C\+Y\+B\+IT \textbf{ tension\+\_\+valid}
+CYBIT \textbf{ tension\+\_\+valid}
 \item 
-C\+Y\+B\+IT \textbf{ interrupt\+\_\+flag} = F\+A\+L\+SE
+CYBIT \textbf{ interrupt\+\_\+flag} = FALSE
 \item 
-C\+Y\+B\+IT \textbf{ watchdog\+\_\+flag}
+CYBIT \textbf{ watchdog\+\_\+flag}
 \item 
 \mbox{\label{globals_8c_abb22f0a4462a0b4db27496654f2175a0}} 
-int16 {\bfseries A\+D\+C\+\_\+buf} [4]
-\item 
-int8 \textbf{ pwm\+\_\+sign}
+int16 {\bfseries ADC\+\_\+buf} [4]
 \item 
 uint8 \textbf{ master\+\_\+mode}
+\item 
+\mbox{\label{globals_8c_abca21c444547556c7e3f6aa8d15382a1}} 
+uint32 {\bfseries count\+\_\+tension\+\_\+valid}
+\item 
+\mbox{\label{globals_8c_a69bf533ca166d55ce5df59c316bfe6ea}} 
+uint8 {\bfseries first\+\_\+tension\+\_\+valid}
 \item 
 uint8 \textbf{ rest\+\_\+enabled}
 \item 
@@ -63,30 +63,18 @@ uint8 \textbf{ forced\+\_\+open}
 \item 
 int32 \textbf{ rest\+\_\+pos\+\_\+curr\+\_\+ref}
 \item 
-uint8 \textbf{ receive\+\_\+meas\+\_\+from\+\_\+hand}
-\item 
-\mbox{\label{globals_8c_ab43d57397f71cb35c19d91058c48bed2}} 
-int16 {\bfseries check2}
-\item 
-\mbox{\label{globals_8c_a07ae6981551bcb1232593903a0cec1be}} 
-uint8 {\bfseries check3}
-\item 
-\mbox{\label{globals_8c_a57815d5e67537f44e37f31deb0cca84e}} 
-uint8 {\bfseries check4}
-\item 
-\mbox{\label{globals_8c_a3e70f7fe645db3f664a6a47e63af6bff}} 
-int32 {\bfseries check5}
+int32 \textbf{ SH\+\_\+current\+\_\+position}
 \item 
 \mbox{\label{globals_8c_ab2b7ed40fdef23f9dad3b7351df3b8f4}} 
 int32 {\bfseries curr\+\_\+pos\+\_\+res}
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
+\doxysubsection{Detailed Description}
 Global variables. 
 
 \begin{DoxyDate}{Date}
-October 01, 2017 
+Feb 14th, 2023 
 \end{DoxyDate}
 \begin{DoxyAuthor}{Author}
 {\itshape Centro \char`\"{}\+E.\+Piaggio\char`\"{}} 
@@ -94,135 +82,117 @@ October 01, 2017
 \begin{DoxyCopyright}{Copyright}
 (C) 2012-\/2016 qbrobotics. All rights reserved. 
 
-(C) 2017 Centro \char`\"{}\+E.\+Piaggio\char`\"{}. All rights reserved. 
+(C) 2017-\/2023 Centro \char`\"{}\+E.\+Piaggio\char`\"{}. All rights reserved. 
 \end{DoxyCopyright}
 
 
-\subsection{Variable Documentation}
+\doxysubsection{Variable Documentation}
 \mbox{\label{globals_8c_a44c3cbd8e234e0816f0334e29646a800}} 
-\index{globals.\+c@{globals.\+c}!c\+\_\+mem@{c\+\_\+mem}}
-\index{c\+\_\+mem@{c\+\_\+mem}!globals.\+c@{globals.\+c}}
-\subsubsection{c\+\_\+mem}
+\index{globals.c@{globals.c}!c\_mem@{c\_mem}}
+\index{c\_mem@{c\_mem}!globals.c@{globals.c}}
+\doxysubsubsection{c\_mem}
 {\footnotesize\ttfamily struct \textbf{ st\+\_\+mem} g\+\_\+mem c\+\_\+mem}
 
-Memory parameters. \mbox{\label{globals_8c_a21f4f67e4203dea0b9956589eaa6cef3}} 
-\index{globals.\+c@{globals.\+c}!dev\+\_\+pwm\+\_\+limit@{dev\+\_\+pwm\+\_\+limit}}
-\index{dev\+\_\+pwm\+\_\+limit@{dev\+\_\+pwm\+\_\+limit}!globals.\+c@{globals.\+c}}
-\subsubsection{dev\+\_\+pwm\+\_\+limit}
-{\footnotesize\ttfamily uint8 dev\+\_\+pwm\+\_\+limit}
-
-Device pwm limit. It may change during execution. \mbox{\label{globals_8c_a53a494e9edc739a4f7c884778d1a93b1}} 
-\index{globals.\+c@{globals.\+c}!dev\+\_\+tension@{dev\+\_\+tension}}
-\index{dev\+\_\+tension@{dev\+\_\+tension}!globals.\+c@{globals.\+c}}
-\subsubsection{dev\+\_\+tension}
+Memory parameters. \mbox{\label{globals_8c_a53a494e9edc739a4f7c884778d1a93b1}} 
+\index{globals.c@{globals.c}!dev\_tension@{dev\_tension}}
+\index{dev\_tension@{dev\_tension}!globals.c@{globals.c}}
+\doxysubsubsection{dev\_tension}
 {\footnotesize\ttfamily int32 dev\+\_\+tension}
 
 Power supply tension. \mbox{\label{globals_8c_a600f1f02d397d3ffd8b03b8a4edace02}} 
-\index{globals.\+c@{globals.\+c}!dev\+\_\+tension\+\_\+f@{dev\+\_\+tension\+\_\+f}}
-\index{dev\+\_\+tension\+\_\+f@{dev\+\_\+tension\+\_\+f}!globals.\+c@{globals.\+c}}
-\subsubsection{dev\+\_\+tension\+\_\+f}
+\index{globals.c@{globals.c}!dev\_tension\_f@{dev\_tension\_f}}
+\index{dev\_tension\_f@{dev\_tension\_f}!globals.c@{globals.c}}
+\doxysubsubsection{dev\_tension\_f}
 {\footnotesize\ttfamily int32 dev\+\_\+tension\+\_\+f}
 
 Filtered power supply tension. \mbox{\label{globals_8c_a0f13b80a0c329fa3176eb1e72ef36fb8}} 
-\index{globals.\+c@{globals.\+c}!forced\+\_\+open@{forced\+\_\+open}}
-\index{forced\+\_\+open@{forced\+\_\+open}!globals.\+c@{globals.\+c}}
-\subsubsection{forced\+\_\+open}
+\index{globals.c@{globals.c}!forced\_open@{forced\_open}}
+\index{forced\_open@{forced\_open}!globals.c@{globals.c}}
+\doxysubsubsection{forced\_open}
 {\footnotesize\ttfamily uint8 forced\+\_\+open}
 
 Forced open flag (used in position with rest position control). \mbox{\label{globals_8c_a47c3980e6bddec492ca4315e36602ba0}} 
-\index{globals.\+c@{globals.\+c}!g\+\_\+meas\+Old@{g\+\_\+meas\+Old}}
-\index{g\+\_\+meas\+Old@{g\+\_\+meas\+Old}!globals.\+c@{globals.\+c}}
-\subsubsection{g\+\_\+meas\+Old}
+\index{globals.c@{globals.c}!g\_measOld@{g\_measOld}}
+\index{g\_measOld@{g\_measOld}!globals.c@{globals.c}}
+\doxysubsubsection{g\_measOld}
 {\footnotesize\ttfamily struct \textbf{ st\+\_\+meas} g\+\_\+meas g\+\_\+meas\+Old}
 
 Measurements. \mbox{\label{globals_8c_a158d26b6d15050b37d8039881d75e0dc}} 
-\index{globals.\+c@{globals.\+c}!g\+\_\+ref\+Old@{g\+\_\+ref\+Old}}
-\index{g\+\_\+ref\+Old@{g\+\_\+ref\+Old}!globals.\+c@{globals.\+c}}
-\subsubsection{g\+\_\+ref\+Old}
+\index{globals.c@{globals.c}!g\_refOld@{g\_refOld}}
+\index{g\_refOld@{g\_refOld}!globals.c@{globals.c}}
+\doxysubsubsection{g\_refOld}
 {\footnotesize\ttfamily struct \textbf{ st\+\_\+ref} g\+\_\+ref g\+\_\+ref\+New g\+\_\+ref\+Old}
 
 Reference variables. \mbox{\label{globals_8c_aa963ce8fafc11e104eb7ee22982d0345}} 
-\index{globals.\+c@{globals.\+c}!g\+\_\+rx@{g\+\_\+rx}}
-\index{g\+\_\+rx@{g\+\_\+rx}!globals.\+c@{globals.\+c}}
-\subsubsection{g\+\_\+rx}
+\index{globals.c@{globals.c}!g\_rx@{g\_rx}}
+\index{g\_rx@{g\_rx}!globals.c@{globals.c}}
+\doxysubsubsection{g\_rx}
 {\footnotesize\ttfamily struct \textbf{ st\+\_\+data} g\+\_\+rx}
 
 Incoming/\+Outcoming data. \mbox{\label{globals_8c_a1e6fda88dfdabc63859f8907eb702920}} 
-\index{globals.\+c@{globals.\+c}!interrupt\+\_\+flag@{interrupt\+\_\+flag}}
-\index{interrupt\+\_\+flag@{interrupt\+\_\+flag}!globals.\+c@{globals.\+c}}
-\subsubsection{interrupt\+\_\+flag}
-{\footnotesize\ttfamily C\+Y\+B\+IT interrupt\+\_\+flag = F\+A\+L\+SE}
+\index{globals.c@{globals.c}!interrupt\_flag@{interrupt\_flag}}
+\index{interrupt\_flag@{interrupt\_flag}!globals.c@{globals.c}}
+\doxysubsubsection{interrupt\_flag}
+{\footnotesize\ttfamily CYBIT interrupt\+\_\+flag = FALSE}
 
 Interrupt flag enabler. \mbox{\label{globals_8c_acf0e2a5d5954714103e295ac35513215}} 
-\index{globals.\+c@{globals.\+c}!master\+\_\+mode@{master\+\_\+mode}}
-\index{master\+\_\+mode@{master\+\_\+mode}!globals.\+c@{globals.\+c}}
-\subsubsection{master\+\_\+mode}
+\index{globals.c@{globals.c}!master\_mode@{master\_mode}}
+\index{master\_mode@{master\_mode}!globals.c@{globals.c}}
+\doxysubsubsection{master\_mode}
 {\footnotesize\ttfamily uint8 master\+\_\+mode}
 
-Flag used to set/unset master mode to send messages to other boards. \mbox{\label{globals_8c_a63d713ff9ac5ba0651f6af9115a32e4d}} 
-\index{globals.\+c@{globals.\+c}!pow\+\_\+tension@{pow\+\_\+tension}}
-\index{pow\+\_\+tension@{pow\+\_\+tension}!globals.\+c@{globals.\+c}}
-\subsubsection{pow\+\_\+tension}
+ADC measurements buffer. Flag used to set/unset master mode to send messages to other boards. \mbox{\label{globals_8c_a63d713ff9ac5ba0651f6af9115a32e4d}} 
+\index{globals.c@{globals.c}!pow\_tension@{pow\_tension}}
+\index{pow\_tension@{pow\_tension}!globals.c@{globals.c}}
+\doxysubsubsection{pow\_tension}
 {\footnotesize\ttfamily int32 pow\+\_\+tension}
 
-Computed power supply tension. \mbox{\label{globals_8c_a8ac7ad7c894db750e93bc745818e26ca}} 
-\index{globals.\+c@{globals.\+c}!pwm\+\_\+sign@{pwm\+\_\+sign}}
-\index{pwm\+\_\+sign@{pwm\+\_\+sign}!globals.\+c@{globals.\+c}}
-\subsubsection{pwm\+\_\+sign}
-{\footnotesize\ttfamily int8 pwm\+\_\+sign}
-
-A\+DC measurements buffer. Sign of pwm driven. Used to obtain current sign. \mbox{\label{globals_8c_a50b50a565306d9a28c9e86694428a759}} 
-\index{globals.\+c@{globals.\+c}!receive\+\_\+meas\+\_\+from\+\_\+hand@{receive\+\_\+meas\+\_\+from\+\_\+hand}}
-\index{receive\+\_\+meas\+\_\+from\+\_\+hand@{receive\+\_\+meas\+\_\+from\+\_\+hand}!globals.\+c@{globals.\+c}}
-\subsubsection{receive\+\_\+meas\+\_\+from\+\_\+hand}
-{\footnotesize\ttfamily uint8 receive\+\_\+meas\+\_\+from\+\_\+hand}
-
-Position measurement form hand. \mbox{\label{globals_8c_aa89a782cfe75ce7970236babd308fe69}} 
-\index{globals.\+c@{globals.\+c}!reset\+\_\+last\+\_\+value\+\_\+flag@{reset\+\_\+last\+\_\+value\+\_\+flag}}
-\index{reset\+\_\+last\+\_\+value\+\_\+flag@{reset\+\_\+last\+\_\+value\+\_\+flag}!globals.\+c@{globals.\+c}}
-\subsubsection{reset\+\_\+last\+\_\+value\+\_\+flag}
-{\footnotesize\ttfamily C\+Y\+B\+IT reset\+\_\+last\+\_\+value\+\_\+flag}
+Computed power supply tension. \mbox{\label{globals_8c_aa89a782cfe75ce7970236babd308fe69}} 
+\index{globals.c@{globals.c}!reset\_last\_value\_flag@{reset\_last\_value\_flag}}
+\index{reset\_last\_value\_flag@{reset\_last\_value\_flag}!globals.c@{globals.c}}
+\doxysubsubsection{reset\_last\_value\_flag}
+{\footnotesize\ttfamily CYBIT reset\+\_\+last\+\_\+value\+\_\+flag}
 
 This flag is set when the encoders last values must be resetted. \mbox{\label{globals_8c_a1f8839fadee52a47a0042eaa695c3f3a}} 
-\index{globals.\+c@{globals.\+c}!rest\+\_\+enabled@{rest\+\_\+enabled}}
-\index{rest\+\_\+enabled@{rest\+\_\+enabled}!globals.\+c@{globals.\+c}}
-\subsubsection{rest\+\_\+enabled}
+\index{globals.c@{globals.c}!rest\_enabled@{rest\_enabled}}
+\index{rest\_enabled@{rest\_enabled}!globals.c@{globals.c}}
+\doxysubsubsection{rest\_enabled}
 {\footnotesize\ttfamily uint8 rest\+\_\+enabled}
 
 Rest position flag. \mbox{\label{globals_8c_a485e5b90bbfb79aa97f874873cd6c93a}} 
-\index{globals.\+c@{globals.\+c}!rest\+\_\+pos\+\_\+curr\+\_\+ref@{rest\+\_\+pos\+\_\+curr\+\_\+ref}}
-\index{rest\+\_\+pos\+\_\+curr\+\_\+ref@{rest\+\_\+pos\+\_\+curr\+\_\+ref}!globals.\+c@{globals.\+c}}
-\subsubsection{rest\+\_\+pos\+\_\+curr\+\_\+ref}
+\index{globals.c@{globals.c}!rest\_pos\_curr\_ref@{rest\_pos\_curr\_ref}}
+\index{rest\_pos\_curr\_ref@{rest\_pos\_curr\_ref}!globals.c@{globals.c}}
+\doxysubsubsection{rest\_pos\_curr\_ref}
 {\footnotesize\ttfamily int32 rest\+\_\+pos\+\_\+curr\+\_\+ref}
 
-Rest position current reference. \mbox{\label{globals_8c_a894b799ffe45f442a6a897580ab7e98e}} 
-\index{globals.\+c@{globals.\+c}!tau\+\_\+feedback@{tau\+\_\+feedback}}
-\index{tau\+\_\+feedback@{tau\+\_\+feedback}!globals.\+c@{globals.\+c}}
-\subsubsection{tau\+\_\+feedback}
-{\footnotesize\ttfamily float tau\+\_\+feedback}
+Rest position current reference. \mbox{\label{globals_8c_a6057988161e484c27b891e577cf66bba}} 
+\index{globals.c@{globals.c}!SH\_current\_position@{SH\_current\_position}}
+\index{SH\_current\_position@{SH\_current\_position}!globals.c@{globals.c}}
+\doxysubsubsection{SH\_current\_position}
+{\footnotesize\ttfamily int32 SH\+\_\+current\+\_\+position}
 
-Torque feedback. \mbox{\label{globals_8c_ac42fa606610c2600210d9b7b2c1d0882}} 
-\index{globals.\+c@{globals.\+c}!tension\+\_\+valid@{tension\+\_\+valid}}
-\index{tension\+\_\+valid@{tension\+\_\+valid}!globals.\+c@{globals.\+c}}
-\subsubsection{tension\+\_\+valid}
-{\footnotesize\ttfamily C\+Y\+B\+IT tension\+\_\+valid}
+Soft\+Hand current position (used with proprioception devices). \mbox{\label{globals_8c_ac42fa606610c2600210d9b7b2c1d0882}} 
+\index{globals.c@{globals.c}!tension\_valid@{tension\_valid}}
+\index{tension\_valid@{tension\_valid}!globals.c@{globals.c}}
+\doxysubsubsection{tension\_valid}
+{\footnotesize\ttfamily CYBIT tension\+\_\+valid}
 
 Tension validation bit. \mbox{\label{globals_8c_ad47cd0e4d0fcf5739a88e52e949a8084}} 
-\index{globals.\+c@{globals.\+c}!timer\+\_\+value@{timer\+\_\+value}}
-\index{timer\+\_\+value@{timer\+\_\+value}!globals.\+c@{globals.\+c}}
-\subsubsection{timer\+\_\+value}
+\index{globals.c@{globals.c}!timer\_value@{timer\_value}}
+\index{timer\_value@{timer\_value}!globals.c@{globals.c}}
+\doxysubsubsection{timer\_value}
 {\footnotesize\ttfamily uint32 timer\+\_\+value}
 
 End time of the firmware main loop. \mbox{\label{globals_8c_a9bab7f1b1cf2ba38d5968eee42644c32}} 
-\index{globals.\+c@{globals.\+c}!timer\+\_\+value0@{timer\+\_\+value0}}
-\index{timer\+\_\+value0@{timer\+\_\+value0}!globals.\+c@{globals.\+c}}
-\subsubsection{timer\+\_\+value0}
+\index{globals.c@{globals.c}!timer\_value0@{timer\_value0}}
+\index{timer\_value0@{timer\_value0}!globals.c@{globals.c}}
+\doxysubsubsection{timer\_value0}
 {\footnotesize\ttfamily uint32 timer\+\_\+value0}
 
 Start time of the firmware main loop \mbox{\label{globals_8c_a156a860c465529ff2f515725ab816a58}} 
-\index{globals.\+c@{globals.\+c}!watchdog\+\_\+flag@{watchdog\+\_\+flag}}
-\index{watchdog\+\_\+flag@{watchdog\+\_\+flag}!globals.\+c@{globals.\+c}}
-\subsubsection{watchdog\+\_\+flag}
-{\footnotesize\ttfamily C\+Y\+B\+IT watchdog\+\_\+flag}
+\index{globals.c@{globals.c}!watchdog\_flag@{watchdog\_flag}}
+\index{watchdog\_flag@{watchdog\_flag}!globals.c@{globals.c}}
+\doxysubsubsection{watchdog\_flag}
+{\footnotesize\ttfamily CYBIT watchdog\+\_\+flag}
 
 Watchdog flag enabler. 

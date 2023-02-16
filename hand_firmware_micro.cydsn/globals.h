@@ -126,6 +126,7 @@
 
 #define MIN_CURR_SAT_LIMIT      30
 
+#define N_IMU_SH                2
 //==============================================================================
 //                                                        structures definitions
 //==============================================================================
@@ -280,6 +281,9 @@ extern uint8 forced_open;               /*!< Forced open flag (used in position 
 extern int32 rest_pos_curr_ref;			/*!< Rest position current reference.*/
 extern int32 SH_current_position;       /*!< SoftHand current position (used with proprioception devices).*/
 extern int32 curr_pos_res;
+
+extern float imu_values[3*N_IMU_SH];
+
 // -----------------------------------------------------------------------------
 
 

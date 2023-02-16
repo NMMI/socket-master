@@ -139,7 +139,7 @@ void interrupt_manager(){
             case  WAIT_ID:
 
                 // packet is for my ID or is broadcast
-                if (rx_data == c_mem.id || rx_data == 0 || rx_data == c_mem.SH_ID)
+                if (rx_data == c_mem.id || rx_data == 0 || (c_mem.is_myo2_master && master_mode && rx_data == c_mem.SH_ID))
                     rx_data_type = FALSE;
                 else                //packet is for others
                     rx_data_type = TRUE;
@@ -327,9 +327,8 @@ void function_scheduler(void) {
         
         if (c_mem.is_vibrotactile_fb_present){
             
-            if (!(c_mem.is_vibrotactile_fb_present)) {
-                drive_vibrotactile_fb();
-            }
+            drive_vibrotactile_fb();
+            
             
             // Check Interrupt     
             if (interrupt_flag){
@@ -1095,7 +1094,7 @@ void analog_read_end() {
     // The board LED blinks if attached battery is not fully charged
     if (!first_tension_valid && tension_valid == TRUE && emg_1_status == NORMAL && emg_2_status == NORMAL){
         dev_tension_f = filter_voltage(dev_tension);
-        if (dev_tension_f > 0.92 * pow_tension){
+        if (dev_tension_f > 0.9 * pow_tension){     //0.9*12000 mV = 10800 mV
             //fixed
             LED_CTRL_Write(1);
             

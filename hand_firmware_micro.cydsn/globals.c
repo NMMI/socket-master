@@ -87,4 +87,6 @@ int32 rest_pos_curr_ref;	        /*!< Rest position current reference.*/
 int32 SH_current_position;          /*!< SoftHand current position (used with proprioception devices).*/
 int32 curr_pos_res;
 
+float imu_values[3*N_IMU_SH];
+
 /* END OF FILE */

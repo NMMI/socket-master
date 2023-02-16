@@ -1,0 +1,186 @@
+\doxysection{commands.\+h}
+\textbf{ Go to the documentation of this file.}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{2 \textcolor{comment}{// BSD 3-\/Clause License}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{comment}{// Copyright (c) 2016, qbrobotics}}
+\DoxyCodeLine{5 \textcolor{comment}{// Copyright (c) 2017, Centro "{}E.Piaggio"{}}}
+\DoxyCodeLine{6 \textcolor{comment}{// All rights reserved.}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{comment}{// Redistribution and use in source and binary forms, with or without}}
+\DoxyCodeLine{9 \textcolor{comment}{// modification, are permitted provided that the following conditions are met:}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{comment}{// * Redistributions of source code must retain the above copyright notice, this}}
+\DoxyCodeLine{12 \textcolor{comment}{//   list of conditions and the following disclaimer.}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{// * Redistributions in binary form must reproduce the above copyright notice,}}
+\DoxyCodeLine{15 \textcolor{comment}{//   this list of conditions and the following disclaimer in the documentation}}
+\DoxyCodeLine{16 \textcolor{comment}{//   and/or other materials provided with the distribution.}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{// * Neither the name of the copyright holder nor the names of its}}
+\DoxyCodeLine{19 \textcolor{comment}{//   contributors may be used to endorse or promote products derived from}}
+\DoxyCodeLine{20 \textcolor{comment}{//   this software without specific prior written permission.}}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22 \textcolor{comment}{// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "{}AS IS"{}}}
+\DoxyCodeLine{23 \textcolor{comment}{// AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE}}
+\DoxyCodeLine{24 \textcolor{comment}{// IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}}
+\DoxyCodeLine{25 \textcolor{comment}{// DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE}}
+\DoxyCodeLine{26 \textcolor{comment}{// FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL}}
+\DoxyCodeLine{27 \textcolor{comment}{// DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR}}
+\DoxyCodeLine{28 \textcolor{comment}{// SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER}}
+\DoxyCodeLine{29 \textcolor{comment}{// CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,}}
+\DoxyCodeLine{30 \textcolor{comment}{// OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE}}
+\DoxyCodeLine{31 \textcolor{comment}{// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{32 \textcolor{comment}{// POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{33 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#ifndef COMMANDS\_H\_INCLUDED}}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#define COMMANDS\_H\_INCLUDED}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{59 \textcolor{comment}{//                                                                      COMMANDS}}
+\DoxyCodeLine{60 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 }
+\DoxyCodeLine{67 \textcolor{keyword}{enum} qbmove\_command}
+\DoxyCodeLine{68 \{}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{comment}{//=========================================================     general commands}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     CMD\_PING                    = 0,    }
+\DoxyCodeLine{73     CMD\_SET\_ZEROS               = 1,    }
+\DoxyCodeLine{74     CMD\_STORE\_PARAMS            = 3,    }
+\DoxyCodeLine{76     CMD\_STORE\_DEFAULT\_PARAMS    = 4,    }
+\DoxyCodeLine{77     CMD\_RESTORE\_PARAMS          = 5,    }
+\DoxyCodeLine{78     CMD\_GET\_INFO                = 6,    }
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80     CMD\_SET\_VALUE               = 7,    }
+\DoxyCodeLine{81     CMD\_GET\_VALUE               = 8,    }
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83     CMD\_BOOTLOADER              = 9,    }
+\DoxyCodeLine{85     CMD\_INIT\_MEM                = 10,   }
+\DoxyCodeLine{86     CMD\_CALIBRATE               = 11,   }
+\DoxyCodeLine{88     CMD\_GET\_PARAM\_LIST          = 12,   }
+\DoxyCodeLine{90     CMD\_HAND\_CALIBRATE          = 13,   }
+\DoxyCodeLine{91 }
+\DoxyCodeLine{92 \textcolor{comment}{//=========================================================     qbcommands}}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{94     CMD\_ACTIVATE                = 128,  }
+\DoxyCodeLine{96     CMD\_GET\_ACTIVATE            = 129,  }
+\DoxyCodeLine{98     CMD\_SET\_INPUTS              = 130,  }
+\DoxyCodeLine{99     CMD\_GET\_INPUTS              = 131,  }
+\DoxyCodeLine{100     CMD\_GET\_MEASUREMENTS        = 132,  }
+\DoxyCodeLine{102     CMD\_GET\_CURRENTS            = 133,  }
+\DoxyCodeLine{104     CMD\_GET\_CURR\_AND\_MEAS       = 134,  }
+\DoxyCodeLine{106     CMD\_SET\_POS\_STIFF           = 135,  }
+\DoxyCodeLine{107     CMD\_GET\_EMG                 = 136,  }
+\DoxyCodeLine{109     CMD\_GET\_VELOCITIES          = 137,  }
+\DoxyCodeLine{111     CMD\_GET\_COUNTERS            = 138,  }
+\DoxyCodeLine{113     CMD\_GET\_ACCEL               = 139,  }
+\DoxyCodeLine{115     CMD\_GET\_CURR\_DIFF           = 140,  }
+\DoxyCodeLine{118     CMD\_SET\_CURR\_DIFF           = 141,  }
+\DoxyCodeLine{120     CMD\_SET\_CUFF\_INPUTS         = 142,  }
+\DoxyCodeLine{122     CMD\_SET\_WATCHDOG            = 143,  }
+\DoxyCodeLine{124     CMD\_SET\_BAUDRATE            = 144,  }
+\DoxyCodeLine{126     CMD\_EXT\_DRIVE               = 145,  }
+\DoxyCodeLine{128     CMD\_GET\_JOYSTICK            = 146  }
+\DoxyCodeLine{130 \};}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{133 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{134 \textcolor{comment}{//                                                                    PARAMETERS}}
+\DoxyCodeLine{135 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{139 \textcolor{comment}{}\textcolor{keyword}{enum} qbmove\_parameter}
+\DoxyCodeLine{140 \{}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142     PARAM\_ID                     = 0,   }
+\DoxyCodeLine{143     PARAM\_PID\_CONTROL            = 1,   }
+\DoxyCodeLine{144     PARAM\_STARTUP\_ACTIVATION     = 2,   }
+\DoxyCodeLine{145     PARAM\_INPUT\_MODE             = 3,   }
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147     PARAM\_CONTROL\_MODE           = 4,   }
+\DoxyCodeLine{150     PARAM\_MEASUREMENT\_OFFSET     = 5,   }
+\DoxyCodeLine{152     PARAM\_MEASUREMENT\_MULTIPLIER = 6,   }
+\DoxyCodeLine{154     PARAM\_POS\_LIMIT\_FLAG         = 7,   }
+\DoxyCodeLine{155     PARAM\_POS\_LIMIT              = 8,   }
+\DoxyCodeLine{158     PARAM\_MAX\_STEP\_POS           = 9,   }
+\DoxyCodeLine{159     PARAM\_MAX\_STEP\_NEG           = 10,  }
+\DoxyCodeLine{160     PARAM\_POS\_RESOLUTION         = 11,  }
+\DoxyCodeLine{163     PARAM\_CURRENT\_LIMIT          = 12,  }
+\DoxyCodeLine{164     PARAM\_EMG\_CALIB\_FLAG         = 13,  }
+\DoxyCodeLine{165     PARAM\_EMG\_THRESHOLD          = 14,  }
+\DoxyCodeLine{166     PARAM\_EMG\_MAX\_VALUE          = 15,  }
+\DoxyCodeLine{167     PARAM\_EMG\_SPEED              = 16,  }
+\DoxyCodeLine{168     PARAM\_PID\_CURR\_CONTROL       = 18,  }
+\DoxyCodeLine{169     PARAM\_DOUBLE\_ENC\_ON\_OFF      = 19,  }
+\DoxyCodeLine{170     PARAM\_MOT\_HANDLE\_RATIO       = 20,  }
+\DoxyCodeLine{171     PARAM\_MOTOR\_SUPPLY           = 21,  }
+\DoxyCodeLine{172     PARAM\_CURRENT\_LOOKUP         = 23,  }
+\DoxyCodeLine{174     PARAM\_DL\_POS\_PID             = 24,  }
+\DoxyCodeLine{175     PARAM\_DL\_CURR\_PID            = 25   }
+\DoxyCodeLine{176 \};}
+\DoxyCodeLine{177 \textcolor{comment}{//** \(\backslash\)\} */}}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179 \textcolor{comment}{//===================================================     resolution definitions}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181 \textcolor{keyword}{enum} qbmove\_resolution}
+\DoxyCodeLine{182 \{}
+\DoxyCodeLine{183     RESOLUTION\_360      = 0,}
+\DoxyCodeLine{184     RESOLUTION\_720      = 1,}
+\DoxyCodeLine{185     RESOLUTION\_1440     = 2,}
+\DoxyCodeLine{186     RESOLUTION\_2880     = 3,}
+\DoxyCodeLine{187     RESOLUTION\_5760     = 4,}
+\DoxyCodeLine{188     RESOLUTION\_11520    = 5,}
+\DoxyCodeLine{189     RESOLUTION\_23040    = 6,}
+\DoxyCodeLine{190     RESOLUTION\_46080    = 7,}
+\DoxyCodeLine{191     RESOLUTION\_92160    = 8}
+\DoxyCodeLine{192 \};}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{194 \textcolor{comment}{//==============================================================     input modes}}
+\DoxyCodeLine{195 }
+\DoxyCodeLine{196 \textcolor{keyword}{enum} qbmove\_input\_mode}
+\DoxyCodeLine{197 \{}
+\DoxyCodeLine{198     INPUT\_MODE\_EXTERNAL         = 0,    }
+\DoxyCodeLine{200     INPUT\_MODE\_ENCODER3         = 1,    }
+\DoxyCodeLine{201     INPUT\_MODE\_EMG\_PROPORTIONAL = 2,    }
+\DoxyCodeLine{203     INPUT\_MODE\_EMG\_INTEGRAL     = 3,    }
+\DoxyCodeLine{205     INPUT\_MODE\_EMG\_FCFS         = 4,    }
+\DoxyCodeLine{207     INPUT\_MODE\_EMG\_FCFS\_ADV     = 5,    }
+\DoxyCodeLine{210     INPUT\_MODE\_JOYSTICK         = 6     }
+\DoxyCodeLine{211 \};}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{213 \textcolor{keyword}{enum} acknowledgment\_values}
+\DoxyCodeLine{214 \{}
+\DoxyCodeLine{215     ACK\_ERROR           = 0,}
+\DoxyCodeLine{216     ACK\_OK              = 1}
+\DoxyCodeLine{217 \};}
+\DoxyCodeLine{218 }
+\DoxyCodeLine{219 \textcolor{comment}{//==============================================    data types enumeration}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221 \textcolor{keyword}{enum} data\_types \{}
+\DoxyCodeLine{222     TYPE\_FLAG    = 0,}
+\DoxyCodeLine{223     TYPE\_INT8    = 1,}
+\DoxyCodeLine{224     TYPE\_UINT8   = 2,}
+\DoxyCodeLine{225     TYPE\_INT16   = 3,}
+\DoxyCodeLine{226     TYPE\_UINT16  = 4,}
+\DoxyCodeLine{227     TYPE\_INT32   = 5,}
+\DoxyCodeLine{228     TYPE\_UINT32  = 6,}
+\DoxyCodeLine{229     TYPE\_FLOAT   = 7,}
+\DoxyCodeLine{230     TYPE\_DOUBLE  = 8}
+\DoxyCodeLine{231 \};}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{233 \textcolor{preprocessor}{\#define PARAM\_BYTE\_SLOT     50      }}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235 \textcolor{preprocessor}{\#define PARAM\_MENU\_SLOT     150     }}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{237 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{238 \textcolor{comment}{//                                                                   INFORMATION}}
+\DoxyCodeLine{239 \textcolor{comment}{//==============================================================================}}
+\DoxyCodeLine{242 \textcolor{comment}{}\textcolor{preprocessor}{\#define INFO\_ALL        0 }}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{246 \textcolor{comment}{// -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{247 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{248 \textcolor{comment}{/* [] END OF FILE */}}
+
+\end{DoxyCode}

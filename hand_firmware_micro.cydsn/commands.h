@@ -125,8 +125,13 @@ enum qbmove_command
                                         ///  of communication.
     CMD_EXT_DRIVE               = 145,  ///< Command to set the actual measurements as inputs
                                         ///  to another device (Only for Armslider device).
-    CMD_GET_JOYSTICK            = 146  ///< Command to get the joystick measurements (Only 
+    CMD_GET_JOYSTICK            = 146,  ///< Command to get the joystick measurements (Only 
                                         ///  for devices driven by a joystick).
+    
+    
+    CMD_GET_IMU_READINGS        = 161,  // Retrieve accelerometers, gyroscopes and magnetometers readings    
+    
+    CMD_SET_EXT_IMU_READINGS    = 170   // Set external IMU reference for Vibrotactile Feedback
 };
 
 /** \} */

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['lookup_5fdim',['LOOKUP_DIM',['../globals_8h.html#a4f18d105a8fc18f649a92d96fb933eb3',1,'globals.h']]]
+  ['m_0',['M',['../utils_8c.html#a52037c938e3c1b126c6277da5ca689d0',1,'utils.c']]],
+  ['max_5fwatchdog_5ftimer_1',['MAX_WATCHDOG_TIMER',['../globals_8h.html#a887dbd571d7f138cbe0e994e3fcc661b',1,'globals.h']]]
 ];

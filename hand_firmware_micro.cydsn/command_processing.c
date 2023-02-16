@@ -103,6 +103,12 @@ void commProcess(void){
             cmd_get_joystick();
             break;
 
+//============================================================     CMD_SET_EXT_IMU_READINGS
+
+        case CMD_SET_EXT_IMU_READINGS:
+            cmd_set_ext_imu_readings();
+            break;
+            
 //=========================================================     CMD_GET_EMG
 
         case CMD_GET_EMG:
@@ -1107,6 +1113,21 @@ void infoPrepare(unsigned char *info_string)
             strcat(info_string, "Master with Vibrotactile device: NO\r\n");
         }
 
+        if (g_mem.is_vibrotactile_fb_present){
+            strcat(info_string, "IMUs on SoftHand/External - Last Readings: \r\n");
+            for (i = 0; i < N_IMU_SH; i++){
+                sprintf(str, "\tIMU n. %d) %f %f %f\r\n", i+1, imu_values[3*i], imu_values[3*i + 1], imu_values[3*i + 2]); 
+                strcat(info_string, str);
+            }            
+            strcat(info_string, "\r\n");    
+        }
+        
+        if (master_mode) {
+            strcat(info_string, "Master Mode active now: YES\r\n");
+        } else {
+            strcat(info_string, "Master Mode active now: NO\r\n");
+        }
+        
         sprintf(str, "debug: %ld", (uint32)timer_value0 - (uint32)timer_value); //5000001
         strcat(info_string, str);
         strcat(info_string, "\r\n");
@@ -1193,7 +1214,7 @@ int32 commReadMeasFromSH()
         }
 
         t_end = (uint32) MY_TIMER_ReadCounter();
-        if((t_start - t_end) > 10000000){            // 4.5 s timeout
+        if((t_start - t_end) > 4500000){            // 4.5 s timeout
         //    master_mode = 0;                        // exit from master mode
             break;
         }
@@ -1234,7 +1255,7 @@ int16 commReadResCurrFromSH()
         }
 
         t_end = (uint32) MY_TIMER_ReadCounter();
-        if((t_start - t_end) > 10000000){            // 4.5 s timeout
+        if((t_start - t_end) > 4500000){            // 4.5 s timeout
         //    master_mode = 0;
             break;
         }
@@ -1248,6 +1269,72 @@ int16 commReadResCurrFromSH()
     }
     
     return curr_diff;
+}
+
+//==============================================================================
+//                                  READ ACCELEROMETERS FROM IMU ON THE SOFTHAND
+//==============================================================================
+
+void commReadIMUsFromSH()
+{
+    uint8 packet_data[16];
+    uint8 packet_length;
+    uint32 t_start, t_end;
+    float acc_sf 	= 0.000061037;			// Ticks to G
+    uint8* values;
+    float aux_float[3];
+	int16 aux_si;
+	uint16 c = 0;
+    uint8 i = 0;
+    
+    packet_length = 2;
+    packet_data[0] = CMD_GET_IMU_READINGS;
+    packet_data[1] = CMD_GET_IMU_READINGS;
+    commWriteID(packet_data, packet_length, c_mem.SH_ID);
+
+    t_start = (uint32) MY_TIMER_ReadCounter();
+    while(g_rx.buffer[0] != CMD_GET_IMU_READINGS) {
+        if (interrupt_flag){
+            interrupt_flag = FALSE;
+            interrupt_manager();
+        }
+
+        t_end = (uint32) MY_TIMER_ReadCounter();
+        if((t_start - t_end) > 4500000){            // 4.5 s timeout
+            //master_mode = 0;
+            break;
+        }
+    }
+
+    if (master_mode) {
+        values = ((uint8 *) &g_rx.buffer[1]);
+        
+        for (i=0; i < N_IMU_SH; i++){
+    		if (values[c] == ':'){					
+    			((uint8 *) &aux_si)[0] = values[c+1];
+    			((uint8 *) &aux_si)[1] = values[c+2];
+    			aux_float[0] = (float) ( aux_si * acc_sf );
+    			((uint8 *) &aux_si)[0] = values[c+3];
+    			((uint8 *) &aux_si)[1] = values[c+4];
+    			aux_float[1] = (float) ( aux_si * acc_sf );
+    			((uint8 *) &aux_si)[0] = values[c+5];
+    			((uint8 *) &aux_si)[1] = values[c+6];
+    			aux_float[2] = (float) ( aux_si * acc_sf );
+                
+    			imu_values[3*i]   = aux_float[0];
+    			imu_values[3*i + 1] = aux_float[1];
+    			imu_values[3*i + 2] = aux_float[2];
+    			c += 6;
+    			
+    			c = c + 1;
+    		}
+    		if (values[c] == ':')
+    			c = c + 1;
+    		else {
+    			break;
+    		}	
+	    }
+    }
 }
 
 //==============================================================================
@@ -1434,7 +1521,22 @@ void drive_force_proprio_fb() {
 /* Function called when is_vibrotactile_fb_present is set. It asks IMU readings 
 the SoftHand and sets vibrotactile feedback device inputs accordingly.*/
 void drive_vibrotactile_fb(){ 
-   
+    
+    // To simplify code, all IMU configuration part is skipped
+    // N_IMU is fixed to N_IMU_SH and directly read ONLY accelerometers
+
+    if (c_mem.is_myo2_master) {    
+        // The SoftHand with IMUs should be attached so read IMU values from it
+        commReadIMUsFromSH();
+    }
+    else {
+        // There is no SoftHand or IMUs, IMU values are given externally and 
+        // asynchronously by cmd_set_ext_imu_readings
+    }
+    
+    // Readings are stored in imu_values global vector and are already in g unity
+    
+    // [...]
 }
 
 //==============================================================================
@@ -1733,6 +1835,17 @@ void cmd_get_joystick() {
     packet_data[5] = LCRChecksum(packet_data, 5);
 
     commWrite(packet_data, 6);
+}
+
+void cmd_set_ext_IMU_readings(){
+    // This function sets IMU values from an external device
+    uint16 i = 0;
+    
+    for (i = 0; i < N_IMU_SH; i++){        
+        imu_values[3*i] = *((float *) &g_rx.buffer[1 + 12*i]);
+        imu_values[3*i + 1] = *((float *) &g_rx.buffer[1 + 12*i + 4]);
+        imu_values[3*i + 2] = *((float *) &g_rx.buffer[1 + 12*i + 8]);
+    }        
 }
 
 void cmd_set_baudrate(){

@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['param_5fbyte_5fslot',['PARAM_BYTE_SLOT',['../commands_8h.html#ae3302107827a773be3200e459e7b24da',1,'commands.h']]],
-  ['param_5fmenu_5fslot',['PARAM_MENU_SLOT',['../commands_8h.html#a3bab5133f6aa363d84307b39e17b0d74',1,'commands.h']]],
-  ['pos_5fintegral_5fsat_5flimit',['POS_INTEGRAL_SAT_LIMIT',['../globals_8h.html#ad252b8b0421e545cce8ba0548a6ca4ed',1,'globals.h']]],
-  ['pwm_5fmax_5fvalue',['PWM_MAX_VALUE',['../globals_8h.html#aafe0521fa22763b7afc50e12d31b450d',1,'globals.h']]]
+  ['receive_0',['RECEIVE',['../globals_8h.html#a3b4d8a5e259fa47a909adefcda3bfb80',1,'globals.h']]],
+  ['rest_5fpos_5ferr_5fthr_5fgain_1',['REST_POS_ERR_THR_GAIN',['../globals_8h.html#ab62e9d96ce028279a3e544ca34ad9109',1,'globals.h']]]
 ];

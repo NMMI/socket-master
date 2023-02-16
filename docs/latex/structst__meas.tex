@@ -1,66 +1,58 @@
-\section{st\+\_\+meas Struct Reference}
-\label{structst__meas}\index{st\+\_\+meas@{st\+\_\+meas}}
-\subsection*{Data Fields}
+\doxysection{st\+\_\+meas Struct Reference}
+\label{structst__meas}\index{st\_meas@{st\_meas}}
+\doxysubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-int32 \textbf{ pos} [\textbf{ N\+U\+M\+\_\+\+O\+F\+\_\+\+S\+E\+N\+S\+O\+RS}]
+int32 \textbf{ pos} [\textbf{ NUM\+\_\+\+OF\+\_\+\+SENSORS}]
 \item 
-int32 \textbf{ curr} [\textbf{ N\+U\+M\+\_\+\+O\+F\+\_\+\+M\+O\+T\+O\+RS}]
+int8 \textbf{ rot} [\textbf{ NUM\+\_\+\+OF\+\_\+\+SENSORS}]
 \item 
-int8 \textbf{ rot} [\textbf{ N\+U\+M\+\_\+\+O\+F\+\_\+\+S\+E\+N\+S\+O\+RS}]
+int32 \textbf{ emg} [\textbf{ NUM\+\_\+\+OF\+\_\+\+EMGS}]
 \item 
-int32 \textbf{ emg} [\textbf{ N\+U\+M\+\_\+\+O\+F\+\_\+\+E\+M\+GS}]
+int32 \textbf{ vel} [\textbf{ NUM\+\_\+\+OF\+\_\+\+SENSORS}]
 \item 
-int32 \textbf{ vel} [\textbf{ N\+U\+M\+\_\+\+O\+F\+\_\+\+S\+E\+N\+S\+O\+RS}]
+int32 \textbf{ acc} [\textbf{ NUM\+\_\+\+OF\+\_\+\+SENSORS}]
 \item 
-int32 \textbf{ acc} [\textbf{ N\+U\+M\+\_\+\+O\+F\+\_\+\+S\+E\+N\+S\+O\+RS}]
-\item 
-int32 \textbf{ hand\+\_\+meas}
+int16 \textbf{ joystick} [\textbf{ NUM\+\_\+\+OF\+\_\+\+MOTORS}]
 \end{DoxyCompactItemize}
 
 
-\subsection{Field Documentation}
+\doxysubsection{Field Documentation}
 \mbox{\label{structst__meas_a382cdae8f034ef5627c27a46e2f00a72}} 
-\index{st\+\_\+meas@{st\+\_\+meas}!acc@{acc}}
-\index{acc@{acc}!st\+\_\+meas@{st\+\_\+meas}}
-\subsubsection{acc}
-{\footnotesize\ttfamily int32 acc[\textbf{ N\+U\+M\+\_\+\+O\+F\+\_\+\+S\+E\+N\+S\+O\+RS}]}
+\index{st\_meas@{st\_meas}!acc@{acc}}
+\index{acc@{acc}!st\_meas@{st\_meas}}
+\doxysubsubsection{acc}
+{\footnotesize\ttfamily int32 acc[\textbf{ NUM\+\_\+\+OF\+\_\+\+SENSORS}]}
 
-Encoder rotational acceleration. \mbox{\label{structst__meas_a035463484308a2613b907a0cbaa4047c}} 
-\index{st\+\_\+meas@{st\+\_\+meas}!curr@{curr}}
-\index{curr@{curr}!st\+\_\+meas@{st\+\_\+meas}}
-\subsubsection{curr}
-{\footnotesize\ttfamily int32 curr[\textbf{ N\+U\+M\+\_\+\+O\+F\+\_\+\+M\+O\+T\+O\+RS}]}
+Encoder rotational acceleration. \mbox{\label{structst__meas_a3d1b5e40ddbb5e34307f6b8e9cc116ff}} 
+\index{st\_meas@{st\_meas}!emg@{emg}}
+\index{emg@{emg}!st\_meas@{st\_meas}}
+\doxysubsubsection{emg}
+{\footnotesize\ttfamily int32 emg[\textbf{ NUM\+\_\+\+OF\+\_\+\+EMGS}]}
 
-Motor current and current estimation. \mbox{\label{structst__meas_a3d1b5e40ddbb5e34307f6b8e9cc116ff}} 
-\index{st\+\_\+meas@{st\+\_\+meas}!emg@{emg}}
-\index{emg@{emg}!st\+\_\+meas@{st\+\_\+meas}}
-\subsubsection{emg}
-{\footnotesize\ttfamily int32 emg[\textbf{ N\+U\+M\+\_\+\+O\+F\+\_\+\+E\+M\+GS}]}
+EMG sensors values. \mbox{\label{structst__meas_aabc0b6873e834fd66cecc830c9b39ef3}} 
+\index{st\_meas@{st\_meas}!joystick@{joystick}}
+\index{joystick@{joystick}!st\_meas@{st\_meas}}
+\doxysubsubsection{joystick}
+{\footnotesize\ttfamily int16 joystick[\textbf{ NUM\+\_\+\+OF\+\_\+\+MOTORS}]}
 
-E\+MG sensors values. \mbox{\label{structst__meas_a2b868d93a8a34bb622e648b05a05068e}} 
-\index{st\+\_\+meas@{st\+\_\+meas}!hand\+\_\+meas@{hand\+\_\+meas}}
-\index{hand\+\_\+meas@{hand\+\_\+meas}!st\+\_\+meas@{st\+\_\+meas}}
-\subsubsection{hand\+\_\+meas}
-{\footnotesize\ttfamily int32 hand\+\_\+meas}
-
-Position measurement from SH. \mbox{\label{structst__meas_a3ee4913e7257d25d3e47cbbada9c8546}} 
-\index{st\+\_\+meas@{st\+\_\+meas}!pos@{pos}}
-\index{pos@{pos}!st\+\_\+meas@{st\+\_\+meas}}
-\subsubsection{pos}
-{\footnotesize\ttfamily int32 pos[\textbf{ N\+U\+M\+\_\+\+O\+F\+\_\+\+S\+E\+N\+S\+O\+RS}]}
+Joystick measurements. \mbox{\label{structst__meas_a3ee4913e7257d25d3e47cbbada9c8546}} 
+\index{st\_meas@{st\_meas}!pos@{pos}}
+\index{pos@{pos}!st\_meas@{st\_meas}}
+\doxysubsubsection{pos}
+{\footnotesize\ttfamily int32 pos[\textbf{ NUM\+\_\+\+OF\+\_\+\+SENSORS}]}
 
 Encoder sensor position. \mbox{\label{structst__meas_a26b47db1884c475bc42d76a709349f97}} 
-\index{st\+\_\+meas@{st\+\_\+meas}!rot@{rot}}
-\index{rot@{rot}!st\+\_\+meas@{st\+\_\+meas}}
-\subsubsection{rot}
-{\footnotesize\ttfamily int8 rot[\textbf{ N\+U\+M\+\_\+\+O\+F\+\_\+\+S\+E\+N\+S\+O\+RS}]}
+\index{st\_meas@{st\_meas}!rot@{rot}}
+\index{rot@{rot}!st\_meas@{st\_meas}}
+\doxysubsubsection{rot}
+{\footnotesize\ttfamily int8 rot[\textbf{ NUM\+\_\+\+OF\+\_\+\+SENSORS}]}
 
 Encoder sensor rotations. \mbox{\label{structst__meas_a8ef1e0e837efdf852aa286d20625d6a1}} 
-\index{st\+\_\+meas@{st\+\_\+meas}!vel@{vel}}
-\index{vel@{vel}!st\+\_\+meas@{st\+\_\+meas}}
-\subsubsection{vel}
-{\footnotesize\ttfamily int32 vel[\textbf{ N\+U\+M\+\_\+\+O\+F\+\_\+\+S\+E\+N\+S\+O\+RS}]}
+\index{st\_meas@{st\_meas}!vel@{vel}}
+\index{vel@{vel}!st\_meas@{st\_meas}}
+\doxysubsubsection{vel}
+{\footnotesize\ttfamily int32 vel[\textbf{ NUM\+\_\+\+OF\+\_\+\+SENSORS}]}
 
 Encoder rotational velocity. 
 

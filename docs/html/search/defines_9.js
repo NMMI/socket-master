@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['n1',['N1',['../utils_8c.html#abd7b39be02bc15d79b73e5cf2b531299',1,'utils.c']]],
-  ['n2',['N2',['../utils_8c.html#acd864640121c7df2c19f61f7baa507e4',1,'utils.c']]],
-  ['num_5fof_5fanalog_5finputs',['NUM_OF_ANALOG_INPUTS',['../globals_8h.html#a181be7cbd0b2da8e8bb809e6313bd67f',1,'globals.h']]],
-  ['num_5fof_5femgs',['NUM_OF_EMGS',['../globals_8h.html#a8e55cba7b8d4f9aa1eb36f311ce121e5',1,'globals.h']]],
-  ['num_5fof_5fmotors',['NUM_OF_MOTORS',['../globals_8h.html#a39ac50737c1ee7d5b723b2597fdf6f26',1,'globals.h']]],
-  ['num_5fof_5fparams',['NUM_OF_PARAMS',['../globals_8h.html#aab4f4a0ece20c4bc27152bd72926d89c',1,'globals.h']]],
-  ['num_5fof_5fsensors',['NUM_OF_SENSORS',['../globals_8h.html#af48a6b6fcdc5f5019fb108d03b07a727',1,'globals.h']]]
+  ['param_5fbyte_5fslot_0',['PARAM_BYTE_SLOT',['../commands_8h.html#ae3302107827a773be3200e459e7b24da',1,'commands.h']]],
+  ['param_5fmenu_5fslot_1',['PARAM_MENU_SLOT',['../commands_8h.html#a3bab5133f6aa363d84307b39e17b0d74',1,'commands.h']]],
+  ['pos_5fintegral_5fsat_5flimit_2',['POS_INTEGRAL_SAT_LIMIT',['../globals_8h.html#ad252b8b0421e545cce8ba0548a6ca4ed',1,'globals.h']]],
+  ['pwm_5fmax_5fvalue_3',['PWM_MAX_VALUE',['../globals_8h.html#aafe0521fa22763b7afc50e12d31b450d',1,'globals.h']]]
 ];

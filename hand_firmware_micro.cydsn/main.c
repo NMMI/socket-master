@@ -144,8 +144,13 @@ int main()
         g_meas.pos[i] = 0;
         g_meas.rot[i] = 0;
     }
-
+    
     g_refNew = g_ref;                                   // Initialize k+1 measurements structure.
+    
+    // Initalize IMU values
+    for (i = N_IMU_SH; i--;) { 
+        imu_values[i] = 0;
+    }
     
     //---------------------------------------------------  Initialize emg structure
     g_meas.emg[0] = 0;

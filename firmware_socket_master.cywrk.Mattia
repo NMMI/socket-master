@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="firmware_socket_master\hand_firmware_micro\Generated_Source">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="firmware_socket_master\hand_firmware_micro\Source Files\globals.c">
 <ExpandedNodeIds>
 <v>firmware_socket_master</v>
 <v>firmware_socket_master\hand_firmware_micro</v>
@@ -67,6 +67,10 @@
 <v>firmware_socket_master\hand_firmware_micro\Source Files</v>
 <v>firmware_socket_master\hand_firmware_micro\Source Files\command_processing.c</v>
 <v>firmware_socket_master\hand_firmware_micro\Source Files\globals.c</v>
+<v>firmware_socket_master\hand_firmware_micro\Source Files\interruptions.c</v>
+<v>firmware_socket_master\hand_firmware_micro\Source Files\main.c</v>
+<v>firmware_socket_master\hand_firmware_micro\Source Files\utils.c</v>
+<v>firmware_socket_master\hand_firmware_micro\Generated_Source</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -175,27 +179,6 @@
 <VisibleNodeIds>
 <v>firmware_socket_master</v>
 <v>firmware_socket_master\hand_firmware_micro</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug\hand_firmware_micro.cyacd</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug\hand_firmware_micro.elf</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug\hand_firmware_micro.hex</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Debug\hand_firmware_micro.map</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC.lst</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_AMux.lst</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_Ext_CP_Clk.lst</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_INT.lst</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_IRQ.lst</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_PM.lst</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_SOC.lst</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_SOC_PM.lst</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_STATUS.lst</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\ADC_theACLK.lst</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\BOARD_LED.lst</v>
-<v>firmware_socket_master\hand_firmware_micro\DP8051\DP8051_Keil_951\Release\Listing Files\Bootloadable.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -266,6 +249,18 @@
 <v>firmware_socket_master\hand_firmware_micro\cy_sync_v1_0</v>
 <v>firmware_socket_master\hand_firmware_micro\cy_sync_v1_0\cy_sync_v1_0.pdf</v>
 <v>firmware_socket_master\hand_firmware_micro\CyControlReg_v1_80</v>
+<v>firmware_socket_master\hand_firmware_micro\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
+<v>firmware_socket_master\hand_firmware_micro\CyStatusReg_v1_90</v>
+<v>firmware_socket_master\hand_firmware_micro\CyStatusReg_v1_90\CyStatusReg_v1_90.pdf</v>
+<v>firmware_socket_master\hand_firmware_micro\DigitalComp_v1_0.pdf</v>
+<v>firmware_socket_master\hand_firmware_micro\EEPROM_v3_0.pdf</v>
+<v>firmware_socket_master\hand_firmware_micro\or_v1_0</v>
+<v>firmware_socket_master\hand_firmware_micro\or_v1_0\or_v1_0.pdf</v>
+<v>firmware_socket_master\hand_firmware_micro\PWM_v3_30.pdf</v>
+<v>firmware_socket_master\hand_firmware_micro\Timer_v2_80</v>
+<v>firmware_socket_master\hand_firmware_micro\Timer_v2_80\Timer_v2_80.pdf</v>
+<v>firmware_socket_master\hand_firmware_micro\UART_v2_50.pdf</v>
+<v>firmware_socket_master\hand_firmware_micro\ZeroTerminal</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -279,7 +274,19 @@
 </userData>
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
-<OpenDocs />
+<OpenDocs>
+<name v=".\hand_firmware_micro.cydsn\command_processing.c" />
+<name v=".\hand_firmware_micro.cydsn\interruptions.c" />
+<name v=".\hand_firmware_micro.cydsn\globals.h" />
+<name v=".\hand_firmware_micro.cydsn\TopDesign\TopDesign.cysch" />
+</OpenDocs>
+<OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1343, 471" SelectedTabbedMdiWindow="ef192394-966f-45eb-9415-b096597be8fa"><DocumentWindow Key="C:\Users\Mattia\Documents\GitHub\socket-master\hand_firmware_micro.cydsn\command_processing.c" Guid="ef192394-966f-45eb-9415-b096597be8fa" /><DocumentWindow Key="C:\Users\Mattia\Documents\GitHub\socket-master\hand_firmware_micro.cydsn\interruptions.c" Guid="145215cb-c8dd-444a-8656-d477ddecf563" /><DocumentWindow Key="C:\Users\Mattia\Documents\GitHub\socket-master\hand_firmware_micro.cydsn\globals.h" Guid="96ae1386-bd29-4ef1-8973-f08833de0646" /><DocumentWindow Key="C:\Users\Mattia\Documents\GitHub\socket-master\hand_firmware_micro.cydsn\TopDesign\TopDesign.cysch" Guid="c8bcd3c0-6a02-4d3c-af7b-6ee386a87285" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="Release" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

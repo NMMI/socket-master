@@ -141,6 +141,12 @@ int32    commReadMeasFromSH  ();
 **/
 int16 commReadResCurrFromSH();
 
+//============================================================  commReadIMUsFromSH
+/** This function reads IMUs from SH.
+ *
+**/
+void commReadIMUsFromSH();
+
 //=====================================================     command_slave
 /** This function is used to create a package and send it to another device, only
  *  if the actual board is in master mode.
@@ -294,6 +300,11 @@ void cmd_get_inputs();
 	package to be sent.
 **/
 void cmd_get_joystick();
+
+//============================================================  cmd_set_ext_imu_readings
+/** This function sets IMU values from an external device.
+**/
+void cmd_set_ext_imu_readings();
 
 //============================================================  cmd_store_params
 /** This function stores the parameters to the EEPROM memory

@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['m_5fmult',['m_mult',['../structst__mem.html#aecf0baab567443534c0ded663b746896',1,'st_mem']]],
-  ['m_5foff',['m_off',['../structst__mem.html#ab544f035124be893918bafb611fe88d9',1,'st_mem']]],
-  ['master_5fmode',['master_mode',['../globals_8c.html#acf0e2a5d5954714103e295ac35513215',1,'master_mode():&#160;globals.c'],['../globals_8h.html#acf0e2a5d5954714103e295ac35513215',1,'master_mode():&#160;globals.c']]],
-  ['max_5fstep_5fneg',['max_step_neg',['../structst__mem.html#a14fe3ed96d232dced2d33efc493a0667',1,'st_mem']]],
-  ['max_5fstep_5fpos',['max_step_pos',['../structst__mem.html#a9be5987152b8c6bb28c1d311bc94e5e3',1,'st_mem']]],
-  ['motor_5fhandle_5fratio',['motor_handle_ratio',['../structst__mem.html#a098badbb74d31ea6257e57f6d66823cc',1,'st_mem']]]
+  ['pos_0',['pos',['../structst__ref.html#a4ac6e991f146f79c274e21a17cfff0a0',1,'st_ref::pos()'],['../structst__meas.html#a3ee4913e7257d25d3e47cbbada9c8546',1,'st_meas::pos()']]],
+  ['pos_5flim_5fflag_1',['pos_lim_flag',['../structst__mem.html#aa2ceebf7546e978c8b0393ce8035532d',1,'st_mem']]],
+  ['pos_5flim_5finf_2',['pos_lim_inf',['../structst__mem.html#a631265c712a620e03d9233634e1819a2',1,'st_mem']]],
+  ['pos_5flim_5fsup_3',['pos_lim_sup',['../structst__mem.html#a818808d7c324999701b5aad40a8fabca',1,'st_mem']]],
+  ['pow_5ftension_4',['pow_tension',['../globals_8c.html#a63d713ff9ac5ba0651f6af9115a32e4d',1,'pow_tension():&#160;globals.c'],['../globals_8h.html#a63d713ff9ac5ba0651f6af9115a32e4d',1,'pow_tension():&#160;globals.c']]]
 ];
