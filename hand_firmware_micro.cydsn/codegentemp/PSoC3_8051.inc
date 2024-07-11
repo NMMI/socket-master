@@ -1,11 +1,11 @@
 ;*******************************************************************************
 ; \file PSoC3_8051.inc
-; \version 5.60
+; \version 6.10
 ;
 ; \brief 8051 register definitions for the PSoC3 family of parts.
 ;
 ;*******************************************************************************
-; Copyright 2008-2016, Cypress Semiconductor Corporation.  All rights reserved.
+; Copyright 2008-2021, Cypress Semiconductor Corporation.  All rights reserved.
 ; You may use this file only in accordance with the license, terms, conditions,
 ; disclaimers, and limitations in the end user license agreement accompanying
 ; the software package with which this file was provided.

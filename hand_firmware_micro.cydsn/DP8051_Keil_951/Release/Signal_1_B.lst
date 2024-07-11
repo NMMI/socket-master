@@ -1,9 +1,9 @@
-C51 COMPILER V9.51   SIGNAL_1_B                                                            04/27/2018 14:43:14 PAGE 1   
+C51 COMPILER V9.51   SIGNAL_1_B                                                            04/16/2024 16:28:28 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE SIGNAL_1_B
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\Signal_1_B.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -Generated_Source\PSoC3\Signal_1_B.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBU
                     -G) WL(2) PR(.\DP8051_Keil_951\Release/Signal_1_B.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\Signal_1_B.obj)
 
@@ -62,7 +62,7 @@ line level    source
   50          * \funcusage
   51          *  \snippet Signal_1_B_SUT.c usage_Signal_1_B_Write
   52          *******************************************************************************/
-C51 COMPILER V9.51   SIGNAL_1_B                                                            04/27/2018 14:43:14 PAGE 2   
+C51 COMPILER V9.51   SIGNAL_1_B                                                            04/16/2024 16:28:28 PAGE 2   
 
   53          void Signal_1_B_Write(uint8 value) 
   54          {
@@ -126,7 +126,7 @@ line level    source
  112   1      }
  113          
  114          
-C51 COMPILER V9.51   SIGNAL_1_B                                                            04/27/2018 14:43:14 PAGE 3   
+C51 COMPILER V9.51   SIGNAL_1_B                                                            04/16/2024 16:28:28 PAGE 3   
 
  115          /*******************************************************************************
  116          * Function Name: Signal_1_B_ReadDataReg
@@ -190,7 +190,7 @@ line level    source
                   * \sideeffect
                   *  It is recommended that the interrupt be disabled before calling this 
                   *  function to avoid unintended interrupt requests. Note that the interrupt
-C51 COMPILER V9.51   SIGNAL_1_B                                                            04/27/2018 14:43:14 PAGE 4   
+C51 COMPILER V9.51   SIGNAL_1_B                                                            04/16/2024 16:28:28 PAGE 4   
 
                   *  type is port wide, and therefore will trigger for any enabled pin on the 
                   *  port.
@@ -237,7 +237,7 @@ line level    source
  219          
  220          
  221          /* [] END OF FILE */
-C51 COMPILER V9.51   SIGNAL_1_B                                                            04/27/2018 14:43:14 PAGE 5   
+C51 COMPILER V9.51   SIGNAL_1_B                                                            04/16/2024 16:28:28 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -301,7 +301,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 112
 0012         ?C0003:
 0012 22                RET     
-C51 COMPILER V9.51   SIGNAL_1_B                                                            04/27/2018 14:43:14 PAGE 6   
+C51 COMPILER V9.51   SIGNAL_1_B                                                            04/16/2024 16:28:28 PAGE 6   
 
              ; FUNCTION Signal_1_B_Read (END)
 

@@ -1,9 +1,9 @@
-C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/27/2018 14:43:18 PAGE 1   
+C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/16/2024 16:28:30 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE VOLTAGE_SENSE
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\VOLTAGE_SENSE.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -Generated_Source\PSoC3\VOLTAGE_SENSE.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(ND
                     -EBUG) WL(2) PR(.\DP8051_Keil_951\Release/VOLTAGE_SENSE.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\VOLTAGE_SENSE.ob
                     -j)
@@ -62,7 +62,7 @@ line level    source
   49          *
   50          * \funcusage
   51          *  \snippet VOLTAGE_SENSE_SUT.c usage_VOLTAGE_SENSE_Write
-C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/27/2018 14:43:18 PAGE 2   
+C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/16/2024 16:28:30 PAGE 2   
 
   52          *******************************************************************************/
   53          void VOLTAGE_SENSE_Write(uint8 value) 
@@ -126,7 +126,7 @@ line level    source
  111   1          return (VOLTAGE_SENSE_PS & VOLTAGE_SENSE_MASK) >> VOLTAGE_SENSE_SHIFT;
  112   1      }
  113          
-C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/27/2018 14:43:18 PAGE 3   
+C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/16/2024 16:28:30 PAGE 3   
 
  114          
  115          /*******************************************************************************
@@ -190,7 +190,7 @@ line level    source
                   *  
                   * \sideeffect
                   *  It is recommended that the interrupt be disabled before calling this 
-C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/27/2018 14:43:18 PAGE 4   
+C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/16/2024 16:28:30 PAGE 4   
 
                   *  function to avoid unintended interrupt requests. Note that the interrupt
                   *  type is port wide, and therefore will trigger for any enabled pin on the 
@@ -238,7 +238,7 @@ line level    source
  219          
  220          
  221          /* [] END OF FILE */
-C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/27/2018 14:43:18 PAGE 5   
+C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/16/2024 16:28:30 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -302,7 +302,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0012         ?C0003:
 0012 22                RET     
              ; FUNCTION VOLTAGE_SENSE_Read (END)
-C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/27/2018 14:43:18 PAGE 6   
+C51 COMPILER V9.51   VOLTAGE_SENSE                                                         04/16/2024 16:28:30 PAGE 6   
 
 
              ; FUNCTION VOLTAGE_SENSE_ReadDataReg (BEGIN)

@@ -1,6 +1,6 @@
 -- Project:   hand_firmware_micro
--- Generated: 04/27/2018 14:39:16
--- PSoC Creator  4.2
+-- Generated: 04/16/2024 16:28:07
+-- PSoC Creator  4.4
 
 ENTITY hand_firmware_micro IS
     PORT(

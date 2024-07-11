@@ -1,9 +1,9 @@
-C51 COMPILER V9.51   MAIN                                                                  04/27/2018 15:24:28 PAGE 1   
+C51 COMPILER V9.51   MAIN                                                                  04/16/2024 16:28:23 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE MAIN
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\main.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -main.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG) WL(2) PR(.\DP8051_Keil_951
                     -\Release/main.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\main.obj)
 
@@ -62,7 +62,7 @@ line level    source
   50          *                               Also can read and convert analog measurements connected to the PSoC microcontroller.                
   51          *
   52          */
-C51 COMPILER V9.51   MAIN                                                                  04/27/2018 15:24:28 PAGE 2   
+C51 COMPILER V9.51   MAIN                                                                  04/16/2024 16:28:23 PAGE 2   
 
   53          
   54          
@@ -126,7 +126,7 @@ line level    source
  112   1      
  113   1          // SSI encoder initializations
  114   1      
-C51 COMPILER V9.51   MAIN                                                                  04/27/2018 15:24:28 PAGE 3   
+C51 COMPILER V9.51   MAIN                                                                  04/16/2024 16:28:23 PAGE 3   
 
  115   1          COUNTER_ENC_Start();
  116   1      
@@ -190,7 +190,7 @@ line level    source
  168   1          first_tension_valid = TRUE;
  169   1      
  170   1          reset_last_value_flag = 0;
-C51 COMPILER V9.51   MAIN                                                                  04/27/2018 15:24:28 PAGE 4   
+C51 COMPILER V9.51   MAIN                                                                  04/16/2024 16:28:23 PAGE 4   
 
  171   1      
  172   1          //------------------------------------------------- Initialize package on receive from RS485
@@ -238,7 +238,7 @@ line level    source
  214          
  215          
  216          /* [] END OF FILE */
-C51 COMPILER V9.51   MAIN                                                                  04/27/2018 15:24:28 PAGE 5   
+C51 COMPILER V9.51   MAIN                                                                  04/16/2024 16:28:23 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -302,7 +302,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 127
 0050 E4                CLR     A
 0051 900000      E     MOV     DPTR,#?_DMA_DmaInitialize?BYTE+04H
-C51 COMPILER V9.51   MAIN                                                                  04/27/2018 15:24:28 PAGE 6   
+C51 COMPILER V9.51   MAIN                                                                  04/16/2024 16:28:23 PAGE 6   
 
 0054 F0                MOVX    @DPTR,A
 0055 A3                INC     DPTR
@@ -366,7 +366,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00AE 120000      E     LCALL   MY_TIMER_Start
                                            ; SOURCE LINE # 140
 00B1 120000      E     LCALL   PACER_TIMER_Start
-C51 COMPILER V9.51   MAIN                                                                  04/27/2018 15:24:28 PAGE 7   
+C51 COMPILER V9.51   MAIN                                                                  04/16/2024 16:28:23 PAGE 7   
 
                                            ; SOURCE LINE # 142
 00B4 D2AF              SETB    EA
@@ -430,7 +430,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0100 E4                CLR     A
 0101 3400        E     ADDC    A,#HIGH g_meas
 0103 F583              MOV     DPH,A
-C51 COMPILER V9.51   MAIN                                                                  04/27/2018 15:24:28 PAGE 8   
+C51 COMPILER V9.51   MAIN                                                                  04/16/2024 16:28:23 PAGE 8   
 
 0105 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 157
@@ -494,7 +494,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 015B A3                INC     DPTR
 015C F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 174
-C51 COMPILER V9.51   MAIN                                                                  04/27/2018 15:24:28 PAGE 9   
+C51 COMPILER V9.51   MAIN                                                                  04/16/2024 16:28:23 PAGE 9   
 
 015D 900000      E     MOV     DPTR,#g_rx+084H
 0160 F0                MOVX    @DPTR,A
@@ -558,7 +558,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01A2 22                RET     
              ; FUNCTION main (END)
 
-C51 COMPILER V9.51   MAIN                                                                  04/27/2018 15:24:28 PAGE 10  
+C51 COMPILER V9.51   MAIN                                                                  04/16/2024 16:28:23 PAGE 10  
 
 
 

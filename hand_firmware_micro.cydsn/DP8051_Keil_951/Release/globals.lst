@@ -1,9 +1,9 @@
-C51 COMPILER V9.51   GLOBALS                                                               04/27/2018 15:24:27 PAGE 1   
+C51 COMPILER V9.51   GLOBALS                                                               04/16/2024 16:28:22 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE GLOBALS
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\globals.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.4\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -globals.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG) WL(2) PR(.\DP8051_Keil_
                     -951\Release/globals.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\globals.obj)
 
@@ -62,7 +62,7 @@ line level    source
   50          
   51          struct st_ref   g_ref, g_refNew, g_refOld;  // Motor variables.
   52          struct st_meas  g_meas, g_measOld;          // Measurements.
-C51 COMPILER V9.51   GLOBALS                                                               04/27/2018 15:24:27 PAGE 2   
+C51 COMPILER V9.51   GLOBALS                                                               04/16/2024 16:28:22 PAGE 2   
 
   53          struct st_data  g_rx;                       // Income data.
   54          struct st_mem   g_mem, c_mem;               // Memory variables.
@@ -104,7 +104,7 @@ line level    source
   88          int32 curr_pos_res;
   89          
   90          /* END OF FILE */
-C51 COMPILER V9.51   GLOBALS                                                               04/27/2018 15:24:27 PAGE 3   
+C51 COMPILER V9.51   GLOBALS                                                               04/16/2024 16:28:22 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 

@@ -1,6 +1,6 @@
--- Project:   C:\Users\MattiaCP\Documents\GITHUB\socket-master\hand_firmware_micro.cydsn\hand_firmware_micro.cyprj
--- Generated: 04/27/2018 14:39:21
--- PSoC Creator  4.2
+-- Project:   C:\Users\Mattia\Documents\GitHub\socket-master\hand_firmware_micro.cydsn\hand_firmware_micro.cyprj
+-- Generated: 04/16/2024 16:28:14
+-- PSoC Creator  4.4
 
 ENTITY hand_firmware_micro IS
     PORT(
